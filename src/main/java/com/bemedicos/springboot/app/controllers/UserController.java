@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bemedicos.springboot.app.dto.ChangePasswordForm;
-import com.bemedicos.springboot.app.models.dao.IMedicosDao;
 import com.bemedicos.springboot.app.models.entity.User;
 import com.bemedicos.springboot.app.repository.UserRepository;
+import com.bemedicos.springboot.app.service.MedicoService;
 import com.bemedicos.springboot.app.service.UserService;
 
 
@@ -37,7 +37,7 @@ public class UserController {
 	UserService userService;
 	
 	@Autowired
-	IMedicosDao medicosDao;
+	MedicoService medicosDao;
 	
 	@GetMapping("/signup")
 	public String signup(Model model) {
