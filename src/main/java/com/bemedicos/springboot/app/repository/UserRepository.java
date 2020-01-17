@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-import com.medicos.springboot.app.models.entity.User;
+import com.bemedicos.springboot.app.models.entity.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long>{
