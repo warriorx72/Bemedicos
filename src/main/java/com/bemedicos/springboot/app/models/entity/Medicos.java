@@ -1,12 +1,18 @@
 package com.bemedicos.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -17,7 +23,7 @@ public class Medicos implements Serializable {
 	private static final long serialVersionUID = 1L;	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long medicos_id;
+	private Long medico_id;
 	
 	@Column
 	private String nombre_doc;
@@ -57,13 +63,27 @@ public class Medicos implements Serializable {
 	
 	@Column
 	private String usuario_id;
+	
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "app_medico_paciente",
+        joinColumns = @JoinColumn(name = "medico_id", referencedColumnName = "medico_id"),
+        inverseJoinColumns = @JoinColumn(name = "paciente_id", referencedColumnName = "paciente_id"))
+    private Set<Paciente> paciente= new HashSet<>();
+
+	public Set<Paciente> getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Set<Paciente> paciente) {
+		this.paciente = paciente;
+	}
 
 	public Long getMedicos_id() {
-		return medicos_id;
+		return medico_id;
 	}
 
 	public void setMedicos_id(Long medicos_id) {
-		this.medicos_id = medicos_id;
+		this.medico_id = medicos_id;
 	}
 
 	public String getNombre_doc() {

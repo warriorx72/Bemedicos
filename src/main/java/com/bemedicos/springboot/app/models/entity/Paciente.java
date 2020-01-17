@@ -1,12 +1,15 @@
 package com.bemedicos.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +30,9 @@ public class Paciente implements Serializable{
 	
 	@Column
 	private String persona_id;
+	
+	@ManyToMany(mappedBy = "paciente")
+    private Set<Medicos> medico = new HashSet<>();
 
 	public Long getPaciente_id() {
 		return paciente_id;

@@ -3,11 +3,12 @@ package com.bemedicos.springboot.app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bemedicos.springboot.app.models.entity.Medicos;
 import com.bemedicos.springboot.app.repository.MedicoRepository;
-
+@Service
 public class MedicoServiceImpl implements MedicoService{
 	
 	@Autowired
