@@ -10,215 +10,211 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="casa_habitacion") 
+@Table(name="app_casa_habitacion") 
 public class CasaHabitacion implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="casahabitacion_id")
+	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long CasaHabitacionId;
+	private Long casahabitacion_id;
 	
-	@Column(name="alergias")
-	private String Alergias;
+	@Column
+	private String alergias;
 	
-	@Column(name="cirugias")
-	private String Cirugias;
+	@Column
+	private String cirugias;
 	
-	@Column(name="enfermedades_adulto")
-	private String EnfermedadesAdulto;
+	@Column
+	private String enfermedades_adulto;
 	
-	@Column(name="enfermedades_infancia")
-	private String EnfermedadesInfancia;
+	@Column
+	private String enfermedades_infancia;
 	
-	@Column(name="inmunizacion")
-	private String Inmunizacion;
+	@Column
+	private String inmunizacion;
 	
-	@Column(name="material_vivienda")
-	private String MaterialVivienda;
+	@Column
+	private String material_vivienda;
 	
-	@Column(name="numero_mascotas")
-	private String NumeroMascotas;
+	@Column
+	private String numero_mascotas;
 	
-	@Column(name="otro")
-	private String Otro;
+	@Column
+	private String otro;
 
-	@Column(name="otro1")
-	private String Otro1;
+	@Column
+	private String otro1;
 
-	@Column(name="otro2")
-	private String Otro2;
+	@Column
+	private String otro2;
 
-	@Column(name="personas_viviendo_casa")
-	private String PersonasViviendoCasa;
+	@Column
+	private String personas_viviendo_casa;
 	
-	@Column(name="quien_receto")
-	private String QuienReceto;
+	@Column
+	private String quien_receto;
 	
-	@Column(name="servicios_basicos")
-	private String ServiciosBasicos;
+	@Column
+	private String servicios_basicos;
 	
-	@Column(name="tipo_piso")
-	private String TipoPiso;
+	@Column
+	private String tipo_piso;
 	
-	@Column(name="toma_medicementos")
-	private String TomaMedicementos;
+	@Column
+	private String toma_medicementos;
 	
-	@Column(name="traumetismo")
-	private String Traumatismo;
+	@Column
+	private String traumetismo;
 	
-	@Column(name="ventilacion_iluminacion")
-	private String VentilacionIluminacion;
+	@Column
+	private String ventilacion_iluminacion;
 
-	public Long getCasaHabitacionId() {
-		return CasaHabitacionId;
+	public Long getCasahabitacion_id() {
+		return casahabitacion_id;
 	}
 
-	public void setCasaHabitacionId(Long casaHabitacionId) {
-		CasaHabitacionId = casaHabitacionId;
+	public void setCasahabitacion_id(Long casahabitacion_id) {
+		this.casahabitacion_id = casahabitacion_id;
 	}
 
 	public String getAlergias() {
-		return Alergias;
+		return alergias;
 	}
 
 	public void setAlergias(String alergias) {
-		Alergias = alergias;
+		this.alergias = alergias;
 	}
 
 	public String getCirugias() {
-		return Cirugias;
+		return cirugias;
 	}
 
 	public void setCirugias(String cirugias) {
-		Cirugias = cirugias;
+		this.cirugias = cirugias;
 	}
 
-	public String getEnfermedadesAdulto() {
-		return EnfermedadesAdulto;
+	public String getEnfermedades_adulto() {
+		return enfermedades_adulto;
 	}
 
-	public void setEnfermedadesAdulto(String enfermedadesAdulto) {
-		EnfermedadesAdulto = enfermedadesAdulto;
+	public void setEnfermedades_adulto(String enfermedades_adulto) {
+		this.enfermedades_adulto = enfermedades_adulto;
 	}
 
-	public String getEnfermedadesInfancia() {
-		return EnfermedadesInfancia;
+	public String getEnfermedades_infancia() {
+		return enfermedades_infancia;
 	}
 
-	public void setEnfermedadesInfancia(String enfermedadesInfancia) {
-		EnfermedadesInfancia = enfermedadesInfancia;
+	public void setEnfermedades_infancia(String enfermedades_infancia) {
+		this.enfermedades_infancia = enfermedades_infancia;
 	}
 
 	public String getInmunizacion() {
-		return Inmunizacion;
+		return inmunizacion;
 	}
 
 	public void setInmunizacion(String inmunizacion) {
-		Inmunizacion = inmunizacion;
+		this.inmunizacion = inmunizacion;
 	}
 
-	public String getMaterialVivienda() {
-		return MaterialVivienda;
+	public String getMaterial_vivienda() {
+		return material_vivienda;
 	}
 
-	public void setMaterialVivienda(String materialVivienda) {
-		MaterialVivienda = materialVivienda;
+	public void setMaterial_vivienda(String material_vivienda) {
+		this.material_vivienda = material_vivienda;
 	}
 
-	public String getNumeroMascotas() {
-		return NumeroMascotas;
+	public String getNumero_mascotas() {
+		return numero_mascotas;
 	}
 
-	public void setNumeroMascotas(String numeroMascotas) {
-		NumeroMascotas = numeroMascotas;
+	public void setNumero_mascotas(String numero_mascotas) {
+		this.numero_mascotas = numero_mascotas;
 	}
 
 	public String getOtro() {
-		return Otro;
+		return otro;
 	}
 
 	public void setOtro(String otro) {
-		Otro = otro;
+		this.otro = otro;
 	}
 
 	public String getOtro1() {
-		return Otro1;
+		return otro1;
 	}
 
 	public void setOtro1(String otro1) {
-		Otro1 = otro1;
+		this.otro1 = otro1;
 	}
 
 	public String getOtro2() {
-		return Otro2;
+		return otro2;
 	}
 
 	public void setOtro2(String otro2) {
-		Otro2 = otro2;
+		this.otro2 = otro2;
 	}
 
-	public String getPersonasViviendoCasa() {
-		return PersonasViviendoCasa;
+	public String getPersonas_viviendo_casa() {
+		return personas_viviendo_casa;
 	}
 
-	public void setPersonasViviendoCasa(String personasViviendoCasa) {
-		PersonasViviendoCasa = personasViviendoCasa;
+	public void setPersonas_viviendo_casa(String personas_viviendo_casa) {
+		this.personas_viviendo_casa = personas_viviendo_casa;
 	}
 
-	public String getQuienReceto() {
-		return QuienReceto;
+	public String getQuien_receto() {
+		return quien_receto;
 	}
 
-	public void setQuienReceto(String quienReceto) {
-		QuienReceto = quienReceto;
+	public void setQuien_receto(String quien_receto) {
+		this.quien_receto = quien_receto;
 	}
 
-	public String getServiciosBasicos() {
-		return ServiciosBasicos;
+	public String getServicios_basicos() {
+		return servicios_basicos;
 	}
 
-	public void setServiciosBasicos(String serviciosBasicos) {
-		ServiciosBasicos = serviciosBasicos;
+	public void setServicios_basicos(String servicios_basicos) {
+		this.servicios_basicos = servicios_basicos;
 	}
 
-	public String getTipoPiso() {
-		return TipoPiso;
+	public String getTipo_piso() {
+		return tipo_piso;
 	}
 
-	public void setTipoPiso(String tipoPiso) {
-		TipoPiso = tipoPiso;
+	public void setTipo_piso(String tipo_piso) {
+		this.tipo_piso = tipo_piso;
 	}
 
-	public String getTomaMedicementos() {
-		return TomaMedicementos;
+	public String getToma_medicementos() {
+		return toma_medicementos;
 	}
 
-	public void setTomaMedicementos(String tomaMedicementos) {
-		TomaMedicementos = tomaMedicementos;
+	public void setToma_medicementos(String toma_medicementos) {
+		this.toma_medicementos = toma_medicementos;
 	}
 
-	public String getTraumatismo() {
-		return Traumatismo;
+	public String getTraumetismo() {
+		return traumetismo;
 	}
 
-	public void setTraumatismo(String traumatismo) {
-		Traumatismo = traumatismo;
+	public void setTraumetismo(String traumetismo) {
+		this.traumetismo = traumetismo;
 	}
 
-	public String getVentilacionIluminacion() {
-		return VentilacionIluminacion;
+	public String getVentilacion_iluminacion() {
+		return ventilacion_iluminacion;
 	}
 
-	public void setVentilacionIluminacion(String ventilacionIluminacion) {
-		VentilacionIluminacion = ventilacionIluminacion;
+	public void setVentilacion_iluminacion(String ventilacion_iluminacion) {
+		this.ventilacion_iluminacion = ventilacion_iluminacion;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	
 	
 	
 }
