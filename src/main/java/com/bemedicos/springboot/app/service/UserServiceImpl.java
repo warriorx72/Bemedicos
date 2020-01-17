@@ -2,10 +2,13 @@ package com.bemedicos.springboot.app.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bemedicos.springboot.app.dto.ChangePasswordForm;
+import com.bemedicos.springboot.app.exception.CustomeFieldValidationException;
 import com.bemedicos.springboot.app.models.entity.User;
 import com.bemedicos.springboot.app.repository.UserRepository;
 
@@ -25,34 +28,34 @@ public class UserServiceImpl implements UserService{
 	private boolean checkEmailAvailable(User user) throws Exception {
 		Optional<User> userFound = repository.findByEmail(user.getEmail());
 		if (userFound.isPresent()) {
-			throw new Exception("Correo no disponible");
+			throw new CustomeFieldValidationException("Correo no disponible","email");
 		}//End_if
 		return true;
 	}//End_Exception
 	
-//	private boolean checkUsernameAvailable(User user) throws Exception{
-//		Optional<User> userFound = repository.findByUsername(user.getUsername());
-//		if(userFound.isPresent()) {
-//			throw new CustomeFieldValidationException("Usuario no disponible","username");
-//		}
-//		return true;
-//	}
+private boolean checkUsernameAvailable(User user) throws Exception{
+		Optional<User> userFound = repository.findByUsername(user.getUsername());
+		if(userFound.isPresent()) {
+			throw new CustomeFieldValidationException("Usuario no disponible","username");
+		}
+		return true;
+	}
 	
 	
 	
 	private boolean checkPasswordValid(User user) throws Exception {
 		if (user.getConfirmPassword() == null || user.getConfirmPassword().isEmpty()) {
-			throw new Exception("Confirm Password es obligatorio");
+			throw new CustomeFieldValidationException("Confirm Password es obligatorio","confirmPassword");
 		}//End_if
 		if ( !user.getPassword().equals(user.getConfirmPassword())) {
-			throw new Exception("Password y Confirm Password no son iguales");
+			throw new CustomeFieldValidationException("Password y Confirm Password no son iguales","password");
 		}//End_if
 		return true;
 	}//End_Exception
 	
 	@Override
 	public User createUser(User user) throws Exception {
-		if (checkEmailAvailable(user) && checkPasswordValid(user)) {
+		if (checkEmailAvailable(user) && checkUsernameAvailable(user) &&  checkPasswordValid(user) || user.getId()>0 || user.getId()!=null) {
 			String encodePassword = bCryptPasswordEncoder.encode(user.getPassword());
 			user.setPassword(encodePassword);
 			user = repository.save(user);
@@ -80,6 +83,7 @@ public class UserServiceImpl implements UserService{
 		to.setFirstName(from.getFirstName());
 		to.setLastName(from.getLastName());
 		to.setUsername(from.getUsername());
+		///to.setRoles(from.getRoles());
 		to.setId(from.getId());
 	}
 	
