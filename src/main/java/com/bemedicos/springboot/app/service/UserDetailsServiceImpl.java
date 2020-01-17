@@ -41,7 +41,7 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
 		
 		if(username.contains("@")) {
 		
-com.medicos.springboot.app.models.entity.User appUser = repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Login username or email ivalidos"));
+com.bemedicos.springboot.app.models.entity.User appUser = repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Login username or email ivalidos"));
 			
 			Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
 		UserDetails user = (UserDetails) new User (username,appUser.getPassword(), grantList);
@@ -49,7 +49,7 @@ com.medicos.springboot.app.models.entity.User appUser = repository.findByEmail(u
 		}
 		else
 		{
-com.medicos.springboot.app.models.entity.User appUser = repository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Login username or email ivalidos"));
+com.bemedicos.springboot.app.models.entity.User appUser = repository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Login username or email ivalidos"));
 			
 			Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
 		UserDetails user = (UserDetails) new User (username,appUser.getPassword(), grantList);
