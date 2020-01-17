@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,8 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+////import com.medicos.springboot.app.models.entity.Role;
 import com.bemedicos.springboot.app.repository.UserRepository;
-
 
 @Service
 @Transactional
@@ -35,20 +36,62 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 //	
 //		return user;
 //	}
-
-	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		com.bemedicos.springboot.app.models.entity.User appUser = repository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Login username or email ivalidos"));
+@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
+		if(username.contains("@")) {
 		
-		UserDetails user = (UserDetails) new User (email,appUser.getPassword(),grantList);
-		
-	
+com.medicos.springboot.app.models.entity.User appUser = repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Login username or email ivalidos"));
+			
+			Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
+		UserDetails user = (UserDetails) new User (username,appUser.getPassword(), grantList);
 		return user;
+		}
+		else
+		{
+com.medicos.springboot.app.models.entity.User appUser = repository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Login username or email ivalidos"));
+			
+			Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
+		UserDetails user = (UserDetails) new User (username,appUser.getPassword(), grantList);
+		return user;
+		
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	/*	for(Role role: appUser.getRoles()) {
+			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getDescription());
+			grantList.add(grantedAuthority);
+		}  */
+		
+		
+	
+		
+	
+		
+		
+		
 	}
+
+
+
+
+
+
+	
+
+
+
 	
 	
+	
+
 
 
 	
