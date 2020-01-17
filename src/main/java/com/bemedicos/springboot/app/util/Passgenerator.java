@@ -1,4 +1,4 @@
-package com.medicos.springboot.app.util;
+package com.bemedicos.springboot.app.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
