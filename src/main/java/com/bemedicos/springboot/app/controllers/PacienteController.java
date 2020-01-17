@@ -20,19 +20,6 @@ public class PacienteController {
 	@RequestMapping(value="/alta_paciente", method=RequestMethod.GET)
 	public String listar(Model model, Map<String, Object> m) {
 		model.addAttribute("titulo","Condiciones paciente");
-		Medicos medico =new Medicos();
-		Paciente paciente1 = new Paciente();
-		Paciente paciente2 = new Paciente();
-		paciente1.setEstado_civil("soltero");
-		paciente1.setExpediente("1234");
-		paciente1.setPersona_id("2");
-		paciente2.setEstado_civil("casado");
-		paciente2.setExpediente("1233");
-		paciente2.setPersona_id("3");
-		medico=medicoService.findOne(1L);
-		medico.getPaciente().add(paciente1);
-		medico.getPaciente().add(paciente2);
-		medicoService.save(medico);
 		return "alta_paciente";
 	   }
 }
