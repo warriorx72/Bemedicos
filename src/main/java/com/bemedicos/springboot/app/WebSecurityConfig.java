@@ -1,4 +1,4 @@
-package com.medicos.springboot.app;
+package com.bemedicos.springboot.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
