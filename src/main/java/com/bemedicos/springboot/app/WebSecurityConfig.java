@@ -1,4 +1,4 @@
-package com.bemedicos.springboot.app;
+package com.medicos.springboot.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http
+		 if(http.formLogin().usernameParameter("email").toString().contains("@")) {
+			 
+			 http.formLogin().usernameParameter("email");
+		 }
+         else {
+        	 http.formLogin().usernameParameter("username");
+        	 
+         }
+		http
+    	
         .authorizeRequests()
         .antMatchers(resources).permitAll()  
         .antMatchers("/","/login","/signup").permitAll()
@@ -35,7 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .permitAll()
             .defaultSuccessUrl("/index")
             .failureUrl("/login?error=true")
-            .usernameParameter("email")
+            //.usernameParameter("email")
+            //.usernameParameter("username")
             .passwordParameter("password")
             .and()
             .csrf().disable()
