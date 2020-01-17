@@ -1,4 +1,4 @@
-package com.medicos.springboot.app.exception;
+package com.bemedicos.springboot.app.exception;
 
 public class CustomeFieldValidationException extends Exception{
 	
