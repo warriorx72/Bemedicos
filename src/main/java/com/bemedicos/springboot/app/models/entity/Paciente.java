@@ -29,7 +29,7 @@ public class Paciente implements Serializable{
 	private String estado_civil;
 	
 	@Column
-	private String persona_id;
+	private Long persona_id;
 	
 	@ManyToMany(mappedBy = "paciente")
     private Set<Medicos> medico = new HashSet<>();
@@ -58,11 +58,11 @@ public class Paciente implements Serializable{
 		this.estado_civil = estado_civil;
 	}
 
-	public String getPersona_id() {
+	public Long getPersona_id() {
 		return persona_id;
 	}
 
-	public void setPersona_id(String persona_id) {
+	public void setPersona_id(Long persona_id) {
 		this.persona_id = persona_id;
 	}
 	

@@ -53,7 +53,7 @@ public class Persona implements Serializable{
 	private String persona_tel_exten;
 	
 	@Column
-	private String id_direccion;
+	private Long id_direccion;
 	
 	
 	public Long getPersona_id() {
@@ -128,10 +128,10 @@ public class Persona implements Serializable{
 	public void setPersona_tel_exten(String persona_tel_exten) {
 		this.persona_tel_exten = persona_tel_exten;
 	}
-	public String getId_direccion() {
+	public Long getId_direccion() {
 		return id_direccion;
 	}
-	public void setId_direccion(String id_direccion) {
+	public void setId_direccion(Long id_direccion) {
 		this.id_direccion = id_direccion;
 	}
 }

@@ -305,25 +305,25 @@ to get the desired effect
                   </div>
                   <!-- /.card-body -->
                     <div class="card-body">
-                        <form role="form">
+                        <form th:action="@{/guardar_paciente}" th:method="post">
                           <div class="row">
                             <div class="col-sm-4">
                               <!-- text input -->
                               <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Gerardo">
+                                <input required th:field="*{persona.persona_nombre}" type="text" class="form-control" placeholder="Gerardo">
                               </div>
                             </div>
                             <div class="col-sm-4">
                               <div class="form-group">
                                 <label>Apellido Paterno</label>
-                                <input type="text" class="form-control" placeholder="Rosas">
+                                <input required th:field="*{persona.persona_ap}" type="text" class="form-control" placeholder="Rosas">
                               </div>
                             </div>
                             <div class="col-sm-4">
                               <div class="form-group">
                                 <label>Apellido Materno</label>
-                                <input type="text" class="form-control" placeholder="Martinez">
+                                <input required th:field="*{persona.persona_am}" type="text" class="form-control" placeholder="Martinez">
                               </div>
                             </div>
                           </div>
@@ -332,33 +332,33 @@ to get the desired effect
                               <!-- text input -->
                               <div class="form-group">
                                 <label>G&eacute;nero</label>
-                                <select class="form-control">
-                                    <option>Masculino</option>
-                                    <option>Femenino</option>
+                                <select th:field="*{persona.persona_genero}" class="form-control">
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
                                 </select>
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Estado civil</label>
-                                <select class="form-control">
-                                    <option>Soltero</option>
-                                    <option>Casado</option>
-                                    <option>Viudo</option>
-                                    <option>Divorciado</option>
+                                <select th:field="*{paciente.estado_civil}" class="form-control">
+                                    <option value="Soltero">Soltero</option>
+                                    <option value="Casado">Casado</option>
+                                    <option value="Viudo">Viudo</option>
+                                    <option value="Divorciado">Divorciado</option>
                                 </select>
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Fecha de nacimiento</label>
-                                <input type="date" class="form-control">
+                                <input required th:field="*{persona.persona_fecha_na}" type="date" class="form-control">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Tel&eacute;fono</label>
-                                <input type="text" class="form-control" placeholder="222 123 2123">
+                                <input required th:field="*{persona.persona_tel_cel}" type="number" class="form-control" placeholder="222 123 2123">
                               </div>
                             </div>
                           </div>
@@ -379,19 +379,19 @@ to get the desired effect
                               <!-- text input -->
                               <div class="form-group">
                                 <label>Calle</label>
-                                <input type="text" class="form-control" placeholder="Av. Universidad">
-                              </div>
+                                <input required th:field="*{direccion.direccion_calle}" type="text" class="form-control" placeholder="Av. Universidad">
+                              </div> 
                             </div>
                             <div class="col-sm-2">
                               <div class="form-group">
                                 <label>No. Exterior</label>
-                                <input type="number" class="form-control" placeholder="1">
+                                <input required th:field="*{direccion.direccion_numero_ext}" type="number" class="form-control" min="0" placeholder="1">
                               </div>
                             </div>
                             <div class="col-sm-2">
                               <div class="form-group">
                                 <label>No. Interior</label>
-                                <input type="number" class="form-control" placeholder="12">
+                                <input th:field="*{direccion.direccion_num_inter}" type="number" class="form-control" placeholder="12">
                               </div>
                             </div>
                           </div>
@@ -399,31 +399,31 @@ to get the desired effect
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>C&oacute;digo postal</label>
-                                <input type="number" class="form-control" placeholder="90700">
+                                <input required th:field="*{direccion.direccion_postal}" type="number" class="form-control" placeholder="90700">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Colonia</label>
-                                <input type="text" class="form-control" placeholder="La Loma">
+                                <input required th:field="*{direccion.direccion_colonia}" type="text" class="form-control" placeholder="La Loma">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Municipio</label>
-                                <input type="text" class="form-control" placeholder="Tlaxcala de Xicohténcatl">
+                                <input required th:field="*{direccion.direccion_municipio}" type="text" class="form-control" placeholder="Tlaxcala de Xicohténcatl">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Estado</label>
-                                <input type="text" class="form-control" placeholder="Tlaxcala">
+                                <input required th:field="*{direccion.direccion_estado}" type="text" class="form-control" placeholder="Tlaxcala">
                               </div>
                             </div>
                           </div>
                           <div class="card-footer">
                             <a class="btn bg-gradient-danger" data-toggle="modal" data-target="#modal-default2" style="color: #fff;">Terminar</a>
-                            <a href="antecedentes_familiares.html" type="submit" class="btn bg-gradient-info float-right">Siguiente</a>
+                            <button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
                           </div>
                         </form>
                     </div>
