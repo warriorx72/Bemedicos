@@ -2,11 +2,14 @@ package com.bemedicos.springboot.app.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -40,7 +43,18 @@ public class Direccion implements Serializable {
 	@Column
 	private String direccion_num_inter;
 
+    @OneToOne(mappedBy = "direccion", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Persona persona;
 	
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
 	public Long getDireccion_id() {
 		return direccion_id;
 	}

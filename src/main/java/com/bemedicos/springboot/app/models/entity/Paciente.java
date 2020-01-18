@@ -6,10 +6,13 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,8 +34,29 @@ public class Paciente implements Serializable{
 	@Column
 	private Long persona_id;
 	
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "persona_id")
+    private Persona persona;
+	
 	@ManyToMany(mappedBy = "paciente")
     private Set<Medicos> medico = new HashSet<>();
+
+	
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public Set<Medicos> getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Set<Medicos> medico) {
+		this.medico = medico;
+	}
 
 	public Long getPaciente_id() {
 		return paciente_id;
@@ -65,6 +89,7 @@ public class Paciente implements Serializable{
 	public void setPersona_id(Long persona_id) {
 		this.persona_id = persona_id;
 	}
+
 	
 	
 }

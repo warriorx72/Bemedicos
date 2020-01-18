@@ -62,7 +62,10 @@ public class Medicos implements Serializable {
 	private String foto_doc;
 	
 	@Column
-	private String usuario_id;
+	private Long usuario_id;
+	
+	@Column
+	private Long paciente_id;
 	
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "app_medico_paciente",
@@ -182,15 +185,33 @@ public class Medicos implements Serializable {
 		this.foto_doc = foto_doc;
 	}
 
-	public String getUsuario_id() {
+	public Long getUsuario_id() {
 		return usuario_id;
 	}
 
-	public void setUsuario_id(String usuario_id) {
+	public void setUsuario_id(Long usuario_id) {
 		this.usuario_id = usuario_id;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public Long getMedico_id() {
+		return medico_id;
+	}
+
+	public void setMedico_id(Long medico_id) {
+		this.medico_id = medico_id;
+	}
+
+	public Long getPaciente_id() {
+		return paciente_id;
+	}
+
+	public void setPaciente_id(Long paciente_id) {
+		this.paciente_id = paciente_id;
+	}
+	
+	
 }

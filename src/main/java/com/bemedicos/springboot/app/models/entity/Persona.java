@@ -2,11 +2,15 @@ package com.bemedicos.springboot.app.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -55,7 +59,14 @@ public class Persona implements Serializable{
 	@Column
 	private Long id_direccion;
 	
-	
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Paciente paciente;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_direccion")
+    private Direccion direccion;
+    
 	public Long getPersona_id() {
 		return persona_id;
 	}
@@ -134,4 +145,13 @@ public class Persona implements Serializable{
 	public void setId_direccion(Long id_direccion) {
 		this.id_direccion = id_direccion;
 	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+	
 }
