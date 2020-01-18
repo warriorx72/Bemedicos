@@ -56,8 +56,6 @@ public class Persona implements Serializable{
 	@Column
 	private String persona_tel_exten;
 	
-	@Column
-	private Long id_direccion;
 	
     @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
@@ -139,13 +137,12 @@ public class Persona implements Serializable{
 	public void setPersona_tel_exten(String persona_tel_exten) {
 		this.persona_tel_exten = persona_tel_exten;
 	}
-	public Long getId_direccion() {
-		return id_direccion;
+	public Direccion getDireccion() {
+		return direccion;
 	}
-	public void setId_direccion(Long id_direccion) {
-		this.id_direccion = id_direccion;
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
-
 	public Paciente getPaciente() {
 		return paciente;
 	}

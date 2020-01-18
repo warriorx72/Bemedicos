@@ -31,8 +31,6 @@ public class Paciente implements Serializable{
 	@Column
 	private String estado_civil;
 	
-	@Column
-	private Long persona_id;
 	
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
@@ -82,13 +80,6 @@ public class Paciente implements Serializable{
 		this.estado_civil = estado_civil;
 	}
 
-	public Long getPersona_id() {
-		return persona_id;
-	}
-
-	public void setPersona_id(Long persona_id) {
-		this.persona_id = persona_id;
-	}
 
 	
 	
