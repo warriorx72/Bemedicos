@@ -1,66 +1,94 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-    <title>Login</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>M&eacute;dico</title>
+  <link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-    <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
-    <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
-
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body>
-    <div class="modal-dialog-sm text-center">
-        <div class="col-sm-8 main-section">
-            <div class="modal-content">
-            <div class="row">
-            <div class="col-lg-6 d-none d-lg-block ">
-								<img th:src="@{/images/giphy.gif}"
-									style="height: 489px; width: 110%;">
-							</div>			
-			<div class="col-lg-6 ">
-			<div class="p-4">
-               <div class="text-center">
-                    <br>
-					<h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
-				</div>
-                <form class="col-12" th:action="@{/login}" method="post">
-                <br>
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Ingrese email" name="email"/>
-                    </div>
-                    <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contraseña" name="password"/>
-                    </div>
-                      
-                   <a> <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
-                 </a>
-                </form>
-                <div class="col-12 forgot">
-                    <p><a href="#">Recordar contrasena?</a></p>
-                    <p><a href="#" th:href="@{/signup}">Crear Usuario - Registrarse</a>
-                </div>
-                <div th:if="${param.error}" class="alert alert-danger" role="alert">
-		            Usuario y contraseña invalidos.
-		        </div>
-		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
-		            Finalizo sesion exitosamente.
-		        </div>
-		        </div>
-		        </div>
-		        </div>
+<style>
+    .loginestilo{    
+    -ms-flex-align: center;
+    align-items: center;
+    background-image: url(dist/img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;  
+    display: -ms-flexbox;
+    display: flex;
+    height: 100vh;
+    -ms-flex-pack: center;
+    justify-content: center;}
+    
+    .transparente{
+    background-color: rgba(0,0,0, 0.2);
+    border-top: 0;
+    color: #17a2b8;
+    padding: 20px;
+    }
+</style>
+<body class="hold-transition loginestilo">
+<div class="login-box" style="margin-top: 150px">
+  <div class="login-logo">
+    <img src="dist/img/BMLogoHorizontal.png" width="100%" height="100%">
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body transparente">
+      <form th:action="@{/login}" method="post">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Correo electr&oacute;nico" name="email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
             </div>
+          </div>
         </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Contrase&ntilde;a" name="password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <a href="register.html" class="btn btn-info btn-block"><i class="fas fa-user-plus"></i></a>
+          </div>
+          <div class="col-4">
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-info btn-block"><i class="fas fa-sign-in-alt"></i></button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
     </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+
 </body>
 </html>
