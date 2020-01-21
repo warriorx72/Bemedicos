@@ -5,18 +5,13 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -43,7 +38,7 @@ public class User implements Serializable{
 	@Column(name="email",unique = true) 
 	@NotBlank
 	private String email;
-
+	
 	@Column(name="user_medname",unique = true) 
 	@NotBlank
 	private String username;
@@ -53,17 +48,22 @@ public class User implements Serializable{
 	private String password;
 	
 	@Column(name="medico_id") 
-	private Integer medico_id;
+	private Long medico_id;
 	
+	
+	
+	public Long getMedico_id() {
+		return medico_id;
+	}
+
+	public void setMedico_id(Long medico_id) {
+		this.medico_id = medico_id;
+	}
+
 	@Transient 
 	private String confirmPassword;
 	
-	///@ManyToMany(fetch = FetchType.LAZY)
-	///@JoinTable(name="user_roles"
-	///	,joinColumns=@JoinColumn(name="user_id")
-	///	,inverseJoinColumns=@JoinColumn(name="role_id"))
-	
-///	private Set <Role> roles;
+
 	
 	public User() {	
 		super();
@@ -128,30 +128,12 @@ public class User implements Serializable{
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
-	
 
-	//public Set <Role> getRoles() {
-		//return roles;
-	//}
-
-	//public void setRoles(Set<Role> roles) {
-		//this.roles = roles;
-	//}
-
-	public Integer getMedico_id() {
-		return medico_id;
-	}
-
-	public void setMedico_id(Integer medico_id) {
-		this.medico_id = medico_id;
-	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", confirmPassword=" + confirmPassword
-				+ "]";
+				+ ", username=" + username + ", password=" + password + ", confirmPassword=" + confirmPassword+"]";
 	}
 
 	@Override
@@ -164,7 +146,6 @@ public class User implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		///result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -208,11 +189,6 @@ public class User implements Serializable{
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-	/*	if (roles == null) {
-			if (other.roles != null)
-				return false;
-		} else if (!roles.equals(other.roles))
-			return false; */
 		if (username == null) {
 			if (other.username != null)
 				return false;
