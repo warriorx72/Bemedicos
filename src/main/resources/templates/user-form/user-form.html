@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<!-- <div th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">--->
 
 <form class="form" role="form" autocomplete="off"  th:object="${userForm}" th:action="${signup} ?@{/signup} :(${editMode} ?@{/editUser} :@{/userForm})" method="post">
 	<input class="form-control" type=hidden th:field="${userForm.id}">
@@ -8,52 +9,211 @@
 	
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Nombre</label>
-		<div class="col-lg-9">
-			<input class="form-control" type="text"  th:field="${userForm.firstName}">
+		<div class="col-lg-3">
+			<input  required class="form-control" type="text"  th:field="${userForm.firstName}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</div>
 		</div>
+		<label class="col-lg-3 col-form-label form-control-label">Apellido paterno</label>
+		<div class="col-lg-3" style="width: 3.499999995%">
+			<input required class="form-control" type="text" th:field="${userForm.lastName}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</div>
+		</div>
+		
 	</div>
 	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Apellido paterno</label>
-		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${userForm.lastName}">
+		<label class="col-lg-3 col-form-label form-control-label">Apellido materno</label>
+		<div class="col-lg-3" style="width: 3.499999995%">
+			<input required class="form-control" type="text" th:field="${persona.persona_am}">
+			<!-- <div class="alert-danger" th:if="${#fields.hasErrors('PersonaAm')}" th:errors="*{PersonaAm}">Name Error</div>--->
+		</div>
+		<label class="col-lg-3 col-form-label form-control-label">Ciudad</label>
+		<div class="col-lg-3" style="width: 3.499999995%">
+			<input required class="form-control" type="text" th:field="${direccion.direccion_municipio}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</div>
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Email</label>
-		<div class="col-lg-9">
-			<input class="form-control" type="email" th:field="${userForm.email}">
+		<label class="col-lg-2 col-form-label form-control-label">Email</label>
+		<div class="col-lg-4">
+			<input required class="form-control" type="email" th:field="${userForm.email}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
 		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Usuario</label>
-		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${userForm.username}">
+		<label class="col-lg-2 col-form-label form-control-label">Nombre de usuario</label>
+		<div class="col-lg-4">
+			<input required class="form-control" type="text" th:field="${userForm.username}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
 		</div>
 	</div>
-	<div class="form-group row" th:if="${editMode==null or editMode==false}">
-		<label class="col-lg-3 col-form-label form-control-label">Contraseña</label>
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Celular</label>
+		<div class="col-lg-3">
+			<input required class="form-control" type="text" pattern="[0-9]{10}" title="ingresa solo 10 digitos" th:field="${persona.persona_tel_cel}">
+		<!-- 	<div class="alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>--->
+		</div>
+		<label class="col-lg-3 col-form-label form-control-label">Cedula</label>
+		<div class="col-lg-3">
+			<input required class="form-control" type="text" th:field="${medico.cedula_doc}">
+		<!-- 	<div class="alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>---->
+		</div>
+	</div>
+<!-- 	<div class="form-group row">
+		<label th:text="Roles" class="col-lg-3 col-form-label form-control-label"></label>
 		<div class="col-lg-9">
-			<input class="form-control" type="password" th:field="${userForm.password}">
-			<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
+			<select class="form-control" th:size="${signup}?1 :3" th:field="${userForm.roles}" th:disabled="${disableFields}">
+				<option th:each="role :${roles}" th:value="${role.id}" th:text="${role.name}">
+				</option>
+			</select>
+			<div class="alert-danger" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}">Name Error</div>
+		</div>
+	</div> -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Especialidad</label>
+		<div class="col-lg-9">
+		<select required class="form-control" th:field="${medico.especialidad_doc}">
+   <option value="" selected>Seleccione su especialidad</option>
+   <option value="ALGOLOGÍA">ALGOLOGÍA</option>
+   <option value="ANATOMÍA PATOLÓGICA">ANATOMÍA PATOLÓGICA</option>
+   <option value="ANESTESIOLOGÍA">ANESTESIOLOGÍA</option>
+   <option value="ANESTESIOLOGÍA PARA LOS SERVICIOS RURALES DE LA SALUD">ANESTESIOLOGÍA PARA LOS SERVICIOS RURALES DE LA SALUD</option>
+   <option value="ANESTESIOLOGÍA PEDIÁTRICA">ANESTESIOLOGÍA PEDIÁTRICA</option>
+   <option value="ANGIOLOGÍA Y CIRUGÍA VASCULAR">ANGIOLOGÍA Y CIRUGÍA VASCULAR</option>
+   <option value="ANGIOLOGÍA, CIRUGÍA VASCULAR Y ENDOVASCULAR">ANGIOLOGÍA, CIRUGÍA VASCULAR Y ENDOVASCULAR</option>
+   <option value="ASMA">ASMA</option>
+   <option value="BIOLOGIA DE LA REPRODUCCION HUMANA">BIOLOGIA DE LA REPRODUCCION HUMANA</option>
+   <option value="BRONCOSCOPÍA INTERVENCIONISTA">BRONCOSCOPÍA INTERVENCIONISTA</option>
+   <option value="BRONCOSCOPÍA INTERVENCIONISTA PEDIÁTRICA">BRONCOSCOPÍA INTERVENCIONISTA PEDIÁTRICA</option>
+   <option value="CARDIOLOGÍA CLÍNICA">CARDIOLOGÍA CLÍNICA</option>
+   <option value="CARDIOLOGÍA INTERVENCIONISTA">CARDIOLOGÍA INTERVENCIONISTA</option>
+   <option value="CARDIOLOGÍA INTERVENCIONISTA EN CARDIOPATÍAS CONGÉNITAS">CARDIOLOGÍA INTERVENCIONISTA EN CARDIOPATÍAS CONGÉNITAS</option>
+   <option value="CARDIOLOGÍA PEDIÁTRICA">CARDIOLOGÍA PEDIÁTRICA</option>
+   <option value="CIRUGÍA BARIÁTRICA">CIRUGÍA BARIÁTRICA</option>
+   <option value="CIRUGÍA CARDIACA EN ADULTOS">CIRUGÍA CARDIACA EN ADULTOS</option>
+   <option value="CIRUGÍA CARDIACA EN PEDIATRÍA">CIRUGÍA CARDIACA EN PEDIATRÍA</option>
+   <option value="CIRUGÍA CARDIOTORÁCICA">CIRUGÍA CARDIOTORÁCICA</option>
+   <option value="CIRUGÍA DE TÓRAX PEDIÁTRICA NO CARDIACA">CIRUGÍA DE TÓRAX PEDIÁTRICA NO CARDIACA</option>
+   <option value="CIRUGÍA DE TRASPLANTES">CIRUGÍA DE TRASPLANTES</option>
+   <option value="CIRUGÍA DEL APARATO DIGESTIVO">CIRUGÍA DEL APARATO DIGESTIVO</option>
+   <option value="CIRUGÍA GENERAL">CIRUGÍA GENERAL</option>
+   <option value="CIRUGÍA NEUROLÓGICA">CIRUGÍA NEUROLÓGICA</option>
+   <option value="CIRUGÍA ONCOLÓGICA">CIRUGÍA ONCOLÓGICA</option>
+   <option value="CIRUGÍA ONCOLÓGICA PEDIÁTRICA">CIRUGÍA ONCOLÓGICA PEDIÁTRICA</option>
+   <option value="CIRUGÍA ORAL MAXILOFACIAL">CIRUGÍA ORAL MAXILOFACIAL</option>
+   <option value="CIRUGÍA PARA LOS SERVICIOS RURALES DE LA SALUD">CIRUGÍA PARA LOS SERVICIOS RURALES DE LA SALUD</option>
+   <option value="CIRUGÍA PEDIÁTRICA">CIRUGÍA PEDIÁTRICA</option>
+   <option value="CIRUGÍA PLÁSTICA, ESTÉTICA Y RECONSTRUCTIVA">CIRUGÍA PLÁSTICA, ESTÉTICA Y RECONSTRUCTIVA</option>
+   <option value="CIRUGÍA TORÁCICA NO CARDIACA">CIRUGÍA TORÁCICA NO CARDIACA</option>
+   <option value="CITOGENÉTICA">CITOGENÉTICA</option>
+   <option value="COLOPROCTOLOGÍA">COLOPROCTOLOGÍA</option>
+   <option value="COMUNICACIÓN AUDIOLOGÍA, OTONEUROLOGÍA Y FONIATRÍA">COMUNICACIÓN AUDIOLOGÍA, OTONEUROLOGÍA Y FONIATRÍA</option>
+   <option value="CUIDADOS PALIATIVOS">CUIDADOS PALIATIVOS</option>
+   <option value="DERMATOLOGÍA">DERMATOLOGÍA</option>
+   <option value="DERMATOLOGÍA PEDIÁTRICA">DERMATOLOGÍA PEDIÁTRICA</option>
+   <option value="ECOCARDIOGRAFÍA ADULTOS">ECOCARDIOGRAFÍA ADULTOS</option>
+   <option value="ECOCARDIOGRAFÍA PEDIÁTRICA">ECOCARDIOGRAFÍA PEDIÁTRICA</option>
+   <option value="ELECTROFISIOLOGÍA">ELECTROFISIOLOGÍA</option>
+   <option value="ENDOCRINOLOGÍA">ENDOCRINOLOGÍA</option>
+   <option value="ENDOCRINOLOGÍA PEDIÁTRICA">ENDOCRINOLOGÍA PEDIÁTRICA</option>
+   <option value="ENDOSCOPÍA DEL APARATO DIGESTIVO">ENDOSCOPÍA DEL APARATO DIGESTIVO</option>
+   <option value="ENDOSCOPÍA TORÁCICA">ENDOSCOPÍA TORÁCICA</option>
+   <option value="EPIDEMIOLOGÍA">EPIDEMIOLOGÍA</option>
+   <option value="FISIOLOGÍA RESPIRATORIA">FISIOLOGÍA RESPIRATORIA</option>
+   <option value="FISIOLOGÍA RESPIRATORIA PEDIÁTRICA">FISIOLOGÍA RESPIRATORIA PEDIÁTRICA</option>
+   <option value="GASTROENTEROLOGÍA">GASTROENTEROLOGÍA</option>
+   <option value="GASTROENTEROLOGÍA PEDIÁTRICA">GASTROENTEROLOGÍA PEDIÁTRICA</option>
+   <option value="GENÉTICA MÉDICA">GENÉTICA MÉDICA</option>
+   <option value="GENÉTICA MOLECULAR">GENÉTICA MOLECULAR</option>
+   <option value="GERIATRÍA">GERIATRÍA</option>
+   <option value="GINECOLOGÍA ONCOLÓGICA">GINECOLOGÍA ONCOLÓGICA</option>
+   <option value="GINECOLOGÍA Y OBSTETRICIA">GINECOLOGÍA Y OBSTETRICIA</option>
+   <option value="HEMATOLOGÍA">HEMATOLOGÍA</option>
+   <option value="HEMATOLOGÍA PEDIÁTRICA">HEMATOLOGÍA PEDIÁTRICA</option>
+   <option value="IMAGEN DE LA MAMA">IMAGEN DE LA MAMA</option>
+   <option value="IMAGEN DEL SISTEMA MUSCULOESQUELÉTICO">IMAGEN DEL SISTEMA MUSCULOESQUELÉTICO</option>
+   <option value="INFECTOLOGÍA ADULTOS">INFECTOLOGÍA ADULTOS</option>
+   <option value="INFECTOLOGÍA PEDIÁTRICA">INFECTOLOGÍA PEDIÁTRICA</option>
+   <option value="INMUNOLOGÍA CLÍNICA Y ALERGIA">INMUNOLOGÍA CLÍNICA Y ALERGIA</option>
+   <option value="MEDICINA AEROESPACIAL">MEDICINA AEROESPACIAL</option>
+   <option value="MEDICINA CRÍTICA">MEDICINA CRÍTICA</option>
+   <option value="MEDICINA CRÍTICA EN OBSTETRICIA">MEDICINA CRÍTICA EN OBSTETRICIA</option>
+   <option value="MEDICINA DE REHABILITACIÓN">MEDICINA DE REHABILITACIÓN</option>
+   <option value="MEDICINA DE URGENCIAS">MEDICINA DE URGENCIAS</option>
+   <option value="MEDICINA DEL DEPORTE">MEDICINA DEL DEPORTE</option>
+   <option value="MEDICINA DEL ENFERMO PEDIÁTRICO EN ESTADO CRÍTICO">MEDICINA DEL ENFERMO PEDIÁTRICO EN ESTADO CRÍTICO</option>
+   <option value="MEDICINA DEL NIÑO Y DEL ADULTO PARA LOS SERVICIOS RURALES DE SALUD">MEDICINA DEL NIÑO Y DEL ADULTO PARA LOS SERVICIOS RURALES DE SALUD</option>
+   <option value="MEDICINA DEL SUEÑO">MEDICINA DEL SUEÑO</option>
+   <option value="MEDICINA DEL TRABAJO">MEDICINA DEL TRABAJO</option>
+   <option value="MEDICINA DEL TRABAJO Y AMBIENTAL">MEDICINA DEL TRABAJO Y AMBIENTAL</option>
+   <option value="MEDICINA FAMILIAR">MEDICINA FAMILIAR</option>
+   <option value="MEDICINA INTEGRADA">MEDICINA INTEGRADA</option>
+   <option value="MEDICINA INTERNA">MEDICINA INTERNA</option>
+   <option value="MEDICINA LEGAL Y FORENSE">MEDICINA LEGAL Y FORENSE</option>
+   <option value="MEDICINA MATERNO FETAL">MEDICINA MATERNO FETAL</option>
+   <option value="MEDICINA NUCLEAR">MEDICINA NUCLEAR</option>
+   <option value="MEDICINA NUCLEAR CARDIOLÓGICA">MEDICINA NUCLEAR CARDIOLÓGICA</option>
+   <option value="MEDICINA NUCLEAR ONCOLÓGICA, MOLECULAR Y TERAPÉUTICA">MEDICINA NUCLEAR ONCOLÓGICA, MOLECULAR Y TERAPÉUTICA</option>
+   <option value="MEDICINA PREVENTIVA">MEDICINA PREVENTIVA</option>
+   <option value="NEFROLOGÍA">NEFROLOGÍA</option>
+   <option value="NEFROLOGÍA PEDIÁTRICA">NEFROLOGÍA PEDIÁTRICA</option>
+   <option value="NEONATOLOGÍA">NEONATOLOGÍA</option>
+   <option value="NEUMOLOGÍA">NEUMOLOGÍA</option>
+   <option value="NEUMOLOGÍA PEDIÁTRICA">NEUMOLOGÍA PEDIÁTRICA</option>
+   <option value="NEURO-OTOLOGÍA">NEURO-OTOLOGÍA</option>
+   <option value="NEUROANESTESIOLOGÍA">NEUROANESTESIOLOGÍA</option>
+   <option value="NEUROCIRUGÍA PEDIÁTRICA">NEUROCIRUGÍA PEDIÁTRICA</option>
+   <option value="NEUROFISIOLOGÍA CLÍNICA">NEUROFISIOLOGÍA CLÍNICA</option>
+   <option value="NEUROLOGÍA ADULTOS">NEUROLOGÍA ADULTOS</option>
+   <option value="NEUROLOGÍA PEDIÁTRICA">NEUROLOGÍA PEDIÁTRICA</option>
+   <option value="NEUROPATOLOGÍA">NEUROPATOLOGÍA</option>
+   <option value="NEURORRADIOLOGÍA">NEURORRADIOLOGÍA</option>
+   <option value="OFTALMOLOGÍA">OFTALMOLOGÍA</option>
+   <option value="ONCOLOGÍA MÉDICA">ONCOLOGÍA MÉDICA</option>
+   <option value="ONCOLOGÍA PEDIÁTRICA">ONCOLOGÍA PEDIÁTRICA</option>
+   <option value="ORTOPEDIA Y TRAUMATOLOGÍA">ORTOPEDIA Y TRAUMATOLOGÍA</option>
+   <option value="OTORRINOLARINGOLOGÍA PEDIÁTRICA">OTORRINOLARINGOLOGÍA PEDIÁTRICA</option>
+   <option value="OTORRINOLARINGOLOGÍA Y CIRUGÍA DE CABEZA Y CUELLO">OTORRINOLARINGOLOGÍA Y CIRUGÍA DE CABEZA Y CUELLO</option>
+   <option value="PATOLOGÍA CLÍNICA">PATOLOGÍA CLÍNICA</option>
+   <option value="PATOLOGÍA PEDIÁTRICA">PATOLOGÍA PEDIÁTRICA</option>
+   <option value="PEDIATRÍA">PEDIATRÍA</option>
+   <option value="PSIQUIATRÍA">PSIQUIATRÍA</option>
+   <option value="PSIQUIATRÍA INFANTIL Y DE LA ADOLESCENCIA">PSIQUIATRÍA INFANTIL Y DE LA ADOLESCENCIA</option>
+   <option value="RADIO ONCOLOGÍA">RADIO ONCOLOGÍA</option>
+   <option value="RADIOLOGÍA E IMAGEN">RADIOLOGÍA E IMAGEN</option>
+   <option value="RADIOLOGÍA PEDIÁTRICA">RADIOLOGÍA PEDIÁTRICA</option>
+   <option value="RADIOLOGÍA VASCULAR E INTERVENCIONISTA">RADIOLOGÍA VASCULAR E INTERVENCIONISTA</option>
+   <option value="REHABILITACIÓN CARDÍACA">REHABILITACIÓN CARDÍACA</option>
+   <option value="REHABILITACIÓN CARDIACA Y PREVENCIÓN SECUNDARIA">REHABILITACIÓN CARDIACA Y PREVENCIÓN SECUNDARIA</option>
+   <option value="REHABILITACIÓN PULMONAR">REHABILITACIÓN PULMONAR</option>
+   <option value="REHABILITACIÓN PULMONAR PEDIÁTRICA">REHABILITACIÓN PULMONAR PEDIÁTRICA</option>
+   <option value="REUMATOLOGÍA">REUMATOLOGÍA</option>
+   <option value="REUMATOLOGÍA PEDIÁTRICA">REUMATOLOGÍA PEDIÁTRICA</option>
+   <option value="SALUD PÚBLICA">SALUD PÚBLICA</option>
+   <option value="TERAPIA ENDOVASCULAR NEUROLÓGICA">TERAPIA ENDOVASCULAR NEUROLÓGICA</option>
+   <option value="TERAPIA ENDOVASCULAR NEUROLÓGICA">TERAPIA ENDOVASCULAR NEUROLÓGICA</option>
+   <option value="TRANSPLANTE RENAL">TRANSPLANTE RENAL</option>
+   <option value="URGENCIAS PEDIÁTRICAS">URGENCIAS PEDIÁTRICAS</option>
+   <option value="UROLOGÍA">UROLOGÍA</option>
+   <option value="UROLOGÍA GINECOLÓGICA">UROLOGÍA GINECOLÓGICA</option>
+</select>
 		</div>
 	</div> 
 	<div class="form-group row" th:if="${editMode==null or editMode==false}">
+	    <label class="col-lg-3 col-form-label form-control-label">Contraseña</label>
+		<div class="col-lg-3">
+			<input class="form-control" type="password" th:field="${userForm.password}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
+		</div>
 		<label class="col-lg-3 col-form-label form-control-label">Confirmar contraseña</label>
-		<div class="col-lg-9">
+		<div class="col-lg-3">
 			<input class="form-control" type="password" th:field="${userForm.confirmPassword}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Name Error</div>
 		</div>
 	</div>
 	<div class="form-group row">
 		<div class="col-lg-12 text-center">
-			<a class="btn btn-secondary"  href="javascript:window.history.back();">Cancel</a>
+			<a class="btn btn-secondary"  href="javascript:window.history.back();">Cancelar</a>
 			<button type="button" class="btn btn-secondary" data-toggle="modal" th:if="${editMode}" data-target="#changePasswordModal">Change Password</button>
             <input type="submit" class="btn btn-primary"
-				value="Guardar Cambios" th:value="${editMode}?'Save User':'Create User'">
+				value="Guardar Cambios" th:value="${editMode}?'Save User':'Crear Ususario'">
 		</div>
 	</div>
 	<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error MEssage</div>
