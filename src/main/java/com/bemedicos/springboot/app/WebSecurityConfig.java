@@ -19,7 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	String[] resources = new String[]{
-            "/include/**","/css/**","/icons/**","/images/**","/js/**","/layer/**","/vendors/**"
+            "/include/**","/css/**","/icons/**","/images/**","/js/**","/layer/**","/vendors/**","/plugins/**","/dist/**"
     };
 	
 	@Override
