@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -307,7 +307,7 @@ to get the desired effect
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form>
+                <form th:action="@{/guardar_personales}" th:method="post">
                 <div class="card card-info">
                   <div class="card-header">
                     <h3 class="card-title">Antecendetes personales no patol&oacute;gicos</h3>
@@ -327,19 +327,19 @@ to get the desired effect
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio1" name="customRadioAlimentacion">
+                               <input th:field="*{personales.alimentacion}" class="custom-control-input" type="radio" id="customRadio1" name="customRadioAlimentacion" value="Buena">
                                <label for="customRadio1" class="custom-control-label">Buena</label>
                              </div>
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio2" name="customRadioAlimentacion">
+                               <input th:field="*{personales.alimentacion}" class="custom-control-input" type="radio" id="customRadio2" name="customRadioAlimentacion" value="Regular">
                                <label for="customRadio2" class="custom-control-label">Regular</label>
                              </div>
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio3" name="customRadioAlimentacion">
+                               <input th:field="*{personales.alimentacion}" class="custom-control-input" type="radio" id="customRadio3" name="customRadioAlimentacion" value="Mala">
                                <label for="customRadio3" class="custom-control-label">Mala</label>
                              </div>
                           </td>
@@ -350,19 +350,19 @@ to get the desired effect
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio4" name="customRadioVeces">
+                               <input th:field="*{personales.veces_al_dia}" class="custom-control-input" type="radio" id="customRadio4" name="customRadioVeces" value="5 o mas">
                                <label for="customRadio4" class="custom-control-label">5 o m&aacute;s</label>
                              </div>
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio5" name="customRadioVeces">
+                               <input th:field="*{personales.veces_al_dia}" class="custom-control-input" type="radio" id="customRadio5" name="customRadioVeces" value="4-3">
                                <label for="customRadio5" class="custom-control-label">4-3</label>
                              </div>
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio6" name="customRadioVeces">
+                               <input th:field="*{personales.veces_al_dia}" class="custom-control-input" type="radio" id="customRadio6" name="customRadioVeces" value="2-1">
                                <label for="customRadio6" class="custom-control-label">2-1</label>
                              </div>
                           </td>
@@ -373,19 +373,19 @@ to get the desired effect
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio7" name="customRadioToxico">
+                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="radio" id="customRadio7" name="customRadioToxico" value="Tabaquismo">
                                <label for="customRadio7" class="custom-control-label">Tabaquismo</label>
                              </div>
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio8" name="customRadioToxico">
+                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="radio" id="customRadio8" name="customRadioToxico" value="Alcoholismo">
                                <label for="customRadio8" class="custom-control-label">Alcoholismo</label>
                              </div>
                           </td>
                           <td style="width: 25%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio9" name="customRadioToxico">
+                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="radio" id="customRadio9" name="customRadioToxico" value="Drogas">
                                <label for="customRadio9" class="custom-control-label">Drogas</label>
                              </div>
                           </td>
@@ -404,7 +404,7 @@ to get the desired effect
                              Frecuencia:
                           </td>
                           <td style="width: 75%">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder="Especifique" th:field="*{personales.frecuencias}">
                           </td>
                         </tr>
                       </tbody>
@@ -422,18 +422,18 @@ to get the desired effect
                           </td>
                           <td style="width: 10%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio100" name="customRadio1" onChange="habilitar(form.checked,'radio1');">
+                               <input th:field="*{personales.actividad_fisica}" class="custom-control-input" type="radio" id="customRadio100" value="Si" name="customRadio1" onChange="habilitar(form.checked,'radio1');">
                                <label for="customRadio100" class="custom-control-label">Si</label>
                              </div>
                           </td>
                           <td style="width: 10%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio111" name="customRadio1" onChange="deshabilitar(form.checked,'radio1');">
+                               <input th:field="*{personales.actividad_fisica}" class="custom-control-input" type="radio" id="customRadio111" value="No" name="customRadio1" onChange="deshabilitar(form.checked,'radio1');">
                                <label for="customRadio111" class="custom-control-label">No</label>
                              </div>
                           </td>
                           <td style="width: 55%">
-                             <input class="form-control" id="radio1" type="text" placeholder="Especifique" disabled>
+                             <input class="form-control" id="radio1" type="text" placeholder="Especifique" disabled th:field="*{personales.especifique}">
                           </td>
                         </tr>
                         <tr>
@@ -442,18 +442,18 @@ to get the desired effect
                           </td>
                           <td style="width: 10%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio122" name="customRadio2" onChange="habilitar(form.checked,'radio2');">
+                               <input th:field="*{personales.grupo_recreacion}" class="custom-control-input" type="radio" id="customRadio122" value="Si" name="customRadio2" onChange="habilitar(form.checked,'radio2');">
                                <label for="customRadio122" class="custom-control-label">Si</label>
                              </div>
                           </td>
                           <td style="width: 10%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio133" name="customRadio2" onChange="deshabilitar(form.checked,'radio2');">
+                               <input th:field="*{personales.grupo_recreacion}" class="custom-control-input" type="radio" id="customRadio133" value="No" name="customRadio2" onChange="deshabilitar(form.checked,'radio2');">
                                <label for="customRadio133" class="custom-control-label">No</label>
                              </div>
                           </td>
                           <td style="width: 55%">
-                             <input class="form-control" id="radio2" type="text" placeholder="Especifique" disabled>
+                             <input class="form-control" id="radio2" type="text" placeholder="Especifique" th:field="*{personales.especifique1}" disabled>
                           </td>
                         </tr>
                       </tbody>
@@ -481,7 +481,7 @@ to get the desired effect
                             ¿Cuantos veces se ba&ntilde;a a la semana?
                           </td>
                           <td style="width:75%">
-                             <input class="form-control" type="number" min="0" placeholder="Especifique">
+                             <input th:field="*{personales.baño}" class="form-control" required type="number" min="0" placeholder="Especifique">
                           </td>
                         </tr>
                         <tr>
@@ -489,7 +489,7 @@ to get the desired effect
                             ¿Cuantas veces al d&iacute;a se lava los dientes?
                           </td>
                           <td style="width:75%">
-                             <input class="form-control" type="number" min="0" placeholder="Especifique">
+                             <input th:field="*{personales.lavado_dientes}" class="form-control" required type="number" min="0" placeholder="Especifique">
                           </td>
                         </tr>
                       </tbody>
@@ -507,31 +507,31 @@ to get the desired effect
                           </td>
                           <td style="width: 16%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio10" name="customRadioLavado">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de la comida" type="radio" id="customRadio10" name="customRadioLavado">
                                <label for="customRadio10" class="custom-control-label">Antes de la comida</label>
                              </div>
                           </td>
                           <td style="width: 16%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio12" name="customRadioLavado">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Despues de la comida" type="radio" id="customRadio12" name="customRadioLavado">
                                <label for="customRadio12" class="custom-control-label">Despu&eacute;s de la comida</label>
                              </div>
                           </td>
                           <td style="width: 16%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio13" name="customRadioLavado">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de ir al baño" type="radio" id="customRadio13" name="customRadioLavado">
                                <label for="customRadio13" class="custom-control-label">Antes de ir al ba&ntilde;o</label>
                              </div>
                           </td>
                           <td style="width: 16%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio14" name="customRadioLavado">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Despues de ir al baño" type="radio" id="customRadio14" name="customRadioLavado">
                                <label for="customRadio14" class="custom-control-label">Despues de ir al ba&ntilde;o</label>
                              </div>
                           </td>
                           <td style="width: 16%">
                              <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio15" name="customRadioLavado">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de preparar los alimentos" type="radio" id="customRadio15" name="customRadioLavado">
                                <label for="customRadio15" class="custom-control-label">Antes de preparar los alimentos</label>
                              </div>
                           </td>
@@ -543,8 +543,9 @@ to get the desired effect
                 </div>
                 <div class="card-footer">
                     <a class="btn bg-gradient-danger" data-toggle="modal" data-target="#modal-default2" style="color: #fff;">Terminar</a>
-                    <a href="casa_habitacion.html" type="submit" class="btn bg-gradient-info float-right">Siguiente</a>
+                    <button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
                   </div>
+                                  <input th:field="*{personales.paciente_id}" type="hidden">
                 </form>
             </div>
         </div>
@@ -630,14 +631,18 @@ to get the desired effect
 function habilitar(value, value2,value3) {
 					// habilitamos
 					document.getElementById(value2).disabled = false;
+					document.getElementById(value2).required = true;
 					document.getElementById(value3).disabled = false;
+					document.getElementById(value3).required = true;
 				}
 
 function deshabilitar(value, value2,value3) {
 					document.getElementById(value2).value = "";
 					document.getElementById(value2).disabled = true;
+					document.getElementById(value2).required = false;
 					document.getElementById(value3).value = "";
 					document.getElementById(value3).disabled = true;
+					document.getElementById(value2).required = false;
 				}
     
 </script>

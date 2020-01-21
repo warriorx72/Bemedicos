@@ -27,6 +27,9 @@ public class CasaHabitacion implements Serializable{
 	private String cirugias;
 	
 	@Column
+	private String cual;
+	
+	@Column
 	private String enfermedades_adulto;
 	
 	@Column
@@ -42,13 +45,13 @@ public class CasaHabitacion implements Serializable{
 	private String numero_mascotas;
 	
 	@Column
-	private String otro;
+	private String otro_material_vivienda;
 
 	@Column
-	private String otro1;
+	private String otro_enfermedad_infancia;
 
 	@Column
-	private String otro2;
+	private String otro_enfermedad_adulto;
 
 	@Column
 	private String personas_viviendo_casa;
@@ -63,13 +66,20 @@ public class CasaHabitacion implements Serializable{
 	private String tipo_piso;
 	
 	@Column
-	private String toma_medicementos;
+	private String toma_medicamento;
 	
 	@Column
-	private String traumetismo;
+	private String traumatismo;
 	
 	@Column
 	private String ventilacion_iluminacion;
+	
+	@Column
+	private Long paciente_id;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public Long getCasahabitacion_id() {
 		return casahabitacion_id;
@@ -93,6 +103,14 @@ public class CasaHabitacion implements Serializable{
 
 	public void setCirugias(String cirugias) {
 		this.cirugias = cirugias;
+	}
+
+	public String getCual() {
+		return cual;
+	}
+
+	public void setCual(String cual) {
+		this.cual = cual;
 	}
 
 	public String getEnfermedades_adulto() {
@@ -135,28 +153,29 @@ public class CasaHabitacion implements Serializable{
 		this.numero_mascotas = numero_mascotas;
 	}
 
-	public String getOtro() {
-		return otro;
+	
+	public String getOtro_material_vivienda() {
+		return otro_material_vivienda;
 	}
 
-	public void setOtro(String otro) {
-		this.otro = otro;
+	public void setOtro_material_vivienda(String otro_material_vivienda) {
+		this.otro_material_vivienda = otro_material_vivienda;
 	}
 
-	public String getOtro1() {
-		return otro1;
+	public String getOtro_enfermedad_infancia() {
+		return otro_enfermedad_infancia;
 	}
 
-	public void setOtro1(String otro1) {
-		this.otro1 = otro1;
+	public void setOtro_enfermedad_infancia(String otro_enfermedad_infancia) {
+		this.otro_enfermedad_infancia = otro_enfermedad_infancia;
 	}
 
-	public String getOtro2() {
-		return otro2;
+	public String getOtro_enfermedad_adulto() {
+		return otro_enfermedad_adulto;
 	}
 
-	public void setOtro2(String otro2) {
-		this.otro2 = otro2;
+	public void setOtro_enfermedad_adulto(String otro_enfermedad_adulto) {
+		this.otro_enfermedad_adulto = otro_enfermedad_adulto;
 	}
 
 	public String getPersonas_viviendo_casa() {
@@ -191,20 +210,20 @@ public class CasaHabitacion implements Serializable{
 		this.tipo_piso = tipo_piso;
 	}
 
-	public String getToma_medicementos() {
-		return toma_medicementos;
+	public String getToma_medicamento() {
+		return toma_medicamento;
 	}
 
-	public void setToma_medicementos(String toma_medicementos) {
-		this.toma_medicementos = toma_medicementos;
+	public void setToma_medicamento(String toma_medicamento) {
+		this.toma_medicamento = toma_medicamento;
 	}
 
-	public String getTraumetismo() {
-		return traumetismo;
+	public String getTraumatismo() {
+		return traumatismo;
 	}
 
-	public void setTraumetismo(String traumetismo) {
-		this.traumetismo = traumetismo;
+	public void setTraumatismo(String traumatismo) {
+		this.traumatismo = traumatismo;
 	}
 
 	public String getVentilacion_iluminacion() {
@@ -214,8 +233,14 @@ public class CasaHabitacion implements Serializable{
 	public void setVentilacion_iluminacion(String ventilacion_iluminacion) {
 		this.ventilacion_iluminacion = ventilacion_iluminacion;
 	}
-	
-	
+
+	public Long getPaciente_id() {
+		return paciente_id;
+	}
+
+	public void setPaciente_id(Long paciente_id) {
+		this.paciente_id = paciente_id;
+	}
 	
 }
 

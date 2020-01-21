@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.bemedicos.springboot.app.models.entity.Paciente;
 
-
 @Repository
 public interface PacienteRepository extends CrudRepository<Paciente, Long>{
 

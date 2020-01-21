@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>M&eacute;dico</title>
-  <link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+<title>M&eacute;dico</title>
+<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- IonIcons -->
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- IonIcons -->
+<link rel="stylesheet"
+	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+	rel="stylesheet">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -28,792 +31,833 @@ to get the desired effect
 |---------------------------------------------------------|
 -->
 <style>
-    .estilochingon{
-        position: relative;
-        display: block;
-        min-height: 1.5rem;
-        padding-top: 0.4rem;
-        padding-left: 2.5rem;
-        }
+.estilochingon {
+	position: relative;
+	display: block;
+	min-height: 1.5rem;
+	padding-top: 0.4rem;
+	padding-left: 2.5rem;
+}
+
 </style>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav
+			class="main-header navbar navbar-expand navbar-white navbar-light">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+					href="#"><i class="fas fa-bars"></i></a></li>
+			</ul>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="btn" data-toggle="modal" data-target="#modal-default">
-          <i class="fas fa-sign-out-alt"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="btn" data-toggle="modal"
+					data-target="#modal-default"> <i class="fas fa-sign-out-alt"></i>
+				</a></li>
+			</ul>
+		</nav>
+		<!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-info elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Mi consultorio</span>
-    </a>
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-light-info elevation-4">
+			<!-- Brand Logo -->
+			<a href="index3.html" class="brand-link"> <img
+				src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+				class="brand-image img-circle elevation-3" style="opacity: .8">
+				<span class="brand-text font-weight-light">Mi consultorio</span>
+			</a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+					<div class="image">
+						<img src="dist/img/user2-160x160.jpg"
+							class="img-circle elevation-2" alt="User Image">
+					</div>
+					<div class="info">
+						<a href="#" class="d-block">Alexander Pierce</a>
+					</div>
+				</div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+					<ul class="nav nav-pills nav-sidebar flex-column"
+						data-widget="treeview" role="menu" data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Inicio
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Alta pacientes
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Crear paciente</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-desktop"></i>
-              <p>
-                Historial cl&iacute;nico
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="historial_clinico.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Historiales cl&iacute;nicos</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Notas de evoluci&oacute;n</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-sticky-note"></i>
-              <p>
-                Solicitud de estudio
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Solicitud de estudio</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Archivo de pacientes</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-id-badge"></i>
-              <p>
-                Mis perfiles
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listar perfiles</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Perfiles</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
-              <p>
-                Mi agenda m&eacute;dica
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Crear agenda</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Agendar cita</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ver mi agenda</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modificar calendario</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                    Pacientes
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pacientes referenciados</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mi estado de cuenta</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Historial</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mis datos</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-tachometer-alt"></i>
+								<p>
+									Inicio <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Dashboard</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview menu-open"><a href="#"
+							class="nav-link active"> <i class="nav-icon fas fa-edit"></i>
+								<p>
+									Alta pacientes <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="#" class="nav-link"> <i
+										class="far fa-circle nav-icon"></i>
+										<p>Crear paciente</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-desktop"></i>
+								<p>
+									Historial cl&iacute;nico <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="historial_clinico.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Historiales cl&iacute;nicos</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Notas de evoluci&oacute;n</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-sticky-note"></i>
+								<p>
+									Solicitud de estudio <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Solicitud de estudio</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Archivo de pacientes</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-id-badge"></i>
+								<p>
+									Mis perfiles <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Listar perfiles</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Perfiles</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-calendar-alt"></i>
+								<p>
+									Mi agenda m&eacute;dica <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Crear agenda</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Agendar cita</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Ver mi agenda</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Modificar calendario</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-users"></i>
+								<p>
+									Pacientes <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Pacientes referenciados</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Mi estado de cuenta</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Historial</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Mis datos</p>
+								</a></li>
+							</ul></li>
+					</ul>
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Alta pacientes</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Casa habitaci&oacute;n</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Alta pacientes</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
+								<li class="breadcrumb-item active">Casa habitaci&oacute;n</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
 
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <form>
-                <div class="card card-info">
-                  <div class="card-header">
-                    <h3 class="card-title">Casa habitaci&oacute;n</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body p-0">
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 25%">
-                             Tipo de piso
-                          </td>
-                          <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio1" name="customRadioPiso">
-                               <label for="customRadio1" class="custom-control-label">Cemento</label>
-                             </div>
-                          </td>
-                          <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio2" name="customRadioPiso">
-                               <label for="customRadio2" class="custom-control-label">Losa</label>
-                             </div>
-                          </td>
-                          <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio3" name="customRadioPiso">
-                               <label for="customRadio3" class="custom-control-label">R&uacute;stico</label>
-                             </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Ventilaci&oacute;n o iluminaci&oacute;n
-                          </td>
-                          <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio4" name="customRadioIlu">
-                               <label for="customRadio4" class="custom-control-label">Buena</label>
-                             </div>
-                          </td>
-                          <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio5" name="customRadioIlu">
-                               <label for="customRadio5" class="custom-control-label">Regular</label>
-                             </div>
-                          </td>
-                          <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio6" name="customRadioIlu">
-                               <label for="customRadio6" class="custom-control-label">Mala</label>
-                             </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        
-                        <tr>
-                          <td style="width: 25%">
-                            Material de la vivienda
-                          </td>
-                          <td style="width: 15%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio7" name="customRadioMat">
-                               <label for="customRadio7" class="custom-control-label">Block</label>
-                             </div>
-                          </td>
-                          <td style="width: 15%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio8" name="customRadioMat">
-                               <label for="customRadio8" class="custom-control-label">L&aacute;mina</label>
-                             </div>
-                          </td>
-                          <td style="width: 15%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio9" name="customRadioMat">
-                               <label for="customRadio9" class="custom-control-label">Adobe</label>
-                             </div>
-                          </td>
-                          <td style="width: 30%">
-                            <input type="text" class="form-control" placeholder="Otro">
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 20%">
-                                Servicios b&aacute;sicos
-                          </td>
-                          <td style="width: 20%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                              <label for="customCheckbox1" class="custom-control-label">Agua</label>
-                            </div>
-                          </td>
-                          <td style="width: 20%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox2" value="option1">
-                              <label for="customCheckbox2" class="custom-control-label">Luz</label>
-                            </div>
-                          </td>
-                          <td style="width: 20%">
-                             <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox3" value="option1">
-                              <label for="customCheckbox3" class="custom-control-label">Drenaje</label>
-                            </div>
-                          </td>
-                          <td style="width: 20%">
-                             <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox4" value="option1">
-                              <label for="customCheckbox4" class="custom-control-label">Gas</label>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
-                <div class="card card-info">
-                  <div class="card-header">
-                    <h3 class="card-title">Antecedentes personales patol&oacute;gicos</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body p-0">
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 100%" align="center">
-                                <h5>Enfermedades de la infancia</h5>
-                          </td> 
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr align="center">
-                          <td style="width: 33%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox5" value="option1">
-                              <label for="customCheckbox5" class="custom-control-label">Varicela</label>
-                            </div>
-                          </td>
-                          <td style="width: 34%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox6" value="option1">
-                              <label for="customCheckbox6" class="custom-control-label">Sarampi&oacute;n</label>
-                            </div>
-                          </td>
-                          <td style="width: 33%">
-                             <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox7" value="option1">
-                              <label for="customCheckbox7" class="custom-control-label">Viruela</label>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr align="center">
-                          <td style="width: 25%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox8" value="option1">
-                              <label for="customCheckbox8" class="custom-control-label">Hepatitis</label>
-                            </div>
-                          </td>
-                          <td style="width: 25%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox9" value="option1">
-                              <label for="customCheckbox9" class="custom-control-label">Fiebre reum&aacute;tica</label>
-                            </div>
-                          </td>
-                          <td style="width: 25%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox10" value="option1">
-                              <label for="customCheckbox10" class="custom-control-label">Tosferina</label>
-                            </div>
-                          </td>
-                          <td style="width: 25%">
-                             <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox11" value="option1">
-                              <label for="customCheckbox11" class="custom-control-label">Asma</label>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 25%">
-                             Otra enfermedad:
-                          </td>
-                          <td style="width: 75%">
-                            <input type="text" class="form-control" placeholder="Especificar">
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 100%" align="center">
-                                <h5>Enfermedades de adulto</h5>
-                          </td> 
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr align="center">
-                          <td style="width: 50%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox12" value="option1">
-                              <label for="customCheckbox12" class="custom-control-label">Diabetes</label>
-                            </div>
-                          </td>
-                          <td style="width: 50%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox13" value="option1">
-                              <label for="customCheckbox13" class="custom-control-label">Hipertension</label>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr align="center">
-                          <td style="width: 33%">
-                             <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox14" value="option1">
-                              <label for="customCheckbox14" class="custom-control-label">Asma</label>
-                            </div>
-                          </td>
-                          <td style="width: 34%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox15" value="option1">
-                              <label for="customCheckbox15" class="custom-control-label">Osteoporosis</label>
-                            </div>
-                          </td>
-                          <td style="width: 33%">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox16" value="option1">
-                              <label for="customCheckbox16" class="custom-control-label">Artritis</label>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 100%" align="center">
-                                <h5>Datos extras</h5>
-                          </td> 
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 10%" align="left">
-                             Alergias
-                          </td>
-                          <td style="width: 40%">
-                            <input type="text" class="form-control" placeholder="Especificar">
-                          </td>
-                          <td style="width: 10%" align="left">
-                            Traumatismos
-                          </td>
-                          <td style="width: 40%">
-                            <input type="text" class="form-control" placeholder="Especificar">
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 10%" align="left">
-                             Cirug&iacute;as
-                          </td>
-                          <td style="width: 40%">
-                            <input type="text" class="form-control" placeholder="Especificar">
-                          </td>
-                          <td style="width: 10%" align="left">
-                            Inmunizaci&oacute;n
-                          </td>
-                          <td style="width: 40%">
-                            <input type="text" class="form-control" placeholder="Especificar">
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 30%">
-                             ¿Actualmente toma alg&uacute;n medicamento?
-                          </td>
-                          <td style="width: 10%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio10" name="customRadio"
-                                      onChange="habilitar(form.checked,'radionuevo1','radionuevo2');">
-                               <label for="customRadio10" class="custom-control-label">Si</label>
-                             </div>
-                          </td>
-                          <td style="width:10%">
-                             <div class="custom-control custom-radio">
-                               <input class="custom-control-input" type="radio" id="customRadio11" name="customRadio"
-                                      onChange="deshabilitar(form.checked,'radionuevo1','radionuevo2');">
-                               <label for="customRadio11" class="custom-control-label">No</label>
-                             </div>
-                          </td>
-                          <td style="width:50%">
-                             <div class="custom-control custom-radio">
-                               <input class="form-control" id="radionuevo1" type="text" disabled placeholder="Especificar">
-                             </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table form-group">
-                      <thead>
-                        <tr>
-                            <!---Nombres de las columnas-->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 30%">
-                             ¿Qui&eacute;n se lo recet&oacute;?
-                          </td>
-                          <td style="width:70%">
-                             <div class="custom-control custom-radio">
-                               <input class="form-control" type="text" id="radionuevo2" disabled placeholder="Especificar" >
-                             </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <a class="btn bg-gradient-danger" data-toggle="modal" data-target="#modal-default2" style="color: #fff;">Terminar</a>
-                    <a href="embarazos.html" type="submit" class="btn bg-gradient-info float-right">Siguiente</a>
-                  </div>
-                </div>
-                </form>
-            </div>
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-      <div class="modal fade" id="modal-default">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Nombre del usuario</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>¿Desea cerrar la sesi&oacute;n?</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="button" class="btn btn-info">Si</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-      <!-- /.modal -->
-      <div class="modal fade" id="modal-default2">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Datos del paciente</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>¿Desea terminar?</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="submit" class="btn btn-info">Si</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+			<!-- Main content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<form th:action="@{/guardar_casahabitacion}"
+								th:object="${casahabitacion}" method="post">
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Casa habitaci&oacute;n</h3>
+									</div>
+									<!-- /.card-header -->
+									<div class="card-body p-0">
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 25%">Tipo de piso</td>
+													<td style="width: 25%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{tipo_piso}" value="Cemento"
+																id="customRadio1" name="customRadioPiso"> <label
+																for="customRadio1" class="custom-control-label">Cemento</label>
+														</div>
+													</td>
+													<td style="width: 25%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{tipo_piso}" value="Losa" id="customRadio2"
+																name="customRadioPiso"> <label
+																for="customRadio2" class="custom-control-label">Losa</label>
+														</div>
+													</td>
+													<td style="width: 25%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{tipo_piso}" value="R&uacute;stico"
+																id="customRadio3" name="customRadioPiso"> <label
+																for="customRadio3" class="custom-control-label">R&uacute;stico</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Ventilaci&oacute;n o
+														iluminaci&oacute;n</td>
+													<td style="width: 25%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{ventilacion_iluminacion}" value="Buena"
+																id="customRadio4" name="customRadioIlu"> <label
+																for="customRadio4" class="custom-control-label">Buena</label>
+														</div>
+													</td>
+													<td style="width: 25%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{ventilacion_iluminacion}" value="Regular"
+																id="customRadio5" name="customRadioIlu"> <label
+																for="customRadio5" class="custom-control-label">Regular</label>
+														</div>
+													</td>
+													<td style="width: 25%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{ventilacion_iluminacion}" value="Mala"
+																id="customRadio6" name="customRadioIlu"> <label
+																for="customRadio6" class="custom-control-label">Mala</label>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+												<tr>
+													<td style="width: 25%">Material de la vivienda</td>
+													<td style="width: 15%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{material_vivienda}" value="Block"
+																id="customRadio7" name="customRadioMat"> <label
+																for="customRadio7" class="custom-control-label">Block</label>
+														</div>
+													</td>
+													<td style="width: 15%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{material_vivienda}" value="L&aacute;mina"
+																id="customRadio8" name="customRadioMat"> <label
+																for="customRadio8" class="custom-control-label">L&aacute;mina</label>
+														</div>
+													</td>
+													<td style="width: 15%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{material_vivienda}" value="Adobe"
+																id="customRadio9" name="customRadioMat"> <label
+																for="customRadio9" class="custom-control-label">Adobe</label>
+														</div>
+													</td>
+													<td style="width: 30%"><input type="text"
+														th:field="*{otro_material_vivienda}" class="form-control"
+														placeholder="Otro"></td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 20%">Servicios b&aacute;sicos</td>
+													<td style="width: 20%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{servicios_basicos}" id="customCheckbox1"
+																value="Agua"> <label for="customCheckbox1"
+																class="custom-control-label">Agua</label>
+														</div>
+													</td>
+													<td style="width: 20%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{servicios_basicos}" id="customCheckbox2"
+																value="Luz"> <label for="customCheckbox2"
+																class="custom-control-label">Luz</label>
+														</div>
+													</td>
+													<td style="width: 20%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{servicios_basicos}" id="customCheckbox3"
+																value="Drenaje"> <label for="customCheckbox3"
+																class="custom-control-label">Drenaje</label>
+														</div>
+													</td>
+													<td style="width: 20%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{servicios_basicos}" id="customCheckbox4"
+																value="Gas"> <label for="customCheckbox4"
+																class="custom-control-label">Gas</label>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table>
+											<table class="table form-group">
+												<thead>
+													<tr>
+														<!---Nombres de las columnas-->
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td style="width: 20%">
+															<div class="estilochingon estilofregon">
+																<input class="form-control" type="number" min="1" style="width: 60px; display: inline-table;" th:field="*{personas_viviendo_casa}" value="1"> 
+																<label>¿Cuántas
+																	personas viven en casa?</label>
+															</div>
+														</td>
+														<td style="width: 20%">
+															<div class="estilochingon estilofregon">
+																<input class="form-control" type="number" min="0"  style="width: 60px; display: inline-table;" 
+																	th:field="*{numero_mascotas}" value="0"> <label>¿Cuántas
+																	mascotas tiene?</label>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</table>
+									</div>
+									<!-- /.card-body -->
+								</div>
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Antecedentes personales
+											patol&oacute;gicos</h3>
+									</div>
+									<!-- /.card-header -->
+									<div class="card-body p-0">
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 100%" align="center">
+														<h5>Enfermedades de la infancia</h5>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr align="center">
+													<td style="width: 33%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_infancia}" id="customCheckbox5"
+																value="Varicela"> <label for="customCheckbox5"
+																class="custom-control-label">Varicela</label>
+														</div>
+													</td>
+													<td style="width: 34%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_infancia}" id="customCheckbox6"
+																value="Sarampi&oacute;n"> <label for="customCheckbox6"
+																class="custom-control-label">Sarampi&oacute;n</label>
+														</div>
+													</td>
+													<td style="width: 33%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_infancia}" id="customCheckbox7"
+																value="Viruela"> <label for="customCheckbox7"
+																class="custom-control-label">Viruela</label>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr align="center">
+													<td style="width: 25%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_infancia}" id="customCheckbox8"
+																value="Hepatitis"> <label for="customCheckbox8"
+																class="custom-control-label">Hepatitis</label>
+														</div>
+													</td>
+													<td style="width: 25%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_infancia}" id="customCheckbox9"
+																value="Fiebre reum&aacute;tica"> <label for="customCheckbox9"
+																class="custom-control-label">Fiebre
+																reum&aacute;tica</label>
+														</div>
+													</td>
+													<td style="width: 25%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_infancia}"
+																id="customCheckbox10" value="Tosferina"> <label
+																for="customCheckbox10" class="custom-control-label">Tosferina</label>
+														</div>
+													</td>
+													<td style="width: 25%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox11" value="option1"> <label
+																for="customCheckbox11" class="custom-control-label">Asma</label>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 25%">Otra enfermedad:</td>
+													<td style="width: 75%"><input type="text"
+														th:field="*{otro_enfermedad_infancia}" class="form-control"
+														placeholder="Especificar"></td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 100%" align="center">
+														<h5>Enfermedades de adulto</h5>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr align="center">
+													<td style="width: 50%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_adulto}" id="customCheckbox12"
+																value="Diabetes"> <label for="customCheckbox12"
+																class="custom-control-label">Diabetes</label>
+														</div>
+													</td>
+													<td style="width: 50%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_adulto}" id="customCheckbox13"
+																value="Hipertension"> <label for="customCheckbox13"
+																class="custom-control-label">Hipertension</label>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr align="center">
+													<td style="width: 33%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_adulto}" id="customCheckbox14"
+																value="Asma"> <label for="customCheckbox14"
+																class="custom-control-label">Asma</label>
+														</div>
+													</td>
+													<td style="width: 34%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_adulto}" id="customCheckbox15"
+																value="Osteoporosis"> <label for="customCheckbox15"
+																class="custom-control-label">Osteoporosis</label>
+														</div>
+													</td>
+													<td style="width: 33%">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																th:field="*{enfermedades_adulto}" id="customCheckbox16"
+																value="Artritis"> <label for="customCheckbox16"
+																class="custom-control-label">Artritis</label>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 25%">Otra enfermedad:</td>
+													<td style="width: 75%"><input type="text"
+														th:field="*{otro_enfermedad_adulto}" class="form-control"
+														placeholder="Especificar"></td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 100%" align="center">
+														<h5>Datos extras</h5>
+													</td>
+												</tr>
+											</tbody>
+										</table>
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-  </footer>
-</div>
-<!-- ./wrapper -->
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 10%" align="left">Alergias</td>
+													<td style="width: 40%"><input type="text"
+														th:field="*{alergias}" class="form-control"
+														placeholder="Especificar"></td>
+													<td style="width: 10%" align="left">Traumatismos</td>
+													<td style="width: 40%"><input type="text"
+														th:field="*{traumatismo}" class="form-control"
+														placeholder="Especificar"></td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 10%" align="left">Cirug&iacute;as</td>
+													<td style="width: 40%"><input type="text"
+														th:field="*{cirugias}" class="form-control"
+														placeholder="Especificar"></td>
+													<td style="width: 10%" align="left">
+														Inmunizaci&oacute;n</td>
+													<td style="width: 40%"><input type="text"
+														th:field="*{inmunizacion}" class="form-control"
+														placeholder="Especificar"></td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 30%">¿Actualmente toma alg&uacute;n
+														medicamento?</td>
+													<td style="width: 10%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{toma_medicamento}" value="Si"
+																id="customRadio10" name="customRadio"
+																onChange="habilitar(form.checked,'radionuevo1','radionuevo2');">
+															<label for="customRadio10" class="custom-control-label">Si</label>
+														</div>
+													</td>
+													<td style="width: 10%">
+														<div class="custom-control custom-radio">
+															<input class="custom-control-input" type="radio"
+																th:field="*{toma_medicamento}" value="No"
+																id="customRadio11" name="customRadio"
+																onChange="deshabilitar(form.checked,'radionuevo1','radionuevo2');">
+															<label for="customRadio11" class="custom-control-label">No</label>
+														</div>
+													</td>
+													<td style="width: 50%">
+														<div class="custom-control custom-radio">
+															<input class="form-control" id="radionuevo1" type="text" th:field="*{cual}"
+																 disabled placeholder="Especificar">
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table class="table form-group">
+											<thead>
+												<tr>
+													<!---Nombres de las columnas-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 30%">¿Qui&eacute;n se lo
+														recet&oacute;?</td>
+													<td style="width: 70%">
+														<div class="custom-control custom-radio">
+															<input class="form-control" type="text" id="radionuevo2"
+																th:field="*{quien_receto}" disabled
+																placeholder="Especificar">
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<a class="btn bg-gradient-danger" data-toggle="modal"
+											data-target="#modal-default2" style="color: #fff;">Terminar</a>
+										<button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
+									</div>
+								</div>
+								<input th:field="*{paciente_id}" type="hidden">
+							</form>
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+				<div class="modal fade" id="modal-default">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Nombre del usuario</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>¿Desea cerrar la sesi&oacute;n?</p>
+							</div>
+							<div class="modal-footer justify-content-between">
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">No</button>
+								<button type="button" class="btn btn-info">Si</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+				<!-- /.modal -->
+				<div class="modal fade" id="modal-default2">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Datos del paciente</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>¿Desea terminar?</p>
+							</div>
+							<div class="modal-footer justify-content-between">
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">No</button>
+								<button type="submit" class="btn btn-info">Si</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+			</div>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+		<!-- Main Footer -->
+		<footer class="main-footer"> </footer>
+	</div>
+	<!-- ./wrapper -->
 
-<!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
-<script>
+	<!-- REQUIRED SCRIPTS -->
+
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE -->
+	<script src="dist/js/adminlte.js"></script>
+
+	<!-- OPTIONAL SCRIPTS -->
+	<script src="plugins/chart.js/Chart.min.js"></script>
+	<script src="dist/js/demo.js"></script>
+	<script src="dist/js/pages/dashboard3.js"></script>
+	<script>
 function habilitar(value, value2,value3) {
 					// habilitamos
 					document.getElementById(value2).disabled = false;

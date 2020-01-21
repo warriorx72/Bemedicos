@@ -30,7 +30,7 @@ public class AntecedentesFamiliares implements Serializable{
 	private String anemia_leucemia_linfoma_mieloma;
 	
 	@Column
-	private String artitris;
+	private String artritis;
 	
 	@Column
 	private String cancer;
@@ -66,7 +66,11 @@ public class AntecedentesFamiliares implements Serializable{
 	private	String tension_arterial_alta;
 	
 	@Column
-	private	String tuberculosis;
+	private	String tubercolosis;
+	
+	@Column
+	private Long paciente_id;
+		
 
 	public Long getAntecedentesfam_id() {
 		return antecedentesfam_id;
@@ -100,12 +104,12 @@ public class AntecedentesFamiliares implements Serializable{
 		this.anemia_leucemia_linfoma_mieloma = anemia_leucemia_linfoma_mieloma;
 	}
 
-	public String getArtitris() {
-		return artitris;
+	public String getArtritis() {
+		return artritis;
 	}
 
-	public void setArtitris(String artitris) {
-		this.artitris = artitris;
+	public void setArtritis(String artritis) {
+		this.artritis = artritis;
 	}
 
 	public String getCancer() {
@@ -196,16 +200,24 @@ public class AntecedentesFamiliares implements Serializable{
 		this.tension_arterial_alta = tension_arterial_alta;
 	}
 
-	public String getTuberculosis() {
-		return tuberculosis;
+	public String getTubercolosis() {
+		return tubercolosis;
 	}
 
-	public void setTuberculosis(String tuberculosis) {
-		this.tuberculosis = tuberculosis;
+	public void setTubercolosis(String tubercolosis) {
+		this.tubercolosis = tubercolosis;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Long getPaciente_id() {
+		return paciente_id;
+	}
+
+	public void setPaciente_id(Long paciente_id) {
+		this.paciente_id = paciente_id;
 	}
 	
 }

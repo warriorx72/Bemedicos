@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -307,7 +308,7 @@ to get the desired effect
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form>
+                <form th:action="@{/guardar_ant_fam}" th:object="${antecedentesfamiliares}" method="post">
                 <div class="card card-info">
                   <div class="card-header">
                     <h3 class="card-title">Antecedentes Heredo-Familiares</h3>
@@ -327,19 +328,19 @@ to get the desired effect
                           <td style="width: 25%">
                               C&aacute;ncer
                           </td>
-                          <td style="width: 15% padding-top: 0.4rem;">
+                          <td style="width: 15%; padding-top: 0.4rem;">
                             <div class="estilochingon custom-checkbox">
                               <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1" onchange="habilitar(this.checked,'txt1');">
                               <label for="customCheckbox1" class="custom-control-label"></label>
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt1" disabled>
+                            <input th:field="*{cancer}" type="text" class="form-control" id="txt1" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
                           <td style="width: 25%">
-                              Tuberculosis
+                              Tubercolosis
                           </td>
                           <td style="width: 15%; padding-top: 0.4rem;">
                             <div class="estilochingon custom-checkbox">
@@ -348,7 +349,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt2" disabled>
+                            <input th:field="*{tubercolosis}" type="text" class="form-control" id="txt2" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -362,12 +363,12 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt3" disabled>
+                            <input th:field="*{diabetes}" type="text" class="form-control" id="txt3" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
                           <td style="width: 25%">
-                              Artitris
+                              Artritis
                           </td>
                           <td style="width: 15%; padding-top: 0.4rem;">
                             <div class="estilochingon custom-checkbox">
@@ -376,7 +377,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt4" disabled>
+                            <input th:field="*{artritis}" type="text" class="form-control" id="txt4" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -390,7 +391,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt5" disabled>
+                            <input th:field="*{problemas_cardiacos}" type="text" class="form-control" id="txt5" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -404,7 +405,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt6" disabled>
+                            <input th:field="*{tension_arterial_alta}" type="text" class="form-control" id="txt6" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -418,7 +419,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt7" disabled>
+                            <input th:field="*{distrofia_muscular}" type="text" class="form-control" id="txt7" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -432,7 +433,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt8" disabled>
+                            <input th:field="*{parkinson_alzheimer}" type="text" class="form-control" id="txt8" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -446,7 +447,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt9" disabled>
+                            <input th:field="*{accidente_cerebrovascular}" type="text" class="form-control" id="txt9" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -460,7 +461,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt10" disabled>
+                            <input th:field="*{depresion_bipolaridad_demencia}" type="text" class="form-control" id="txt10" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -474,7 +475,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt11" disabled>
+                            <input th:field="*{neumonia_asma_epoc_rinitis}" type="text" class="form-control" id="txt11" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -488,7 +489,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt12" disabled>
+                            <input th:field="*{hepatitis_cirrosis_sx_de_reye}" type="text" class="form-control" id="txt12" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -502,7 +503,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt13" disabled>
+                            <input th:field="*{alergias}" type="text" class="form-control" id="txt13" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
@@ -516,21 +517,21 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt14" disabled>
+                            <input th:field="*{anemia_leucemia_linfoma_mieloma}" type="text" class="form-control" id="txt14" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr>
                         <tr>
                           <td style="width: 25%">
                              Problemas de tiroides
                           </td>
-                          <td style="width: 15% padding-top: 0.4rem;">
+                          <td style="width: 15%; padding-top: 0.4rem;">
                             <div class="estilochingon custom-checkbox">
                               <input class="custom-control-input" type="checkbox" id="customCheckbox15" value="option1" onchange="habilitar(this.checked,'txt15');">
                               <label for="customCheckbox15" class="custom-control-label"></label>
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt15" disabled>
+                            <input th:field="*{problemas_de_tiroides}" type="text" class="form-control" id="txt15" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr> 
                         <tr>
@@ -544,7 +545,7 @@ to get the desired effect
                             </div>
                           </td>
                           <td style="width: 60%">
-                            <input type="text" class="form-control" id="txt16" disabled>
+                            <input th:field="*{otros}" type="text" class="form-control" id="txt16" disabled pattern="[A-Za-z]+">
                           </td>
                         </tr> 
                       </tbody>
@@ -553,9 +554,10 @@ to get the desired effect
                   <!-- /.card-body -->
                   <div class="card-footer">
                     <a class="btn bg-gradient-danger" data-toggle="modal" data-target="#modal-default2" style="color: #fff;">Terminar</a>
-                    <a href="antecedentes_personales.html" type="submit" class="btn bg-gradient-info float-right">Siguiente</a>
+                    <button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
                   </div>
                 </div>
+                <input th:field="*{paciente_id}" type="hidden">
                 </form>
             </div>
         </div>
@@ -644,10 +646,13 @@ to get the desired effect
 			{
 				// habilitamos
 				document.getElementById(value2).disabled=false;
+				document.getElementById(value2).required=true;
+				
 			}else if(value==false){
 				// deshabilitamos
 				 document.getElementById(value2).value = "";
 				 document.getElementById(value2).disabled=true;
+				 document.getElementById(value2).required=false;
 				
 			}
 		}

@@ -10,169 +10,180 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="app_antecedentes_personales") 
+@Table(name="app_antecedentes_personales")
 public class AntecedentesPersonales implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long antecedentespersonales_id;
-	
-	@Column
-	private String actividad_fisica;
-	
-	@Column
-	private String alimentacion;
-	
-	@Column
-	private String baño;
-	
-	@Column
-	private String especifique;
-	
-	@Column
-	private String especifique1;
-	
-	@Column
-	private String frecuencias;
-	
-	@Column
-	private String grupo_recreacion;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long antecedentespersonales_id;
 
-	@Column
-	private String lavado_de_manos;
-	
-	@Column
-	private String lavado_dientes;
-	
-	@Column
-	private String otro;
-	
-	@Column
-	private String otro1;
-	
-	@Column
-	private String toxicomanias;
-	
-	@Column
-	private String veces_al_dia;
+@Column
+private String actividad_fisica;
 
-	public Long getAntecedentespersonales_id() {
-		return antecedentespersonales_id;
-	}
+@Column
+private String alimentacion;
 
-	public void setAntecedentespersonales_id(Long antecedentespersonales_id) {
-		this.antecedentespersonales_id = antecedentespersonales_id;
-	}
+@Column
+private String baño;
 
-	public String getActividad_fisica() {
-		return actividad_fisica;
-	}
+@Column
+private String especifique;
 
-	public void setActividad_fisica(String actividad_fisica) {
-		this.actividad_fisica = actividad_fisica;
-	}
+@Column
+private String especifique1;
 
-	public String getAlimentacion() {
-		return alimentacion;
-	}
+@Column
+private String frecuencias;
 
-	public void setAlimentacion(String alimentacion) {
-		this.alimentacion = alimentacion;
-	}
+@Column
+private String grupo_recreacion;
 
-	public String getBaño() {
-		return baño;
-	}
+@Column
+private String lavado_de_manos;
 
-	public void setBaño(String baño) {
-		this.baño = baño;
-	}
+@Column
+private String lavado_dientes;
 
-	public String getEspecifique() {
-		return especifique;
-	}
+@Column
+private String otro;
 
-	public void setEspecifique(String especifique) {
-		this.especifique = especifique;
-	}
+@Column
+private String otro1;
 
-	public String getEspecifique1() {
-		return especifique1;
-	}
+@Column
+private String toxicomanias;
 
-	public void setEspecifique1(String especifique1) {
-		this.especifique1 = especifique1;
-	}
+@Column
+private String veces_al_dia;
 
-	public String getFrecuencias() {
-		return frecuencias;
-	}
+@Column
+private Long paciente_id;
 
-	public void setFrecuencias(String frecuencias) {
-		this.frecuencias = frecuencias;
-	}
+public Long getAntecedentespersonales_id() {
+return antecedentespersonales_id;
+}
 
-	public String getGrupo_recreacion() {
-		return grupo_recreacion;
-	}
+public void setAntecedentespersonales_id(Long antecedentespersonales_id) {
+this.antecedentespersonales_id = antecedentespersonales_id;
+}
 
-	public void setGrupo_recreacion(String grupo_recreacion) {
-		this.grupo_recreacion = grupo_recreacion;
-	}
+public String getActividad_fisica() {
+return actividad_fisica;
+}
 
-	public String getLavado_de_manos() {
-		return lavado_de_manos;
-	}
+public void setActividad_fisica(String actividad_fisica) {
+this.actividad_fisica = actividad_fisica;
+}
 
-	public void setLavado_de_manos(String lavado_de_manos) {
-		this.lavado_de_manos = lavado_de_manos;
-	}
+public String getAlimentacion() {
+return alimentacion;
+}
 
-	public String getLavado_dientes() {
-		return lavado_dientes;
-	}
+public void setAlimentacion(String alimentacion) {
+this.alimentacion = alimentacion;
+}
 
-	public void setLavado_dientes(String lavado_dientes) {
-		this.lavado_dientes = lavado_dientes;
-	}
+public String getBaño() {
+return baño;
+}
 
-	public String getOtro() {
-		return otro;
-	}
+public void setBaño(String baño) {
+this.baño = baño;
+}
 
-	public void setOtro(String otro) {
-		this.otro = otro;
-	}
+public String getEspecifique() {
+return especifique;
+}
 
-	public String getOtro1() {
-		return otro1;
-	}
+public void setEspecifique(String especifique) {
+this.especifique = especifique;
+}
 
-	public void setOtro1(String otro1) {
-		this.otro1 = otro1;
-	}
+public String getEspecifique1() {
+return especifique1;
+}
 
-	public String getToxicomanias() {
-		return toxicomanias;
-	}
+public void setEspecifique1(String especifique1) {
+this.especifique1 = especifique1;
+}
 
-	public void setToxicomanias(String toxicomanias) {
-		this.toxicomanias = toxicomanias;
-	}
+public String getFrecuencias() {
+return frecuencias;
+}
 
-	public String getVeces_al_dia() {
-		return veces_al_dia;
-	}
+public void setFrecuencias(String frecuencias) {
+this.frecuencias = frecuencias;
+}
 
-	public void setVeces_al_dia(String veces_al_dia) {
-		this.veces_al_dia = veces_al_dia;
-	}
+public String getGrupo_recreacion() {
+return grupo_recreacion;
+}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
+public void setGrupo_recreacion(String grupo_recreacion) {
+this.grupo_recreacion = grupo_recreacion;
+}
+
+public String getLavado_de_manos() {
+return lavado_de_manos;
+}
+
+public void setLavado_de_manos(String lavado_de_manos) {
+this.lavado_de_manos = lavado_de_manos;
+}
+
+public String getLavado_dientes() {
+return lavado_dientes;
+}
+
+public void setLavado_dientes(String lavado_dientes) {
+this.lavado_dientes = lavado_dientes;
+}
+
+public String getOtro() {
+return otro;
+}
+
+public void setOtro(String otro) {
+this.otro = otro;
+}
+
+public String getOtro1() {
+return otro1;
+}
+
+public void setOtro1(String otro1) {
+this.otro1 = otro1;
+}
+
+public String getToxicomanias() {
+return toxicomanias;
+}
+
+public void setToxicomanias(String toxicomanias) {
+this.toxicomanias = toxicomanias;
+}
+
+public String getVeces_al_dia() {
+return veces_al_dia;
+}
+
+public void setVeces_al_dia(String veces_al_dia) {
+this.veces_al_dia = veces_al_dia;
+}
+
+public Long getPaciente_id() {
+return paciente_id;
+}
+
+public void setPaciente_id(Long paciente_id) {
+this.paciente_id = paciente_id;
+}
+
+public static long getSerialversionuid() {
+return serialVersionUID;
+}
+
+
 }
