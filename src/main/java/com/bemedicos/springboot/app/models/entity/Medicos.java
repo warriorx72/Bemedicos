@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -45,16 +46,29 @@ public class Medicos implements Serializable {
 	@Column
 	private String foto_doc;
 	
-	@Column
-	private Long usuario_id;
+	
 	
 	@Column
 	private Long paciente_id;
 	
-	@Column
-	private Long persona_id;
 	
-    @ManyToMany(cascade = CascadeType.ALL)
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
+    private Persona persona;
+	
+	
+	
+	
+    public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "app_medico_paciente",
         joinColumns = @JoinColumn(name = "medico_id", referencedColumnName = "medico_id"),
         inverseJoinColumns = @JoinColumn(name = "paciente_id", referencedColumnName = "paciente_id"))
@@ -122,13 +136,6 @@ public class Medicos implements Serializable {
 		this.foto_doc = foto_doc;
 	}
 
-	public Long getUsuario_id() {
-		return usuario_id;
-	}
-
-	public void setUsuario_id(Long usuario_id) {
-		this.usuario_id = usuario_id;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -150,13 +157,6 @@ public class Medicos implements Serializable {
 		this.paciente_id = paciente_id;
 	}
 
-	public Long getPersona_id() {
-		return persona_id;
-	}
-
-	public void setPersona_id(Long persona_id) {
-		this.persona_id = persona_id;
-	}
 	
 	
 }
