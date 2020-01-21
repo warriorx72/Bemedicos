@@ -1,5 +1,10 @@
 package com.bemedicos.springboot.app.service;
+import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +24,9 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public Iterable<User> getAllUsers() {
@@ -105,6 +113,13 @@ private boolean checkUsernameAvailable(User user) throws Exception{
 		String encodePassword = bCryptPasswordEncoder.encode(form.getNewPassword());
 		user.setPassword(encodePassword);
 		return repository.save(user);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Object> getIdDoc(String usuarioDoctor) {
+		return em.createNativeQuery("select medico_id from user_med where user_medname='"+usuarioDoctor+"' or email='"+usuarioDoctor+"'").getResultList();
 	}
 
 	
