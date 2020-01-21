@@ -54,6 +54,18 @@ public class Persona implements Serializable{
 	@Column
 	private String persona_tel_exten;
 	
+	 @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL,
+	            fetch = FetchType.LAZY, optional = false)
+	    private Medicos medicos;
+	 
+	 
+	
+    public Medicos getMedicos() {
+		return medicos;
+	}
+	public void setMedicos(Medicos medicos) {
+		this.medicos = medicos;
+	}
 	
     @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
