@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -313,7 +313,7 @@ to get the desired effect
                     <h3 class="card-title">Historial cl&iacute;nico</h3>
                       <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
-                          <input type="text" name="table_search" class="form-control float-right" placeholder="Buscar">
+                          <input type="text" name="table_search" id="buscar" class="form-control float-right" placeholder="Buscar">
 
                           <div class="input-group-append">
                             <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
@@ -323,7 +323,7 @@ to get the desired effect
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body table-responsive p-0" style="height: 300px;" >
-                    <table class="table table-head-fixed form-group">
+                    <table class="table table-head-fixed form-group" id="tabla">
                       <thead>
                         <tr>
                           <th style="width: 25%">No. expediente</th>
@@ -332,24 +332,15 @@ to get the desired effect
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td style="width: 25%">
-                              ORD000002123
-                          </td>
-                          <td style="width: 60%">
-                            Juan Gonzalez Trujillo
-                          </td>
+                        <tr th:each="evolucion: ${evolucionvista}">
+                          <td style="width: 25%" th:text="${evolucion[2]}"></td>
+                          <td style="width: 60%" th:text="${evolucion[1]}"></td>
                           <td style="width: 15%">
-                            <a href="notas.hmtl" class="btn bg-gradient-success" style="color:#fff;"><i class="fas fa-notes-medical"></i></a>
+                            <a th:href="${'notas/'+evolucion[0]}" class="btn bg-gradient-success" style="color:#fff;"><i class="fas fa-notes-medical"></i></a>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <a class="btn bg-gradient-danger" data-toggle="modal" data-target="#modal-default2" style="color: #fff;">Terminar</a>
-                    <button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
                   </div>
                 </div>
                 </form>
@@ -433,6 +424,23 @@ to get the desired effect
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
+<script>
+	var busqueda = document.getElementById('buscar');
+    var table = document.getElementById("tabla").tBodies[0];
+
+    buscaTabla = function(){
+      texto = busqueda.value.toLowerCase();
+      var r=0;
+      while(row = table.rows[r++])
+      {
+        if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
+          row.style.display = null;
+        else
+          row.style.display = 'none';
+      }
+    }
+
+    busqueda.addEventListener('keyup', buscaTabla);
+</script>
 </body>
 </html>
-s
