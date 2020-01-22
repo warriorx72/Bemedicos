@@ -2,6 +2,8 @@ package com.bemedicos.springboot.app.controllers;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +16,19 @@ import com.bemedicos.springboot.app.models.entity.AntecedentesPersonales;
 import com.bemedicos.springboot.app.models.entity.CasaHabitacion;
 import com.bemedicos.springboot.app.models.entity.Direccion;
 import com.bemedicos.springboot.app.models.entity.Embarazos;
+import com.bemedicos.springboot.app.models.entity.MedicoPaciente;
 import com.bemedicos.springboot.app.models.entity.Paciente;
 import com.bemedicos.springboot.app.models.entity.Persona;
 import com.bemedicos.springboot.app.service.AntecedentesFamiliaresService;
 import com.bemedicos.springboot.app.service.CasaHabitacionService;
 import com.bemedicos.springboot.app.service.DireccionService;
 import com.bemedicos.springboot.app.service.EmbarazosService;
+import com.bemedicos.springboot.app.service.MedicoPacienteService;
 import com.bemedicos.springboot.app.service.MedicoService;
 import com.bemedicos.springboot.app.service.PacienteService;
 import com.bemedicos.springboot.app.service.PersonaService;
 import com.bemedicos.springboot.app.service.PersonalesService;
+import com.bemedicos.springboot.app.service.UserService;
 
 @Controller
 public class PacienteController {
@@ -50,26 +55,41 @@ public class PacienteController {
 
 	@Autowired
 	EmbarazosService embarazosService;
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	MedicoPacienteService medpaService;
 
 	@RequestMapping(value="/alta_paciente", method=RequestMethod.GET)
-	public String crear(Model model, Map<String, Object> m) {
+	public String crear(HttpServletRequest request,Model model, Map<String, Object> m) {
 		Paciente paciente=new Paciente();
 		Persona persona=new Persona();
 		Direccion direccion=new Direccion();
+		UserController us=new UserController();
+		us.UsuarioDoctor(request,userService);
+		model.addAttribute("id_med_user",us.UsuarioDoctor(request,userService));
+		System.out.println(us.UsuarioDoctor(request,userService));
 		m.put("paciente", paciente);
 		m.put("persona", persona);
 		m.put("direccion", direccion);
 		return "alta_paciente";
 	}
 	@RequestMapping(value="/guardar_paciente", method=RequestMethod.POST)
-	public String guardarPaciente(Model model, Map<String, Object> m, Direccion direccion, Persona persona, Paciente paciente) {
+	public String guardarPaciente(HttpServletRequest request, Model model, Map<String, Object> m, Direccion direccion, Persona persona, Paciente paciente) {
 		AntecedentesFamiliares antecedentesfamiliares = new AntecedentesFamiliares();
+		MedicoPaciente medpa= new MedicoPaciente();
+		UserController us=new UserController();
 		direccion.setPersona(persona);
 		persona.setDireccion(direccion);
 		persona.setPaciente(paciente);
 		paciente.setPersona(persona);
 		direccionService.save(direccion);
 		antecedentesfamiliares.setPaciente_id(paciente.getPaciente_id());
+		medpa.setPaciente_id(paciente.getPaciente_id());
+		medpa.setMedico_id(us.UsuarioDoctor(request,userService).longValue());
+		medpaService.save(medpa);
 		m.put("paciente", paciente);
 		m.put("persona", persona);
 		m.put("direccion", direccion);

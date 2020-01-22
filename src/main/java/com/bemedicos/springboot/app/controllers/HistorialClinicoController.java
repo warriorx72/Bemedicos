@@ -2,6 +2,7 @@ package com.bemedicos.springboot.app.controllers;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import com.bemedicos.springboot.app.models.entity.Evolucion;
 import com.bemedicos.springboot.app.models.entity.Paciente;
 import com.bemedicos.springboot.app.service.EvolucionService;
 import com.bemedicos.springboot.app.service.PacienteService;
+import com.bemedicos.springboot.app.service.UserService;
 
 @Controller
 public class HistorialClinicoController {
@@ -22,10 +24,15 @@ public class HistorialClinicoController {
 	private EvolucionService evolucionService;
 	@Autowired
 	private PacienteService pacienteService;
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value="/historial_clinico", method=RequestMethod.GET)
-    public String listar(Model model) {
-		model.addAttribute("evolucionvista", evolucionService.AppNotas());
+    public String listar(HttpServletRequest request, Model model) {
+		UserController us=new UserController();
+		us.UsuarioDoctor(request,userService);
+		model.addAttribute("id_med_user",us.UsuarioDoctor(request,userService));
+		model.addAttribute("evolucionvista", evolucionService.AppNotas(us.UsuarioDoctor(request,userService).longValue()));
 
 		return "historial_clinico";
 	   }

@@ -51,8 +51,8 @@ public class EvolucionServiceImpl implements EvolucionService {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly=true)
-	public List<Object> AppNotas(){
-		return em.createNativeQuery("call app_notas();").getResultList();
+	public List<Object> AppNotas(Long id){
+		return em.createNativeQuery("call app_notas("+id+");").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")

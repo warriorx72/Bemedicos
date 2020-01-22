@@ -15,7 +15,7 @@ public interface EvolucionService {
 	
 	public void delete(Long id);
 	
-	public List<Object> AppNotas();
+	public List<Object> AppNotas(Long id);
 	
 	public List<Object> AppListarNotas(Long id);
 	
