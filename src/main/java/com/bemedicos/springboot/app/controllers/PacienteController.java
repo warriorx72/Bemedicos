@@ -90,6 +90,8 @@ public class PacienteController {
 		medpa.setPaciente_id(paciente.getPaciente_id());
 		medpa.setMedico_id(us.UsuarioDoctor(request,userService).longValue());
 		medpaService.save(medpa);
+		paciente.setExpediente("pac"+medpa.getMedico_id()+(10000+paciente.getPaciente_id()));
+		pacienteService.save(paciente);
 		m.put("paciente", paciente);
 		m.put("persona", persona);
 		m.put("direccion", direccion);
