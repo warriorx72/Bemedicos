@@ -372,20 +372,20 @@ to get the desired effect
                             Toxicomanias
                           </td>
                           <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="radio" id="customRadio7" name="customRadioToxico" value="Tabaquismo">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="checkbox" id="customRadio7" name="customRadioToxico" value="Tabaquismo">
                                <label for="customRadio7" class="custom-control-label">Tabaquismo</label>
                              </div>
                           </td>
                           <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="radio" id="customRadio8" name="customRadioToxico" value="Alcoholismo">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="checkbox" id="customRadio8" name="customRadioToxico" value="Alcoholismo">
                                <label for="customRadio8" class="custom-control-label">Alcoholismo</label>
                              </div>
                           </td>
                           <td style="width: 25%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="radio" id="customRadio9" name="customRadioToxico" value="Drogas">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.toxicomanias}" class="custom-control-input" type="checkbox" id="customRadio9" name="customRadioToxico" value="Drogas">
                                <label for="customRadio9" class="custom-control-label">Drogas</label>
                              </div>
                           </td>
@@ -404,7 +404,7 @@ to get the desired effect
                              Frecuencia:
                           </td>
                           <td style="width: 75%">
-                            <input type="text" class="form-control" placeholder="Especifique" th:field="*{personales.frecuencias}">
+                            <input type="text" class="form-control" placeholder="Especifique" th:field="*{personales.frecuencias}" pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.]+">
                           </td>
                         </tr>
                       </tbody>
@@ -433,7 +433,7 @@ to get the desired effect
                              </div>
                           </td>
                           <td style="width: 55%">
-                             <input class="form-control" id="radio1" type="text" placeholder="Especifique" disabled th:field="*{personales.especifique}">
+                             <input class="form-control" id="radio1" type="text" placeholder="Especifique" disabled th:field="*{personales.especifique}" pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.]+">
                           </td>
                         </tr>
                         <tr>
@@ -453,7 +453,7 @@ to get the desired effect
                              </div>
                           </td>
                           <td style="width: 55%">
-                             <input class="form-control" id="radio2" type="text" placeholder="Especifique" th:field="*{personales.especifique1}" disabled>
+                             <input class="form-control" id="radio2" type="text" placeholder="Especifique" th:field="*{personales.especifique1}" disabled pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.]+">
                           </td>
                         </tr>
                       </tbody>
@@ -506,32 +506,32 @@ to get the desired effect
                             Lavado de manos
                           </td>
                           <td style="width: 16%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de la comida" type="radio" id="customRadio10" name="customRadioLavado">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de la comida" type="checkbox" id="customRadio10" name="customRadioLavado">
                                <label for="customRadio10" class="custom-control-label">Antes de la comida</label>
                              </div>
                           </td>
                           <td style="width: 16%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Despues de la comida" type="radio" id="customRadio12" name="customRadioLavado">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Despues de la comida" type="checkbox" id="customRadio12" name="customRadioLavado">
                                <label for="customRadio12" class="custom-control-label">Despu&eacute;s de la comida</label>
                              </div>
                           </td>
                           <td style="width: 16%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de ir al baño" type="radio" id="customRadio13" name="customRadioLavado">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de ir al baño" type="checkbox" id="customRadio13" name="customRadioLavado">
                                <label for="customRadio13" class="custom-control-label">Antes de ir al ba&ntilde;o</label>
                              </div>
                           </td>
                           <td style="width: 16%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Despues de ir al baño" type="radio" id="customRadio14" name="customRadioLavado">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Despues de ir al baño" type="checkbox" id="customRadio14" name="customRadioLavado">
                                <label for="customRadio14" class="custom-control-label">Despues de ir al ba&ntilde;o</label>
                              </div>
                           </td>
                           <td style="width: 16%">
-                             <div class="custom-control custom-radio">
-                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de preparar los alimentos" type="radio" id="customRadio15" name="customRadioLavado">
+                             <div class="estilochingon custom-checkbox">
+                               <input th:field="*{personales.lavado_de_manos}" class="custom-control-input" value="Antes de preparar los alimentos" type="checkbox" id="customRadio15" name="customRadioLavado">
                                <label for="customRadio15" class="custom-control-label">Antes de preparar los alimentos</label>
                              </div>
                           </td>

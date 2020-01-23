@@ -311,19 +311,19 @@ to get the desired effect
                               <!-- text input -->
                               <div class="form-group">
                                 <label>Nombre</label>
-                                <input required th:field="*{persona.persona_nombre}" type="text" class="form-control" placeholder="Gerardo">
+                                <input required th:field="*{persona.persona_nombre}" type="text" class="form-control" placeholder="Gerardo" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
                               </div>
                             </div>
                             <div class="col-sm-4">
                               <div class="form-group">
                                 <label>Apellido Paterno</label>
-                                <input required th:field="*{persona.persona_ap}" type="text" class="form-control" placeholder="Rosas">
+                                <input required th:field="*{persona.persona_ap}" type="text" class="form-control" placeholder="Rosas" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
                               </div>
                             </div>
                             <div class="col-sm-4">
                               <div class="form-group">
                                 <label>Apellido Materno</label>
-                                <input required th:field="*{persona.persona_am}" type="text" class="form-control" placeholder="Martinez">
+                                <input required th:field="*{persona.persona_am}" type="text" class="form-control" placeholder="Martinez" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
                               </div>
                             </div>
                           </div>
@@ -358,7 +358,7 @@ to get the desired effect
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Tel&eacute;fono</label>
-                                <input required th:field="*{persona.persona_tel_cel}" type="number" class="form-control" placeholder="222 123 2123">
+                                <input required th:field="*{persona.persona_tel_cel}" type="phone" class="form-control" placeholder="2221232123" pattern="[0-9]{10}">
                               </div>
                             </div>
                           </div>
@@ -379,19 +379,19 @@ to get the desired effect
                               <!-- text input -->
                               <div class="form-group">
                                 <label>Calle</label>
-                                <input required th:field="*{direccion.direccion_calle}" type="text" class="form-control" placeholder="Av. Universidad">
+                                <input required th:field="*{direccion.direccion_calle}" type="text" class="form-control" placeholder="Av. Universidad" pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
                               </div> 
                             </div>
                             <div class="col-sm-2">
                               <div class="form-group">
                                 <label>No. Exterior</label>
-                                <input required th:field="*{direccion.direccion_numero_ext}" type="number" class="form-control" min="0" placeholder="1">
+                                <input required th:field="*{direccion.direccion_numero_ext}" type="number" class="form-control" min="0" placeholder="12">
                               </div>
                             </div>
                             <div class="col-sm-2">
                               <div class="form-group">
                                 <label>No. Interior</label>
-                                <input th:field="*{direccion.direccion_num_inter}" type="number" class="form-control" placeholder="12">
+                                <input th:field="*{direccion.direccion_num_inter}" type="number" class="form-control" placeholder="2">
                               </div>
                             </div>
                           </div>
@@ -399,25 +399,25 @@ to get the desired effect
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>C&oacute;digo postal</label>
-                                <input required th:field="*{direccion.direccion_postal}" type="number" class="form-control" placeholder="90700">
+                                <input required th:field="*{direccion.direccion_postal}" type="text" class="form-control" placeholder="90700" pattern="[0-9]{5}">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Colonia</label>
-                                <input required th:field="*{direccion.direccion_colonia}" type="text" class="form-control" placeholder="La Loma">
+                                <input required th:field="*{direccion.direccion_colonia}" type="text" class="form-control" placeholder="La Loma" pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Municipio</label>
-                                <input required th:field="*{direccion.direccion_municipio}" type="text" class="form-control" placeholder="Tlaxcala de Xicohténcatl">
+                                <input required th:field="*{direccion.direccion_municipio}" type="text" class="form-control" placeholder="Tlaxcala de Xicohténcatl" pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="form-group">
                                 <label>Estado</label>
-                                <input required th:field="*{direccion.direccion_estado}" type="text" class="form-control" placeholder="Tlaxcala">
+                                <input required th:field="*{direccion.direccion_estado}" type="text" class="form-control" placeholder="Tlaxcala" pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
                               </div>
                             </div>
                           </div>
