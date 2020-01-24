@@ -2,21 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>M&eacute;dico</title>
-  <link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+<title>M&eacute;dico</title>
+<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- IonIcons -->
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- IonIcons -->
+<link rel="stylesheet"
+	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+	rel="stylesheet">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -29,617 +32,580 @@ to get the desired effect
 |---------------------------------------------------------|
 -->
 <style>
-    .estilochingon{
-        position: relative;
-        display: block;
-        min-height: 1.5rem;
-        padding-top: 0.4rem;
-        padding-left: 2.5rem;
-        }
+.estilochingon {
+	position: relative;
+	display: block;
+	min-height: 1.5rem;
+	padding-top: 0.4rem;
+	padding-left: 2.5rem;
+}
 </style>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav
+			class="main-header navbar navbar-expand navbar-white navbar-light">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+					href="#"><i class="fas fa-bars"></i></a></li>
+			</ul>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="btn" data-toggle="modal" data-target="#modal-default">
-          <i class="fas fa-sign-out-alt"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="btn" data-toggle="modal"
+					data-target="#modal-default"> <i class="fas fa-sign-out-alt"></i>
+				</a></li>
+			</ul>
+		</nav>
+		<!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-info elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/BMLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Mi consultorio</span>
-    </a>
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-light-info elevation-4">
+			<!-- Brand Logo -->
+			<a href="index3.html" class="brand-link"> <img
+				src="dist/img/BMLogo.png" alt="AdminLTE Logo"
+				class="brand-image img-circle elevation-3" style="opacity: .8">
+				<span class="brand-text font-weight-light">Mi consultorio</span>
+			</a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+					<div class="image">
+						<img src="dist/img/user2-160x160.jpg"
+							class="img-circle elevation-2" alt="User Image">
+					</div>
+					<div class="info">
+						<a href="#" class="d-block">Alexander Pierce</a>
+					</div>
+				</div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+					<ul class="nav nav-pills nav-sidebar flex-column"
+						data-widget="treeview" role="menu" data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Inicio
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Alta pacientes
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Crear paciente</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-desktop"></i>
-              <p>
-                Historial cl&iacute;nico
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="historial_clinico.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Historiales cl&iacute;nicos</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Notas de evoluci&oacute;n</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-sticky-note"></i>
-              <p>
-                Solicitud de estudio
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Solicitud de estudio</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Archivo de pacientes</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-id-badge"></i>
-              <p>
-                Mis perfiles
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listar perfiles</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Perfiles</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
-              <p>
-                Mi agenda m&eacute;dica
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Crear agenda</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Agendar cita</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ver mi agenda</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modificar calendario</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                    Pacientes
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pacientes referenciados</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mi estado de cuenta</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Historial</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mis datos</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-tachometer-alt"></i>
+								<p>
+									Inicio <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Dashboard</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview menu-open"><a href="#"
+							class="nav-link active"> <i class="nav-icon fas fa-edit"></i>
+								<p>
+									Alta pacientes <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="#" class="nav-link"> <i
+										class="far fa-circle nav-icon"></i>
+										<p>Crear paciente</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-desktop"></i>
+								<p>
+									Historial cl&iacute;nico <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="historial_clinico.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Historiales cl&iacute;nicos</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Notas de evoluci&oacute;n</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-sticky-note"></i>
+								<p>
+									Solicitud de estudio <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Solicitud de estudio</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Archivo de pacientes</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-id-badge"></i>
+								<p>
+									Mis perfiles <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Listar perfiles</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Perfiles</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-calendar-alt"></i>
+								<p>
+									Mi agenda m&eacute;dica <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Crear agenda</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Agendar cita</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Ver mi agenda</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Modificar calendario</p>
+								</a></li>
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fas fa-users"></i>
+								<p>
+									Pacientes <i class="right fas fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Pacientes referenciados</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Mi estado de cuenta</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Historial</p>
+								</a></li>
+							</ul>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="./index.html"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Mis datos</p>
+								</a></li>
+							</ul></li>
+					</ul>
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Alta pacientes</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Antecedentes familiares</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Alta pacientes</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
+								<li class="breadcrumb-item active">Antecedentes familiares</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
 
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <form th:action="@{/guardar_ant_fam}" th:object="${antecedentesfamiliares}" method="post">
-                <div class="card card-info">
-                  <div class="card-header">
-                    <h3 class="card-title">Antecedentes Heredo-Familiares</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0" style="height: 300px;" >
-                    <table class="table table-head-fixed form-group">
-                      <thead>
-                        <tr>
-                          <th style="width: 25%">Enfermedades</th>
-                          <th style="width: 15%"><span class="Unicode">✓</span></th>
-                          <th style="width: 60%">Parentesco</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style="width: 25%">
-                              C&aacute;ncer
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1" onchange="habilitar(this.checked,'txt1');">
-                              <label for="customCheckbox1" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{cancer}" type="text" class="form-control" id="txt1" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                              Tubercolosis
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox2" value="option1" onchange="habilitar(this.checked,'txt2');">
-                              <label for="customCheckbox2" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{tubercolosis}" type="text" class="form-control" id="txt2" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                              Diabetes
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox3" value="option1" onchange="habilitar(this.checked,'txt3');">
-                              <label for="customCheckbox3" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{diabetes}" type="text" class="form-control" id="txt3" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                              Artritis
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox4" value="option1" onchange="habilitar(this.checked,'txt4');">
-                              <label for="customCheckbox4" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{artritis}" type="text" class="form-control" id="txt4" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                              Problemas card&iacute;acos
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox5" value="option1" onchange="habilitar(this.checked,'txt5');">
-                              <label for="customCheckbox5" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{problemas_cardiacos}" type="text" class="form-control" id="txt5" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Tensi&oacute;n arterial alta
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox6" value="option1" onchange="habilitar(this.checked,'txt6');">
-                              <label for="customCheckbox6" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{tension_arterial_alta}" type="text" class="form-control" id="txt6" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Distrofia muscular
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox7" value="option1" onchange="habilitar(this.checked,'txt7');">
-                              <label for="customCheckbox7" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{distrofia_muscular}" type="text" class="form-control" id="txt7" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Parkinson, Alzheimer
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox8" value="option1" onchange="habilitar(this.checked,'txt8');">
-                              <label for="customCheckbox8" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{parkinson_alzheimer}" type="text" class="form-control" id="txt8" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                              Accidente cerebrovascular
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox9" value="option1" onchange="habilitar(this.checked,'txt9');">
-                              <label for="customCheckbox9" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{accidente_cerebrovascular}" type="text" class="form-control" id="txt9" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Depresi&oacute;n, bipolaridad, demencia
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox10" value="option1" onchange="habilitar(this.checked,'txt10');">
-                              <label for="customCheckbox10" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{depresion_bipolaridad_demencia}" type="text" class="form-control" id="txt10" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Neumonía, asma, EPOC, rinitis
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox11" value="option1" onchange="habilitar(this.checked,'txt11');">
-                              <label for="customCheckbox11" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{neumonia_asma_epoc_rinitis}" type="text" class="form-control" id="txt11" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Hepatitis, cirrosis, Sx de reye
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox12" value="option1" onchange="habilitar(this.checked,'txt12');">
-                              <label for="customCheckbox12" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{hepatitis_cirrosis_sx_de_reye}" type="text" class="form-control" id="txt12" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Alergias
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox13" value="option1" onchange="habilitar(this.checked,'txt13');">
-                              <label for="customCheckbox13" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{alergias}" type="text" class="form-control" id="txt13" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Anemia, leucemia, linfoma, mieloma
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox"  id="customCheckbox14" value="option1" onchange="habilitar(this.checked,'txt14');">
-                              <label for="customCheckbox14" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{anemia_leucemia_linfoma_mieloma}" type="text" class="form-control" id="txt14" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 25%">
-                             Problemas de tiroides
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox15" value="option1" onchange="habilitar(this.checked,'txt15');">
-                              <label for="customCheckbox15" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{problemas_de_tiroides}" type="text" class="form-control" id="txt15" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr> 
-                        <tr>
-                          <td style="width: 25%">
-                             Otros(Especificar)
-                          </td>
-                          <td style="width: 15%; padding-top: 0.4rem;">
-                            <div class="estilochingon custom-checkbox">
-                              <input class="custom-control-input" type="checkbox" id="customCheckbox16" value="option1" onchange="habilitar(this.checked,'txt16');">
-                              <label for="customCheckbox16" class="custom-control-label"></label>
-                            </div>
-                          </td>
-                          <td style="width: 60%">
-                            <input th:field="*{otros}" type="text" class="form-control" id="txt16" disabled pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+" placeholder="Escriba parentesco">
-                          </td>
-                        </tr> 
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <a class="btn bg-gradient-danger" data-toggle="modal" data-target="#modal-default2" style="color: #fff;">Terminar</a>
-                    <button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
-                  </div>
-                </div>
-                <input th:field="*{paciente_id}" type="hidden">
-                </form>
-            </div>
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-      <div class="modal fade" id="modal-default">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Nombre del usuario</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>¿Desea cerrar la sesi&oacute;n?</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="button" class="btn btn-info">Si</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-      <!-- /.modal -->
-      <div class="modal fade" id="modal-default2">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Datos del paciente</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>¿Desea terminar?</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="submit" class="btn btn-info">Si</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+			<!-- Main content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<form th:action="@{/guardar_ant_fam}"
+								th:object="${antecedentesfamiliares}" method="post">
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Antecedentes Heredo-Familiares</h3>
+									</div>
+									<!-- /.card-header -->
+									<div class="card-body table-responsive p-0"
+										style="height: 300px;">
+										<table class="table table-head-fixed form-group">
+											<thead>
+												<tr>
+													<th style="width: 25%">Enfermedades</th>
+													<th style="width: 15%"><span class="Unicode">✓</span></th>
+													<th style="width: 60%">Parentesco</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="width: 25%">C&aacute;ncer</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox1" value="option1"
+																onchange="habilitar(this.checked,'txt1');"> <label
+																for="customCheckbox1" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input th:field="*{cancer}"
+														type="text" class="form-control" id="txt1" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Tubercolosis</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox2" value="option1"
+																onchange="habilitar(this.checked,'txt2');"> <label
+																for="customCheckbox2" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{tubercolosis}" type="text"
+														class="form-control" id="txt2" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Diabetes</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox3" value="option1"
+																onchange="habilitar(this.checked,'txt3');"> <label
+																for="customCheckbox3" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input th:field="*{diabetes}"
+														type="text" class="form-control" id="txt3" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Artritis</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox4" value="option1"
+																onchange="habilitar(this.checked,'txt4');"> <label
+																for="customCheckbox4" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input th:field="*{artritis}"
+														type="text" class="form-control" id="txt4" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Problemas card&iacute;acos</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox5" value="option1"
+																onchange="habilitar(this.checked,'txt5');"> <label
+																for="customCheckbox5" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{problemas_cardiacos}" type="text"
+														class="form-control" id="txt5" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Tensi&oacute;n arterial alta</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox6" value="option1"
+																onchange="habilitar(this.checked,'txt6');"> <label
+																for="customCheckbox6" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{tension_arterial_alta}" type="text"
+														class="form-control" id="txt6" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Distrofia muscular</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox7" value="option1"
+																onchange="habilitar(this.checked,'txt7');"> <label
+																for="customCheckbox7" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{distrofia_muscular}" type="text"
+														class="form-control" id="txt7" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Parkinson, Alzheimer</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox8" value="option1"
+																onchange="habilitar(this.checked,'txt8');"> <label
+																for="customCheckbox8" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{parkinson_alzheimer}" type="text"
+														class="form-control" id="txt8" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Accidente cerebrovascular</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox9" value="option1"
+																onchange="habilitar(this.checked,'txt9');"> <label
+																for="customCheckbox9" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{accidente_cerebrovascular}" type="text"
+														class="form-control" id="txt9" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Depresi&oacute;n, bipolaridad,
+														demencia</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox10" value="option1"
+																onchange="habilitar(this.checked,'txt10');"> <label
+																for="customCheckbox10" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{depresion_bipolaridad_demencia}" type="text"
+														class="form-control" id="txt10" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Neumonía, asma, EPOC, rinitis</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox11" value="option1"
+																onchange="habilitar(this.checked,'txt11');"> <label
+																for="customCheckbox11" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{neumonia_asma_epoc_rinitis}" type="text"
+														class="form-control" id="txt11" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Hepatitis, cirrosis, Sx de reye
+													</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox12" value="option1"
+																onchange="habilitar(this.checked,'txt12');"> <label
+																for="customCheckbox12" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{hepatitis_cirrosis_sx_de_reye}" type="text"
+														class="form-control" id="txt12" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Alergias</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox13" value="option1"
+																onchange="habilitar(this.checked,'txt13');"> <label
+																for="customCheckbox13" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input th:field="*{alergias}"
+														type="text" class="form-control" id="txt13" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Anemia, leucemia, linfoma,
+														mieloma</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox14" value="option1"
+																onchange="habilitar(this.checked,'txt14');"> <label
+																for="customCheckbox14" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{anemia_leucemia_linfoma_mieloma}" type="text"
+														class="form-control" id="txt14" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Problemas de tiroides</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox15" value="option1"
+																onchange="habilitar(this.checked,'txt15');"> <label
+																for="customCheckbox15" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input
+														th:field="*{problemas_de_tiroides}" type="text"
+														class="form-control" id="txt15" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+												<tr>
+													<td style="width: 25%">Otros(Especificar)</td>
+													<td style="width: 15%; padding-top: 0.4rem;">
+														<div class="estilochingon custom-checkbox">
+															<input class="custom-control-input" type="checkbox"
+																id="customCheckbox16" value="option1"
+																onchange="habilitar(this.checked,'txt16');"> <label
+																for="customCheckbox16" class="custom-control-label"></label>
+														</div>
+													</td>
+													<td style="width: 60%"><input th:field="*{otros}"
+														type="text" class="form-control" id="txt16" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba parentesco"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<button type="submit" class="btn bg-gradient-danger"
+											name="action1" id="action1" value="1" style="color: #fff;">Terminar</button>
+										<button type="submit" class="btn bg-gradient-info float-right"
+											name="action1" id="action1" value="0">Siguiente</button>
+									</div>
+								</div>
+								<input th:field="*{paciente_id}" type="hidden">
+							</form>
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+				<div class="modal fade" id="modal-default">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Nombre del usuario</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>¿Desea cerrar la sesi&oacute;n?</p>
+							</div>
+							<div class="modal-footer justify-content-between">
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">No</button>
+								<button type="button" class="btn btn-info">Si</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+			</div>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-  </footer>
-</div>
-<!-- ./wrapper -->
+		<!-- Main Footer -->
+		<footer class="main-footer"> </footer>
+	</div>
+	<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
+	<!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE -->
+	<script src="dist/js/adminlte.js"></script>
 
-<!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
-<script>
+	<!-- OPTIONAL SCRIPTS -->
+	<script src="plugins/chart.js/Chart.min.js"></script>
+	<script src="dist/js/demo.js"></script>
+	<script src="dist/js/pages/dashboard3.js"></script>
+	<script>
     function habilitar(value,value2)
 		{
 			if(value==true)

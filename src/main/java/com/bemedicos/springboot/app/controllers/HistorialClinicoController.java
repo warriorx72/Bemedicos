@@ -68,7 +68,6 @@ public class HistorialClinicoController {
 			evolucion.setEvolucion_id_text("evo"+(evolucion.getEvolucion_id()+10000));
 		}
 		evolucionService.save(evolucion);
-		System.out.println("Aqui estoy, bien evolucionado");
 		return "redirect:historial_clinico";
 		
 	   }

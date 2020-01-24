@@ -786,9 +786,10 @@ to get the desired effect
 									</div>
 									<!-- /.card-body -->
 									<div class="card-footer">
-										<a class="btn bg-gradient-danger" data-toggle="modal"
-											data-target="#modal-default2" style="color: #fff;">Terminar</a>
-										<button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
+										<button type="submit" class="btn bg-gradient-danger"
+											name="action1" id="action1" value="1" style="color: #fff;">Terminar</button>
+										<button type="submit" class="btn bg-gradient-info float-right"
+											name="action1" id="action1" value="0">Siguiente</button>
 									</div>
 								</div>
 								<input th:field="*{paciente_id}" type="hidden">
@@ -815,31 +816,6 @@ to get the desired effect
 								<button type="button" class="btn btn-danger"
 									data-dismiss="modal">No</button>
 								<button type="button" class="btn btn-info">Si</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
-				<!-- /.modal -->
-				<div class="modal fade" id="modal-default2">
-					<div class="modal-dialog modal-sm">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title">Datos del paciente</h4>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<p>¿Desea terminar?</p>
-							</div>
-							<div class="modal-footer justify-content-between">
-								<button type="button" class="btn btn-danger"
-									data-dismiss="modal">No</button>
-								<button type="submit" class="btn btn-info">Si</button>
 							</div>
 						</div>
 						<!-- /.modal-content -->
@@ -877,23 +853,21 @@ to get the desired effect
 	<script src="dist/js/demo.js"></script>
 	<script src="dist/js/pages/dashboard3.js"></script>
 	<script>
-    function habilitarcheck(value,value2)
-		{
-			if(value==true)
-			{
+		function habilitarcheck(value, value2) {
+			if (value == true) {
 				// habilitamos
-				document.getElementById(value2).disabled=false;
-				document.getElementById(value2).required=true;
-				
-			}else if(value==false){
+				document.getElementById(value2).disabled = false;
+				document.getElementById(value2).required = true;
+
+			} else if (value == false) {
 				// deshabilitamos
-				 document.getElementById(value2).value = "";
-				 document.getElementById(value2).disabled=true;
-				 document.getElementById(value2).required=false;
-				
+				document.getElementById(value2).value = "";
+				document.getElementById(value2).disabled = true;
+				document.getElementById(value2).required = false;
+
 			}
 		}
-</script>
+	</script>
 	<script>
 		function habilitar(value, value2, value3) {
 			// habilitamos
