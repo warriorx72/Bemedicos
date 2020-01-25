@@ -38,7 +38,6 @@ to get the desired effect
 	padding-top: 0.4rem;
 	padding-left: 2.5rem;
 }
-
 </style>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
@@ -427,20 +426,40 @@ to get the desired effect
 												</thead>
 												<tbody>
 													<tr>
-														<td style="width: 20%">
-															<div class="estilochingon estilofregon">
-																<input class="form-control" type="number" min="1" style="width: 60px; display: inline-table;" th:field="*{personas_viviendo_casa}" value="1"> 
-																<label>¿Cuántas
-																	personas viven en casa?</label>
+														<td style="width: 25%">¿Vive con alguien más?</td>
+														<td style="width: 15%; padding-top: 0.4rem;">
+															<div class="estilochingon custom-checkbox">
+																<label>Sí</label> <input class="custom-control-input"
+																	type="checkbox" id="customCheckbox15" value="option1"
+																	onchange="habilitarcheck(this.checked,'txt15');">
+																<label for="customCheckbox15"
+																	class="custom-control-label"></label>
 															</div>
 														</td>
-														<td style="width: 20%">
-															<div class="estilochingon estilofregon">
-																<input class="form-control" type="number" min="0"  style="width: 60px; display: inline-table;" 
-																	th:field="*{numero_mascotas}" value="0"> <label>¿Cuántas
-																	mascotas tiene?</label>
+														<td>¿Con cuantas personas más?</td>
+														<td style="width: 30%"><input
+															th:field="*{personas_viviendo_casa}" type="number"
+															min="1" class="form-control" id="txt15" disabled
+															pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+															placeholder="Escriba numero de habitantes"></td>
+													</tr>
+													<tr>
+														<td style="width: 25%">¿Tiene mascotas?</td>
+														<td style="width: 15%; padding-top: 0.4rem;">
+															<div class="estilochingon custom-checkbox">
+																<label>Sí</label> <input class="custom-control-input"
+																	type="checkbox" id="customCheckbox16" value="option1"
+																	onchange="habilitarcheck(this.checked,'txt16');">
+																<label for="customCheckbox16"
+																	class="custom-control-label"></label>
 															</div>
 														</td>
+														<td>¿Cu&aacute;ntas?</td>
+														<td style="width: 30%"><input
+															th:field="*{numero_mascotas}" type="number" min="1"
+															class="form-control" id="txt16" disabled
+															pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+															placeholder="Escriba parentesco"></td>
 													</tr>
 												</tbody>
 											</table>
@@ -489,8 +508,8 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																th:field="*{enfermedades_infancia}" id="customCheckbox6"
-																value="Sarampi&oacute;n"> <label for="customCheckbox6"
-																class="custom-control-label">Sarampi&oacute;n</label>
+																value="Sarampi&oacute;n"> <label
+																for="customCheckbox6" class="custom-control-label">Sarampi&oacute;n</label>
 														</div>
 													</td>
 													<td style="width: 33%">
@@ -524,8 +543,8 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																th:field="*{enfermedades_infancia}" id="customCheckbox9"
-																value="Fiebre reum&aacute;tica"> <label for="customCheckbox9"
-																class="custom-control-label">Fiebre
+																value="Fiebre reum&aacute;tica"> <label
+																for="customCheckbox9" class="custom-control-label">Fiebre
 																reum&aacute;tica</label>
 														</div>
 													</td>
@@ -557,8 +576,8 @@ to get the desired effect
 												<tr>
 													<td style="width: 25%">Otra enfermedad:</td>
 													<td style="width: 75%"><input type="text"
-														th:field="*{otro_enfermedad_infancia}" class="form-control"
-														placeholder="Especificar"></td>
+														th:field="*{otro_enfermedad_infancia}"
+														class="form-control" placeholder="Especificar"></td>
 												</tr>
 											</tbody>
 										</table>
@@ -596,8 +615,8 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																th:field="*{enfermedades_adulto}" id="customCheckbox13"
-																value="Hipertension"> <label for="customCheckbox13"
-																class="custom-control-label">Hipertension</label>
+																value="Hipertension"> <label
+																for="customCheckbox13" class="custom-control-label">Hipertension</label>
 														</div>
 													</td>
 												</tr>
@@ -623,8 +642,8 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																th:field="*{enfermedades_adulto}" id="customCheckbox15"
-																value="Osteoporosis"> <label for="customCheckbox15"
-																class="custom-control-label">Osteoporosis</label>
+																value="Osteoporosis"> <label
+																for="customCheckbox15" class="custom-control-label">Osteoporosis</label>
 														</div>
 													</td>
 													<td style="width: 33%">
@@ -737,8 +756,8 @@ to get the desired effect
 													</td>
 													<td style="width: 50%">
 														<div class="custom-control custom-radio">
-															<input class="form-control" id="radionuevo1" type="text" th:field="*{cual}"
-																 disabled placeholder="Especificar">
+															<input class="form-control" id="radionuevo1" type="text"
+																th:field="*{cual}" disabled placeholder="Especificar">
 														</div>
 													</td>
 												</tr>
@@ -767,9 +786,10 @@ to get the desired effect
 									</div>
 									<!-- /.card-body -->
 									<div class="card-footer">
-										<a class="btn bg-gradient-danger" data-toggle="modal"
-											data-target="#modal-default2" style="color: #fff;">Terminar</a>
-										<button type="submit" class="btn bg-gradient-info float-right">Siguiente</button>
+										<button type="submit" class="btn bg-gradient-danger"
+											name="action1" id="action1" value="1" style="color: #fff;">Terminar</button>
+										<button type="submit" class="btn bg-gradient-info float-right"
+											name="action1" id="action1" value="0">Siguiente</button>
 									</div>
 								</div>
 								<input th:field="*{paciente_id}" type="hidden">
@@ -796,31 +816,6 @@ to get the desired effect
 								<button type="button" class="btn btn-danger"
 									data-dismiss="modal">No</button>
 								<button type="button" class="btn btn-info">Si</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
-				<!-- /.modal -->
-				<div class="modal fade" id="modal-default2">
-					<div class="modal-dialog modal-sm">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title">Datos del paciente</h4>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<p>¿Desea terminar?</p>
-							</div>
-							<div class="modal-footer justify-content-between">
-								<button type="button" class="btn btn-danger"
-									data-dismiss="modal">No</button>
-								<button type="submit" class="btn btn-info">Si</button>
 							</div>
 						</div>
 						<!-- /.modal-content -->
@@ -858,19 +853,34 @@ to get the desired effect
 	<script src="dist/js/demo.js"></script>
 	<script src="dist/js/pages/dashboard3.js"></script>
 	<script>
-function habilitar(value, value2,value3) {
-					// habilitamos
-					document.getElementById(value2).disabled = false;
-					document.getElementById(value3).disabled = false;
-				}
+		function habilitarcheck(value, value2) {
+			if (value == true) {
+				// habilitamos
+				document.getElementById(value2).disabled = false;
+				document.getElementById(value2).required = true;
 
-function deshabilitar(value, value2,value3) {
-					document.getElementById(value2).value = "";
-					document.getElementById(value2).disabled = true;
-					document.getElementById(value3).value = "";
-					document.getElementById(value3).disabled = true;
-				}
-    
-</script>
+			} else if (value == false) {
+				// deshabilitamos
+				document.getElementById(value2).value = "";
+				document.getElementById(value2).disabled = true;
+				document.getElementById(value2).required = false;
+
+			}
+		}
+	</script>
+	<script>
+		function habilitar(value, value2, value3) {
+			// habilitamos
+			document.getElementById(value2).disabled = false;
+			document.getElementById(value3).disabled = false;
+		}
+
+		function deshabilitar(value, value2, value3) {
+			document.getElementById(value2).value = "";
+			document.getElementById(value2).disabled = true;
+			document.getElementById(value3).value = "";
+			document.getElementById(value3).disabled = true;
+		}
+	</script>
 </body>
 </html>
