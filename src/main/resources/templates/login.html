@@ -77,11 +77,83 @@
           <!-- /.col -->
         </div>
       </form>
+      <br>
+      
+    <div th:if="${param.status}" class="alert alert-warning" role="alert">
+    	<center>
+    		Para acceder confirma tu correo. <br>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ReenviarCorreo" data-whatever="@mdo">Reenv&iacute;ar Correo</button>
+    	</center>
+	</div>
+	
+    <div th:if="${param.token}" class="alert alert-info" role="alert">
+    	<center>
+    		Gracias por confirmar tu correo. <br>
+    	</center>
+	</div>
+	
+    <div th:if="${param.send}" class="alert alert-success" role="alert">
+    	<center>
+    		Hemos enviado un correo a la dirección proporcionada. <br>
+    		No olvides revisar tu bandeja de spam.
+    	</center>
+	</div>
+	
+    <div th:if="${param.error}" class="alert alert-warning" role="alert">
+    	<center>
+    		El codigo se ha roto. <br>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ReenviarCorreo" data-whatever="@mdo">Reenv&iacute;ar Correo</button>
+    	</center>
+	</div>
+	
+    <div th:if="${param.null}" class="alert alert-warning" role="alert">
+    	<center>
+    		No existe un usuario con ese correo. <br>
+    		Registrate.    	
+    	</center>
+	</div>
+	
+    <div th:if="${param.resend}" class="alert alert-success" role="alert">
+    	<center>
+    		Se ha enviado un nuevo correo. <br>
+    		No olvides revisar tu bandeja de spam.    	
+    	</center>
+	</div>
+
     </div>
     <!-- /.login-card-body -->
+
   </div>
 </div>
 <!-- /.login-box -->
+
+
+<!--  Modal -->
+<div class="modal fade" id="ReenviarCorreo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reenv&iacute;ar Correo de Confimaci&oacute;n</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form  action="/Reenviar_Correo" method="GET" th:modelAttribute="User">
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Correo:</label>
+            <input type="text" class="form-control" name="email">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" >Enviar Correo</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Cierra Modal -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

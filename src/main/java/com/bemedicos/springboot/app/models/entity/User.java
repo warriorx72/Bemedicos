@@ -50,6 +50,9 @@ public class User implements Serializable{
 	@Column(name="medico_id") 
 	private Long medico_id;
 	
+	@Column(name="user_med_status")
+	private int user_med_status;
+	
 	
 	
 	public Long getMedico_id() {
@@ -127,6 +130,16 @@ public class User implements Serializable{
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	
+	public void setUser_med_status(int user_med_status)
+	{
+		this.user_med_status = user_med_status;
+	}
+	
+	public int getUser_med_status()
+	{
+		return user_med_status;
 	}
 
 
