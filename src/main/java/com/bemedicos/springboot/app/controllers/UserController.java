@@ -1,5 +1,6 @@
 package com.bemedicos.springboot.app.controllers;
 import java.util.Enumeration;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,17 +27,29 @@ import org.springframework.web.multipart.support.RequestPartServletServerHttpReq
 
 import com.bemedicos.springboot.app.dto.ChangePasswordForm;
 import com.bemedicos.springboot.app.exception.CustomeFieldValidationException;
+import com.bemedicos.springboot.app.models.entity.CodigoConfirmacion;
 import com.bemedicos.springboot.app.models.entity.Direccion;
 import com.bemedicos.springboot.app.models.entity.Medicos;
 import com.bemedicos.springboot.app.models.entity.Persona;
 import com.bemedicos.springboot.app.models.entity.User;
 import com.bemedicos.springboot.app.repository.UserRepository;
+import com.bemedicos.springboot.app.service.CodigoConfirmacionService;
+import com.bemedicos.springboot.app.repository.CodigoConfirmacionRepository;
 import com.bemedicos.springboot.app.service.DireccionService;
 import com.bemedicos.springboot.app.service.MedicoService;
 import com.bemedicos.springboot.app.service.PersonaService;
 import com.bemedicos.springboot.app.service.UserService;
 
-
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.FileSystemResource;
 
 
 @Controller
@@ -58,7 +71,12 @@ public class UserController {
 	
 	@Autowired
 	PersonaService personaDao;
+	
+	@Autowired
+	CodigoConfirmacionRepository CodigoConfirmacionDao;
 
+    @Autowired
+    public JavaMailSender emailSender;
 	
 	
 	
@@ -125,9 +143,36 @@ public class UserController {
 			catch (Exception e) {
 				model.addAttribute("formErrorMessage",e.getMessage());
 				return "user-form/user-signup";
-			}		
+			}
+			
 		}//End_else
-		return "login";
+		
+		
+		// Se crea el Mail
+        SimpleMailMessage message = new SimpleMailMessage();
+        
+        //Se genera el codigo
+        UUID uuid = UUID.randomUUID();
+        String randomUUIDString = uuid.toString();
+        
+        //Con el codigo generado se almacena el registro en la BD
+		CodigoConfirmacion cc = new CodigoConfirmacion();
+		
+		cc.setCodigo(randomUUIDString);
+		cc.setusermed(user.getId().intValue());
+		
+		CodigoConfirmacionDao.save(cc);
+        
+        
+        message.setTo(user.getEmail());
+        message.setSubject("Bienvenido a Bemédia: " + user.getFirstName() + " " + user.getLastName());
+        message.setText("Hola, Gracias por registrarte, da clic al enlace para confirmar tu email: " 
+        + "http://localhost:8090/confirmar-correo?token=" + randomUUIDString );
+ 
+        // Send Message!
+        this.emailSender.send(message);
+        
+		return "redirect:/login?send=correo_enviado";
 	}//End
 	
 	@GetMapping({"/","/login"})
@@ -135,11 +180,12 @@ public class UserController {
 		return "login";
 	}
 	
+	
 	@GetMapping("/index")
-	public String getUserForm(HttpServletRequest request,@ModelAttribute("userForm")User user, BindingResult result, ModelMap model) {
+	public String getUserForm(HttpServletRequest request,@ModelAttribute("userForm")User user, BindingResult result, ModelMap model) throws Exception {
 	   
 		///System.out.println("usuario doctor"+UsuarioDoctor(req));
-	 System.out.println(UsuarioDoctor(request,userService)); 
+	  UsuarioDoctor(request,userService); 
 	  
 		//UsuarioDoctor(req);
 	  //userService.getIdDoc(UsuarioDoctor(req));
@@ -155,15 +201,27 @@ public class UserController {
 	  //String IdDoctor23=idD2[0].toString();
 	  //System.out.println("EL ID D"+IdDoctor23); 
 	 /// System.out.println(IdDoctor2);
-	 model.addAttribute("id_med_user",UsuarioDoctor(request,userService));
+	 	model.addAttribute("id_med_user",UsuarioDoctor(request,userService));
 		model.addAttribute("userForm", new User());
-		
 		model.addAttribute("userList", userService.getAllUsers());
 		model.addAttribute("listTab","active");
 	
+		
+		//Validacion sobre si esta activo
+		User u = userService.getUserById(Long.valueOf(UsuarioDoctor(request, userService)));
+		
+		if(u.getUser_med_status() == 1)
+		{
+			return "index";
+		}
+		else
+		{
+			User usuario = new User();
+			model.put("usuario", usuario);
+			return "redirect:/login?status=no_confirmado";
+		}
 
-		///httpServletRequest.UserPrincipal.Name
-		return "index";
+		
 	}//End	
 	
 	public String hola() {
