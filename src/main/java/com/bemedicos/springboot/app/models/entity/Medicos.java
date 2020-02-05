@@ -29,10 +29,10 @@ public class Medicos implements Serializable {
 	
 	
 	@Column
-	private String especialidad_doc;
+	private String medico_especialidad;
 	
 	@Column
-	private String cedula_doc;
+	private String medico_cedula;
 	
 	
 	@Column
@@ -44,12 +44,7 @@ public class Medicos implements Serializable {
 	
 	
 	@Column
-	private String foto_doc;
-	
-	
-	
-	@Column
-	private Long paciente_id;
+	private String medico_foto;
 	
 	
 	
@@ -92,20 +87,20 @@ public class Medicos implements Serializable {
 
 	
 
-	public String getEspecialidad_doc() {
-		return especialidad_doc;
+	public String getMedico_especialidad() {
+		return medico_especialidad;
 	}
 
-	public void setEspecialidad_doc(String especialidad_doc) {
-		this.especialidad_doc = especialidad_doc;
+	public void setMedico_especialidad(String medico_especialidad) {
+		this.medico_especialidad = medico_especialidad;
 	}
 
-	public String getCedula_doc() {
-		return cedula_doc;
+	public String getMedico_cedula() {
+		return medico_cedula;
 	}
 
-	public void setCedula_doc(String cedula_doc) {
-		this.cedula_doc = cedula_doc;
+	public void setMedico_cedula(String medico_cedula) {
+		this.medico_cedula = medico_cedula;
 	}
 
 	
@@ -128,12 +123,12 @@ public class Medicos implements Serializable {
 
 	
 
-	public String getFoto_doc() {
-		return foto_doc;
+	public String getMedico_foto() {
+		return medico_foto;
 	}
 
-	public void setFoto_doc(String foto_doc) {
-		this.foto_doc = foto_doc;
+	public void setMedico_foto(String medico_foto) {
+		this.medico_foto = medico_foto;
 	}
 
 
@@ -148,15 +143,6 @@ public class Medicos implements Serializable {
 	public void setMedico_id(Long medico_id) {
 		this.medico_id = medico_id;
 	}
-
-	public Long getPaciente_id() {
-		return paciente_id;
-	}
-
-	public void setPaciente_id(Long paciente_id) {
-		this.paciente_id = paciente_id;
-	}
-
 	
 	
 }

@@ -12,6 +12,7 @@ public class DireccionServiceImpl implements DireccionService {
 
 	@Autowired
 	private DireccionRepository repository;
+	
 	@Override
 	@Transactional(readOnly=true)
 	public List<Direccion> findAll() {
