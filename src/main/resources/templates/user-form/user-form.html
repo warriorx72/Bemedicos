@@ -52,7 +52,7 @@
 		</div>
 		<label class="col-lg-3 col-form-label form-control-label">Cedula</label>
 		<div class="col-lg-3">
-			<input required class="form-control" type="text" th:field="${medico.cedula_doc}">
+			<input required class="form-control" type="text" th:field="${medico.medico_cedula}">
 		<!-- 	<div class="alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>---->
 		</div>
 	</div>
@@ -69,7 +69,7 @@
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Especialidad</label>
 		<div class="col-lg-9">
-		<select required class="form-control" th:field="${medico.especialidad_doc}">
+		<select required class="form-control" th:field="${medico.medico_especialidad}">
    <option value="" selected>Seleccione su especialidad</option>
    <option value="ALGOLOGÍA">ALGOLOGÍA</option>
    <option value="ANATOMÍA PATOLÓGICA">ANATOMÍA PATOLÓGICA</option>
