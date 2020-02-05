@@ -16,46 +16,35 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="app_medicos")
+@Table(name = "app_medicos")
 public class Medicos implements Serializable {
 
-	private static final long serialVersionUID = 1L;	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long medico_id;
-	
-	
-	
+
 	@Column
 	private String medico_especialidad;
-	
+
 	@Column
 	private String medico_cedula;
-	
-	
+
 	@Column
 	private String primer_consulta;
-	
+
 	@Column
 	private String control_consulta;
-	
-	
-	
+
 	@Column
 	private String medico_foto;
-	
-	
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
-    private Persona persona;
-	
-	
-	
-	
-    public Persona getPersona() {
+	@JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
+	private Persona persona;
+
+	public Persona getPersona() {
 		return persona;
 	}
 
@@ -64,10 +53,8 @@ public class Medicos implements Serializable {
 	}
 
 	@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "app_medico_paciente",
-        joinColumns = @JoinColumn(name = "medico_id", referencedColumnName = "medico_id"),
-        inverseJoinColumns = @JoinColumn(name = "paciente_id", referencedColumnName = "paciente_id"))
-    private Set<Paciente> paciente= new HashSet<>();
+	@JoinTable(name = "app_medico_paciente", joinColumns = @JoinColumn(name = "medico_id", referencedColumnName = "medico_id"), inverseJoinColumns = @JoinColumn(name = "paciente_id", referencedColumnName = "paciente_id"))
+	private Set<Paciente> paciente = new HashSet<>();
 
 	public Set<Paciente> getPaciente() {
 		return paciente;
@@ -77,15 +64,13 @@ public class Medicos implements Serializable {
 		this.paciente = paciente;
 	}
 
-	public Long getMedicos_id() {
+	public Long getMedico_id() {
 		return medico_id;
 	}
 
-	public void setMedicos_id(Long medicos_id) {
-		this.medico_id = medicos_id;
+	public void setMedico_id(Long medico_id) {
+		this.medico_id = medico_id;
 	}
-
-	
 
 	public String getMedico_especialidad() {
 		return medico_especialidad;
@@ -94,7 +79,7 @@ public class Medicos implements Serializable {
 	public void setMedico_especialidad(String medico_especialidad) {
 		this.medico_especialidad = medico_especialidad;
 	}
-
+	
 	public String getMedico_cedula() {
 		return medico_cedula;
 	}
@@ -102,8 +87,6 @@ public class Medicos implements Serializable {
 	public void setMedico_cedula(String medico_cedula) {
 		this.medico_cedula = medico_cedula;
 	}
-
-	
 
 	public String getPrimer_consulta() {
 		return primer_consulta;
@@ -121,8 +104,6 @@ public class Medicos implements Serializable {
 		this.control_consulta = control_consulta;
 	}
 
-	
-
 	public String getMedico_foto() {
 		return medico_foto;
 	}
@@ -131,18 +112,7 @@ public class Medicos implements Serializable {
 		this.medico_foto = medico_foto;
 	}
 
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	public Long getMedico_id() {
-		return medico_id;
-	}
-
-	public void setMedico_id(Long medico_id) {
-		this.medico_id = medico_id;
-	}
-	
-	
 }
