@@ -31,6 +31,8 @@ to get the desired effect
 -->
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
+	<div th:include="navegacion.html" th:remove="tag">
+      </div>
 		<!-- Navbar -->
 		<nav
 			class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -49,191 +51,6 @@ to get the desired effect
 			</ul>
 		</nav>
 		<!-- /.navbar -->
-
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-light-info elevation-4">
-    <!-- Brand Logo -->
-    <a th:href="@{/index}" class="brand-link"> <img
-        src="dist/img/BMLogo.png" alt="AdminLTE Logo"
-        class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Mi consultorio</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="dist/img/user2-160x160.jpg"
-                    class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
-            </div>
-        </div>
-        
-        
-
-        
-        <!-- Sidebar Menu -->
-        <div class="mt-2">
-        
-        
-        
-            <ul class="nav nav-pills nav-sidebar flex-column"
-                data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-       with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview"><a href="#"
-                    class="nav-link"> <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Inicio <i class="right fas fa-angle-left"></i>
-                        </p>
-                </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a  th:href="@{/index}"
-                            class="nav-link"> 
-                            <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard</p>
-                        </a></li>
-                    </ul></li>
-                <li class="nav-item has-treeview menu-open"><a href="#"
-                    class="nav-link active"> <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Alta pacientes <i class="right fas fa-angle-left"></i>
-                        </p>
-                </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a th:href="@{/alta_paciente}"
-                            class="nav-link"> 
-                            <i class="far fa-circle nav-icon"></i>
-                                <p>Crear paciente</p>
-                        </a></li>
-                    </ul></li>
-                    
-                
-                <li class="nav-item has-treeview" ><a id="nav3" href="#"
-                    class="nav-link"> <i class="nav-icon fas fa-desktop"></i>
-                        <p>
-                            Historial cl&iacute;nico <i class="right fas fa-angle-left"></i>
-                        </p>
-                </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a th:href="@{/historial_clinico}"
-                            class="nav-link" onclick="changeClassById('nav3', 'nav-link active')"> 
-                            <i class="far fa-circle nav-icon"></i>
-                                <p>Historiales cl&iacute;nicos</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a th:href="@{/notas_evolucion}"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Notas de evoluci&oacute;n</p>
-                        </a></li>
-                    </ul></li>
-                <li class="nav-item has-treeview"><a href="#"
-                    class="nav-link"> <i class="nav-icon fas fa-sticky-note"></i>
-                        <p>
-                            Solicitud de estudio <i class="right fas fa-angle-left"></i>
-                        </p>
-                </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a th:href="@{/solicitud_estudios/49}"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Solicitud de estudio</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Archivo de pacientes</p>
-                        </a></li>
-                    </ul></li>
-                <li class="nav-item has-treeview"><a href="#"
-                    class="nav-link"> <i class="nav-icon fas fa-id-badge"></i>
-                        <p>
-                            Mis perfiles <i class="right fas fa-angle-left"></i>
-                        </p>
-                </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a th:href="@{/perfil}"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Listar perfiles</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Perfiles</p>
-                        </a></li>
-                    </ul></li>
-                <li class="nav-item has-treeview"><a href="#"
-                    class="nav-link"> <i class="nav-icon fas fa-calendar-alt"></i>
-                        <p>
-                            Mi agenda m&eacute;dica <i class="right fas fa-angle-left"></i>
-                        </p>
-                </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Crear agenda</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a th:href="@{/agendar_cita}"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Agendar cita</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Ver mi agenda</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Modificar calendario</p>
-                        </a></li>
-                    </ul></li>
-                <li class="nav-item has-treeview"><a href="#"
-                    class="nav-link"> <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Pacientes <i class="right fas fa-angle-left"></i>
-                        </p>
-                </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Pacientes referenciados</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Mi estado de cuenta</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Historial</p>
-                        </a></li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="./index.html"
-                            class="nav-link"> <i class="far fa-circle nav-icon"></i>
-                                <p>Mis datos</p>
-                        </a></li>
-                    </ul></li>
-            </ul>
-        </div>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-</aside>
-
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -475,5 +292,14 @@ to get the desired effect
 	<script src="plugins/chart.js/Chart.min.js"></script>
 	<script src="dist/js/demo.js"></script>
 	<script src="dist/js/pages/dashboard3.js"></script>
+	
+	<script type="text/javascript">
+        	function changeClassById (){
+        		document.getElementById("nav2").className="nav-link active";
+        		document.getElementById("menu2").className="nav-item has-treeview menu-open";
+        	}
+        	window.onload=changeClassById();
+        </script>
+	
 </body>
 </html>
