@@ -57,7 +57,9 @@ public class HistorialClinicoController {
 		Evolucion evolucion=new Evolucion();
 		model.addAttribute("crearnota", evolucionService.AppCrearNotas(id));
 		evolucion.setPaciente_id(id);
+		model.addAttribute("read", "false");
 		m.put("evolucion", evolucion);
+		model.addAttribute("buttonVolver", "true");
 		return "notas_evolucion";
 	}
 	
@@ -75,11 +77,15 @@ public class HistorialClinicoController {
 	@RequestMapping(value="/notas_evolucion/{id}/{id2}", method=RequestMethod.GET)
     public String editarNotas(@PathVariable(value="id") Long id, @PathVariable(value="id2") Long id2, Model model,  Map<String, Object> m) {
 		if(id>0&id2>0) {
+			
 			Evolucion evolucion=new Evolucion();
 			evolucion=evolucionService.findOne(id2); 
 			evolucion.setEvolucion_id(id2);
+			model.addAttribute("crearnota", evolucionService.AppCrearNotas(id));
 			evolucion.setPaciente_id(id);
 			m.put("evolucion", evolucion);
+			model.addAttribute("read", "true");
+			model.addAttribute("buttonVolver", "false");
 		}
 		else {
 		 return "redirect:historial_clinico";

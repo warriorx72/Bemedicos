@@ -62,7 +62,7 @@ to get the desired effect
 <aside class="main-sidebar sidebar-light-info elevation-4">
     <!-- Brand Logo -->
     <a th:href="@{/index}" class="brand-link"> <img
-        src="dist/img/BMLogo.png" alt="AdminLTE Logo"
+        th:src="@{/dist/img/BMLogo.png}" alt="AdminLTE Logo"
         class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Mi consultorio</span>
     </a>
@@ -269,7 +269,11 @@ to get the desired effect
             
             <div class="col-md-12">
             <!-- Input addon -->
+            	<div class="card-footer" th:hidden="${buttonVolver}">
+                  	<a type="submit" href="javascript:window.history.back()" class="btn bg-gradient-info float-right" th:hidden="${buttonVolver}">volver</a>
+                  </div>
                 <div class="card card-info">
+                	
                   <div class="card-header">
                     <h3 class="card-title">Notas de evoluci&oacute;n</h3>
                   </div>
@@ -333,13 +337,13 @@ to get the desired effect
                               <!-- text input -->
                               <div class="form-group">
                                 <label>Tensi&oacute;n arterial</label>
-                                <input th:field="*{evolucion.evolucion_tension}" type="text" required class="form-control" placeholder="120/80 mm Hg">
+                                <input th:field="*{evolucion.evolucion_tension}" th:readonly="${read}" type="text" required class="form-control" placeholder="120/80 mm Hg">
                               </div>
                             </div>
                             <div class="col-sm-6">
                               <div class="form-group">
                                 <label>Temperatura</label>
-                                <input th:field="*{evolucion.evolucion_temperatura}" type="text" required class="form-control" placeholder="38&deg;">
+                                <input th:field="*{evolucion.evolucion_temperatura}" th:readonly="${read}" type="text" required class="form-control" placeholder="38&deg;">
                               </div>
                             </div>
                           </div>
@@ -348,13 +352,13 @@ to get the desired effect
                               <!-- text input -->
                               <div class="form-group">
                                 <label>Frecuencia card&iacute;aca</label>
-                                <input th:field="*{evolucion.evolucion_cardiaca}" type="text" required class="form-control" placeholder="12">
+                                <input th:field="*{evolucion.evolucion_cardiaca}" th:readonly="${read}" type="text" required class="form-control" placeholder="12">
                               </div>
                             </div>
                             <div class="col-sm-6">
                               <div class="form-group">
                                 <label>Frecuencia respitar&iacute;a</label>
-                                <input th:field="*{evolucion.evolucion_respiratoria}" type="text" required class="form-control" placeholder="60">
+                                <input th:field="*{evolucion.evolucion_respiratoria}" th:readonly="${read}" type="text" required class="form-control" placeholder="60">
                               </div>
                             </div>
                           </div>
@@ -363,13 +367,13 @@ to get the desired effect
                               <!-- text input -->
                               <div class="form-group">
                                 <label>Peso</label>
-                                <input th:field="*{evolucion.evolucion_peso}" type="text" required class="form-control" placeholder="78.5 Kg">
+                                <input th:field="*{evolucion.evolucion_peso}" th:readonly="${read}" type="text" required class="form-control" placeholder="78.5 Kg">
                               </div>
                             </div>
                             <div class="col-sm-6">
                               <div class="form-group">
                                 <label>Talla</label>
-                                <input th:field="*{evolucion.evolucion_talla}"type="text" required class="form-control" placeholder="32">
+                                <input th:field="*{evolucion.evolucion_talla}" th:readonly="${read}" type="text" required class="form-control" placeholder="32">
                               </div>
                             </div>
                           </div>
@@ -378,7 +382,7 @@ to get the desired effect
 			                     <!-- text input -->
 			                     <div class="form-group">
 			                        <label>Evoluci&oacute;n</label>
-			                        <textarea th:field="*{evolucion.evolucion_evolucion}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
+			                        <textarea th:field="*{evolucion.evolucion_evolucion}" th:readonly="${read}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
 			                      </div>
 			                   </div>
                           </div> 
@@ -387,7 +391,7 @@ to get the desired effect
 			                     <!-- text input -->
 			                     <div class="form-group">
 			                        <label>Resultados previos y actuales (Laboratorio, gabinete, otros)</label>
-			                        <textarea th:field="*{evolucion.evolucion_previos}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
+			                        <textarea th:field="*{evolucion.evolucion_previos}" th:readonly="${read}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
 			                      </div>
 			                   </div>
                           </div> 
@@ -396,7 +400,7 @@ to get the desired effect
 			                     <!-- text input -->
 			                     <div class="form-group">
 			                        <label>Diagn&oacute;stico o problemas cl&iacute;nicos</label>
-			                        <textarea th:field="*{evolucion.evolucion_clinicos}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
+			                        <textarea th:field="*{evolucion.evolucion_clinicos}" th:readonly="${read}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
 			                      </div>
 			                   </div>
                           </div> 
@@ -405,7 +409,7 @@ to get the desired effect
 			                     <!-- text input -->
 			                     <div class="form-group">
 			                        <label>Pron&oacute;stico</label>
-			                        <textarea th:field="*{evolucion.evolucion_pronostico}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
+			                        <textarea th:field="*{evolucion.evolucion_pronostico}" th:readonly="${read}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
 			                      </div>
 			                   </div>
                           </div> 
@@ -414,12 +418,12 @@ to get the desired effect
 			                     <!-- text input -->
 			                     <div class="form-group">
 			                        <label>Indicaci&oacute;n terap&eacute;utica</label>
-			                        <textarea th:field="*{evolucion.evolucion_terapeutica}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
+			                        <textarea th:field="*{evolucion.evolucion_terapeutica}" th:readonly="${read}" required class="form-control" rows="2" placeholder="Especifique"></textarea>
 			                      </div>
 			                   </div>
                           </div>
                           <div class="card-footer">
-                            <button type="submit" class="btn bg-gradient-info float-right">Guardar</button>
+                            <button type="submit" class="btn bg-gradient-info float-right" th:hidden="${read}">Guardar</button>
                           </div>
                           <input type="hidden" th:field="*{evolucion.paciente_id}">
                           <input type="hidden" th:field="*{evolucion.evolucion_id}">
