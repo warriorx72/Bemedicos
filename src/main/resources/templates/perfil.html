@@ -53,7 +53,7 @@ to get the desiored effect
 #img_contain{
   border-radius:5px;
   /*  border:1px solid grey;*/
-  margin-top:20px;
+  /* margin-top:20px; */
   width:auto;  
 }
 .input-group{  
@@ -65,6 +65,10 @@ to get the desiored effect
   margin-top:10px;
   padding:10px;
   background-color:#d3d3d3;  
+}
+.img-format {
+	width: 75%;
+	margin: 30px 45px 5px;
 }
 .loading{
    animation:blinkingText ease 2.5s infinite;
@@ -145,14 +149,8 @@ to get the desiored effect
             </div>
         </div>
         
-        
-
-        
         <!-- Sidebar Menu -->
         <div class="mt-2">
-        
-        
-        
             <ul class="nav nav-pills nav-sidebar flex-column"
                 data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
@@ -556,162 +554,177 @@ to get the desiored effect
 
             <!-- Main content -->
             <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Input addon -->
-                            <div class="card card-info">
-                                <div class="card-header">
-                                    <h3 class="card-title">Datos personales del m&eacute;dico</h3>
-                                </div>
-                                <!-- /.card-body -->
-                                <div class="card-body">
-                                    <div role="form">
-                                        <div class="row">
-                                            <div class="col-sm-3"></div>
-                                            <div class="col-sm-6">
-                                                <div id='img_contain'><img id="blah" class="img-circle img-fluid" align='middle' src="https://gastronomia.crandon.edu.uy/wp-content/uploads/wpmembers/user_files/973/article-300x300.jpg" alt="your image" title='' ></div>
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" id="inputGroupFile01" class="imgInp custom-file-input" aria-describedby="inputGroupFileAddon01">
-                                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <!-- text input -->
-                                                <div class="form-group">
-                                                    <label>Nombre</label>
-                                                    <input type="text" class="form-control" placeholder="Gerardo">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Apellido Paterno</label>
-                                                    <input type="text" class="form-control" placeholder="Rosas">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Apellido Materno</label>
-                                                    <input type="text" class="form-control" placeholder="Martinez">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <!-- text input -->
-                                                <div class="form-group">
-                                                    <label>Especialidad</label>
-                                                    <input type="text" class="form-control" placeholder="Medicina preventiva y salud p&uacute;blica">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label>C&eacute;dula profesional</label>
-                                                    <input type="number" class="form-control" placeholder="2161850">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label>Tel&eacute;fono particular</label>
-                                                    <input type="number" class="form-control" placeholder="222 123 2123">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label>Tel&eacute;fono movil</label>
-                                                    <input type="number" class="form-control" placeholder="222 123 2123">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <!-- text input -->
-                                                <div class="form-group">
-                                                    <label>Costo por servicio</label>
-                                                    <input type="number" class="form-control" placeholder="60">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label>Primera consulta</label>
-                                                    <input type="number" class="form-control" placeholder="40">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label>Consulta control</label>
-                                                    <input type="number" class="form-control" placeholder="100">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label> Consulta a domicilio</label>
-                                                    <input type="number" class="form-control" placeholder="200">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <a class="btn bg-gradient-info float-right" style="color: #fff;">Guardar</a>
-                                  </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.container-fluid -->
-                    <div class="modal fade" id="modal-default">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Nombre del usuario</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>¿Desea cerrar la sesi&oacute;n?</p>
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                                    <button type="button" class="btn btn-info">Si</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
-                    <div class="modal fade" id="modal-default2">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Datos del paciente</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>¿Desea terminar?</p>
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                                    <button type="submit" class="btn btn-info">Si</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
-                </div>
-                <!-- /.content -->
-            </div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Input addon -->
+							<div class="card card-info">
+								<div class="card-header">
+									<h3 class="card-title">Datos personales del m&eacute;dico</h3>
+								</div>
+								<!-- /.card-body -->
+								<div class="card-body">
+									<form th:action="@{/perfil}" method="post"
+										enctype="multipart/form-data">
+										<div class="row">
+											<div class="col-sm-4">
+												<div id='img_contain'>
+													<img class="img-circle img-fluid img-format"
+														th:src="@{'/uploads/' + ${medicos.medico_foto}}" />
+												</div>
+												<div class="form group col-sm-12">
+													<input type="file" name="file"
+														class="btn btn-light col-sm-12"> <label for="file"
+														class="form-group"></label>
+												</div>
+											</div>
+											<div class="col-sm-8">
+												<div class="form-group">
+													<label>Nombre</label> <input type="text" readOnly
+														class="form-control" th:field="*{persona.persona_nombre}" />
+												</div>
+												<div class="row">
+
+													<div class="form-group col-sm-6">
+														<label>Apellido Paterno</label> <input type="text"
+															readOnly class="form-control"
+															th:field="*{persona.persona_ap}" />
+													</div>
+													<div class="form-group col-sm-6">
+														<label>Apellido Materno</label> <input type="text"
+															readOnly class="form-control"
+															th:field="*{persona.persona_am}" />
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label>Especialidad</label> <input type="text"
+																th:field="*{medicos.medico_especialidad}"
+																class="form-control" placeholder="Escriba especialidad" />
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label>C&eacute;dula profesional</label> <input
+																th:field="*{medicos.medico_cedula}" type="number"
+																class="form-control" placeholder="Escriba cedula" />
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label>Tel&eacute;fono particular</label> <input
+																th:field="*{persona.persona_tel_casa}" type="number"
+																class="form-control"
+																placeholder="Escriba tel&eacute;fono particular" />
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label>Tel&eacute;fono movil</label> <input type="number"
+																th:field="*{persona.persona_tel_cel}"
+																class="form-control"
+																placeholder="Escriba tel&eacute;fono celular" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<h5 class="text-center">Costos por servicio</h5>
+										</div>
+										<div class="row">
+											<div class="col-sm-4">
+												<div class="form-group">
+													<label>Primera consulta</label> <input type="number"
+														th:field="*{medicos.primer_consulta}" class="form-control"
+														placeholder="Escriba precio de primer consulta" />
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<div class="form-group">
+													<label>Consulta control</label> <input type="number"
+														th:field="*{medicos.control_consulta}"
+														class="form-control"
+														placeholder="Escriba precio de consulta de control" />
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<div class="form-group">
+													<label> Consulta a domicilio</label> <input type="number"
+														th:field="*{medicos.domicilio_consulta}"
+														class="form-control"
+														placeholder="Escriba precio de consulta a domicilio" />
+												</div>
+											</div>
+										</div>
+										<input type="hidden" th:field="*{medicos.medico_id}" />
+										<div class="card-footer">
+											<button type="submit"
+												class="btn bg-gradient-info float-right">Guardar</button>
+										</div>
+									</form>
+								</div>
+
+							</div>
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.container-fluid -->
+					<div class="modal fade" id="modal-default">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">Nombre del usuario</h4>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p>¿Desea cerrar la sesi&oacute;n?</p>
+								</div>
+								<div class="modal-footer justify-content-between">
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">No</button>
+									<button type="button" class="btn btn-info">Si</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+					<div class="modal fade" id="modal-default2">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">Datos del paciente</h4>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p>¿Desea terminar?</p>
+								</div>
+								<div class="modal-footer justify-content-between">
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">No</button>
+									<button type="submit" class="btn btn-info">Si</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+				</div>
+				<!-- /.content -->
+			</div>
             <!-- /.content-wrapper -->
 			</div>
             <!-- Control Sidebar -->

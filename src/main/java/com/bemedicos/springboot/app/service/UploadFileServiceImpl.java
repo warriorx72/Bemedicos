@@ -24,10 +24,10 @@ public class UploadFileServiceImpl implements UploadFileService {
 		Resource recurso = null;
 
 		recurso = new UrlResource(pathFoto.toUri());
-
 		if (!recurso.exists() || !recurso.isReadable()) {
 			throw new RuntimeException("Error: no se puede cargar la imagen " + pathFoto.toString());
 		}
+		
 		return recurso;
 	}
 

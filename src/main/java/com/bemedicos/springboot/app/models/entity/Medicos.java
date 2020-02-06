@@ -36,6 +36,8 @@ public class Medicos implements Serializable {
 
 	@Column
 	private String control_consulta;
+	
+	@Column String domicilio_consulta;
 
 	@Column
 	private String medico_foto;
@@ -102,6 +104,14 @@ public class Medicos implements Serializable {
 
 	public void setControl_consulta(String control_consulta) {
 		this.control_consulta = control_consulta;
+	}
+
+	public String getDomicilio_consulta() {
+		return domicilio_consulta;
+	}
+
+	public void setDomicilio_consulta(String domicilio_consulta) {
+		this.domicilio_consulta = domicilio_consulta;
 	}
 
 	public String getMedico_foto() {

@@ -67,6 +67,7 @@ public class MedicoController {
 
 		model.put("persona", persona);
 		model.put("medicos", medicos);
+		model.put("space", " ");
 
 		return "perfil";
 	}
@@ -74,7 +75,7 @@ public class MedicoController {
 	@RequestMapping(value = "/perfil", method = RequestMethod.POST)
 	public String guardar(Medicos medicos, Model model, Persona persona, @RequestParam("file") MultipartFile foto) {
 
-		if (medicos.getMedicos_id() != null && medicos.getMedicos_id() > 0 && medicos.getMedico_foto() != null
+		if (medicos.getMedico_id() != null && medicos.getMedico_id() > 0 && medicos.getMedico_foto() != null
 				&& medicos.getMedico_foto().length() > 0) {
 
 			uFileService.delete(medicos.getMedico_foto());
@@ -107,6 +108,7 @@ public class MedicoController {
 		model.put("persona", persona);
 		return "/ver";
 	}
+	
 /* El siguiente método es para eliminar, por el momento está sin utilizar
 	@RequestMapping(value = "/eliminar")
 	public String eliminar(Map<String, Object> model, HttpServletRequest request) {
