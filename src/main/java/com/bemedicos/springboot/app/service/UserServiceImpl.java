@@ -49,8 +49,6 @@ private boolean checkUsernameAvailable(User user) throws Exception{
 		return true;
 	}
 	
-	
-	
 	private boolean checkPasswordValid(User user) throws Exception {
 		if (user.getConfirmPassword() == null || user.getConfirmPassword().isEmpty()) {
 			throw new CustomeFieldValidationException("Confirm Password es obligatorio","confirmPassword");
@@ -98,6 +96,10 @@ private boolean checkUsernameAvailable(User user) throws Exception{
 	@Override
 	public User changePassword(ChangePasswordForm form) throws Exception {
 		User user = getUserById(form.getId());
+		
+		if( !isLoggedUserAdmin() && !user.getPassword().equals(form.getCurrentPassword())) {
+			throw new Exception("Currente Password invalido.");
+		}
 
 		if ( !user.getPassword().equals(form.getCurrentPassword())) {
 			throw new Exception ("Current Password invalido.");
@@ -115,6 +117,22 @@ private boolean checkUsernameAvailable(User user) throws Exception{
 		return repository.save(user);
 	}
 
+	
+	private boolean isLoggedUserAdmin() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails loggedUser = null;
+		if(principal instanceof UserDetails) {
+			loggedUser = (UserDetails) principal;
+			
+			loggedUser.getAuthorities().stream()
+			.filter(x -> "ADMIN".equals(x.getAuthority() ))
+			.findFirst().orElse(null);
+		}
+		return loggedUser != null ?true :false;
+	}
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
