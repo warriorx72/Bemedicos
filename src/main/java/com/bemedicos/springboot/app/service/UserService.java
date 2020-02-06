@@ -1,7 +1,4 @@
 package com.bemedicos.springboot.app.service;
-
-
-
 import java.util.List;
 
 import com.bemedicos.springboot.app.dto.ChangePasswordForm;

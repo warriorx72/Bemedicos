@@ -129,11 +129,6 @@ public class UserController {
 			   user.setMedico_id(medico.getMedico_id());
 			  //// System.out.println(medico.getMedico_id());
 			   userService.updateUser(user);
-		        
-				
-				
-				
-				
 				
 			} 
 			catch (CustomeFieldValidationException cfve) {
