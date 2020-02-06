@@ -290,14 +290,18 @@ to get the desired effect
                           <th style="width: 25%">No. expediente</th>
                           <th style="width: 60%">Paciente</th>
                           <th style="width: 15%">Notas</th>
+			  <th style="width: 15%">Solicitar Estudio</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr th:each="evolucion: ${evolucionvista}">
                           <td style="width: 25%" th:text="${evolucion[2]}"></td>
-                          <td style="width: 60%" th:text="${evolucion[1]}"></td>
+                          <td style="width: 45%" th:text="${evolucion[1]}"></td>
                           <td style="width: 15%">
                             <a th:href="${'notas/'+evolucion[0]}" class="btn bg-gradient-success" style="color:#fff;"><i class="fas fa-notes-medical"></i></a>
+                          </td>
+                          <td style="width: 15%">
+                            <a th:href="${'solicitud_estudios/' + evolucion[0]}" class="btn bg-gradient-success" style="color:#fff;"><i class="fas fa-notes-medical"></i></a>
                           </td>
                         </tr>
                       </tbody>
