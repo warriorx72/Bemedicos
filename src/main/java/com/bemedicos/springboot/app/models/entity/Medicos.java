@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "app_medicos")
 public class Medicos implements Serializable {
@@ -26,22 +28,29 @@ public class Medicos implements Serializable {
 	private Long medico_id;
 
 	@Column
+	@JsonIgnore
 	private String medico_especialidad;
 
 	@Column
+	@JsonIgnore
 	private String medico_cedula;
 
 	@Column
+	@JsonIgnore
 	private String primer_consulta;
 
 	@Column
+	@JsonIgnore
 	private String control_consulta;
 	
-	@Column String domicilio_consulta;
+	@Column
+	@JsonIgnore
+	String domicilio_consulta;
 
 	@Column
 	private String medico_foto;
 
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
 	private Persona persona;
@@ -54,6 +63,7 @@ public class Medicos implements Serializable {
 		this.persona = persona;
 	}
 
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "app_medico_paciente", joinColumns = @JoinColumn(name = "medico_id", referencedColumnName = "medico_id"), inverseJoinColumns = @JoinColumn(name = "paciente_id", referencedColumnName = "paciente_id"))
 	private Set<Paciente> paciente = new HashSet<>();

@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="persona") 
 public class Persona implements Serializable{
@@ -28,32 +30,43 @@ public class Persona implements Serializable{
 	@Column
 	private String persona_ap;
 	
+	@JsonIgnore
 	@Column
 	private String persona_am;
 	
+	@JsonIgnore
 	@Column
 	private String persona_fecha_na;
 
+	@JsonIgnore
 	@Column
 	private String persona_rfc;
 	
+	@JsonIgnore
 	@Column
 	private String persona_genero;
+	
+	@JsonIgnore
 	@Column
 	private String persona_email;
 	
+	@JsonIgnore
 	@Column
 	private String persona_tel_casa;
 	
+	@JsonIgnore
 	@Column
 	private String persona_tel_cel;
 	
+	@JsonIgnore
 	@Column
 	private String persona_tel_oficina;
 	
+	@JsonIgnore
 	@Column
 	private String persona_tel_exten;
 	
+	@JsonIgnore
 	 @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL,
 	            fetch = FetchType.LAZY, optional = false)
 	    private Medicos medicos;
@@ -67,10 +80,12 @@ public class Persona implements Serializable{
 		this.medicos = medicos;
 	}
 	
+	@JsonIgnore
     @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private Paciente paciente;
     
+	@JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_direccion")
     private Direccion direccion;

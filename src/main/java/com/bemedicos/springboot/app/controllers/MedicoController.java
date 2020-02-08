@@ -109,6 +109,11 @@ public class MedicoController {
 		return "/ver";
 	}
 	
+	@GetMapping(value = "/horario")
+	public String listar2(Map<String, Object> model) {
+		return "/horario";
+	}
+	
 /* El siguiente método es para eliminar, por el momento está sin utilizar
 	@RequestMapping(value = "/eliminar")
 	public String eliminar(Map<String, Object> model, HttpServletRequest request) {
