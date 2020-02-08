@@ -35,11 +35,9 @@ to get the desired effect
 	display: block;
 	min-height: 1.5rem;
 	padding-top: 0.4rem;
-	padding-left: 2.5rem;
-	margin-left: 50px;
+	padding-left: 8.5rem;
 }
 </style>
-
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
 		<div th:include="navegacion.html" th:remove="tag"></div>
@@ -67,13 +65,13 @@ to get the desired effect
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Alta pacientes</h1>
+							<h1 class="m-0 text-dark">Crear agenda</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-								<li class="breadcrumb-item active">Crear paciente</li>
+								<li class="breadcrumb-item active">Crear Agenda</li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -92,55 +90,188 @@ to get the desired effect
 							<!-- Input addon -->
 							<div class="card card-info">
 								<div class="card-header">
-									<h3 class="card-title">Selecci&oacute;n de horario</h3>
+									<h3 class="card-title">Horario laboral</h3>
 								</div>
 								<!-- /.card-body -->
 								<div class="card-body">
 									<form>
 										<div class="row">
 											<div class="col-sm-12">
-												<h3 class="form-group text-center">Dias laborales</h3>
+												<h3 class="form-group text-center">Selecci&oacute;n de
+													horario de trabajo</h3>
+											</div>
+											<div class="offset-sm-4 col-sm-4">
+											<label>Duración de consultas</label> 
+												<select class="form-group col-sm-12">
+													<option value="15">15 minutos</option>
+													<option value="30">30 minutos</option>
+													<option value="45">45 minutos</option>
+													<option value="60">60 minutos</option>
+												</select>
 											</div>
 										</div>
+										
 										<div class="row">
-											<div class="estilochingon custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="Checkbox01" value="Lunes"><label
-													for="Checkbox01" class="custom-control-label">Lunes</label>
+											<div class="col-sm-4">
+												<h5 class="form-group text-center">D&iacute;as
+													laborales</h5>
 											</div>
-											<div class="estilochingon custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="Checkbox02" value="Martes"><label
-													for="Checkbox02" class="custom-control-label">Martes</label>
+											<div class="col-sm-4">
+												<h5 class="form-group text-center">Horario de apertura</h5>
 											</div>
-
-											<div class="estilochingon custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="Checkbox03" value="Mi&eacute;rcoles"><label
-													for="Checkbox03" class="custom-control-label">Mi&eacute;rcoles</label>
+											<div class="col-sm-4">
+												<h5 class="form-group text-center">Horario de cierre</h5>
 											</div>
-											<div class="estilochingon custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="Checkbox04" value="Jueves"><label
-													for="Checkbox04" class="custom-control-label">Jueves</label>
-											</div>
-											<div class="estilochingon custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="Checkbox05" value="Viernes"><label
-													for="Checkbox05" class="custom-control-label">Viernes</label>
-											</div>
-											<div class="estilochingon custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="Checkbox06" value="S&aacute;bado"><label
-													for="Checkbox06" class="custom-control-label">S&aacute;bado</label>
-											</div>
-											<div class="estilochingon custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="Checkbox07" value="Domingo"><label
-													for="Checkbox07" class="custom-control-label">Domingo</label>
-											</div>
-
 										</div>
+										<div class="row col-sm-12">
+											<div class="col-sm-4">
+												<div class="estilochingon custom-checkbox">
+													<input class="custom-control-input" type="checkbox"
+														onchange="habilitarcheck(this.checked,'time11','time12');"
+														id="Checkbox01" value="Lunes"><label
+														for="Checkbox01" class="custom-control-label">Lunes</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time11" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time12" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+										</div>
+
+										<div class="row col-sm-12">
+											<div class="col-sm-4">
+												<div class="estilochingon custom-checkbox">
+													<input class="custom-control-input" type="checkbox"
+														onchange="habilitarcheck(this.checked,'time21','time22');"
+														id="Checkbox02" value="Martes"><label
+														for="Checkbox02" class="custom-control-label">Martes</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time21" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time22" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+										</div>
+
+										<div class="row col-sm-12">
+											<div class="col-sm-4">
+												<div class="estilochingon custom-checkbox">
+													<input class="custom-control-input" type="checkbox"
+														onchange="habilitarcheck(this.checked,'time31','time32');"
+														id="Checkbox03" value="Mi&eacute;rcoles"><label
+														for="Checkbox03" class="custom-control-label">Mi&eacute;rcoles</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time31" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time32" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+										</div>
+
+										<div class="row col-sm-12">
+											<div class="col-sm-4">
+												<div class="estilochingon custom-checkbox">
+													<input class="custom-control-input" type="checkbox"
+														onchange="habilitarcheck(this.checked,'time41','time42');"
+														id="Checkbox04" value="Jueves"><label
+														for="Checkbox04" class="custom-control-label">Jueves</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time41" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time42" disabled
+													> <label for="inputText02"
+													class=""></label>
+											</div>
+										</div>
+
+										<div class="row col-sm-12">
+											<div class="col-sm-4">
+												<div class="estilochingon custom-checkbox">
+													<input class="custom-control-input" type="checkbox"
+														onchange="habilitarcheck(this.checked,'time51','time52');"
+														id="Checkbox05" value="Viernes"><label
+														for="Checkbox05" class="custom-control-label">Viernes</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time51" disabled
+													placeholder="Especificar"> <label for="inputText02"
+													class=""></label>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time52" disabled
+													placeholder="Especificar"> <label for="inputText02"
+													class=""></label>
+											</div>
+										</div>
+
+										<div class="row col-sm-12">
+											<div class="col-sm-4">
+												<div class="estilochingon custom-checkbox">
+													<input class="custom-control-input" type="checkbox"
+														onchange="habilitarcheck(this.checked,'time61','time62');"
+														id="Checkbox06" value="S&aacute;bado"><label
+														for="Checkbox06" class="custom-control-label">S&aacute;bado</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time61" disabled
+													placeholder="Especificar"> <label for="inputText02"
+													class=""></label>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time62" disabled
+													placeholder="Especificar"> <label for="inputText02"
+													class=""></label>
+											</div>
+										</div>
+
+										<div class="row col-sm-12">
+											<div class="col-sm-4">
+												<div class="estilochingon custom-checkbox">
+													<input class="custom-control-input" type="checkbox"
+														onchange="habilitarcheck(this.checked,'time71','time72');"
+														id="Checkbox07" value="Domingo"><label
+														for="Checkbox07" class="custom-control-label">Domingo</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<input type="time" class="form-control" id="time71" disabled
+													placeholder="Especificar"> <label for="inputText02"
+													class=""></label>
+											</div>
+											<div class="col-sm-4">
+												<div class="form-group">
+													<input type="time" class="form-control" id="time72"
+														disabled placeholder="Especificar"> <label
+														for="inputText02" class=""></label>
+												</div>
+											</div>
+										</div>
+
 										<div class="card-footer">
 											<button type="submit"
 												class="btn bg-gradient-info float-right">Guardar</button>
@@ -215,6 +346,28 @@ to get the desired effect
 		}
 		window.onload = changeClassById();
 	</script>
+	<script>
+		function habilitarcheck(value, value2, value3) {
+			if (value == true) {
+				// habilitamos
+				document.getElementById(value2).disabled = false;
+				document.getElementById(value2).required = true;
 
+				document.getElementById(value3).disabled = false;
+				document.getElementById(value3).required = true;
+
+			} else if (value == false) {
+				// deshabilitamos
+				document.getElementById(value2).value = "";
+				document.getElementById(value2).disabled = true;
+				document.getElementById(value2).required = false;
+
+				document.getElementById(value3).value = "";
+				document.getElementById(value3).disabled = true;
+				document.getElementById(value3).required = false;
+
+			}
+		}
+	</script>
 </body>
 </html>
