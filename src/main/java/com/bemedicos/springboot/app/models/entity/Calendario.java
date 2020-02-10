@@ -31,12 +31,14 @@ public class Calendario {
 	
 	@Column(name="titulo")
 	private String title;
-	@JsonIgnore
+	
 	@Column(name="descripcion")
 	private String description;
+	
 	@JsonIgnore
 	@Column(name="id_medico")
 	private String id_medico;
+	
 	@JsonIgnore
 	@Column(name="id_paciente")
 	private String id_paciente;

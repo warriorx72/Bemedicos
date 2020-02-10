@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Medico</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -13,7 +12,6 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- fullCalendar -->
   <link rel="stylesheet" href="plugins/fullcalendar/main.min.css">
-  <link rel="stylesheet" href="plugins/fullcalendar-interaction/main.min.css">
   <link rel="stylesheet" href="plugins/fullcalendar-daygrid/main.min.css">
   <link rel="stylesheet" href="plugins/fullcalendar-timegrid/main.min.css">
   <link rel="stylesheet" href="plugins/fullcalendar-bootstrap/main.min.css">
@@ -24,9 +22,7 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
-<div th:include="navegacion.html" th:remove="tag">
-      </div>
+<div th:include="navegacion.html" th:remove="tag"></div>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -56,7 +52,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Calendario</h1>
+            <h1>Calendario <button class="btn btn-info" data-toggle="modal" data-target="#agendarCita" id="nueva-cita">A&ntilde;adir cita <i class="fa fa-plus"></i></button></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -118,6 +114,7 @@
 
                     <div class="input-group-append">
                       <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                      
                     </div>
                     <!-- /btn-group -->
                   </div>
@@ -142,6 +139,47 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
+    <div class="modal fade" id="agendarCita">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-info">
+              <h4 class="modal-title">Nueva cita</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form role="form" id="event-form">
+                  <div class="form-group">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" class="form-control" id="newtitle" placeholder="Jose Martinez Lopez">
+                  </div>
+                  <div class="form-group">
+                    <label for="descripcion">Descripci&oacute;n:</label>
+                    <input type="text" class="form-control" id="description" placeholder="Especificar...">
+                  </div>
+                  <div class="form-group">
+                    <label for="feini">Fecha inicial:</label>
+                    <input type="datetime-local" class="form-control" id="startdateandtime">
+                  </div>
+                  <div class="form-group">
+                    <label for="fefi">Fecha final:</label>
+                    <input type="datetime-local" class="form-control" id="enddateandtime">
+                  </div>
+                  <input type="hidden" id="color" value="#00F3FF">
+                  <input type="hidden" name="uid" id="uid"/>
+              </form>
+            </div>
+            <div class="modal-footer" id="button-modal"> 
+            <button type="button" class="btn btn-danger" id="delete-modal">Eliminar</button>
+            <button type="button" class="btn btn-info" id="submit-modal"></button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -176,13 +214,12 @@
 <!-- Page specific script -->
 <script>
   $(function () {
-
 	    var dialog, form,
 	    
      	tips = $( ".validateTips" ); 
     
     function validateDateRange(start, end) {
-    	
+    	console.log("inicio:"+start+"fin:"+end);
     	if(!start.isValid()) {
     		alert("Start date is invalid");
     		return false; 
@@ -204,62 +241,129 @@
     	}
     	return true;
     }
-    /* initialize the external events
-     -----------------------------------------------------------------*/
-    function ini_events(ele) {
-      ele.each(function () {
-
-        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-        // it doesn't need to have a start or end
-        var eventObject = {
-          title: $.trim($(this).text()) // use the element's text as the event title
-        }
-
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject)
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-          zIndex        : 1070,
-          revert        : true, // will cause the event to go back to its
-          revertDuration: 0  //  original position after the drag
-        })
-
-      })
+    
+	 
+   	function removeEvent() {  
+    	var eventData;
+		if (uid.value) {
+			eventData = uid.value;
+			$('#agendarCita').modal('hide');
+    		$.ajax({
+    	        type: "DELETE",
+    	        url: "/event",
+    	        data: "id="+eventData,
+    	        success: (data) => {
+    	        	calendar.refetchEvents()
+    	        	console.log("id="+eventData);
+    	        },
+    	        error: (e) => {
+    	            $("#error").text(e.responseText);
+    	        }
+    	      });
+			
+		}
+	    return true;
     }
-
-    ini_events($('#external-events div.external-event'))
-
-    /* initialize the calendar
-     -----------------------------------------------------------------*/
-    //Date for the calendar events (dummy data)
-    var date = new Date()
-    var d    = date.getDate(),
-      m    = date.getMonth(),
-      y    = date.getFullYear()
-
-    var Calendar = FullCalendar.Calendar;
-    var Draggable = FullCalendarInteraction.Draggable;
-
-    var containerEl = document.getElementById('external-events');
-    var checkbox = document.getElementById('drop-remove');
-    var calendarEl = document.getElementById('calendar');
-
-    // initialize the external events
-    // -----------------------------------------------------------------
-
-    new Draggable(containerEl, {
-      itemSelector: '.external-event',
-      eventData: function(eventEl) {
-        console.log(eventEl);
-        return {
-          title: eventEl.innerText,
-          backgroundColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-          borderColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-          textColor: window.getComputedStyle( eventEl ,null).getPropertyValue('color'),
-        };
-      }
-    });
+	   
+    function editEvent(info) {
+    	var eventStart = moment(info.event.start).format("YYYY-MM-DDTHH:mm:ss"); //moment(event.start);
+ 			var eventEnd = moment(info.event.end).format("YYYY-MM-DDTHH:mm:ss");
+ 			
+       	newtitle.value = info.event.title;
+	    description.value = info.event.extendedProps.description; 
+	    startdateandtime.value = eventStart;			
+	    enddateandtime.value = eventEnd;
+	    uid.value = info.event.id;
+	    $('#agendarCita').modal('toggle');
+	    
+    }	
+    
+    function saveEvent() {
+    	var valid = true;
+    	
+	 	var eventStart = moment(startdateandtime.value);
+ 			var eventEnd = moment(enddateandtime.value);
+   
+ 		valid = valid && newtitle.value;
+	 	valid = valid && validateDateRange(eventStart, eventEnd);
+	   
+		if ( valid ) {
+	    	var eventData;
+			if (newtitle.value) {
+				eventData = {
+					id: uid.value,
+					title: newtitle.value,
+					start: startdateandtime.value,
+					end:  enddateandtime.value, 
+					description: description.value,
+					color: 'red',
+					
+				};
+		//		alert(eventData.title.value + " " + eventData.start.value + " " + eventData.finish.value)
+		//		$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+			}
+			
+			calendar.unselect();
+			$('#agendarCita').modal('hide');
+    		$.ajax({
+    	        type: "PATCH",
+    	        url: "/event",
+			    data: JSON.stringify(eventData),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+    	        success: (data) => {
+    	        	calendar.refetchEvents()
+    	        	console.log(JSON.stringify(eventData));
+    	        },
+    	        error: (e) => {
+    	        	console.log("error");
+    	        }
+    	      });
+    	}
+	 	return valid;
+    }
+    function moveEvent(info) {
+    	var eventStart = moment(info.event.start).format("YYYY-MM-DDTHH:mm:ss"); //moment(event.start);
+		var eventEnd = moment(info.event.end).format("YYYY-MM-DDTHH:mm:ss");
+    	var valid = true;
+   
+    	valid = valid && info.event.title;
+		if ( valid ) {
+			console.log("entra");
+	    	var eventData;
+			if (info.event.title) {
+				eventData = {
+					id: info.event.id,
+					title: info.event.title,
+					start: eventStart,
+					end:  eventEnd, 
+					description: description.value,
+					color: 'blue',
+					
+				};
+		//		alert(eventData.title.value + " " + eventData.start.value + " " + eventData.finish.value)
+		//		$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+			}
+			calendar.unselect();
+			$('#agendarCita').modal('hide');
+			console.log(JSON.stringify(eventData));
+    		$.ajax({
+    	        type: "PATCH",
+    	        url: "/event",
+			    data: JSON.stringify(eventData),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+    	        success: (data) => {
+    	        	calendar.refetchEvents()
+    	        	console.log(JSON.stringify(eventData));
+    	        },
+    	        error: (e) => {
+    	        	console.log("error");
+    	        }
+    	      });
+    	}
+	 	return valid;
+    }
     
     function addEvent(start, end) {
       	var valid = true;
@@ -279,14 +383,14 @@
 					description: description.value,
 					start: startdateandtime.value,
 					end: enddateandtime.value, 
-					color: "#3CDDD6",
+					color: color.value,
 				};
 				//$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
 			}
 			
-			$('#calendar').fullCalendar('unselect');
-			dialog.dialog( "close" );
-     
+			calendar.unselect();
+			$('#agendarCita').modal('hide');
+			console.log(JSON.stringify(eventData));
 			 $.ajax({
 			    type: "POST",
 			    url: "/event",
@@ -294,7 +398,7 @@
 			    contentType: "application/json; charset=utf-8",
 			    dataType: "json",
 			    success: function(data){
-			    	$('#calendar').fullCalendar('refetchEvents');
+			    	calendar.refetchEvents()
 			    	console.log(JSON.stringify(eventData));
 			    },
 			    failure: function(errMsg) {
@@ -304,141 +408,103 @@
       }
       return valid;
     }
+    $("#submit-modal").click((e) => {
+    	e.preventDefault();
+    	if($("#submit-modal"). val()=='1'){
+    		addEvent();
+    	}
+    	else{saveEvent();}	
+    });
+    $("#nueva-cita").click((e) => {
+    	e.preventDefault();
+    	$('#delete-modal').hide();
+    	$('#submit-modal').text("Agendar");
+    	$('#submit-modal').val("1");
+    });
     
-    dialog = $( "#dialog-form" ).dialog({
-        autoOpen: false,
-        height: 450,
-        width: 350,
-        modal: true,
-        buttons: {
-         "Create": addEvent,
-          Cancel: function() {
-            dialog.dialog( "close" );
-          }
-        },
-        close: function() {
-          form[ 0 ].reset();
-        }
-      });
-    
-    form = dialog.find( "form" ).on( "submit", function( event ) {
-        event.preventDefault();  
-        addEvent();
-      });
-   
-      $( "#create-event" ).button().on( "click", function() {
-        dialog.dialog( "open" );
-      });
+    $("#delete-modal").click((e) => {
+    	console.log("hola");
+    	e.preventDefault();
+    	
+    	removeEvent();
+    }); 
 
+    var Calendar = FullCalendar.Calendar;
+    var calendarEl = document.getElementById('calendar');
     var calendar = new Calendar(calendarEl, {
-      locale:"es",
+      locale:"en",
       plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid','list'],
       header    : {
         left  : 'prev,next today',
         center: 'title',
-        right : 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        right : 'dayGridMonth,timeGridWeek,listMonth'
       },
-      //Random default events
-	  events: {
-		        url: '/allevents',
-		        type: 'GET',
-		        error: function() {
-		            alert('there was an error while fetching events!');
-		        },
-		        //color: 'blue',   // a non-ajax option
-		        //textColor: 'white' // a non-ajax option
-		    },
-	  selectable: true,
-   	  selectHelper: true,
-   	  select: function(start, end) {
-		  startdateandtime.value = moment(start).format("YYYY-MM-DDTHH:mm:ss");
-		  enddateandtime.value = moment(end).format("YYYY-MM-DDTHH:mm:ss");
-		  dialog.dialog( "open" );
-	  },
-      eventLimit: true,
-      editable  : true,
-      droppable : true, // this allows things to be dropped onto the calendar !!!
-      drop      : function(info) {
-        // is the "remove after drop" checkbox checked?
-        if (checkbox.checked) {
-          // if so, remove the element from the "Draggable Events" list
-          info.draggedEl.parentNode.removeChild(info.draggedEl);
-        }
-      }
+		defaultDate: moment().format("YYYY-MM-DD"),
+		editable: true,
+		eventDrop: function(info) {
+			console.log(info.event.start,info.event.end);
+			    if (!confirm("¿Seguro que quieres realizar estos cambios?")) {
+			      	info.revert();
+			    }
+			    else{
+			    	moveEvent(info);
+			    }
+			  },
+	   eventResize: function(info) {
+		    if (!confirm("¿Seguro que quieres realizar estos cambios?")) {
+		      	info.revert();
+		    }
+		    else{
+		    	moveEvent(info);
+		    }
+		  },
+		eventLimit: true, // allow "more" link when too many events
+		events: {
+	        url: '/allevents',
+	        type: 'GET',
+	        error: function() {
+	            alert('there was an error while fetching events!');
+	        },
+	        //color: 'blue',   // a non-ajax option
+	        //textColor: 'white' // a non-ajax option
+	    },
+		selectable: true,
+		selectHelper: true,
+		selectMirror: true,
+		select: function(arg) {
+			console.log("inicio:"+ moment(arg.start).format("YYYY-MM-DDTHH:mm:ss")+"final:"+moment(arg.end).format("YYYY-MM-DDTHH:mm:ss"));
+			startdateandtime.value = moment(arg.start).format("YYYY-MM-DDTHH:mm:ss");
+			enddateandtime.value = moment(arg.end).format("YYYY-MM-DDTHH:mm:ss");
+			$('#submit-modal').val("1");
+			$('#submit-modal').text("Agendar");
+			$('#delete-modal').hide();
+			$('#agendarCita').modal('toggle');
+		},
+		eventClick: function(info) {
+			info.jsEvent.preventDefault(); 
+			$('#delete-modal').show();
+			$('#submit-modal').text("Editar");
+			$('#submit-modal').val("0");
+			editEvent(info);
+			
+	       //$('#calendar').fullCalendar('updateEvent', event);
+ 	    }	
+	  	
+// 		loading: function(bool) {
+// 			$('#loading').toggle(bool);
+// 		}
     });
 
     calendar.render();
-    // $('#calendar').fullCalendar()
 
-    /* ADDING EVENTS */
-    var currColor = '#3c8dbc' //Red by default
-    //Color chooser button
-    var colorChooser = $('#color-chooser-btn')
-    $('#color-chooser > li > a').click(function (e) {
-      e.preventDefault()
-      //Save color
-      currColor = $(this).css('color')
-      //Add color effect to button
-      $('#add-new-event').css({
-        'background-color': currColor,
-        'border-color'    : currColor
-      })
-    })
-    $('#add-new-event').click(function (e) {
-      e.preventDefault()
-      //Get value and make sure it is not null
-      var val = $('#new-event').val()
-      if (val.length == 0) {
-        return
-      }
-
-      //Create events
-      var event = $('<div />')
-      event.css({
-        'background-color': currColor,
-        'border-color'    : currColor,
-        'color'           : '#fff'
-      }).addClass('external-event')
-      event.html(val)
-      $('#external-events').prepend(event)
-
-      //Add draggable funtionality
-      ini_events(event)
-
-      //Remove event from text input
-      $('#new-event').val('')
-    })
   })
 </script>
-	<div id="dialog-form" title="Create new Event">
-	  <form id="event-form">
-	    <fieldset>
-	      <label for="title">title</label>
-	      <input type="text" name="newtitle" id="newtitle" value="New Event" />
-	      
-	      <label for="description">description:</label>
-	      <input type="text" name="description" id="description" value=""/>
-	      
-	  	  <br></br>
-	      <label for="startdateandtime">starts:</label>
-	      <input type="datetime-local" id="startdateandtime"/>
-	      <br></br>
-	      <label for="enddateandtime">ends:</label>
-	      <input type="datetime-local" id="enddateandtime"/>
-	      <input type="hidden" name="uid" id="uid"/>
-	      
-	      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px"/> 
-	    </fieldset>
-	  </form>
-	</div>
-	
-	
-	<script type="text/javascript">
-        	function changeClassById (){
-        		document.getElementById("nav6").className="nav-link active";
-        		document.getElementById("menu6").className="nav-item has-treeview menu-open";
-        	}
-        	window.onload=changeClassById();
-        </script>
+<script type="text/javascript">
+		function changeClassById() {
+			document.getElementById("nav6").className = "nav-link active";
+			document.getElementById("menu6").className = "nav-item has-treeview menu-open";
+		}
+		window.onload = changeClassById();
+	</script>
 </body>
 </html>

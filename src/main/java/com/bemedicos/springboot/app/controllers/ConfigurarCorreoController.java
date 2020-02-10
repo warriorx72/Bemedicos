@@ -17,8 +17,8 @@ public class ConfigurarCorreoController
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
  
-        mailSender.setUsername("");
-        mailSender.setPassword("");
+        mailSender.setUsername("infobemedica@gmail.com");
+        mailSender.setPassword("dtibeme01");
  
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
