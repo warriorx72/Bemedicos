@@ -37,8 +37,6 @@
    </style>
    <body class="hold-transition sidebar-mini">
       <div class="wrapper">
-      <div th:include="navegacion.html" th:remove="tag">
-      </div>
       <!-- Navbar -->
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
          <!-- Left navbar links -->
@@ -57,7 +55,227 @@
          </ul>
       </nav>
       <!-- /.navbar -->
-
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-info elevation-4">
+         <!-- Brand Logo -->
+         <a href="index3.html" class="brand-link">
+         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+         <span class="brand-text font-weight-light">Mi consultorio</span>
+         </a>
+         <!-- Sidebar -->
+         <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+               <div class="image">
+                  <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+               </div>
+               <div class="info">
+                  <a href="#" class="d-block">Alexander Pierce</a>
+               </div>
+            </div>
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                  <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                           Inicio
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Dashboard</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                           Alta pacientes
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="alta_paciente.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Crear paciente</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item has-treeview menu-open">
+                     <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-desktop"></i>
+                        <p>
+                           Historial cl&iacute;nico
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="historial_clinico.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Historiales cl&iacute;nicos</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Notas de evoluci&oacute;n</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-sticky-note"></i>
+                        <p>
+                           Solicitud de estudio
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Solicitud de estudio</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Archivo de pacientes</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-id-badge"></i>
+                        <p>
+                           Mis perfiles
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Listar perfiles</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Perfiles</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <p>
+                           Mi agenda m&eacute;dica
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Crear agenda</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Agendar cita</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Ver mi agenda</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Modificar calendario</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                           Pacientes
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Pacientes referenciados</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Mi estado de cuenta</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Historial</p>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="./index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Mis datos</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+         </div>
+         <!-- /.sidebar -->
+      </aside>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
          <!-- Content Header (Page header) -->
@@ -173,7 +391,7 @@
                            </div>
                            <!-- /.card-header -->
                            <div class="card-body table-responsive p-0" style="height: 300px;" >
-                              <table  class="table table-head-fixed form-group">
+                              <table  class="table table-head-fixed form-group" id="tabla">
                                  <thead>
                                     <tr>
                                        <th style="width: 40%">Estudio</th>
@@ -193,6 +411,7 @@
                                         <input type="hidden" th:id="'P_' + ${estudio[8]}" th:value="${estudio[9]}">
                                         <input type="hidden" th:id="'T_' + ${estudio[8]}" th:value="${estudio[3]}">
                                         <input type="hidden" th:id="'I_' + ${estudio[8]}" th:value="${estudio[0]}">
+                                        <input type="hidden" th:id="'INFO_' + ${estudio[8]}" th:value="${estudio[10]}">
                                     </tr>
                                  </tbody>
                               </table>
@@ -237,10 +456,9 @@
                                  </div>
                                  <!-- /.row -->
                                  <!-- this row will not appear when printing -->
-                                 <div class="row no-print">
+                                 <div class="row no-print" id="boton_modal">
                                     <div class="col-12"> 
-                                        <a class="btn bg-gradient-info btn-block float-right"  data-toggle="modal" data-target="#modal-enviar"  style="color: #fff;">Enviar</a>
-				
+                                        <a class="btn bg-gradient-info btn-block float-right"  type="button"  data-toggle="modal" data-target="#modal-enviar"  style="color: #fff;">Enviar</a>
                                     </div>
                                  </div> 
                            </div>
@@ -317,7 +535,7 @@
                   <tbody>
                     <tr>
                       <td style="width: 20%">Correo electr&oacute;nico:</td>
-                      <td><input class="form-control" type="text" id="email_envio" placeholder="Campo opcional"></td>
+                      <td><input type="email" class="form-control" id="email_envio"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -327,7 +545,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="button" onclick="Guardar()" class="btn btn-info">Si</button>
+              <button type="submit" onclick="Guardar()" class="btn btn-info" id="boton_bloqueable" disabled>Si</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -361,7 +579,7 @@
       <script src="/dist/js/demo.js"></script>
       <script src="/dist/js/pages/dashboard3.js"></script>
       <script src="/dist/js/GuardarEstudios.js"></script>
-          <script>
+          <!--<script>
 $(function(){
 	var $tabla = $('#tabla');
 	
@@ -390,6 +608,24 @@ $(function(){
  });
  });
 });
+</script>-->
+<script>
+	var busqueda = document.getElementById('buscar');
+    var table = document.getElementById("tabla").tBodies[0];
+
+    buscaTabla = function(){
+      texto = busqueda.value.toLowerCase();
+      var r=0;
+      while(row = table.rows[r++])
+      {
+        if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
+          row.style.display = null;
+        else
+          row.style.display = 'none';
+      }
+    }
+
+    busqueda.addEventListener('keyup', buscaTabla);
 </script>
 <script>
     var ides = {};
@@ -398,17 +634,8 @@ $(function(){
     
     var lista = [];
     
-    var envio1 = "INICIO";
-    var envio2 = "INICIO";
+    var envio1 = null;
+    var envio2 = null;
 </script>
-
-<script type="text/javascript">
-        	function changeClassById (){
-        		document.getElementById("nav4").className="nav-link active";
-        		document.getElementById("menu4").className="nav-item has-treeview menu-open";
-        	}
-        	window.onload=changeClassById();
-        </script>
-
    </body>
 </html>
