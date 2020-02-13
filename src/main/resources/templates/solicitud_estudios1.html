@@ -59,7 +59,7 @@
       <aside class="main-sidebar sidebar-light-info elevation-4">
          <!-- Brand Logo -->
          <a href="index3.html" class="brand-link">
-         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+         <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
          <span class="brand-text font-weight-light">Mi consultorio</span>
          </a>
@@ -68,7 +68,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                <div class="image">
-                  <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                  <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                </div>
                <div class="info">
                   <a href="#" class="d-block">Alexander Pierce</a>
@@ -406,12 +406,11 @@
 										<td th:text="${estudio[1]}"></td>
                                         <td th:text="${estudio[9]}"></td>
                                         <td th:text="${estudio[3]}"></td>
-                                        <td><button type="button" th:attr="onclick=|GuardarEstudio('${estudio[8]}')|"><i class="fas fa-plus"></i></button></td>
-                                        <input type="hidden" th:id="'N_' + ${estudio[8]}" th:value="${estudio[1]}">
-                                        <input type="hidden" th:id="'P_' + ${estudio[8]}" th:value="${estudio[9]}">
-                                        <input type="hidden" th:id="'T_' + ${estudio[8]}" th:value="${estudio[3]}">
-                                        <input type="hidden" th:id="'I_' + ${estudio[8]}" th:value="${estudio[0]}">
-                                        <input type="hidden" th:id="'INFO_' + ${estudio[8]}" th:value="${estudio[10]}">
+                                        <td><button type="button" th:attr="onclick=|GuardarEstudio('${estudio[8]}', '${estudio[3]}')|"><i class="fas fa-plus"></i></button></td>
+                                        <input type="hidden" th:id="'N_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[1]}">
+                                        <input type="hidden" th:id="'P_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[9]}">
+                                        <input type="hidden" th:id="'I_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[0]}">
+                                        <input type="hidden" th:id="'INFO_' + ${estudio[0]} + '_' + ${estudio[3]}" th:value="${estudio[10]}">
                                     </tr>
                                  </tbody>
                               </table>
