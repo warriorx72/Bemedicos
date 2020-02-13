@@ -8,27 +8,27 @@ import org.apache.tomcat.jni.FileInfo;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfImage;
-import com.itextpdf.text.pdf.PdfIndirectObject;
-import com.itextpdf.text.pdf.PdfName;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.LineSeparator;
+import java.awt.Color;
+import com.lowagie.text.Chunk;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.Image;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfImage;
+import com.lowagie.text.pdf.PdfIndirectObject;
+import com.lowagie.text.pdf.PdfName;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
+import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.draw.LineSeparator;
 
 public class TableTemplate 
 { 
@@ -45,8 +45,8 @@ public class TableTemplate
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(dest));
         document.open();
-        Font titleFont = FontFactory.getFont("Times Roman", 15, BaseColor.BLACK);
-        Font subtitleFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, BaseColor.BLACK);
+        Font titleFont = FontFactory.getFont("Times Roman", 15, Color.BLACK);
+        Font subtitleFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Color.BLACK);
         Paragraph docTitle = new Paragraph("Solicitud de Estudios", titleFont);
         docTitle.setAlignment(Paragraph.ALIGN_LEFT);
         Paragraph docSubtitle = new Paragraph("#" + (100000000 + id_sol), subtitleFont);
@@ -60,10 +60,10 @@ public class TableTemplate
         PdfPTable table = new PdfPTable(10); // the arg is the number of columns
         table.setWidthPercentage(90);
         //Fuentes
-        Font HeadFont = FontFactory.getFont("Times Roman", 14, BaseColor.BLACK);
-        Font nomFont = FontFactory.getFont("Times Roman", 9, BaseColor.BLACK);
-        Font preFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, BaseColor.BLACK);
-        Font infoFont = FontFactory.getFont("Times Roman", 8, BaseColor.BLACK);
+        Font HeadFont = FontFactory.getFont("Times Roman", 14, Color.BLACK);
+        Font nomFont = FontFactory.getFont("Times Roman", 9, Color.BLACK);
+        Font preFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Color.BLACK);
+        Font infoFont = FontFactory.getFont("Times Roman", 8, Color.BLACK);
         float altura = 30;
 	    
         //Logo
@@ -73,7 +73,7 @@ public class TableTemplate
         document.add(img);
         
         //Cabezeros
-        BaseColor color = new BaseColor(152, 213, 213, 70);
+        Color color = new Color(152, 213, 213, 70);
 	    Paragraph nomHead = new Paragraph("Nombre", HeadFont);
         PdfPCell nomHeadCell = new PdfPCell(nomHead);
         nomHeadCell.setColspan(3);
@@ -109,15 +109,15 @@ public class TableTemplate
 
 		for (int i = 0; i < jsonArray.length(); i++)
 		{
-			BaseColor col;
+			Color col;
 			
 			if(i % 2 == 0)
 			{
-				col = new BaseColor(174, 249, 249);
+				col = new Color(174, 249, 249);
 			}
 			else
 			{
-				col = new BaseColor(255, 255, 255);
+				col = new Color(255, 255, 255);
 			}
 			JSONObject object = jsonArray.getJSONObject(i);
 		    //Nombre

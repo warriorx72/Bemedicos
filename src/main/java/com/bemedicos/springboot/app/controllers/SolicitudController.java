@@ -36,27 +36,26 @@ import com.bemedicos.springboot.app.service.SolicitudService;
 import com.bemedicos.springboot.app.service.UserService;
 import com.bemedicos.springboot.app.models.entity.Solicitud;
 import com.bemedicos.springboot.app.models.entity.Solicitud_Detalle;
-import com.itextpdf.text.Anchor;
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chapter;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.Section;
-import com.itextpdf.text.Font.FontFamily;
-import com.itextpdf.text.List;
-import com.itextpdf.text.ListItem;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+import com.lowagie.text.Anchor;
+import com.lowagie.text.BadElementException;
+import java.awt.Color;
+import com.lowagie.text.Chapter;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
+import com.lowagie.text.Section;
+import com.lowagie.text.List;
+import com.lowagie.text.ListItem;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.parser.PdfTextExtractor;
 @Controller
 public class SolicitudController 
 {
@@ -72,13 +71,13 @@ public class SolicitudController
 	@Autowired
     public JavaMailSender emailSender;
 	
-    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
+    private static Font catFont = new Font(Font.TIMES_ROMAN, 18, Font.BOLD);
     
-    private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.RED);
+    private static Font redFont = new Font(Font.TIMES_ROMAN, 12, Font.NORMAL, Color.RED);
     
-    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD);
+    private static Font subFont = new Font(Font.TIMES_ROMAN, 16, Font.BOLD);
     
-    private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
+    private static Font smallBold = new Font(Font.TIMES_ROMAN, 12, Font.BOLD);
 	
 	
 	@RequestMapping(value = "/guardar_solcitud", method = RequestMethod.GET)
