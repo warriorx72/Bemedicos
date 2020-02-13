@@ -1,18 +1,48 @@
- $(document).ready(function(){
-	 
+ $(document).ready(function()
+{
+	 $('#email_envio').on('input', function (evt) 
+		{
+		  
+		 console.log( $('#email_envio').val());
+		 if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#email_envio').val()))
+		 {
+			 $( '#boton_bloqueable' ).prop( "disabled", false );
+		 }
+		 else
+		 {
+			 $( '#boton_bloqueable' ).prop( "disabled", true );
+		 }
+
+		})
+		
+		$('#boton_modal').hide();
 
 });
 
- 
-function GuardarEstudio(id)
+function BotonModal()
+{
+	console.log(lista.length);
+	if(lista.length == 0)
+	{
+		$('#boton_modal').hide();
+	}
+	else
+	{
+		$('#boton_modal').show();
+	}
+}
+
+function GuardarEstudio(id, tip)
 {
 	//Se recogen variables en base a su id e inicial
-	var nom = $('#N_' + id).val();
-	var pre = $('#P_' + id).val();
-	var tip = $('#T_' + id).val();
-	var txt = $('#I_' + id).val();
+	//var tip = $('#T_' + id).val();
+	console.log(id, tip);
+	var nom = $('#N_' + id + '_' + tip).val();
+	var pre = $('#P_' + id + '_' + tip).val();
+	var txt = $('#I_' + id + '_' + tip).val();
+	var info = $('#INFO_' + txt + '_' + tip).val();
 	
-	CrearObjetoEstudio("ADD", nom, pre, id, tip, 1, txt);
+	CrearObjetoEstudio("ADD", nom, pre, id, tip, 1, txt, info);
 	
 	//Se oculta el td que ya se selecciono
 	$('#' + txt + '_' + id).hide();
@@ -21,37 +51,40 @@ function GuardarEstudio(id)
 	//Este es el que contiene la cantidad
 	//$('#TablaEstudios').append('<tr id="' + txt + '_NUEVO_' + id +  '"><td class="col-5">' + nom + '</td><td  class="col-2"> $' + pre + '</td><td class="col-2"><button type="button" onClick="QuitarEstudio(\'' + id + '\')"><i class="fas fa-trash-alt"></i></button></td><td><input type="number" value="1" min="1" id="CANTIDAD_' + txt + '" onchange="CambiarCantidad(\'' + id + '\')"></td></tr>');
 	//Este es el que no contiene cantidad
-	$('#TablaEstudios').append('<tr id="' + txt + '_NUEVO_' + id +  '"><td class="col-5">' + nom + '</td><td  class="col-2"> $' + pre + '</td><td class="col-2"><button type="button" onClick="QuitarEstudio(\'' + id + '\')"><i class="fas fa-trash-alt"></i></button></td></tr>');
+	$('#TablaEstudios').append("<tr id='" + txt + "_NUEVO_" + id +  "'><td class='col-5'>" + nom + "</td><td  class='col-2'> $" + pre + "</td><td class='col-2'><button type='button' onclick=\"QuitarEstudio(\'" + tip + "\'" + ", " + id + ");\"><i class='fas fa-trash-alt'></i></button></td></tr>");
+	BotonModal();
 }
 
-function QuitarEstudio(id)
+function QuitarEstudio(tip, id)
 {
-	var pre = $('#P_' + id).val();
-	var nom = $('#N_' + id).val();
-	var tip = $('#T_' + id).val();
-	var txt = $('#I_' + id).val();
+	var nom = $('#N_' + id + '_' + tip).val();
+	var pre = $('#P_' + id + '_' + tip).val();
+	var txt = $('#I_' + id + '_' + tip).val();
+	var info = $('#INFO_' + txt + '_' + tip).val();
 	
-	CrearObjetoEstudio("REST", nom, pre, id, tip, 1, txt);
+	CrearObjetoEstudio("REST", nom, pre, id, tip, 1, txt, info);
 	
 	$('#' + txt + '_' + id).show();
 	$('#' + txt + '_NUEVO_' + id).remove();
+	BotonModal();
 }
 
-function CambiarCantidad(id)
+function CambiarCantidad(id, tip)
 {
-	var pre = $('#P_' + id).val();
-	var nom = $('#N_' + id).val();
-	var tip = $('#T_' + id).val();
-	var txt = $('#I_' + id).val();
+	var nom = $('#N_' + id + '_' + tip).val();
+	var pre = $('#P_' + id + '_' + tip).val();
+	var txt = $('#I_' + id + '_' + tip).val();
+	var info = $('#INFO_' + txt + '_' + tip).val();
 	var cantidad = $('#CANTIDAD_' + txt).val();
 	
-	CrearObjetoEstudio("ALTER", nom, pre, id, tip, cantidad, txt);
+	CrearObjetoEstudio("ALTER", nom, pre, id, tip, cantidad, txt, info);
+	BotonModal();
 }
 
 
-function CrearObjetoEstudio(accion, nom, pre, id, tip, can, txt)
+function CrearObjetoEstudio(accion, nom, pre, id, tip, can, txt, info)
 {	
-	console.log(accion, nom, pre, id, tip, can, txt);
+	console.log(accion, nom, pre, id, tip, can, txt, info);
 	
 	switch(accion) 
 	{
@@ -64,7 +97,7 @@ function CrearObjetoEstudio(accion, nom, pre, id, tip, can, txt)
 		  cantidades[id + "_" + tip] = can;
 		  
 		  //Estos array son para cantidades
-		  var temp = {id: id + '_' + txt, precio: pre, can: can, id_real: id, tipo: tip};
+		  var temp = {id: id + '_' + txt, precio: pre, can: can, id_real: id, tipo: tip, nom: nom, info: info};
 		  lista.push(temp);
 		  		  
 		  break;
@@ -88,7 +121,7 @@ function CrearObjetoEstudio(accion, nom, pre, id, tip, can, txt)
 		  lista.splice(removeIndex, 1);
 		 
 		  //Se almacena la nueva con la nueva cantidad
-		  var temp = {id: id + '_' + txt, precio: pre, can: can, id_real: id, tipo: tip};
+		  var temp = {id: id + '_' + txt, precio: pre, can: can, id_real: id, tipo: tip, nom: nom, info: info};
 		  lista.push(temp);
 		  
 		  break;	
@@ -112,13 +145,15 @@ function CrearObjetoEstudio(accion, nom, pre, id, tip, can, txt)
 
 
 function Guardar() 
-{
+{	
 	//Se recoge paciente
 	var paciente_id = $('#paciente_id').val();
 	
 	//Se hace el string
 	envio = null;
 	envio = JSON.stringify(lista);
+	
+	console.log(envio);
 	
 	//Se calculan los precios
 	var monto = 0;
@@ -128,26 +163,23 @@ function Guardar()
 	}
 	
 	var correo = $('#email_envio').val();
-	
-	if(correo != null)
-	{
-		
-	}
-	else
-		{
-		
-		}
-	
+	console.log(correo);
+
+
 	//Solicitud Ajax
     $.ajax({
         type: "POST",
         url: "/prueba_solicitud",
-        data: { data: envio, id: paciente_id, monto: monto },
+        data: { data: envio, id: paciente_id, monto: monto, correo: correo},
         success: (data) => {
-            $("#error").text(data);
+            //$("#error").text(data);
+        	location.reload();
+        	
         },
         error: (e) => {
-            $("#error").text(e.responseText);
+        	location.reload();
         }
       });
+    alert("Se ha enviado el correo");
+    location.reload();
 }
