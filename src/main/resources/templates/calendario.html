@@ -432,15 +432,22 @@
     var Calendar = FullCalendar.Calendar;
     var calendarEl = document.getElementById('calendar');
     var calendar = new Calendar(calendarEl, {
-      locale:"en",
+      locale:"es-us",
       plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid','list'],
       header    : {
         left  : 'prev,next today',
         center: 'title',
         right : 'dayGridMonth,timeGridWeek,listMonth'
       },
+      	allDaySlot:false,
 		defaultDate: moment().format("YYYY-MM-DD"),
 		editable: true,
+		slotLabelInterval : '00:45:00',
+		slotDuration : '00:45:00',
+		viewSubSlotLabel : true,
+		minTime:'08:00:00',
+		maxTime:'20:00:00',
+		contentHeight: 'auto',
 		eventDrop: function(info) {
 			console.log(info.event.start,info.event.end);
 			    if (!confirm("¿Seguro que quieres realizar estos cambios?")) {
@@ -471,6 +478,7 @@
 		selectable: true,
 		selectHelper: true,
 		selectMirror: true,
+		timeFormat: 'h(:mm)',
 		select: function(arg) {
 			console.log("inicio:"+ moment(arg.start).format("YYYY-MM-DDTHH:mm:ss")+"final:"+moment(arg.end).format("YYYY-MM-DDTHH:mm:ss"));
 			startdateandtime.value = moment(arg.start).format("YYYY-MM-DDTHH:mm:ss");
