@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bemedicos.springboot.app.service.EvolucionService;
 import com.bemedicos.springboot.app.service.SolicitudDetalleService;
 import com.bemedicos.springboot.app.service.SolicitudService;
 import com.bemedicos.springboot.app.service.UserService;
@@ -69,6 +70,9 @@ public class SolicitudController
 	UserService userService;
 	
 	@Autowired
+	private EvolucionService evolucionService;
+	
+	@Autowired
     public JavaMailSender emailSender;
 	
     private static Font catFont = new Font(Font.TIMES_ROMAN, 18, Font.BOLD);
@@ -94,7 +98,7 @@ public class SolicitudController
 	}
 	
 	@PostMapping(value = "/prueba_solicitud")
-	public String Prueba_Solicitud(@RequestParam(value = "data") String jsonStr, @RequestParam(value = "correo") String correo, @RequestParam(value = "id") int id, @RequestParam(value = "monto") int monto, HttpServletRequest request) throws MessagingException 
+	public String Prueba_Solicitud(@RequestParam(value = "data") String jsonStr, @RequestParam(value = "correo") String correo, @RequestParam(value = "id") int id, @RequestParam(value = "monto") int monto, @RequestParam(value = "nompac") String nompac, @RequestParam(value = "edad") int edad, @RequestParam(value = "genero") String genero,  @RequestParam(value = "nommed") String nommed, @RequestParam(value = "cedula") String cedula, @RequestParam(value = "tel_cel") String tel_cel, HttpServletRequest request) throws MessagingException 
 	{
 		//Se transforma a JSON el objeto recibido
 		JSONArray jsonArray = new JSONArray(jsonStr); 
@@ -125,7 +129,7 @@ public class SolicitudController
 		//Se bautiza el archivo jsjs
 	    String DEST = "c:/temp/SOL_" + (100000000 + sol.getSolicitud_id()) + ".pdf";
 		
-		PDFMain(jsonArray, monto, DEST, sol.getSolicitud_id());
+		PDFMain(jsonArray, monto, DEST, sol.getSolicitud_id(), nommed, nompac, cedula, tel_cel, genero, edad);
         
         //
 		//Se envia el correo
@@ -151,12 +155,13 @@ public class SolicitudController
 	}
 	
 	
-	public String PDFMain(JSONArray jsonArray, int monto, String DEST, Long id_sol) 
+	public String PDFMain(JSONArray jsonArray, int monto, String DEST, Long id_sol, String nommed, String nompac, String cedula, String tel_cel, String genero, int edad) 
 	{	
 		try 
 		{
 			TableTemplate tt = new TableTemplate();
-			tt.createPdf(DEST, jsonArray, monto, id_sol);
+			String pronos = evolucionService.GetLast();
+			tt.createPdf(DEST, jsonArray, monto, id_sol, nompac, nommed, cedula, tel_cel, genero, edad, pronos);
         } 
 		catch (Exception e) 
 		{
