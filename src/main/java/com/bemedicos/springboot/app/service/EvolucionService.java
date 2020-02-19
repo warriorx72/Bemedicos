@@ -20,4 +20,6 @@ public interface EvolucionService {
 	public List<Object> AppListarNotas(Long id);
 	
 	public List<Object> AppCrearNotas(Long id);
+	
+	public String GetLast();
 }
