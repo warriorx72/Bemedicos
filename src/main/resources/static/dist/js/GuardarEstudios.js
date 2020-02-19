@@ -1,9 +1,7 @@
  $(document).ready(function()
-{
+{	 
 	 $('#email_envio').on('input', function (evt) 
 		{
-		  
-		 console.log( $('#email_envio').val());
 		 if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#email_envio').val()))
 		 {
 			 $( '#boton_bloqueable' ).prop( "disabled", false );
@@ -16,9 +14,10 @@
 		})
 		
 		$('#boton_modal').hide();
-
-});
-
+	 
+}); 
+ 
+ 
 function BotonModal()
 {
 	console.log(lista.length);
@@ -36,7 +35,6 @@ function GuardarEstudio(id, tip)
 {
 	//Se recogen variables en base a su id e inicial
 	//var tip = $('#T_' + id).val();
-	console.log(id, tip);
 	var nom = $('#N_' + id + '_' + tip).val();
 	var pre = $('#P_' + id + '_' + tip).val();
 	var txt = $('#I_' + id + '_' + tip).val();
@@ -51,7 +49,7 @@ function GuardarEstudio(id, tip)
 	//Este es el que contiene la cantidad
 	//$('#TablaEstudios').append('<tr id="' + txt + '_NUEVO_' + id +  '"><td class="col-5">' + nom + '</td><td  class="col-2"> $' + pre + '</td><td class="col-2"><button type="button" onClick="QuitarEstudio(\'' + id + '\')"><i class="fas fa-trash-alt"></i></button></td><td><input type="number" value="1" min="1" id="CANTIDAD_' + txt + '" onchange="CambiarCantidad(\'' + id + '\')"></td></tr>');
 	//Este es el que no contiene cantidad
-	$('#TablaEstudios').append("<tr id='" + txt + "_NUEVO_" + id +  "'><td class='col-5'>" + nom + "</td><td  class='col-2'> $" + pre + "</td><td class='col-2'><button type='button' onclick=\"QuitarEstudio(\'" + tip + "\'" + ", " + id + ");\"><i class='fas fa-trash-alt'></i></button></td></tr>");
+	$('#TablaEstudios').append("<tr id='" + txt + "_NUEVO_" + id +  "'><td class='col-5'>" + nom + "</td><td  class='col-2'> $" + pre + "</td><td class='col-2'><button type='button' style='border:none;' onclick=\"QuitarEstudio(\'" + tip + "\'" + ", " + id + ");\"><i class='fas fa-trash-alt'></i></button></td></tr>");
 	BotonModal();
 }
 
@@ -61,6 +59,9 @@ function QuitarEstudio(tip, id)
 	var pre = $('#P_' + id + '_' + tip).val();
 	var txt = $('#I_' + id + '_' + tip).val();
 	var info = $('#INFO_' + txt + '_' + tip).val();
+	
+	$('#selectCategory').val(tip);
+	console.log("ESTEEEEEEEE: " + tip);
 	
 	CrearObjetoEstudio("REST", nom, pre, id, tip, 1, txt, info);
 	
@@ -153,7 +154,13 @@ function Guardar()
 	envio = null;
 	envio = JSON.stringify(lista);
 	
-	console.log(envio);
+	var nomPac = $('#NombreCompletoPaciente').val();
+	var fechaNac = $('#FechaNacimientoPaciente').val();
+	var edad = (CalcularFecha(fechaNac));
+	var genero = $('#GeneroPaciente').val();
+	var nomMed = $('#NombreCompletoMedico').val();
+	var cedula = $('#CedulaMedico').val();
+	var tel_cel = $('#TelefonoMovilMedico').val();
 	
 	//Se calculan los precios
 	var monto = 0;
@@ -170,7 +177,7 @@ function Guardar()
     $.ajax({
         type: "POST",
         url: "/prueba_solicitud",
-        data: { data: envio, id: paciente_id, monto: monto, correo: correo},
+        data: { data: envio, id: paciente_id, monto: monto, correo: correo,nompac: nomPac, edad: edad, genero: genero, nommed: nomMed, cedula: cedula, tel_cel: tel_cel},
         success: (data) => {
             //$("#error").text(data);
         	location.reload();
@@ -182,4 +189,59 @@ function Guardar()
       });
     alert("Se ha enviado el correo");
     location.reload();
+}
+
+function CalcularFecha(fechaNac)
+{
+	var arrayFecha = fechaNac.split("-");
+	var hoy = new Date();
+	var edad;
+	var ano = arrayFecha[0];
+	var mes = arrayFecha[1];
+	var dia = arrayFecha[2];
+	
+	console.log(hoy);
+	
+	 // cogemos los valores actuales
+    var fecha_hoy = new Date();
+    var ahora_ano = fecha_hoy.getYear();
+    var ahora_mes = fecha_hoy.getMonth() + 1;
+    var ahora_dia = fecha_hoy.getDate();
+	
+    var edad = (ahora_ano + 1900) - ano;
+    if (ahora_mes < mes) {
+        edad--;
+    }
+    if ((mes == ahora_mes) && (ahora_dia < dia)) {
+        edad--;
+    }
+    if (edad > 1900) {
+        edad -= 1900;
+    }
+
+    // calculamos los meses
+    var meses = 0;
+
+    if (ahora_mes > mes && dia > ahora_dia)
+        meses = ahora_mes - mes - 1;
+    else if (ahora_mes > mes)
+        meses = ahora_mes - mes
+    if (ahora_mes < mes && dia < ahora_dia)
+        meses = 12 - (mes - ahora_mes);
+    else if (ahora_mes < mes)
+        meses = 12 - (mes - ahora_mes + 1);
+    if (ahora_mes == mes && dia > ahora_dia)
+        meses = 11;
+
+    // calculamos los dias
+    var dias = 0;
+    if (ahora_dia > dia)
+        dias = ahora_dia - dia;
+    if (ahora_dia < dia) {
+        ultimoDiaMes = new Date(ahora_ano, ahora_mes - 1, 0);
+        dias = ultimoDiaMes.getDate() - (dia - ahora_dia);
+    }
+
+    return edad;
+
 }
