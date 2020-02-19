@@ -106,17 +106,7 @@ public class UserController {
 			return "user-form/user-signup";
 		}else {
 			try {
-				///user.setMedico_id(2);
 				userService.createUser(user);
-				///direccion.setDireccionCalle("independencia");
-		/////sirve		direccionDao.save(direccion);
-		////sirve		persona.setPersona_nombre(user.getFirstName());
-		////sirve		persona.setPersona_ap(user.getLastName());
-				////persona.setPersonaAm("lopez");
-				///persona.setIdDireccion(direccion.getDireccionId());
-		///sirve		personaDao.save(persona);
-				////medico.setMedico_cedula("dfasp");
-				///medico.setPersona_id(persona.getPersonaId());
 				direccion.setPersona(persona);
 				persona.setDireccion(direccion);
 				persona.setMedicos(medico);
@@ -177,46 +167,8 @@ public class UserController {
 	
 	
 	@GetMapping("/index")
-	public String getUserForm(HttpServletRequest request,@ModelAttribute("userForm")User user, BindingResult result, ModelMap model) throws Exception {
-	   
-		///System.out.println("usuario doctor"+UsuarioDoctor(req));
-	  UsuarioDoctor(request,userService); 
-	  
-		//UsuarioDoctor(req);
-	  //userService.getIdDoc(UsuarioDoctor(req));
-	  //System.out.println(userService.getIdDoc(UsuarioDoctor(req)).toArray());
-	  //Object[] idD=userService.getIdDoc(UsuarioDoctor(req)).toArray();
-	  ///Object[] idD2=idD[0];
-	  //System.out.println("el ides"+idD[0]);
-	  //Integer idDoct=idD[0].hashCode();
-	  //System.out.println(idp);
-	 /// System.out.println("hola"+test(request));
-	
-	 // System.out.println(idD2[0]);
-	  //String IdDoctor23=idD2[0].toString();
-	  //System.out.println("EL ID D"+IdDoctor23); 
-	 /// System.out.println(IdDoctor2);
-	 	model.addAttribute("id_med_user",UsuarioDoctor(request,userService));
-		model.addAttribute("userForm", new User());
-		model.addAttribute("userList", userService.getAllUsers());
-		model.addAttribute("listTab","active");
-	
-		
-		//Validacion sobre si esta activo
-		User u = userService.getUserById(Long.valueOf(UsuarioDoctor(request, userService)));
-		
-		if(u.getUser_med_status() == 1)
-		{
+	public String getUserForm(){
 			return "index";
-		}
-		else
-		{
-			User usuario = new User();
-			model.put("usuario", usuario);
-			return "redirect:/login?status=no_confirmado";
-		}
-
-		
 	}//End	
 	
 	public String hola() {

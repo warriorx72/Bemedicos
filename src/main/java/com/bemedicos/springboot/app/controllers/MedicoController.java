@@ -73,26 +73,28 @@ public class MedicoController {
 	}
 
 	@RequestMapping(value = "/perfil", method = RequestMethod.POST)
-	public String guardar(Medicos medicos, Model model, Persona persona, @RequestParam("file") MultipartFile foto) {
+	public String guardar(Medicos medicos, Model model, HttpServletRequest request, Persona persona, @RequestParam("file") MultipartFile foto) {
+		UserController user = new UserController();
 
-		if (medicos.getMedico_id() != null && medicos.getMedico_id() > 0 && medicos.getMedico_foto() != null
-				&& medicos.getMedico_foto().length() > 0) {
-
-			uFileService.delete(medicos.getMedico_foto());
+		if(!foto.isEmpty()) {
+			System.out.println("no mamar");
+			if (medicos.getMedico_id() != null && medicos.getMedico_id() > 0 && medicos.getMedico_foto() != null
+					&& medicos.getMedico_foto().length() > 0) {
+				uFileService.delete(medicos.getMedico_foto());
+			}
+			String uniqueFileName = null;
+			try {
+				uniqueFileName = uFileService.copy(foto);
+				medicos.setMedico_foto(uniqueFileName);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-
-		String uniqueFileName = null;
-		try {
-			uniqueFileName = uFileService.copy(foto);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		medicos.setMedico_foto(uniqueFileName);
-
 		medicos.setPersona(persona);
-		medicoService.save(medicos);
-		return "perfil";
+		persona.setMedicos(medicos);
+		personaService.save(persona);
+		return "redirect:perfil";
 	}
 
 	@GetMapping(value = "/ver")
