@@ -69,4 +69,9 @@ public class EvolucionServiceImpl implements EvolucionService {
 		return em.createNativeQuery("call app_crearnotas("+id+");").getResultList();
 	}
 
+	@Override
+	public String GetLast() {
+		return em.createNativeQuery("SELECT evolucion_pronostico FROM app_evolucion ORDER BY evolucion_id DESC LIMIT 1;").getSingleResult().toString();
+	}
+
 }
