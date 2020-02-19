@@ -1,14 +1,19 @@
 package com.bemedicos.springboot.app.controllers;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 
-import org.apache.tomcat.jni.FileInfo;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.awt.Color;
+
+import com.bemedicos.springboot.app.service.EvolucionService;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -18,17 +23,11 @@ import com.lowagie.text.FontFactory;
 import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfImage;
-import com.lowagie.text.pdf.PdfIndirectObject;
-import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.PdfWriter;
-import com.lowagie.text.pdf.draw.LineSeparator;
+import com.lowagie.text.pdf.draw.VerticalPositionMark;
 
 public class TableTemplate 
 { 
@@ -41,26 +40,143 @@ public class TableTemplate
     	//new TableTemplate().createPdf(DEST);
     }
 	
-	public void createPdf(String dest, JSONArray jsonArray, int monto, Long id_sol) throws IOException, DocumentException {
-        Document document = new Document();
+	public void createPdf(String dest, JSONArray jsonArray, int monto, Long id_sol, String nompac, String nommed, String cedula, String tel_cel, String genero, int edad, String pronos) throws IOException, DocumentException {
+		
+		SimpleDateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.forLanguageTag("es-ES"));
+		String fecha = df.format(new Date());
+		
+		System.out.println(fecha);
+		
+		Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(dest));
         document.open();
-        Font titleFont = FontFactory.getFont("Times Roman", 15, Color.BLACK);
-        Font subtitleFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Color.BLACK);
-        Paragraph docTitle = new Paragraph("Solicitud de Estudios", titleFont);
-        docTitle.setAlignment(Paragraph.ALIGN_LEFT);
-        Paragraph docSubtitle = new Paragraph("#" + (100000000 + id_sol), subtitleFont);
-        docTitle.setAlignment(Paragraph.ALIGN_LEFT);
-        document.add(docTitle);
-        document.add(docSubtitle);
+        
+        //Fuentes
+        Font Fuente = FontFactory.getFont("Times Roman", 10, Color.BLACK);
+        Font FuenteN = FontFactory.getFont("Times Roman", 10, Font.BOLD, Color.BLACK);
+        Font FuenteBold = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Font.BOLD, Color.BLACK);
+        Font FuenteTexto = FontFactory.getFont("Times Roman", 11, Color.BLACK);
+        Font FuenteBoldTexto = FontFactory.getFont("Times Roman", 12, Font.BOLD, Color.BLACK);
+        Font medicoDatFont = FontFactory.getFont("Times Roman", 10, Color.BLACK);
+        Font medicoDatBold = FontFactory.getFont("Times Roman", 10, Font.BOLD, Color.BLACK);
+        
+        //Se pinta la solicitud con su numero
+        Chunk tituloSolicitudChunk = new Chunk("Solicitud de Estudios: ", Fuente);
+        Chunk numeroSolicitudChunk = new Chunk("#" + (100000000 + id_sol), FuenteBold);
+        Phrase frase = new Phrase();
+        frase.add(tituloSolicitudChunk);
+        frase.add(numeroSolicitudChunk);
+        Paragraph tituloSolicitud = new Paragraph();
+        tituloSolicitud.setAlignment(Paragraph.ALIGN_RIGHT);
+        tituloSolicitud.add(frase);
+        
+        //Se pinta la fecha
+        Chunk fechaPrimer = new Chunk(fecha.substring(0, 1).toUpperCase() + fecha.substring(1, 4), Fuente);
+        Chunk fechaDia = new Chunk(" " + fecha.substring(5, 7), FuenteN);
+        Chunk fechaSecond = new Chunk(" de " + fecha.substring(8, 9).toUpperCase() + fecha.substring(9),Fuente);
+        Phrase fechas = new Phrase();
+        fechas.add(fechaPrimer);
+        fechas.add(fechaDia);
+        fechas.add(fechaSecond);
+        Paragraph fechaParrafo = new Paragraph();
+        fechaParrafo.setAlignment(Paragraph.ALIGN_RIGHT);
+        fechaParrafo.add(fechas);
+        
+        
+        //Tabla de datos Medico-Paciente 
+        PdfPTable tablaMedPac = new PdfPTable(10); // the arg is the number of columns
+        tablaMedPac.setWidthPercentage(90);
+        float alturaMedPac = 15;
+        Color colorMedPac = new Color(255, 255, 255);
+        
+        
+        //Contenido de la Tabla
+        //Se pinta el nombre del Medico
+        Chunk MedNomChunk = new Chunk("Médico: " + nommed, FuenteTexto);
+        Phrase MedNomPhrase = new Phrase(MedNomChunk);
+        Paragraph MedNomParagraph = new Paragraph(MedNomPhrase);
+        PdfPCell MedNom = new PdfPCell(MedNomParagraph);
+        MedNom.setBorder(PdfPCell.NO_BORDER);
+        MedNom.setBackgroundColor(colorMedPac);
+        MedNom.setHorizontalAlignment(Element.ALIGN_LEFT);
+        MedNom.setFixedHeight(alturaMedPac);
+        MedNom.setColspan(5);
+        tablaMedPac.addCell(MedNom);
+        
+        //Se pinta el nombre del Paciente
+        Chunk PacNomChunk = new Chunk("Paciente: " + nompac, FuenteTexto);
+        Phrase PacNomPhrase = new Phrase(PacNomChunk);
+        Paragraph PacNomParagraph = new Paragraph(PacNomPhrase);
+        PdfPCell PacNom = new PdfPCell(PacNomParagraph);
+        PacNom.setBorder(PdfPCell.NO_BORDER);
+        PacNom.setBackgroundColor(colorMedPac);
+        PacNom.setHorizontalAlignment(Element.ALIGN_LEFT);
+        PacNom.setFixedHeight(alturaMedPac);
+        PacNom.setColspan(5);
+        tablaMedPac.addCell(PacNom);
+        
+        //Se pinta la cedula
+        Chunk MedCedChunk = new Chunk("Cédula: " + cedula, FuenteTexto);
+        Phrase MedCedPhrase = new Phrase(MedCedChunk);
+        Paragraph MedCedParagraph = new Paragraph(MedCedPhrase);
+        PdfPCell MedCed = new PdfPCell(MedCedParagraph);
+        MedCed.setBorder(PdfPCell.NO_BORDER);
+        MedCed.setBackgroundColor(colorMedPac);
+        MedCed.setHorizontalAlignment(Element.ALIGN_LEFT);
+        MedCed.setFixedHeight(alturaMedPac);
+        MedCed.setColspan(5);
+        tablaMedPac.addCell(MedCed);
+        
+        //Se pinta el Genero y la Edad
+        Chunk GenPacChunk = new Chunk("Género: " + genero + "  Edad: " + edad, FuenteTexto);
+        Phrase GenPacPhrase = new Phrase(GenPacChunk);
+        Paragraph GenPacParagraph = new Paragraph(GenPacPhrase);
+        PdfPCell GenPac = new PdfPCell(GenPacParagraph);
+        GenPac.setBorder(PdfPCell.NO_BORDER);
+        GenPac.setBackgroundColor(colorMedPac);
+        GenPac.setHorizontalAlignment(Element.ALIGN_LEFT);
+        GenPac.setFixedHeight(alturaMedPac);
+        GenPac.setColspan(5);
+        tablaMedPac.addCell(GenPac);
+        
+        //Se pinta el telefono del Medico
+        Chunk MedCelChunk = new Chunk("Teléfono: " + tel_cel, FuenteTexto);
+        Phrase MedCelPhrase = new Phrase(MedCelChunk);
+        Paragraph MedCelParagraph = new Paragraph(MedCelPhrase);
+        PdfPCell MedCel = new PdfPCell(MedCelParagraph);
+        MedCel.setBorder(PdfPCell.NO_BORDER);
+        MedCel.setBackgroundColor(colorMedPac);
+        MedCel.setHorizontalAlignment(Element.ALIGN_LEFT);
+        MedCel.setFixedHeight(alturaMedPac);
+        MedCel.setColspan(5);
+        tablaMedPac.addCell(MedCel);
+        
+        //Se pinta el diagnostico
+        Chunk DiaPacChunk = new Chunk("Diagnóstico: " + pronos, FuenteTexto);
+        Phrase DiaPacPhrase = new Phrase(DiaPacChunk);
+        Paragraph DiaPacParagraph = new Paragraph(DiaPacPhrase);
+        PdfPCell DiaPac = new PdfPCell(DiaPacParagraph);
+        DiaPac.setBorder(PdfPCell.NO_BORDER);
+        DiaPac.setBackgroundColor(colorMedPac);
+        DiaPac.setHorizontalAlignment(Element.ALIGN_LEFT);
+        DiaPac.setFixedHeight(alturaMedPac);
+        DiaPac.setColspan(5);
+        tablaMedPac.addCell(DiaPac);
 
+        
+        
+        //Se añaden los parrafos
+        document.add(tituloSolicitud);
+        document.add(fechaParrafo);
         document.add(Chunk.NEWLINE);
+        document.add(tablaMedPac);
         document.add(Chunk.NEWLINE);
         
         PdfPTable table = new PdfPTable(10); // the arg is the number of columns
         table.setWidthPercentage(90);
+        
         //Fuentes
-        Font HeadFont = FontFactory.getFont("Times Roman", 14, Color.BLACK);
+        Font HeadFont = FontFactory.getFont("Times Roman", 12, Color.BLACK);
         Font nomFont = FontFactory.getFont("Times Roman", 9, Color.BLACK);
         Font preFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Color.BLACK);
         Font infoFont = FontFactory.getFont("Times Roman", 8, Color.BLACK);
@@ -68,7 +184,7 @@ public class TableTemplate
 	    
         //Logo
         Image img = Image.getInstance(IMG);
-        img.setAbsolutePosition(400, 770);
+        img.setAbsolutePosition(40, 775);
         img.scaleToFit(150, 150);
         document.add(img);
         
@@ -82,13 +198,6 @@ public class TableTemplate
         nomHeadCell.setFixedHeight(altura);
         nomHeadCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(nomHeadCell);
-        Paragraph preHead = new Paragraph("Precio", HeadFont);
-        PdfPCell preHeadCell = new PdfPCell(preHead);
-        preHeadCell.setColspan(1);
-        preHeadCell.setBorder(PdfPCell.NO_BORDER);
-        preHeadCell.setBackgroundColor(color);
-        preHeadCell.setFixedHeight(altura);
-        table.addCell(preHeadCell);
         Paragraph canHead = new Paragraph("Cantidad", HeadFont);
         PdfPCell canHeadCell = new PdfPCell(canHead);
         canHeadCell.setColspan(2);
@@ -99,7 +208,7 @@ public class TableTemplate
         table.addCell(canHeadCell);
         Paragraph infoHead = new Paragraph("Indicaciones", HeadFont);
         PdfPCell infoHeadCell = new PdfPCell(infoHead);
-        infoHeadCell.setColspan(4);
+        infoHeadCell.setColspan(5);
         infoHeadCell.setBorder(PdfPCell.NO_BORDER);
         infoHeadCell.setBackgroundColor(color);
         infoHeadCell.setFixedHeight(altura);
@@ -131,16 +240,6 @@ public class TableTemplate
 	        table.addCell(nomCell);
 	        
 	        //Precio
-	        Paragraph pre = new Paragraph("$" + object.getString("precio"), preFont);
-	        PdfPCell preCell = new PdfPCell(pre);
-	        preCell.setBorder(PdfPCell.NO_BORDER);
-	        preCell.setBackgroundColor(col);
-	        preCell.setFixedHeight(altura);
-	        preCell.setColspan(1);
-	        preCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-	        table.addCell(preCell);
-	        
-	        //Precio
 	        Paragraph can = new Paragraph(String.valueOf(object.getInt("can")), preFont);
 	        PdfPCell canCell = new PdfPCell(can);
 	        canCell.setBorder(PdfPCell.NO_BORDER);
@@ -157,32 +256,32 @@ public class TableTemplate
 	        infoCell.setBackgroundColor(col);
 	        infoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
 	        infoCell.setFixedHeight(altura);
-	        infoCell.setColspan(4);
+	        infoCell.setColspan(5);
 	        table.addCell(infoCell);
 		}
         
-        //Precio
-        Paragraph tot = new Paragraph("Total: ");
-        PdfPCell totCell = new PdfPCell(tot);
-        totCell.setBorder(PdfPCell.NO_BORDER);
-        totCell.setBackgroundColor(color);
-        totCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        totCell.setFixedHeight(altura);
-        totCell.setColspan(5);
-        table.addCell(totCell);
-        
-        //Indicaciones
-        
-        Paragraph totCan = new Paragraph("$ " + monto);
-        PdfPCell totCanCell = new PdfPCell(totCan);
-        totCanCell.setBorder(PdfPCell.NO_BORDER);
-        totCanCell.setBackgroundColor(color);
-        totCanCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        totCanCell.setFixedHeight(altura);
-        totCanCell.setColspan(5);
-        table.addCell(totCanCell);
+        //Se pinta la linea de la firma
+        //Se pinta el nombre del Paciente
+        Chunk linea = new Chunk("_______________________________________________", FuenteBoldTexto);
+        Phrase firmas = new Phrase();
+        firmas.add(linea);
+        Paragraph firmaParrafo = new Paragraph();
+        firmaParrafo.add(firmas);
+        firmaParrafo.setAlignment(Element.ALIGN_CENTER);
+        //
+        Chunk lineaBajo = new Chunk("Nombre y firma del Médico", FuenteTexto);
+        Phrase firmas2 = new Phrase();
+        firmas2.add(lineaBajo);
+        Paragraph firmaParrafo2 = new Paragraph();
+        firmaParrafo2.add(firmas2);
+        firmaParrafo2.setAlignment(Element.ALIGN_CENTER);
+		
         
 		document.add(table);
+		document.add(Chunk.NEWLINE);
+		document.add(Chunk.NEWLINE);
+		document.add(firmaParrafo);
+		document.add(firmaParrafo2);
         document.close();
         
             
