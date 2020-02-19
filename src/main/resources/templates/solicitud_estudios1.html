@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+  <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
    <!--
       BODY TAG OPTIONS:
@@ -367,59 +369,55 @@
             </div>
         </div>
         
-               <div class="row">
-                  <div class="col-md-6">
-                        <div class="card card-info" id="todo">
-                           <div class="card-header">
-                              <h3 class="card-title">Lista de estudios</h3>
-                              <div class="card-tools">
-                                 <div class="input-group input-group-sm" style="width: 270px;"> 
-                                        <select id="selectCategory" class="form-control">
-                                          <option value="">Todos</option>
-                                          <option value="individual">Individuales</option>
-                                          <option value="cultivo">Cultivos</option>
-                                          <option value="gabinete">Gabinetes</option>
-                                          <option value="paquete">Paquetes</option>
-                                          <option value="perfil">Perfiles</option>
-                                        </select>  
-                                    <input type="text" name="table_search" class="form-control float-right" id="buscar" placeholder="Buscar">
-                                    <div class="input-group-append">
-                                       <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /.card-header -->
-                           <div class="card-body table-responsive p-0" style="height: 300px;" >
-                              <table  class="table table-head-fixed form-group" id="tabla">
-                                 <thead>
-                                    <tr>
-                                       <th style="width: 40%">Estudio</th>
-                                       <th style="width: 10%">Precio</th>
-                                       <th style="width: 10%">Tipo</th>
-                                       <th style="width: 10%"></th>
-                                       
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    <tr th:each="estudio: ${estudio}" th:id="${estudio[0]} + '_' + ${estudio[8]}" th:class="'TIPO_' + ${estudio[3]}" th:unless="${estudio[3] == 'Antibiogramas'}">
-										<td th:text="${estudio[1]}"></td>
-                                        <td th:text="${estudio[9]}"></td>
-                                        <td th:text="${estudio[3]}"></td>
-                                        <td><button type="button" th:attr="onclick=|GuardarEstudio('${estudio[8]}', '${estudio[3]}')|"><i class="fas fa-plus"></i></button></td>
-                                        <input type="hidden" th:id="'N_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[1]}">
-                                        <input type="hidden" th:id="'P_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[9]}">
-                                        <input type="hidden" th:id="'I_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[0]}">
-                                        <input type="hidden" th:id="'INFO_' + ${estudio[0]} + '_' + ${estudio[3]}" th:value="${estudio[10]}">
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </div>
-                           <!-- /.card-body -->
-                           <div class="card-footer">
-                           </div>
-                        </div>
-                  </div>
+        <div >
+        
+        </div>
+        
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-info">
+			<div class="card-header">
+				<h3 class="card-title">Listado de Estudios</h3> 
+			</div>
+        		<div style="margin-top: 4%; margin-left: 2%; margin-right: 2%; margin-bottom: 2%;">
+        			<table class="table-responsive" id="TablaEstudiosBuscar">
+        				<thead style="font-weight: normal !important;">
+        					<tr style="font-weight: normal !important;">
+        						<th style="width: 40%">Estudio</th>
+        						<th style="width: 20%">Precio</th>
+        						<th style="width: 10%">Tipo </th>
+        						<th style="width: 10%"></th>
+        					</tr>
+        				</thead>
+        				<tbody style="color: black!important;">
+        				<tr th:each="estudio: ${estudio}" th:id="${estudio[0]} + '_' + ${estudio[8]}" th:class="'TIPO_' + ${estudio[3]}" th:unless="${estudio[3] == 'Antibiogramas'}">
+        					<td th:text="${estudio[1]}"></td>
+        					<td th:text="${estudio[9]}"></td>
+        					<div th:if="${estudio[3] == 'Examenes'}">
+        						<td>Individuales</td>
+        					</div>
+        					<div th:if="${estudio[3] != 'Examenes'}">
+        						<td th:text="${estudio[3]}"></td>
+        					</div>
+        						<td><button type="button" th:attr="onclick=|GuardarEstudio('${estudio[8]}', '${estudio[3]}')|" style="border: none;"><i class="fas fa-plus"></i></button></td>
+                                <input type="hidden" th:id="'N_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[1]}">
+                                <input type="hidden" th:id="'P_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[9]}">
+                                <input type="hidden" th:id="'I_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[0]}">
+                                <input type="hidden" th:id="'INFO_' + ${estudio[0]} + '_' + ${estudio[3]}" th:value="${estudio[10]}">
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+					<input type="hidden" id="NombreCompletoPaciente" th:value="${paciente.persona_nombre} + ' ' + ${paciente.persona_ap} + ' ' + ${paciente.persona_am}">
+					<input type="hidden" id="FechaNacimientoPaciente" th:value="${paciente.persona_fecha_na}">
+					<input type="hidden" id="GeneroPaciente" th:value="${paciente.persona_genero}">
+					<input type="hidden" id="CedulaMedico" th:value="${medico_info.medico_cedula}">
+					<input type="hidden" id="NombreCompletoMedico" th:value="${medico_info_persona.persona_nombre} + ' ' + ${medico_info_persona.persona_ap} + ' ' + ${medico_info_persona.persona_am}">
+					<input type="hidden" id="TelefonoMovilMedico" th:value="${medico_info_persona.persona_tel_cel}">
+                 </div>
+			</div>
+                  
+                  
                   <div class="col-md-6">
                      <form>
                         <div class="card card-info">
@@ -578,6 +576,8 @@
       <script src="/dist/js/demo.js"></script>
       <script src="/dist/js/pages/dashboard3.js"></script>
       <script src="/dist/js/GuardarEstudios.js"></script>
+      
+      <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
           <!--<script>
 $(function(){
 	var $tabla = $('#tabla');
@@ -607,26 +607,103 @@ $(function(){
  });
  });
 });
-</script>-->
-<script>
-	var busqueda = document.getElementById('buscar');
-    var table = document.getElementById("tabla").tBodies[0];
-
-    buscaTabla = function(){
-      texto = busqueda.value.toLowerCase();
-      var r=0;
-      while(row = table.rows[r++])
-      {
-        if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
-          row.style.display = null;
-        else
-          row.style.display = 'none';
-      }
-    }
-
-    busqueda.addEventListener('keyup', buscaTabla);
 </script>
+
+-->
+<style>
+.hid
+{
+	display: none;
+}
+
+.dataTables_wrapper{
+   background-color: white !important;
+   color: black;
+   font-weight: normal;
+   font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol !important";
+}
+
+.dataTables_length label{
+color: black !important;
+font-weight: normal !important;
+font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol !important";
+
+}
+
+.dataTables_filter label{
+color: black !important;
+font-weight: normal !important;
+font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol !important";
+}
+
+div.dataTables_filter input
+{
+	border: 2px solid #17a2b8 !important;
+  	border-radius: 5px !important;
+}
+
+div.dataTables_filter input focus
+{
+	background-color: yellow !important;
+}
+
+div.dataTables_length select
+{
+	border: 2px solid #17a2b8 !important;
+  	border-radius: 5px !important;
+}
+
+div.dataTables_info 
+{
+	color: black !important;
+}
+
+a#TablaEstudiosBuscar_next.paginate_button.next
+{
+	color: black !important;
+}
+
+a#TablaEstudiosBuscar_previous.paginate_button.previous
+{
+	color: black !important;
+}
+
+
+</style>
 <script>
+	
+
+$(document).ready( function () {
+	
+    $('#TablaEstudiosBuscar').DataTable({
+    	buttons: {
+            dom: {
+                button: {
+                    tag: 'button'
+                },
+                buttonLiner: {
+                    tag: null
+                }
+            }
+        },
+    	"pagingType": "simple",
+    	"lengthMenu": [ 5, 10, 25, 50, 100, 500 ],
+    	"language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "Sin resultados",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "Sin registros",
+            "infoFiltered": "(filtrado de _MAX_ total resultados)",
+            "search": "Buscar",
+            "paginate": {
+                "previous": "Anterior",
+                "next": "Siguiente"
+              }
+        }
+    	
+    });
+} );
+
     var ides = {};
     var cantidades = {};
     var precios = {};
