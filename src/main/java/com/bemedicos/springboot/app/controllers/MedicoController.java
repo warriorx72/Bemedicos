@@ -67,7 +67,6 @@ public class MedicoController {
 
 		model.put("persona", persona);
 		model.put("medicos", medicos);
-		model.put("space", " ");
 
 		return "perfil";
 	}
@@ -77,7 +76,6 @@ public class MedicoController {
 		UserController user = new UserController();
 
 		if(!foto.isEmpty()) {
-			System.out.println("no mamar");
 			if (medicos.getMedico_id() != null && medicos.getMedico_id() > 0 && medicos.getMedico_foto() != null
 					&& medicos.getMedico_foto().length() > 0) {
 				uFileService.delete(medicos.getMedico_foto());
@@ -111,10 +109,7 @@ public class MedicoController {
 		return "/ver";
 	}
 	
-	@GetMapping(value = "/horario")
-	public String listar2(Map<String, Object> model) {
-		return "/horario";
-	}
+
 	
 /* El siguiente método es para eliminar, por el momento está sin utilizar
 	@RequestMapping(value = "/eliminar")
