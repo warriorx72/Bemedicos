@@ -1,6 +1,7 @@
 package com.bemedicos.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="horario")
+@Table (name="app_horario")
 public class Horario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -23,6 +24,9 @@ public class Horario implements Serializable{
 	private String horario_dia;
 	
 	@Column
+	private Boolean horario_status;
+	
+	@Column
 	private String horario_hora_inicial;
 	
 	@Column
@@ -33,6 +37,8 @@ public class Horario implements Serializable{
 	
 	@Column
 	private String medico_id;
+	
+
 
 	public Long getHorario_id() {
 		return horario_id;
@@ -48,6 +54,14 @@ public class Horario implements Serializable{
 
 	public void setHorario_dia(String horario_dia) {
 		this.horario_dia = horario_dia;
+	}
+
+	public Boolean getHorario_status() {
+		return horario_status;
+	}
+
+	public void setHorario_status(Boolean horario_status) {
+		this.horario_status = horario_status;
 	}
 
 	public String getHorario_hora_inicial() {
