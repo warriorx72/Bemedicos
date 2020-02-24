@@ -45,6 +45,9 @@ public class CasaHabitacion implements Serializable{
 	private String numero_mascotas;
 	
 	@Column
+	private String especie_mascotas;
+	
+	@Column
 	private String otro_material_vivienda;
 
 	@Column
@@ -153,7 +156,14 @@ public class CasaHabitacion implements Serializable{
 		this.numero_mascotas = numero_mascotas;
 	}
 
-	
+	public String getEspecie_mascotas() {
+		return especie_mascotas;
+	}
+
+	public void setEspecie_mascotas(String especie_mascotas) {
+		this.especie_mascotas = especie_mascotas;
+	}
+
 	public String getOtro_material_vivienda() {
 		return otro_material_vivienda;
 	}

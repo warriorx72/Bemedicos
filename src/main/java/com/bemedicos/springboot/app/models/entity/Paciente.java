@@ -31,6 +31,18 @@ public class Paciente implements Serializable{
 	@Column
 	private String estado_civil;
 	
+	@Column
+	private String paciente_referencia_nombre;
+	
+	@Column
+	private String paciente_referencia_ap;
+	
+	@Column
+	private String paciente_referencia_am;
+	
+	@Column 
+	private String paciente_referencia_tel;
+	
 	
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")
@@ -80,6 +92,37 @@ public class Paciente implements Serializable{
 		this.estado_civil = estado_civil;
 	}
 
+	public String getPaciente_referencia_nombre() {
+		return paciente_referencia_nombre;
+	}
+
+	public void setPaciente_referencia_nombre(String paciente_referencia_nombre) {
+		this.paciente_referencia_nombre = paciente_referencia_nombre;
+	}
+
+	public String getPaciente_referencia_ap() {
+		return paciente_referencia_ap;
+	}
+
+	public void setPaciente_referencia_ap(String paciente_referencia_ap) {
+		this.paciente_referencia_ap = paciente_referencia_ap;
+	}
+
+	public String getPaciente_referencia_am() {
+		return paciente_referencia_am;
+	}
+
+	public void setPaciente_referencia_am(String paciente_referencia_am) {
+		this.paciente_referencia_am = paciente_referencia_am;
+	}
+
+	public String getPaciente_referencia_tel() {
+		return paciente_referencia_tel;
+	}
+
+	public void setPaciente_referencia_tel(String paciente_referencia_tel) {
+		this.paciente_referencia_tel = paciente_referencia_tel;
+	}
 
 	
 	

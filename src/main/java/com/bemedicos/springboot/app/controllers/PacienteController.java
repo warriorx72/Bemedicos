@@ -76,7 +76,6 @@ public class PacienteController {
 		UserController us = new UserController();
 		us.UsuarioDoctor(request, userService);
 		model.addAttribute("id_med_user", us.UsuarioDoctor(request, userService));
-		System.out.println(us.UsuarioDoctor(request, userService));
 		m.put("paciente", paciente);
 		m.put("persona", persona);
 		m.put("direccion", direccion);
@@ -87,7 +86,6 @@ public class PacienteController {
 	public String guardarPaciente(HttpServletRequest request, Model model, Map<String, Object> m, Direccion direccion,
 			Persona persona, Paciente paciente) {
 		AntecedentesFamiliares antecedentesfamiliares = new AntecedentesFamiliares();
-		Evolucion evolucion = new Evolucion();
 		MedicoPaciente medpa = new MedicoPaciente();
 		UserController us = new UserController();
 
@@ -102,9 +100,6 @@ public class PacienteController {
 		medpa.setMedico_id(us.UsuarioDoctor(request, userService).longValue());
 		medpaService.save(medpa);
 
-		evolucion.setPaciente_id(paciente.getPaciente_id());
-		evolucionService.save(evolucion);
-
 		paciente.setExpediente("pac-" + medpa.getMedico_id() + "-" + (10000 + paciente.getPaciente_id()));
 		pacienteService.save(paciente);
 
@@ -112,7 +107,6 @@ public class PacienteController {
 		m.put("persona", persona);
 		m.put("direccion", direccion);
 		m.put("antecedentesfamiliares", antecedentesfamiliares);
-		m.put("evolucion", evolucion);
 
 		if (request.getParameter("action1").equals("0")) {
 			return "antecedentes_familiares";
@@ -179,7 +173,7 @@ public class PacienteController {
 
 	@RequestMapping(value = "/guardar_casahabitacion", method = RequestMethod.POST)
 	public String guardar3(HttpServletRequest request, Paciente paciente, CasaHabitacion casahabitacion, Model model,
-			SessionStatus status, Map<String, Object> m) {
+			Persona persona, SessionStatus status, Map<String, Object> m) {
 		Embarazos embarazos = new Embarazos();
 		Evolucion evolucion = new Evolucion();
 
@@ -192,10 +186,13 @@ public class PacienteController {
 		m.put("embarazos", embarazos);
 		m.put("evolucion", evolucion);
 
-		if (request.getParameter("action1").equals("0")) {
+		String lol = pacienteService.findOne(paciente.getPaciente_id()).getPersona().getPersona_genero();
+
+		if (request.getParameter("action1").equals("0") && lol.equals("Femenino")) {
 			return "embarazos";
 		}
 		return "notas_evolucion";
+
 	}
 
 	@RequestMapping(value = "/embarazos", method = RequestMethod.GET)

@@ -37,12 +37,16 @@ to get the desired effect
 	min-height: 1.5rem;
 	padding-top: 0.4rem;
 	padding-left: 2.5rem;
+	padding-right: 1.5rem;
+}
+
+.cent {
+	justify-content: center;
 }
 </style>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
-	<div th:include="navegacion.html" th:remove="tag">
-      </div>
+		<div th:include="navegacion.html" th:remove="tag"></div>
 		<!-- Navbar -->
 		<nav
 			class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -54,9 +58,8 @@ to get the desired effect
 
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a th:href="@{/logout}" class="btn">
-					<i class="fas fa-sign-out-alt"></i>
+				<li class="nav-item"><a th:href="@{/logout}" class="btn"> <i
+						class="fas fa-sign-out-alt"></i>
 				</a></li>
 			</ul>
 		</nav>
@@ -98,204 +101,159 @@ to get the desired effect
 									</div>
 									<!-- /.card-header -->
 									<div class="card-body p-0">
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 25%">Tipo de piso</td>
-													<td style="width: 25%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{tipo_piso}" value="Cemento"
-																id="customRadio1" name="customRadioPiso"> <label
-																for="customRadio1" class="custom-control-label">Cemento</label>
-														</div>
-													</td>
-													<td style="width: 25%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{tipo_piso}" value="Losa" id="customRadio2"
-																name="customRadioPiso"> <label
-																for="customRadio2" class="custom-control-label">Losa</label>
-														</div>
-													</td>
-													<td style="width: 25%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{tipo_piso}" value="R&uacute;stico"
-																id="customRadio3" name="customRadioPiso"> <label
-																for="customRadio3" class="custom-control-label">R&uacute;stico</label>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td style="width: 25%">Ventilaci&oacute;n o
-														iluminaci&oacute;n</td>
-													<td style="width: 25%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{ventilacion_iluminacion}" value="Buena"
-																id="customRadio4" name="customRadioIlu"> <label
-																for="customRadio4" class="custom-control-label">Buena</label>
-														</div>
-													</td>
-													<td style="width: 25%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{ventilacion_iluminacion}" value="Regular"
-																id="customRadio5" name="customRadioIlu"> <label
-																for="customRadio5" class="custom-control-label">Regular</label>
-														</div>
-													</td>
-													<td style="width: 25%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{ventilacion_iluminacion}" value="Mala"
-																id="customRadio6" name="customRadioIlu"> <label
-																for="customRadio6" class="custom-control-label">Mala</label>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-3">Tipo de piso</h5>
+												<div class="custom-control custom-radio col-sm-3">
+													<input class="custom-control-input" type="radio"
+														th:field="*{tipo_piso}" value="Cemento" id="customRadio1"
+														name="customRadioPiso"> <label for="customRadio1"
+														class="custom-control-label">Cemento</label>
+												</div>
+												<div class="custom-control custom-radio col-sm-3">
+													<input class="custom-control-input" type="radio"
+														th:field="*{tipo_piso}" value="Losa" id="customRadio2"
+														name="customRadioPiso"> <label for="customRadio2"
+														class="custom-control-label">Losa</label>
+												</div>
+												<div class="custom-control custom-radio col-sm-3">
+													<input class="custom-control-input" type="radio"
+														th:field="*{tipo_piso}" value="R&uacute;stico"
+														id="customRadio3" name="customRadioPiso"> <label
+														for="customRadio3" class="custom-control-label">R&uacute;stico</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-3">Ventilaci&oacute;n o
+													iluminaci&oacute;n</h5>
+												<div class="custom-control custom-radio col-sm-3">
+													<input class="custom-control-input" type="radio"
+														th:field="*{ventilacion_iluminacion}" value="Buena"
+														id="customRadio4" name="customRadioIlu"> <label
+														for="customRadio4" class="custom-control-label">Buena</label>
+												</div>
+												<div class="custom-control custom-radio col-sm-3">
+													<input class="custom-control-input" type="radio"
+														th:field="*{ventilacion_iluminacion}" value="Regular"
+														id="customRadio5" name="customRadioIlu"> <label
+														for="customRadio5" class="custom-control-label">Regular</label>
+												</div>
+												<div class="custom-control custom-radio col-sm-3">
+													<input class="custom-control-input" type="radio"
+														th:field="*{ventilacion_iluminacion}" value="Mala"
+														id="customRadio6" name="customRadioIlu"> <label
+														for="customRadio6" class="custom-control-label">Mala</label>
+												</div>
+											</div>
+										</div>
 
-												<tr>
-													<td style="width: 25%">Material de la vivienda</td>
-													<td style="width: 15%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{material_vivienda}" value="Block"
-																id="customRadio7" name="customRadioMat"> <label
-																for="customRadio7" class="custom-control-label">Block</label>
-														</div>
-													</td>
-													<td style="width: 15%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{material_vivienda}" value="L&aacute;mina"
-																id="customRadio8" name="customRadioMat"> <label
-																for="customRadio8" class="custom-control-label">L&aacute;mina</label>
-														</div>
-													</td>
-													<td style="width: 15%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{material_vivienda}" value="Adobe"
-																id="customRadio9" name="customRadioMat"> <label
-																for="customRadio9" class="custom-control-label">Adobe</label>
-														</div>
-													</td>
-													<td style="width: 30%"><input type="text"
-														th:field="*{otro_material_vivienda}" class="form-control"
-														placeholder="Otro"></td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 20%">Servicios b&aacute;sicos</td>
-													<td style="width: 20%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{servicios_basicos}" id="customCheckbox1"
-																value="Agua"> <label for="customCheckbox1"
-																class="custom-control-label">Agua</label>
-														</div>
-													</td>
-													<td style="width: 20%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{servicios_basicos}" id="customCheckbox2"
-																value="Luz"> <label for="customCheckbox2"
-																class="custom-control-label">Luz</label>
-														</div>
-													</td>
-													<td style="width: 20%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{servicios_basicos}" id="customCheckbox3"
-																value="Drenaje"> <label for="customCheckbox3"
-																class="custom-control-label">Drenaje</label>
-														</div>
-													</td>
-													<td style="width: 20%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{servicios_basicos}" id="customCheckbox4"
-																value="Gas"> <label for="customCheckbox4"
-																class="custom-control-label">Gas</label>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table>
-											<table class="table form-group">
-												<thead>
-													<tr>
-														<!---Nombres de las columnas-->
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td style="width: 25%">¿Vive con alguien más?</td>
-														<td style="width: 15%; padding-top: 0.4rem;">
-															<div class="estilochingon custom-checkbox">
-																<label>Sí</label> <input class="custom-control-input"
-																	type="checkbox" id="customCheckbox17" value="option1"
-																	onchange="habilitarcheck(this.checked,'txt15');">
-																<label for="customCheckbox17"
-																	class="custom-control-label"></label>
-															</div>
-														</td>
-														<td>¿Con cuantas personas más?</td>
-														<td style="width: 30%"><input
-															th:field="*{personas_viviendo_casa}" type="number"
-															min="1" class="form-control" id="txt15" disabled
-															pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
-															placeholder="Escriba numero de habitantes"></td>
-													</tr>
-													<tr>
-														<td style="width: 25%">¿Tiene mascotas?</td>
-														<td style="width: 15%; padding-top: 0.4rem;">
-															<div class="estilochingon custom-checkbox">
-																<label>Sí</label> <input class="custom-control-input"
-																	type="checkbox" id="customCheckbox18" value="option1"
-																	onchange="habilitarcheck(this.checked,'txt16');">
-																<label for="customCheckbox18"
-																	class="custom-control-label"></label>
-															</div>
-														</td>
-														<td>¿Cu&aacute;ntas?</td>
-														<td style="width: 30%"><input
-															th:field="*{numero_mascotas}" type="number" min="1"
-															class="form-control" id="txt16" disabled
-															pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
-															placeholder="Escriba parentesco"></td>
-													</tr>
-												</tbody>
-											</table>
-										</table>
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-3">Material de la vivienda</h5>
+												<div class="custom-control custom-radio col-sm-2">
+													<input class="custom-control-input" type="radio"
+														th:field="*{material_vivienda}" value="Block"
+														id="customRadio7" name="customRadioMat"> <label
+														for="customRadio7" class="custom-control-label">Block</label>
+												</div>
+												<div class="custom-control custom-radio col-sm-2">
+													<input class="custom-control-input" type="radio"
+														th:field="*{material_vivienda}" value="L&aacute;mina"
+														id="customRadio8" name="customRadioMat"> <label
+														for="customRadio8" class="custom-control-label">L&aacute;mina</label>
+												</div>
+												<div class="custom-control custom-radio col-sm-2">
+													<input class="custom-control-input" type="radio"
+														th:field="*{material_vivienda}" value="Adobe"
+														id="customRadio9" name="customRadioMat"> <label
+														for="customRadio9" class="custom-control-label">Adobe</label>
+												</div>
+												<div class="col-sm-3">
+													<input type="text" th:field="*{otro_material_vivienda}"
+														class="form-control" placeholder="Otro">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-3">Servicios b&aacute;sicos</h5>
+												<div class="custom-control custom-checkbox col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{servicios_basicos}" id="customCheckbox1"
+														value="Agua"> <label for="customCheckbox1"
+														class="custom-control-label">Agua</label>
+												</div>
+												<div class="custom-control custom-checkbox col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{servicios_basicos}" id="customCheckbox2"
+														value="Luz"> <label for="customCheckbox2"
+														class="custom-control-label">Luz</label>
+												</div>
+												<div class="custom-control custom-checkbox col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{servicios_basicos}" id="customCheckbox3"
+														value="Drenaje"> <label for="customCheckbox3"
+														class="custom-control-label">Drenaje</label>
+												</div>
+												<div class="custom-control custom-checkbox col-sm-3">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{servicios_basicos}" id="customCheckbox4"
+														value="Gas"> <label for="customCheckbox4"
+														class="custom-control-label">Gas</label>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-3">¿Vive con alguien más?</h5>
+												<div class="custom-control custom-checkbox col-sm-2">
+													<label>Sí</label> <input class="custom-control-input"
+														type="checkbox" id="customCheckbox17" value="option1"
+														onchange="habilitarcheck(this.checked,'txt15');">
+													<label for="customCheckbox17" class="custom-control-label"></label>
+												</div>
+												<h5 class="col-sm-3">¿Con cuantas personas más?</h5>
+												<div class="custom-control custom-text-input col-sm-4">
+													<input th:field="*{personas_viviendo_casa}" type="number"
+														min="1" class="form-control" id="txt15" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
+														placeholder="Escriba numero de habitantes">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-2">¿Tiene mascotas?</h5>
+												<div class="custom-control custom-checkbox col-sm-1">
+													<label>Sí</label> <input class="custom-control-input"
+														type="checkbox" id="customCheckbox18" value="option1"
+														onchange="habilitarcheck(this.checked,'txt16','txt17');">
+													<label for="customCheckbox18" class="custom-control-label"></label>
+												</div>
+												<h5 class="col-sm-1.5 text-right">¿Cu&aacute;les?</h5>
+												<div class="custom-control custom-checkbox col-sm-3">
+													<input th:field="*{especie_mascotas}" type="text"
+														class="form-control" id="txt16" disabled
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
+														placeholder="Escriba cuales">
+												</div>
+												<h5 class="offset-sm-1 col-sm-1.5 text-right">¿Cu&aacute;ntas?</h5>
+												<div class="custom-control custom-checkbox col-sm-3">
+													<input th:field="*{numero_mascotas}" type="number" min="1"
+														class="form-control" id="txt17" disabled pattern="[0-9]+"
+														placeholder="Escriba n&uacute;mero">
+												</div>
+											</div>
+										</div>
 									</div>
 									<!-- /.card-body -->
 								</div>
+
 								<div class="card card-info">
 									<div class="card-header">
 										<h3 class="card-title">Antecedentes personales
@@ -303,315 +261,188 @@ to get the desired effect
 									</div>
 									<!-- /.card-header -->
 									<div class="card-body p-0">
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 100%" align="center">
-														<h5>Enfermedades de la infancia</h5>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr align="center">
-													<td style="width: 33%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_infancia}" id="customCheckbox5"
-																value="Varicela"> <label for="customCheckbox5"
-																class="custom-control-label">Varicela</label>
-														</div>
-													</td>
-													<td style="width: 34%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_infancia}" id="customCheckbox6"
-																value="Sarampi&oacute;n"> <label
-																for="customCheckbox6" class="custom-control-label">Sarampi&oacute;n</label>
-														</div>
-													</td>
-													<td style="width: 33%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_infancia}" id="customCheckbox7"
-																value="Viruela"> <label for="customCheckbox7"
-																class="custom-control-label">Viruela</label>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr align="center">
-													<td style="width: 25%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_infancia}" id="customCheckbox8"
-																value="Hepatitis"> <label for="customCheckbox8"
-																class="custom-control-label">Hepatitis</label>
-														</div>
-													</td>
-													<td style="width: 25%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_infancia}" id="customCheckbox9"
-																value="Fiebre reum&aacute;tica"> <label
-																for="customCheckbox9" class="custom-control-label">Fiebre
-																reum&aacute;tica</label>
-														</div>
-													</td>
-													<td style="width: 25%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_infancia}"
-																id="customCheckbox10" value="Tosferina"> <label
-																for="customCheckbox10" class="custom-control-label">Tosferina</label>
-														</div>
-													</td>
-													<td style="width: 25%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																id="customCheckbox11" value="option1"> <label
-																for="customCheckbox11" class="custom-control-label">Asma</label>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 25%">Otra enfermedad:</td>
-													<td style="width: 75%"><input type="text"
-														th:field="*{otro_enfermedad_infancia}"
-														class="form-control" placeholder="Especificar"></td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 100%" align="center">
-														<h5>Enfermedades de adulto</h5>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr align="center">
-													<td style="width: 50%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_adulto}" id="customCheckbox12"
-																value="Diabetes"> <label for="customCheckbox12"
-																class="custom-control-label">Diabetes</label>
-														</div>
-													</td>
-													<td style="width: 50%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_adulto}" id="customCheckbox13"
-																value="Hipertension"> <label
-																for="customCheckbox13" class="custom-control-label">Hipertension</label>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr align="center">
-													<td style="width: 33%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_adulto}" id="customCheckbox14"
-																value="Asma"> <label for="customCheckbox14"
-																class="custom-control-label">Asma</label>
-														</div>
-													</td>
-													<td style="width: 34%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_adulto}" id="customCheckbox15"
-																value="Osteoporosis"> <label
-																for="customCheckbox15" class="custom-control-label">Osteoporosis</label>
-														</div>
-													</td>
-													<td style="width: 33%">
-														<div class="estilochingon custom-checkbox">
-															<input class="custom-control-input" type="checkbox"
-																th:field="*{enfermedades_adulto}" id="customCheckbox16"
-																value="Artritis"> <label for="customCheckbox16"
-																class="custom-control-label">Artritis</label>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 25%">Otra enfermedad:</td>
-													<td style="width: 75%"><input type="text"
-														th:field="*{otro_enfermedad_adulto}" class="form-control"
-														placeholder="Especificar"></td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 100%" align="center">
-														<h5>Datos extras</h5>
-													</td>
-												</tr>
-											</tbody>
-										</table>
+										<div class="form-group">
+											<h5 class="text-center">Enfermedades de la infancia</h5>
+											<div class="row estilochingon cent">
+												<div class="custom-control custom-checkbox col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_infancia}" id="customCheckbox5"
+														value="Varicela"> <label for="customCheckbox5"
+														class="custom-control-label">Varicela</label>
+												</div>
 
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 10%" align="left">Alergias</td>
-													<td style="width: 40%"><input type="text"
-														th:field="*{alergias}" class="form-control"
-														placeholder="Especificar"></td>
-													<td style="width: 10%" align="left">Traumatismos</td>
-													<td style="width: 40%"><input type="text"
-														th:field="*{traumatismo}" class="form-control"
-														placeholder="Especificar"></td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 10%" align="left">Cirug&iacute;as</td>
-													<td style="width: 40%"><input type="text"
-														th:field="*{cirugias}" class="form-control"
-														placeholder="Especificar"></td>
-													<td style="width: 10%" align="left">
-														Inmunizaci&oacute;n</td>
-													<td style="width: 40%"><input type="text"
-														th:field="*{inmunizacion}" class="form-control"
-														placeholder="Especificar"></td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 30%">¿Actualmente toma alg&uacute;n
-														medicamento?</td>
-													<td style="width: 10%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{toma_medicamento}" value="Si"
-																id="customRadio10" name="customRadio"
-																onChange="habilitar(form.checked,'radionuevo1','radionuevo2');">
-															<label for="customRadio10" class="custom-control-label">Si</label>
-														</div>
-													</td>
-													<td style="width: 10%">
-														<div class="custom-control custom-radio">
-															<input class="custom-control-input" type="radio"
-																th:field="*{toma_medicamento}" value="No"
-																id="customRadio11" name="customRadio"
-																onChange="deshabilitar(form.checked,'radionuevo1','radionuevo2');">
-															<label for="customRadio11" class="custom-control-label">No</label>
-														</div>
-													</td>
-													<td style="width: 50%">
-														<div class="custom-control custom-radio">
-															<input class="form-control" id="radionuevo1" type="text"
-																th:field="*{cual}" disabled placeholder="Especificar">
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<table class="table form-group">
-											<thead>
-												<tr>
-													<!---Nombres de las columnas-->
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td style="width: 30%">¿Qui&eacute;n se lo
-														recet&oacute;?</td>
-													<td style="width: 70%">
-														<div class="custom-control custom-radio">
-															<input class="form-control" type="text" id="radionuevo2"
-																th:field="*{quien_receto}" disabled
-																placeholder="Especificar">
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
+												<div
+													class="custom-control custom-checkbox col-sm-2 offset-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_infancia}" id="customCheckbox6"
+														value="Sarampi&oacute;n"> <label
+														for="customCheckbox6" class="custom-control-label">Sarampi&oacute;n</label>
+												</div>
+												<div
+													class="custom-control custom-checkbox col-sm-2 offset-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_infancia}" id="customCheckbox7"
+														value="Viruela"> <label for="customCheckbox7"
+														class="custom-control-label">Viruela</label>
+												</div>
+											</div>
+											<div class="row estilochingon cent">
+												<div class="custom-control custom-checkbox col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_infancia}" id="customCheckbox8"
+														value="Hepatitis"> <label for="customCheckbox8"
+														class="custom-control-label">Hepatitis</label>
+												</div>
+												<div
+													class="custom-control custom-checkbox col-sm-2 offset-sm-1">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_infancia}" id="customCheckbox9"
+														value="Fiebre reum&aacute;tica"> <label
+														for="customCheckbox9" class="custom-control-label">Fiebre
+														reum&aacute;tica</label>
+												</div>
+												<div
+													class="custom-control custom-checkbox col-sm-2 offset-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_infancia}" id="customCheckbox10"
+														value="Tosferina"> <label for="customCheckbox10"
+														class="custom-control-label">Tosferina</label>
+												</div>
+												<div
+													class="custom-control custom-checkbox col-sm-2 offset-sm-1">
+													<input class="custom-control-input" type="checkbox"
+														id="customCheckbox11" value="option1"> <label
+														for="customCheckbox11" class="custom-control-label">Asma</label>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-2 text-right">Otra enfermedad:</h5>
+												<div class="col-sm-10">
+													<input type="text" th:field="*{otro_enfermedad_infancia}"
+														class="form-control" placeholder="Especificar">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<h5 class="text-center">Enfermedades de adulto</h5>
+											<div class="row estilochingon cent">
+												<div class="custom-control custom-checkbox col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_adulto}" id="customCheckbox12"
+														value="Diabetes"> <label for="customCheckbox12"
+														class="custom-control-label">Diabetes</label>
+												</div>
+
+												<div
+													class="custom-control custom-checkbox offset-sm-2 col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_adulto}" id="customCheckbox13"
+														value="Hipertension"> <label
+														for="customCheckbox13" class="custom-control-label">Hipertension</label>
+												</div>
+											</div>
+											<div class="row estilochingon cent">
+												<div class="custom-control custom-checkbox col-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_adulto}" id="customCheckbox14"
+														value="Asma"> <label for="customCheckbox14"
+														class="custom-control-label">Asma</label>
+												</div>
+												<div
+													class="custom-control custom-checkbox col-sm-2 offset-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_adulto}" id="customCheckbox15"
+														value="Osteoporosis"> <label
+														for="customCheckbox15" class="custom-control-label">Osteoporosis</label>
+												</div>
+												<div
+													class="custom-control custom-checkbox col-sm-2 offset-sm-2">
+													<input class="custom-control-input" type="checkbox"
+														th:field="*{enfermedades_adulto}" id="customCheckbox16"
+														value="Artritis"> <label for="customCheckbox16"
+														class="custom-control-label">Artritis</label>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row estilochingon">
+												<h5 class="col-sm-2 text-right">Otra enfermedad:</h5>
+												<div class="col-sm-10">
+													<input type="text" th:field="*{otro_enfermedad_adulto}"
+														class="form-control" placeholder="Especificar">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<h5 class="text-center">Datos extras</h5>
+											<div class="row estilochingon cent">
+												<label class="col-sm-1 text-right">Alergias</label>
+												<div class="custom-control col-sm-4">
+													<input type="text" th:field="*{alergias}"
+														class="form-control" placeholder="Especificar">
+												</div>
+												<label class="col-sm-2 text-right">Traumatismos</label>
+												<div class="custom-control col-sm-4">
+													<input type="text" th:field="*{traumatismo}"
+														class="form-control" placeholder="Especificar">
+												</div>
+											</div>
+											<div class="row estilochingon cent">
+												<label class="col-sm-1 text-right">Cirug&iacute;as</label>
+												<div class="custom-control col-sm-4">
+													<input type="text" th:field="*{cirugias}"
+														class="form-control" placeholder="Especificar">
+												</div>
+												<label class="col-sm-2 text-right">Inmunizaci&oacute;n</label>
+												<div class="custom-control col-sm-4">
+													<input type="text" th:field="*{inmunizacion}"
+														class="form-control" placeholder="Especificar">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row estilochingon cent">
+												<h5 class="col-sm-5 text-left">¿Actualmente toma
+													alg&uacute;n medicamento?</h5>
+												<div class="custom-control custom-radio col-sm-1">
+													<input class="custom-control-input" type="radio"
+														th:field="*{toma_medicamento}" value="Si"
+														id="customRadio10" name="customRadio"
+														onChange="habilitar(form.checked,'radionuevo1','radionuevo2');">
+													<label for="customRadio10" class="custom-control-label">Si</label>
+												</div>
+												<div class="custom-control custom-radio col-sm-1">
+													<input class="custom-control-input" type="radio"
+														th:field="*{toma_medicamento}" value="No"
+														id="customRadio11" name="customRadio"
+														onChange="deshabilitar(form.checked,'radionuevo1','radionuevo2');">
+													<label for="customRadio11" class="custom-control-label">No</label>
+												</div>
+												<div class="custom-control col-sm-4">
+													<input class="form-control" id="radionuevo1" type="text"
+														th:field="*{cual}" disabled placeholder="Especificar">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row estilochingon cent">
+												<h5 class="col-sm-3 text-left">¿Qui&eacute;n se lo
+													recet&oacute;?</h5>
+												<div class="custom-control custom-radio col-sm-9">
+													<input class="form-control" type="text" id="radionuevo2"
+														th:field="*{quien_receto}" disabled
+														placeholder="Especificar">
+												</div>
+											</div>
+										</div>
 									</div>
 									<!-- /.card-body -->
 									<div class="card-footer">
@@ -682,17 +513,24 @@ to get the desired effect
 	<script src="dist/js/demo.js"></script>
 	<script src="dist/js/pages/dashboard3.js"></script>
 	<script>
-		function habilitarcheck(value, value2) {
+		function habilitarcheck(value, value2, value3) {
 			if (value == true) {
 				// habilitamos
 				document.getElementById(value2).disabled = false;
 				document.getElementById(value2).required = true;
+
+				document.getElementById(value3).disabled = false;
+				document.getElementById(value3).required = true;
 
 			} else if (value == false) {
 				// deshabilitamos
 				document.getElementById(value2).value = "";
 				document.getElementById(value2).disabled = true;
 				document.getElementById(value2).required = false;
+
+				document.getElementById(value3).value = "";
+				document.getElementById(value3).disabled = true;
+				document.getElementById(value3).required = false;
 
 			}
 		}
@@ -711,13 +549,13 @@ to get the desired effect
 			document.getElementById(value3).disabled = true;
 		}
 	</script>
-<script type="text/javascript">
-        	function changeClassById (){
-        		document.getElementById("nav2").className="nav-link active";
-        		document.getElementById("menu2").className="nav-item has-treeview menu-open";
-        	}
-        	window.onload=changeClassById();
-        </script>
+	<script type="text/javascript">
+		function changeClassById() {
+			document.getElementById("nav2").className = "nav-link active";
+			document.getElementById("menu2").className = "nav-item has-treeview menu-open";
+		}
+		window.onload = changeClassById();
+	</script>
 
 </body>
 </html>

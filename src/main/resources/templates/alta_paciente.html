@@ -31,8 +31,7 @@ to get the desired effect
 -->
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
-	<div th:include="navegacion.html" th:remove="tag">
-      </div>
+		<div th:include="navegacion.html" th:remove="tag"></div>
 		<!-- Navbar -->
 		<nav
 			class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -44,9 +43,8 @@ to get the desired effect
 
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-				<a th:href="@{/logout}" class="btn">
-				<i class="fas fa-sign-out-alt"></i>
+				<li class="nav-item"><a th:href="@{/logout}" class="btn"> <i
+						class="fas fa-sign-out-alt"></i>
 				</a></li>
 			</ul>
 		</nav>
@@ -78,17 +76,16 @@ to get the desired effect
 			<!-- Main content -->
 			<div class="content">
 				<div class="container-fluid">
-					<div class="row">
-						<!-- /.card -->
-						<div class="col-md-12">
-							<!-- Input addon -->
-							<div class="card card-info">
-								<div class="card-header">
-									<h3 class="card-title">Datos personales del paciente</h3>
-								</div>
-								<!-- /.card-body -->
-								<div class="card-body">
-									<form th:action="@{/guardar_paciente}" th:method="post">
+					<form th:action="@{/guardar_paciente}" th:method="post">
+						<div class="row">
+
+							<div class="col-md-12">
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Datos personales del paciente</h3>
+									</div>
+									<!-- /.card-body -->
+									<div class="card-body">
 										<div class="row">
 											<div class="col-sm-4">
 												<!-- text input -->
@@ -148,94 +145,135 @@ to get the desired effect
 											<div class="col-sm-3">
 												<div class="form-group">
 													<label>Tel&eacute;fono</label> <input required
-														th:field="*{persona.persona_tel_cel}" type="phone"
+														th:field="*{persona.persona_tel_cel}" type="tel"
 														class="form-control" placeholder="2221232123"
 														pattern="[0-9]{10}">
 												</div>
 											</div>
 										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							<div class="col-md-12">
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Direcci&oacute;n del paciente</h3>
+									</div>
+									<!-- /.card-body -->
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-8">
+												<!-- text input -->
+												<div class="form-group">
+													<label>Calle</label> <input required
+														th:field="*{direccion.direccion_calle}" type="text"
+														class="form-control" placeholder="Av. Universidad"
+														pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="form-group">
+													<label>No. Exterior</label> <input required
+														th:field="*{direccion.direccion_numero_ext}" type="number"
+														class="form-control" min="0" placeholder="12">
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="form-group">
+													<label>No. Interior</label> <input
+														th:field="*{direccion.direccion_num_inter}" type="number"
+														class="form-control" placeholder="2">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>C&oacute;digo postal</label> <input required
+														th:field="*{direccion.direccion_postal}" type="text"
+														class="form-control" placeholder="90700"
+														pattern="[0-9]{5}">
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>Colonia</label> <input required
+														th:field="*{direccion.direccion_colonia}" type="text"
+														class="form-control" placeholder="La Loma"
+														pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>Municipio</label> <input required
+														th:field="*{direccion.direccion_municipio}" type="text"
+														class="form-control"
+														placeholder="Tlaxcala de Xicohténcatl"
+														pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>Estado</label> <input required
+														th:field="*{direccion.direccion_estado}" type="text"
+														class="form-control" placeholder="Tlaxcala"
+														pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
+												</div>
+											</div>
+										</div>
 
-						<div class="col-md-12">
-							<!-- Input addon -->
-							<div class="card card-info">
-								<div class="card-header">
-									<h3 class="card-title">Direcci&oacute;n del paciente</h3>
+									</div>
 								</div>
-								<!-- /.card-body -->
-								<div class="card-body">
-									<div class="row">
-										<div class="col-sm-8">
-											<!-- text input -->
-											<div class="form-group">
-												<label>Calle</label> <input required
-													th:field="*{direccion.direccion_calle}" type="text"
-													class="form-control" placeholder="Av. Universidad"
-													pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
+							</div>
+							<div class="col-md-12">
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Referencias del paciente del
+											paciente</h3>
+									</div>
+									<!-- /.card-body -->
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-3">
+												<label>Nombre referencia</label> <input
+													th:field="*{paciente.paciente_referencia_nombre}"
+													type="text" class="form-control"
+													placeholder="Nombre referencia"
+													pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
+											</div>
+											<div class="col-sm-3">
+												<label>Apellido paterno referencia</label> <input
+													th:field="*{paciente.paciente_referencia_ap}" type="tel"
+													class="form-control" placeholder="Teléfono referencia"
+													pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
+											</div>
+											<div class="col-sm-3">
+												<label>Apellido materno referencia</label> <input
+													th:field="*{paciente.paciente_referencia_am}" type="tel"
+													class="form-control" placeholder="Teléfono referencia"
+													pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
+											</div>
+											<div class="col-sm-3">
+												<label>Teléfono referencia</label> <input
+													th:field="*{paciente.paciente_referencia_tel}" type="tel"
+													class="form-control" placeholder="Teléfono referencia"
+													pattern="[0-9]{10}">
 											</div>
 										</div>
-										<div class="col-sm-2">
-											<div class="form-group">
-												<label>No. Exterior</label> <input required
-													th:field="*{direccion.direccion_numero_ext}" type="number"
-													class="form-control" min="0" placeholder="12">
-											</div>
-										</div>
-										<div class="col-sm-2">
-											<div class="form-group">
-												<label>No. Interior</label> <input
-													th:field="*{direccion.direccion_num_inter}" type="number"
-													class="form-control" placeholder="2">
-											</div>
+
+										<div class="card-footer">
+											<button type="submit" class="btn bg-gradient-danger"
+												name="action1" id="action1" value="1" style="color: #fff;">Terminar</button>
+											<button type="submit"
+												class="btn bg-gradient-info float-right" name="action1"
+												id="action1" value="0">Siguiente</button>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>C&oacute;digo postal</label> <input required
-													th:field="*{direccion.direccion_postal}" type="text"
-													class="form-control" placeholder="90700" pattern="[0-9]{5}">
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>Colonia</label> <input required
-													th:field="*{direccion.direccion_colonia}" type="text"
-													class="form-control" placeholder="La Loma"
-													pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>Municipio</label> <input required
-													th:field="*{direccion.direccion_municipio}" type="text"
-													class="form-control" placeholder="Tlaxcala de Xicohténcatl"
-													pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
-											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="form-group">
-												<label>Estado</label> <input required
-													th:field="*{direccion.direccion_estado}" type="text"
-													class="form-control" placeholder="Tlaxcala"
-													pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
-											</div>
-										</div>
-									</div>
-									<input type="hidden" th:value="*{id_med_user}">
-									<div class="card-footer">
-										<button type="submit" class="btn bg-gradient-danger"
-											name="action1" id="action1" value="1" style="color: #fff;">Terminar</button>
-										<button type="submit" class="btn bg-gradient-info float-right"
-											name="action1" id="action1" value="0">Siguiente</button>
-									</div>
-									</form>
 								</div>
 							</div>
 						</div>
-					</div>
+						<input type="hidden" th:value="*{id_med_user}">
+					</form>
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
@@ -267,7 +305,6 @@ to get the desired effect
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-
 		<!-- Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark">
 			<!-- Control sidebar content goes here -->
@@ -276,9 +313,8 @@ to get the desired effect
 
 		<!-- Main Footer -->
 		<footer class="main-footer"> </footer>
+		<!-- ./wrapper -->
 	</div>
-	<!-- ./wrapper -->
-
 	<!-- REQUIRED SCRIPTS -->
 
 	<!-- jQuery -->
@@ -292,14 +328,14 @@ to get the desired effect
 	<script src="plugins/chart.js/Chart.min.js"></script>
 	<script src="dist/js/demo.js"></script>
 	<script src="dist/js/pages/dashboard3.js"></script>
-	
+
 	<script type="text/javascript">
-        	function changeClassById (){
-        		document.getElementById("nav2").className="nav-link active";
-        		document.getElementById("menu2").className="nav-item has-treeview menu-open";
-        	}
-        	window.onload=changeClassById();
-        </script>
-	
+		function changeClassById() {
+			document.getElementById("nav2").className = "nav-link active";
+			document.getElementById("menu2").className = "nav-item has-treeview menu-open";
+		}
+		window.onload = changeClassById();
+	</script>
+
 </body>
 </html>
