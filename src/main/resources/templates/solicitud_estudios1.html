@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -373,24 +374,57 @@
         
         </div>
         
+        
+          <div class="form-group" style="display: none;">
+    <!--		Show Numbers Of Rows 		-->
+    <select class="form-control" name="state" id="maxRows">
+      <option value="5000">Show ALL Rows</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="70">70</option>
+      <option value="100">100</option>
+    </select>
+
+  </div>
+        
 <div class="row">
 	<div class="col-md-6">
 		<div class="card card-info">
+		<!-- Abre header de tabla -->
 			<div class="card-header">
 				<h3 class="card-title">Listado de Estudios</h3> 
-			</div>
-        		<div style="margin-top: 4%; margin-left: 2%; margin-right: 2%; margin-bottom: 2%;">
-        			<table class="table-responsive" id="TablaEstudiosBuscar">
-        				<thead style="font-weight: normal !important;">
-        					<tr style="font-weight: normal !important;">
-        						<th style="width: 40%">Estudio</th>
-        						<th style="width: 20%">Precio</th>
-        						<th style="width: 10%">Tipo </th>
-        						<th style="width: 10%"></th>
-        					</tr>
-        				</thead>
-        				<tbody style="color: black!important;">
-        				<tr th:each="estudio: ${estudio}" th:id="${estudio[0]} + '_' + ${estudio[8]}" th:class="'TIPO_' + ${estudio[3]}" th:unless="${estudio[3] == 'Antibiogramas'}">
+					<div class="card-tools">
+                       <div class="input-group input-group-sm" style="width: 270px;"> 
+                           <select id="selectCategory" class="form-control">
+                           		<option value="Todos">Todos</option>
+                            	<option value="Examenes">Individuales</option>
+                            	<option value="Cultivos">Cultivos</option>
+                            	<option value="Gabinete">Gabinetes</option>
+                            	<option value="Paquetes">Paquetes</option>
+                            	<option value="Perfiles">Perfiles</option>
+                           	</select>  
+                           	<input type="text" name="table_search" class="form-control float-right" id="BuscarTabla" placeholder="Buscar...">
+                           
+                        </div>
+                   	</div>
+               </div>
+               <div class="card-body table-responsive p-0" style="height: 300px;">
+               <!-- Abre header de tabla -->
+               <table class="table table-head-fixed form-group" id="TablaEstudiosBuscar">
+               		<thead>
+        				<tr>
+        					<th style="width: 40%">Estudio</th>
+        					<th sdtyle="width: 20%">Precio</th>
+        					<th style="width: 10%">Tipo </th>
+        					<th style="width: 10%"></th>
+        				</tr>
+        			</thead>
+        			<tbody id="myTable">
+        			<tr></tr>
+        				<tr th:each="estudio: ${estudio}" th:id="${estudio[0]} + '_' + ${estudio[8]}" th:class="'TIPO_' + ${estudio[3]}" th:unless="${estudio[4] == 0 || estudio[3] == 'Antibiogramas'}">
         					<td th:text="${estudio[1]}"></td>
         					<td th:text="${estudio[9]}"></td>
         					<div th:if="${estudio[3] == 'Examenes'}">
@@ -399,15 +433,36 @@
         					<div th:if="${estudio[3] != 'Examenes'}">
         						<td th:text="${estudio[3]}"></td>
         					</div>
-        						<td><button type="button" th:attr="onclick=|GuardarEstudio('${estudio[8]}', '${estudio[3]}')|" style="border: none;"><i class="fas fa-plus"></i></button></td>
-                                <input type="hidden" th:id="'N_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[1]}">
-                                <input type="hidden" th:id="'P_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[9]}">
-                                <input type="hidden" th:id="'I_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[0]}">
-                                <input type="hidden" th:id="'INFO_' + ${estudio[0]} + '_' + ${estudio[3]}" th:value="${estudio[10]}">
+        					<td><button type="button" th:attr="onclick=|GuardarEstudio('${estudio[8]}', '${estudio[3]}')|" style="border: none;"><i class="fas fa-plus"></i></button></td>
+                            <input type="hidden" th:id="'N_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[1]}">
+                            <input type="hidden" th:id="'P_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[9]}">
+                            <input type="hidden" th:id="'I_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[0]}">
+                            <input type="hidden" th:id="'INFO_' + ${estudio[0]} + '_' + ${estudio[3]}" th:value="${estudio[10]}">
                         </tr>
-                        </tbody>
+                    </tbody>
                     </table>
                     </div>
+                    
+                    <!-- Paginador -->
+                    <div class="card-footer">
+                      <div class='pagination-container'>
+    					<nav>
+      						<ul class="pagination">
+        						<li data-page="prev" class="page-item">
+          							<span class="page-link"><i class="fas fa-arrow-left"></i>
+            						<span class="sr-only">(current)
+          							</span></span>
+        						</li>
+        						<!--	Here the JS Function Will Add the Rows -->
+        						<li data-page="next" id="prev" class="page-item">
+          							<span class="page-link"> <i class="fas fa-arrow-right"></i> <span class="sr-only">(current)</span></span>
+        						</li>
+      						</ul>
+    					</nav>
+  						</div>
+  					</div>		
+                    <!-- Paginador -->
+                    
 					<input type="hidden" id="NombreCompletoPaciente" th:value="${paciente.persona_nombre} + ' ' + ${paciente.persona_ap} + ' ' + ${paciente.persona_am}">
 					<input type="hidden" id="FechaNacimientoPaciente" th:value="${paciente.persona_fecha_na}">
 					<input type="hidden" id="GeneroPaciente" th:value="${paciente.persona_genero}">
@@ -451,18 +506,12 @@
                                     </table>
                                     <!-- Cierra tabla de precios -->
                                  </div>
-                                 <!-- /.row -->
-                                 <!-- this row will not appear when printing -->
-                                 <div class="row no-print" id="boton_modal">
+                                                                  <div class="row no-print" id="boton_modal">
                                     <div class="col-12"> 
+                                        <!--<button onclick="Ayuda()" type="button">jeje</button>-->
                                         <a class="btn bg-gradient-info btn-block float-right"  type="button"  data-toggle="modal" data-target="#modal-enviar"  style="color: #fff;">Enviar</a>
                                     </div>
                                  </div> 
-                           </div>
-                           </div>
-                     </form>
-                     </div>
-                  </div>
                   <!-- /.row -->
                </div>
                <!-- /.container-fluid -->
@@ -610,99 +659,7 @@ $(function(){
 </script>
 
 -->
-<style>
-.hid
-{
-	display: none;
-}
-
-.dataTables_wrapper{
-   background-color: white !important;
-   color: black;
-   font-weight: normal;
-   font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol !important";
-}
-
-.dataTables_length label{
-color: black !important;
-font-weight: normal !important;
-font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol !important";
-
-}
-
-.dataTables_filter label{
-color: black !important;
-font-weight: normal !important;
-font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol !important";
-}
-
-div.dataTables_filter input
-{
-	border: 2px solid #17a2b8 !important;
-  	border-radius: 5px !important;
-}
-
-div.dataTables_filter input focus
-{
-	background-color: yellow !important;
-}
-
-div.dataTables_length select
-{
-	border: 2px solid #17a2b8 !important;
-  	border-radius: 5px !important;
-}
-
-div.dataTables_info 
-{
-	color: black !important;
-}
-
-a#TablaEstudiosBuscar_next.paginate_button.next
-{
-	color: black !important;
-}
-
-a#TablaEstudiosBuscar_previous.paginate_button.previous
-{
-	color: black !important;
-}
-
-
-</style>
 <script>
-	
-
-$(document).ready( function () {
-	
-    $('#TablaEstudiosBuscar').DataTable({
-    	buttons: {
-            dom: {
-                button: {
-                    tag: 'button'
-                },
-                buttonLiner: {
-                    tag: null
-                }
-            }
-        },
-    	"pagingType": "simple",
-    	"lengthMenu": [ 5, 10, 25, 50, 100, 500 ],
-    	"language": {
-            "lengthMenu": "Mostrar _MENU_ registros",
-            "zeroRecords": "Sin resultados",
-            "info": "Mostrando página _PAGE_ de _PAGES_",
-            "infoEmpty": "Sin registros",
-            "infoFiltered": "(filtrado de _MAX_ total resultados)",
-            "search": "Buscar",
-            "paginate": {
-                "previous": "Anterior",
-                "next": "Siguiente"
-              }
-        }
-    	
-    });
-} );
 
     var ides = {};
     var cantidades = {};
@@ -712,6 +669,16 @@ $(document).ready( function () {
     
     var envio1 = null;
     var envio2 = null;
+    
+    var PrimerCambio = false;
+    
+	 var Examenes = $('.TIPO_Examenes');
+	 var Cultivos = $('.TIPO_Cultivos');
+	 var Gabiente = $('.TIPO_Gabinete');
+	 var Paquete = $('.TIPO_Paquetes');
+	 var Perfiles = $('.TIPO_Perfiles');
+	 
+	 
 </script>
    </body>
 </html>
