@@ -20,7 +20,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-
+<style>
+#medicoFoto {
+	width: 35px;
+	height: 35px;
+}
+</style>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-info elevation-4">
 	<!-- Brand Logo -->
@@ -35,7 +40,8 @@
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<div class="image">
-				<img class="img-circle elevation-2" id="medicoFoto" />
+				<img class="img-circle elevation-2" id="medicoFoto"
+					th:onerror="this.src=[[@{'/uploads/' + user.png}]];" />
 			</div>
 			<div class="info">
 				<a th:href="@{/perfil}" class="d-block" id="nombrePersona"></a>
@@ -61,11 +67,18 @@
 								class="far fa-circle nav-icon"></i>
 								<p>Dashboard</p>
 						</a></li>
+					</ul>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a th:href="@{/perfil}" class="nav-link"
+							onclick="changeClassById('nav1', 'nav-link active')"> <i
+								class="far fa-circle nav-icon"></i>
+								<p>Perfil</p>
+						</a></li>
 					</ul></li>
 				<li class="nav-item has-treeview" id="menu2"><a id="nav2"
-					href="#" class="nav-link"> <i class="nav-icon fas fa-edit"></i>
+					href="#" class="nav-link"> <i class="nav-icon fas fa-users"></i>
 						<p>
-							Alta pacientes <i class="right fas fa-angle-left"></i>
+							Pacientes <i class="right fas fa-angle-left"></i>
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
@@ -73,65 +86,15 @@
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Crear paciente</p>
 						</a></li>
-					</ul></li>
+					</ul>
 
-
-				<li class="nav-item has-treeview" id="menu3"><a id="nav3"
-					href="#" class="nav-link"> <i class="nav-icon fas fa-desktop"></i>
-						<p>
-							Historial cl&iacute;nico <i class="right fas fa-angle-left"></i>
-						</p>
-				</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><a th:href="@{/historial_clinico}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Historiales cl&iacute;nicos</p>
 						</a></li>
-					</ul>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a th:href="@{/notas_evolucion}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>Notas de evoluci&oacute;n</p>
-						</a></li>
 					</ul></li>
-				<li class="nav-item has-treeview" id="menu4"><a id="nav4"
-					href="#" class="nav-link"> <i
-						class="nav-icon fas fa-sticky-note"></i>
-						<p>
-							Solicitud de estudio <i class="right fas fa-angle-left"></i>
-						</p>
-				</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a th:href="@{/solicitud_estudios}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>Solicitud de estudio</p>
-						</a></li>
-					</ul>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="./index.html" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Archivo de pacientes</p>
-						</a></li>
-					</ul></li>
-				<li class="nav-item has-treeview" id="menu5"><a id="nav5"
-					href="#" class="nav-link"> <i class="nav-icon fas fa-id-badge"></i>
-						<p>
-							Mis perfiles <i class="right fas fa-angle-left"></i>
-						</p>
-				</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a th:href="@{/perfil}" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Listar perfiles</p>
-						</a></li>
-					</ul>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="./index.html" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Perfiles</p>
-						</a></li>
-					</ul></li>
-				<li class="nav-item has-treeview" id="menu6"><a id="nav6"
+				<li class="nav-item has-treeview" id="menu3"><a id="nav3"
 					href="#" class="nav-link"> <i
 						class="nav-icon fas fa-calendar-alt"></i>
 						<p>
@@ -139,31 +102,19 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a th:href="@{/horario}" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
+						<li class="nav-item"><a th:href="@{/horario}"
+							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Crear agenda</p>
 						</a></li>
 					</ul>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a th:href="@{/agendar_cita}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+						<li class="nav-item"><a th:href="@{/agenda}" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
 								<p>Agendar cita</p>
 						</a></li>
-					</ul>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="./index.html" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Ver mi agenda</p>
-						</a></li>
-					</ul>
-					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="./index.html" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Modificar calendario</p>
-						</a></li>
 					</ul></li>
-				<li class="nav-item has-treeview" id="menu7"><a id="nav7"
-					href="#" class="nav-link"> <i class="nav-icon fas fa-users"></i>
+				<li class="nav-item has-treeview" id="menu4"><a id="nav4"
+					href="#" class="nav-link"> <i class="nav-icon fas fa-edit"></i>
 						<p>
 							Pacientes <i class="right fas fa-angle-left"></i>
 						</p>
@@ -198,7 +149,7 @@
 	</div>
 	<!-- /.sidebar -->
 </aside>
-	<!-- scripts -->
+<!-- scripts -->
 
 <script>
 function ajaxGet(){

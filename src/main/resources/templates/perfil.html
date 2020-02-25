@@ -85,11 +85,78 @@ to get the desiored effect
 .loading {
 	animation: blinkingText ease 2.5s infinite;
 }
-@keyframes blinkingText{
-    0%{     color: #000;    }     
-    50%{   color: #transparent; }
-    99%{    color:transparent;  }
-    100%{ color:#000; }
+
+@
+keyframes blinkingText { 0%{
+	color: #000;
+}
+
+50%{
+color
+
+
+
+
+
+
+:
+
+
+
+ 
+
+
+
+#transparent
+
+
+
+
+
+
+;
+}
+99%{
+color
+
+
+
+
+
+
+:transparent
+
+
+
+
+
+
+;
+}
+100%{
+color
+
+
+
+
+
+
+:
+
+
+
+
+
+
+#000
+
+
+
+
+
+
+;
+}
 }
 .custom-file-label {
 	cursor: pointer;
@@ -181,8 +248,9 @@ to get the desiored effect
 										<div class="row">
 											<div class="col-sm-4">
 												<div id='img_contain'>
-													<img class="img-circle img-fluid img-format" id="prevImg"
-														th:src="@{'/uploads/' + ${medicos.medico_foto}}" />
+													<img class="img-circle img-format" id="prevImg" width="250px" height="250px"
+														th:onerror="this.src=[[@{'/uploads/' + user.png}]];"
+														th:src="@{'/uploads/' + ${medicos.medico_foto}}"/>
 												</div>
 												<div class="form group col-sm-12">
 													<input type="file" name="file" id="file"
@@ -252,14 +320,15 @@ to get the desiored effect
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label>Primera consulta</label> <input type="number"
-														th:field="*{medicos.primer_consulta}" class="form-control"
+														required th:field="*{medicos.primer_consulta}"
+														class="form-control"
 														placeholder="Escriba precio de primer consulta" />
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label>Consulta control</label> <input type="number"
-														th:field="*{medicos.control_consulta}"
+														required th:field="*{medicos.control_consulta}"
 														class="form-control"
 														placeholder="Escriba precio de consulta de control" />
 												</div>
@@ -267,14 +336,14 @@ to get the desiored effect
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label> Consulta a domicilio</label> <input type="number"
-														th:field="*{medicos.domicilio_consulta}"
+														required th:field="*{medicos.domicilio_consulta}"
 														class="form-control"
 														placeholder="Escriba precio de consulta a domicilio" />
 												</div>
 											</div>
 										</div>
-										<input type="hidden" th:field="*{medicos.medico_id}" />
-										<input type="hidden" th:field="*{persona.persona_id}" />
+										<input type="hidden" th:field="*{medicos.medico_id}" /> <input
+											type="hidden" th:field="*{persona.persona_id}" />
 										<div class="card-footer">
 											<button type="submit"
 												class="btn bg-gradient-info float-right">Guardar</button>
@@ -397,14 +466,6 @@ to get the desiored effect
 			$(".alert").text(text).addClass("loading");
 		}
 	</script>
-
-	<script type="text/javascript">
-		function changeClassById() {
-			document.getElementById("nav5").className = "nav-link active";
-			document.getElementById("menu5").className = "nav-item has-treeview menu-open";
-		}
-		window.onload = changeClassById();
-	</script>
 	<script>
 		function readImage(input) {
 			if (input.files && input.files[0]) {
@@ -420,6 +481,13 @@ to get the desiored effect
 			// Código a ejecutar cuando se detecta un cambio de archivO
 			readImage(this);
 		});
+	</script>
+	<script type="text/javascript">
+		function changeClassById() {
+			document.getElementById("nav1").className = "nav-link active";
+			document.getElementById("menu1").className = "nav-item has-treeview menu-open";
+		}
+		window.onload = changeClassById();
 	</script>
 </body>
 
