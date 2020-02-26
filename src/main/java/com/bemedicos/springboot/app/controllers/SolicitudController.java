@@ -113,8 +113,9 @@ public class SolicitudController
 		sol.setEstatus_id(Long.valueOf(0));
 		sol.setMonto(Long.valueOf(monto));
 		solicitudService.save(sol);
-		
-		
+		sol.setSolicitud_idtext("SE-"+sol.getMedico_id()+"-"+sol.getPaciente_id()+"-"+(sol.getSolicitud_id()+10000));
+		solicitudService.save(sol);
+
 		for (int i = 0; i < jsonArray.length(); i++)
 		{
 			JSONObject object = jsonArray.getJSONObject(i);

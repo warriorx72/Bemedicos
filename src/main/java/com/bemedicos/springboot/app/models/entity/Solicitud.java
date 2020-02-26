@@ -24,6 +24,9 @@ public class Solicitud implements Serializable
 	private Long solicitud_id;
 	
 	@Column
+	private String solicitud_idtext;
+
+	@Column
 	private Long medico_id;
 	
 	@Column
@@ -41,6 +44,14 @@ public class Solicitud implements Serializable
 
 	public void setSolicitud_id(Long solicitud_id) {
 		this.solicitud_id = solicitud_id;
+	}
+	
+	public String getSolicitud_idtext() {
+		return solicitud_idtext;
+	}
+
+	public void setSolicitud_idtext(String solicitud_idtext) {
+		this.solicitud_idtext = solicitud_idtext;
 	}
 	
 	public Long getMedico_id() {
