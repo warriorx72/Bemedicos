@@ -2,24 +2,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>M&eacute;dico</title>
-  <link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
-  <!-- IonIcons -->
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  
-  <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<title>M&eacute;dico</title>
+<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+<!-- IonIcons -->
+<link rel="stylesheet"
+	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/dist/css/adminlte.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+	rel="stylesheet">
+
+<link
+	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
+	rel="stylesheet">
 </head>
-   <!--
+<!--
       BODY TAG OPTIONS:
       =================
       Apply one or more of the following classes to to the body tag
@@ -29,605 +34,423 @@
       |               | sidebar-mini                            |
       |---------------------------------------------------------|
       -->
-   <style>
-      .estilochingon{
-      position: relative;
-      display: block;
-      min-height: 1.5rem;
-      padding-top: 0.4rem;
-      padding-left: 2.5rem;
-      }
-   </style>
-   <body class="hold-transition sidebar-mini">
-      <div class="wrapper">
-      <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-         <!-- Left navbar links -->
-         <ul class="navbar-nav">
-            <li class="nav-item">
-               <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-            </li>
-         </ul>
-         <!-- Right navbar links -->
-         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-               <a class="btn" data-toggle="modal" data-target="#modal-default">
-               <i class="fas fa-sign-out-alt"></i>
-               </a>
-            </li>
-         </ul>
-      </nav>
-      <!-- /.navbar -->
-      <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-light-info elevation-4">
-         <!-- Brand Logo -->
-         <a href="index3.html" class="brand-link">
-         <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-         <span class="brand-text font-weight-light">Mi consultorio</span>
-         </a>
-         <!-- Sidebar -->
-         <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-               <div class="image">
-                  <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-               </div>
-               <div class="info">
-                  <a href="#" class="d-block">Alexander Pierce</a>
-               </div>
-            </div>
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                  <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                           Inicio
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Dashboard</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                           Alta pacientes
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="alta_paciente.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Crear paciente</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item has-treeview menu-open">
-                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-desktop"></i>
-                        <p>
-                           Historial cl&iacute;nico
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="historial_clinico.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Historiales cl&iacute;nicos</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Notas de evoluci&oacute;n</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-sticky-note"></i>
-                        <p>
-                           Solicitud de estudio
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Solicitud de estudio</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Archivo de pacientes</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-id-badge"></i>
-                        <p>
-                           Mis perfiles
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Listar perfiles</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Perfiles</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
-                        <p>
-                           Mi agenda m&eacute;dica
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Crear agenda</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Agendar cita</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Ver mi agenda</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Modificar calendario</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                           Pacientes
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Pacientes referenciados</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Mi estado de cuenta</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Historial</p>
-                           </a>
-                        </li>
-                     </ul>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="./index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Mis datos</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-               </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-         </div>
-         <!-- /.sidebar -->
-      </aside>
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-         <!-- Content Header (Page header) -->
-         <div class="content-header">
-            <div class="container-fluid">
-               <div class="row mb-2">
-                  <div class="col-sm-6">
-                     <h1 class="m-0 text-dark">Solicitud de estudios</h1>
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-6">
-                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                        <li class="breadcrumb-item active">Solicitud de estudios</li>
-                     </ol>
-                  </div>
-                  <!-- /.col -->
-               </div>
-               <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-         </div>
-         <!-- /.content-header -->
-         <!-- Main content -->
-         <div class="content">
-            <div class="container-fluid">
-              <div class="row">
-            <!-- /.card -->
-            <div class="col-md-12">
-            <!-- Input addon -->
-                <div class="card card-info">
-                  <div class="card-header">
-                    <h3 class="card-title">Datos personales del paciente</h3>
-                  </div>
-                  <!-- /.card-body -->
-                    <div class="card-body">
-                        <form role="form">
-                          <div class="row">
-                            <div class="col-sm-4">
-                              <!-- text input -->
-                              <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" th:placeholder="${paciente.persona_nombre}" disabled>
-                                <input type="hidden" id="paciente_id" th:value="${id_paciente}">
-                              </div>
-                            </div>
-                            <div class="col-sm-4">
-                              <div class="form-group">
-                                <label>Apellido Paterno</label>
-                                <input type="text" class="form-control" th:placeholder="${paciente.persona_ap}" disabled>
-                              </div>
-                            </div>
-                            <div class="col-sm-4">
-                              <div class="form-group">
-                                <label>Apellido Materno</label>
-                                <input type="text" class="form-control" th:placeholder="${paciente.persona_am}" disabled>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-3">
-                              <!-- text input -->
-                              <div class="form-group">
-                                <label>G&eacute;nero</label>
-                                <input type="text" class="form-control" th:placeholder="${paciente.persona_genero}" disabled>
-                              </div>
-                            </div>
-                            <div class="col-sm-3">
-                              <div class="form-group">
-                                <label>Estado civil</label>
-                                <input type="text" class="form-control" placeholder="Soltero" disabled>
-                              </div>
-                            </div>
-                            <div class="col-sm-3">
-                              <div class="form-group">
-                                <label>Fecha de nacimiento</label>
-                                <input type="text" class="form-control" th:placeholder="${paciente.persona_fecha_na}" disabled>
-                              </div>
-                            </div>
-                            <div class="col-sm-3">
-                              <div class="form-group">
-                                <label>Tel&eacute;fono</label>
-                                <input type="text" class="form-control" th:placeholder="${paciente.persona_tel_cel}" disabled>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div >
-        
-        </div>
-        
-        
-          <div class="form-group" style="display: none;">
-    <!--		Show Numbers Of Rows 		-->
-    <select class="form-control" name="state" id="maxRows">
-      <option value="5000">Show ALL Rows</option>
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="15">15</option>
-      <option value="20">20</option>
-      <option value="50">50</option>
-      <option value="70">70</option>
-      <option value="100">100</option>
-    </select>
+<style>
+.estilochingon {
+	position: relative;
+	display: block;
+	min-height: 1.5rem;
+	padding-top: 0.4rem;
+	padding-left: 2.5rem;
+}
+</style>
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		<div th:include="navegacion.html" th:remove="tag"></div>
+		<!-- Navbar -->
+		<nav
+			class="main-header navbar navbar-expand navbar-white navbar-light">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+					href="#"><i class="fas fa-bars"></i></a></li>
+			</ul>
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="btn" data-toggle="modal"
+					data-target="#modal-default"> <i class="fas fa-sign-out-alt"></i>
+				</a></li>
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+		<!-- Main Sidebar Container -->
 
-  </div>
-        
-<div class="row">
-	<div class="col-md-6">
-		<div class="card card-info">
-		<!-- Abre header de tabla -->
-			<div class="card-header">
-				<h3 class="card-title">Listado de Estudios</h3> 
-					<div class="card-tools">
-                       <div class="input-group input-group-sm" style="width: 270px;"> 
-                           <select id="selectCategory" class="form-control">
-                           		<option value="Todos">Todos</option>
-                            	<option value="Examenes">Individuales</option>
-                            	<option value="Cultivos">Cultivos</option>
-                            	<option value="Gabinete">Gabinetes</option>
-                            	<option value="Paquetes">Paquetes</option>
-                            	<option value="Perfiles">Perfiles</option>
-                           	</select>  
-                           	<input type="text" name="table_search" class="form-control float-right" id="BuscarTabla" placeholder="Buscar...">
-                           
-                        </div>
-                   	</div>
-               </div>
-               <div class="card-body table-responsive p-0" style="height: 300px;">
-               <!-- Abre header de tabla -->
-               <table class="table table-head-fixed form-group" id="TablaEstudiosBuscar">
-               		<thead>
-        				<tr>
-        					<th style="width: 40%">Estudio</th>
-        					<th sdtyle="width: 20%">Precio</th>
-        					<th style="width: 10%">Tipo </th>
-        					<th style="width: 10%"></th>
-        				</tr>
-        			</thead>
-        			<tbody id="myTable">
-        			<tr></tr>
-        				<tr th:each="estudio: ${estudio}" th:id="${estudio[0]} + '_' + ${estudio[8]}" th:class="'TIPO_' + ${estudio[3]}" th:unless="${estudio[4] == 0 || estudio[3] == 'Antibiogramas'}">
-        					<td th:text="${estudio[1]}"></td>
-        					<td th:text="${estudio[9]}"></td>
-        					<div th:if="${estudio[3] == 'Examenes'}">
-        						<td>Individuales</td>
-        					</div>
-        					<div th:if="${estudio[3] != 'Examenes'}">
-        						<td th:text="${estudio[3]}"></td>
-        					</div>
-        					<td><button type="button" th:attr="onclick=|GuardarEstudio('${estudio[8]}', '${estudio[3]}')|" style="border: none;"><i class="fas fa-plus"></i></button></td>
-                            <input type="hidden" th:id="'N_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[1]}">
-                            <input type="hidden" th:id="'P_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[9]}">
-                            <input type="hidden" th:id="'I_' + ${estudio[8]} + '_' + ${estudio[3]}" th:value="${estudio[0]}">
-                            <input type="hidden" th:id="'INFO_' + ${estudio[0]} + '_' + ${estudio[3]}" th:value="${estudio[10]}">
-                        </tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    
-                    <!-- Paginador -->
-                    <div class="card-footer">
-                      <div class='pagination-container'>
-    					<nav>
-      						<ul class="pagination">
-        						<li data-page="prev" class="page-item">
-          							<span class="page-link"><i class="fas fa-arrow-left"></i>
-            						<span class="sr-only">(current)
-          							</span></span>
-        						</li>
-        						<!--	Here the JS Function Will Add the Rows -->
-        						<li data-page="next" id="prev" class="page-item">
-          							<span class="page-link"> <i class="fas fa-arrow-right"></i> <span class="sr-only">(current)</span></span>
-        						</li>
-      						</ul>
-    					</nav>
-  						</div>
-  					</div>		
-                    <!-- Paginador -->
-                    
-					<input type="hidden" id="NombreCompletoPaciente" th:value="${paciente.persona_nombre} + ' ' + ${paciente.persona_ap} + ' ' + ${paciente.persona_am}">
-					<input type="hidden" id="FechaNacimientoPaciente" th:value="${paciente.persona_fecha_na}">
-					<input type="hidden" id="GeneroPaciente" th:value="${paciente.persona_genero}">
-					<input type="hidden" id="CedulaMedico" th:value="${medico_info.medico_cedula}">
-					<input type="hidden" id="NombreCompletoMedico" th:value="${medico_info_persona.persona_nombre} + ' ' + ${medico_info_persona.persona_ap} + ' ' + ${medico_info_persona.persona_am}">
-					<input type="hidden" id="TelefonoMovilMedico" th:value="${medico_info_persona.persona_tel_cel}">
-                 </div>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Solicitud de estudios</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
+								<li class="breadcrumb-item active">Solicitud de estudios</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
 			</div>
-                  
-                  
-                  <div class="col-md-6">
-                     <form>
-                        <div class="card card-info">
-                           <div class="card-header">
-                              <h3 class="card-title">Resumen del pedido</h3> 
-                           </div>
-                           <!-- /.card-header -->
-                           <div class="card-body">  
-                                 <div class="table-responsive" >
-                                 	<!-- Abre tabla de Estudios -->
-                                 	<table class="table">
-  											<thead>
-    											<tr>
-      												<th scope="col">Nombre</th>
-      												<th scope="col">Precio</th>
-      												<th scope="col">Quitar</th>
-      												<!--  <th scope="col">Cantidad</th>-->
-    											</tr>
-  											</thead>
-  											<tbody id="TablaEstudios">
+			<!-- /.content-header -->
+			<!-- Main content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- /.card -->
+						<div class="col-md-12">
+							<!-- Input addon -->
+							<div class="card card-info">
+								<div class="card-header">
+									<h3 class="card-title">Datos personales del paciente</h3>
+								</div>
+								<!-- /.card-body -->
+								<div class="card-body">
+									<form role="form">
+										<div class="row">
+											<div class="col-sm-4">
+												<!-- text input -->
+												<div class="form-group">
+													<label>Nombre</label> <input type="text"
+														class="form-control"
+														th:placeholder="${paciente.persona_nombre}" disabled>
+													<input type="hidden" id="paciente_id"
+														th:value="${id_paciente}">
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<div class="form-group">
+													<label>Apellido Paterno</label> <input type="text"
+														class="form-control"
+														th:placeholder="${paciente.persona_ap}" disabled>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<div class="form-group">
+													<label>Apellido Materno</label> <input type="text"
+														class="form-control"
+														th:placeholder="${paciente.persona_am}" disabled>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-3">
+												<!-- text input -->
+												<div class="form-group">
+													<label>G&eacute;nero</label> <input type="text"
+														class="form-control"
+														th:placeholder="${paciente.persona_genero}" disabled>
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>Estado civil</label> <input type="text"
+														class="form-control" placeholder="Soltero" disabled>
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>Fecha de nacimiento</label> <input type="text"
+														class="form-control"
+														th:placeholder="${paciente.persona_fecha_na}" disabled>
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>Tel&eacute;fono</label> <input type="text"
+														class="form-control"
+														th:placeholder="${paciente.persona_tel_cel}" disabled>
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-  											</tbody>
+					<div></div>
+
+
+					<div class="form-group" style="display: none;">
+						<!--		Show Numbers Of Rows 		-->
+						<select class="form-control" name="state" id="maxRows">
+							<option value="5000">Show ALL Rows</option>
+							<option value="5">5</option>
+							<option value="10">10</option>
+							<option value="15">15</option>
+							<option value="20">20</option>
+							<option value="50">50</option>
+							<option value="70">70</option>
+							<option value="100">100</option>
+						</select>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="card card-info">
+								<!-- Abre header de tabla -->
+								<div class="card-header">
+									<h3 class="card-title">Listado de Estudios</h3>
+									<div class="card-tools">
+										<div class="input-group input-group-sm" style="width: 270px;">
+											<select id="selectCategory" class="form-control">
+												<option value="Todos">Todos</option>
+												<option value="Examenes">Individuales</option>
+												<option value="Cultivos">Cultivos</option>
+												<option value="Gabinete">Gabinetes</option>
+												<option value="Paquetes">Paquetes</option>
+												<option value="Perfiles">Perfiles</option>
+											</select> <input type="text" name="table_search"
+												class="form-control float-right" id="BuscarTabla"
+												placeholder="Buscar...">
+
+										</div>
+									</div>
+								</div>
+								<div class="card-body table-responsive p-0"
+									style="height: 300px;">
+									<!-- Abre header de tabla -->
+									<table class="table table-head-fixed form-group"
+										id="TablaEstudiosBuscar">
+										<thead>
+											<tr>
+												<th style="width: 40%">Estudio</th>
+												<th sdtyle="width: 20%">Precio</th>
+												<th style="width: 10%">Tipo</th>
+												<th style="width: 10%"></th>
+											</tr>
+										</thead>
+										<tbody id="myTable">
+											<tr></tr>
+											<tr th:each="estudio: ${estudio}"
+												th:id="${estudio[0]} + '_' + ${estudio[8]}"
+												th:class="'TIPO_' + ${estudio[3]}"
+												th:unless="${estudio[4] == 0 || estudio[3] == 'Antibiogramas'}">
+												<td th:text="${estudio[1]}"></td>
+												<td th:text="${estudio[9]}"></td>
+												<div th:if="${estudio[3] == 'Examenes'}">
+													<td>Individuales</td>
+												</div>
+												<div th:if="${estudio[3] != 'Examenes'}">
+													<td th:text="${estudio[3]}"></td>
+												</div>
+												<td><button type="button"
+														th:attr="onclick=|GuardarEstudio('${estudio[8]}', '${estudio[3]}')|"
+														style="border: none;">
+														<i class="fas fa-plus"></i>
+													</button></td>
+												<input type="hidden"
+													th:id="'N_' + ${estudio[8]} + '_' + ${estudio[3]}"
+													th:value="${estudio[1]}">
+												<input type="hidden"
+													th:id="'P_' + ${estudio[8]} + '_' + ${estudio[3]}"
+													th:value="${estudio[9]}">
+												<input type="hidden"
+													th:id="'I_' + ${estudio[8]} + '_' + ${estudio[3]}"
+													th:value="${estudio[0]}">
+												<input type="hidden"
+													th:id="'INFO_' + ${estudio[0]} + '_' + ${estudio[3]}"
+													th:value="${estudio[10]}">
+											</tr>
+										</tbody>
 									</table>
-                                 	<!-- Cierra tabla de Estudios -->
-                                 	<!-- Abre tabla de precios -->
-                                    <table class="table">
-                                       <tr>
-                                          <th>Total:</th>
-                                          <td><strong><p id="TOTAL"></p></strong></td>
-                                       </tr>
-                                    </table>
-                                    <!-- Cierra tabla de precios -->
-                                 </div>
-                                                                  <div class="row no-print" id="boton_modal">
-                                    <div class="col-12"> 
-                                        <!--<button onclick="Ayuda()" type="button">jeje</button>-->
-                                        <a class="btn bg-gradient-info btn-block float-right"  type="button"  data-toggle="modal" data-target="#modal-enviar"  style="color: #fff;">Enviar</a>
-                                    </div>
-                                 </div> 
-                  <!-- /.row -->
-               </div>
-               <!-- /.container-fluid -->
-               <div class="modal fade" id="modal-default">
-                  <div class="modal-dialog modal-sm">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                           <h4 class="modal-title">Nombre del usuario</h4>
-                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                           </button>
-                        </div>
-                        <div class="modal-body">
-                           <p>¿Desea cerrar la sesi&oacute;n?</p>
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                           <button type="button" class="btn btn-info">Si</button>
-                        </div>
-                     </div>
-                     <!-- /.modal-content -->
-                  </div>
-                  <!-- /.modal-dialog -->
-               </div>
-               <!-- /.modal -->
-               <!-- /.modal -->
-               <div class="modal fade" id="modal-default2">
-                  <div class="modal-dialog modal-sm">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                           <h4 class="modal-title">Datos del paciente</h4>
-                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                           </button>
-                        </div>
-                        <div class="modal-body">
-                           <p>¿Desea terminar?</p>
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                           <button type="submit" class="btn btn-info">Si</button>
-                        </div>
-                     </div>
-                     <!-- /.modal-content -->
-                  </div>
-                  <!-- /.modal-dialog -->
-               </div>
-               <!-- /.modal -->
-                <!-- /.modal -->
-      <div class="modal fade" id="modal-enviar">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Enviar</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="card">
-              <div class="card-header">
-                <div class="card-tools">
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td style="width: 20%">Correo electr&oacute;nico:</td>
-                      <td><input type="email" class="form-control" id="email_envio"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="submit" onclick="Guardar()" class="btn btn-info" id="boton_bloqueable" disabled>Si</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-    </section>
-    <!-- /.content -->
-  </div>
-            </div>
-            <!-- /.content -->
-         </div>
-         <!-- /.content-wrapper -->
-         <!-- Control Sidebar -->
-         <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-         </aside>
-         <!-- /.control-sidebar -->
-      </div>
-      <!-- ./wrapper -->
-      <!-- REQUIRED SCRIPTS -->
-      <!-- jQuery -->
-      <script src="/plugins/jquery/jquery.min.js"></script>
-      <!-- Bootstrap -->
-      <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- AdminLTE -->
-      <script src="/dist/js/adminlte.js"></script>
-      <!-- OPTIONAL SCRIPTS -->
-      <script src="/plugins/chart.js/Chart.min.js"></script>
-      <script src="/dist/js/demo.js"></script>
-      <script src="/dist/js/pages/dashboard3.js"></script>
-      <script src="/dist/js/GuardarEstudios.js"></script>
-      
-      <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-          <!--<script>
+								</div>
+
+								<!-- Paginador -->
+								<div class="card-footer">
+									<div class='pagination-container'>
+										<nav>
+											<ul class="pagination">
+												<li data-page="prev" class="page-item"><span
+													class="page-link"><i class="fas fa-arrow-left"></i>
+														<span class="sr-only">(current) </span></span></li>
+												<!--	Here the JS Function Will Add the Rows -->
+												<li data-page="next" id="prev" class="page-item"><span
+													class="page-link"> <i class="fas fa-arrow-right"></i>
+														<span class="sr-only">(current)</span></span></li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+								<!-- Paginador -->
+
+								<input type="hidden" id="NombreCompletoPaciente"
+									th:value="${paciente.persona_nombre} + ' ' + ${paciente.persona_ap} + ' ' + ${paciente.persona_am}">
+								<input type="hidden" id="FechaNacimientoPaciente"
+									th:value="${paciente.persona_fecha_na}"> <input
+									type="hidden" id="GeneroPaciente"
+									th:value="${paciente.persona_genero}"> <input
+									type="hidden" id="CedulaMedico"
+									th:value="${medico_info.medico_cedula}"> <input
+									type="hidden" id="NombreCompletoMedico"
+									th:value="${medico_info_persona.persona_nombre} + ' ' + ${medico_info_persona.persona_ap} + ' ' + ${medico_info_persona.persona_am}">
+								<input type="hidden" id="TelefonoMovilMedico"
+									th:value="${medico_info_persona.persona_tel_cel}">
+							</div>
+						</div>
+
+
+						<div class="col-md-6">
+							<form>
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Resumen del pedido</h3>
+									</div>
+									<!-- /.card-header -->
+									<div class="card-body">
+										<div class="table-responsive">
+											<!-- Abre tabla de Estudios -->
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">Nombre</th>
+														<th scope="col">Precio</th>
+														<th scope="col">Quitar</th>
+														<!--  <th scope="col">Cantidad</th>-->
+													</tr>
+												</thead>
+												<tbody id="TablaEstudios">
+
+												</tbody>
+											</table>
+											<!-- Cierra tabla de Estudios -->
+											<!-- Abre tabla de precios -->
+											<table class="table">
+												<tr>
+													<th>Total:</th>
+													<td><strong><p id="TOTAL"></p></strong></td>
+												</tr>
+											</table>
+											<!-- Cierra tabla de precios -->
+										</div>
+										<div class="row no-print" id="boton_modal">
+											<div class="col-12">
+												<!--<button onclick="Ayuda()" type="button">jeje</button>-->
+												<a class="btn bg-gradient-info btn-block float-right"
+													type="button" data-toggle="modal"
+													data-target="#modal-enviar" style="color: #fff;">Enviar</a>
+											</div>
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.container-fluid -->
+									<div class="modal fade" id="modal-default">
+										<div class="modal-dialog modal-sm">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title">Nombre del usuario</h4>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<p>¿Desea cerrar la sesi&oacute;n?</p>
+												</div>
+												<div class="modal-footer justify-content-between">
+													<button type="button" class="btn btn-danger"
+														data-dismiss="modal">No</button>
+													<button type="button" class="btn btn-info">Si</button>
+												</div>
+											</div>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+									</div>
+									<!-- /.modal -->
+									<!-- /.modal -->
+									<div class="modal fade" id="modal-default2">
+										<div class="modal-dialog modal-sm">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title">Datos del paciente</h4>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<p>¿Desea terminar?</p>
+												</div>
+												<div class="modal-footer justify-content-between">
+													<button type="button" class="btn btn-danger"
+														data-dismiss="modal">No</button>
+													<button type="submit" class="btn btn-info">Si</button>
+												</div>
+											</div>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+									</div>
+									<!-- /.modal -->
+									<!-- /.modal -->
+									<div class="modal fade" id="modal-enviar">
+										<div class="modal-dialog modal-xl">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title">Enviar</h4>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<div class="card">
+														<div class="card-header">
+															<div class="card-tools"></div>
+															<!-- /.card-header -->
+															<div class="card-body p-0">
+																<table class="table">
+																	<tbody>
+																		<tr>
+																			<td style="width: 20%">Correo
+																				electr&oacute;nico:</td>
+																			<td><input type="email" class="form-control"
+																				id="email_envio"></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+															<!-- /.card-body -->
+														</div>
+													</div>
+													<div class="modal-footer justify-content-between">
+														<button type="button" class="btn btn-danger"
+															data-dismiss="modal">No</button>
+														<button type="submit" onclick="Guardar()"
+															class="btn btn-info" id="boton_bloqueable" disabled>Si</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>
+										<!-- /.modal -->
+										</section>
+										<!-- /.content -->
+									</div>
+								</div>
+								<!-- /.content -->
+						</div>
+						<!-- /.content-wrapper -->
+						<!-- Control Sidebar -->
+						<aside class="control-sidebar control-sidebar-dark">
+							<!-- Control sidebar content goes here -->
+						</aside>
+						<!-- /.control-sidebar -->
+					</div>
+					<!-- ./wrapper -->
+					<!-- REQUIRED SCRIPTS -->
+					<!-- jQuery -->
+					<script src="/plugins/jquery/jquery.min.js"></script>
+					<!-- Bootstrap -->
+					<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+					<!-- AdminLTE -->
+					<script src="/dist/js/adminlte.js"></script>
+					<!-- OPTIONAL SCRIPTS -->
+					<script src="/plugins/chart.js/Chart.min.js"></script>
+					<script src="/dist/js/demo.js"></script>
+					<script src="/dist/js/pages/dashboard3.js"></script>
+					<script src="/dist/js/GuardarEstudios.js"></script>
+
+					<script
+						src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+					<!--<script>
 $(function(){
 	var $tabla = $('#tabla');
 	
@@ -659,26 +482,30 @@ $(function(){
 </script>
 
 -->
-<script>
+					<script>
+						var ides = {};
+						var cantidades = {};
+						var precios = {};
 
-    var ides = {};
-    var cantidades = {};
-    var precios = {};
-    
-    var lista = [];
-    
-    var envio1 = null;
-    var envio2 = null;
-    
-    var PrimerCambio = false;
-    
-	 var Examenes = $('.TIPO_Examenes');
-	 var Cultivos = $('.TIPO_Cultivos');
-	 var Gabiente = $('.TIPO_Gabinete');
-	 var Paquete = $('.TIPO_Paquetes');
-	 var Perfiles = $('.TIPO_Perfiles');
-	 
-	 
-</script>
-   </body>
+						var lista = [];
+
+						var envio1 = null;
+						var envio2 = null;
+
+						var PrimerCambio = false;
+
+						var Examenes = $('.TIPO_Examenes');
+						var Cultivos = $('.TIPO_Cultivos');
+						var Gabiente = $('.TIPO_Gabinete');
+						var Paquete = $('.TIPO_Paquetes');
+						var Perfiles = $('.TIPO_Perfiles');
+					</script>
+					<script type="text/javascript">
+						function changeClassById() {
+							document.getElementById("nav2").className = "nav-link active";
+							document.getElementById("menu2").className = "nav-item has-treeview menu-open";
+						}
+						window.onload = changeClassById();
+					</script>
+</body>
 </html>
