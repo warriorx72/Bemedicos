@@ -107,6 +107,58 @@ ul {
 								</div>
 								<!-- /.card-body -->
 								<div class="card-body"></div>
+												<div class="offset-sm-1 col-sm-6" >
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Reserva de citas
+  </button>
+
+  <!-- The Modal -->
+  <form action="#" th:action="@{/horario_reserva}"  method="post">
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Agendar citas</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Agendar citas
+          <br>
+          <label>Proxima cita</label>
+          <select class="form-control" name="start">
+          <option></option>
+          <option value="hoy">Hoy</option>
+           <option value="maniana">Mañana</option>
+            <option value="2dias">En dos dias</option>
+             <option value="3dias">En tres dias</option>
+          </select>
+          <label>Dias disponibles</label> 
+          <select class="form-control" name="end">
+          <option></option>
+           <option value="5dias">5 dias</option>
+            <option value="10dias">10 dias</option>
+             <option value="15dias">15 dias</option>
+             
+            
+          </select>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary" >Enviar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </form>
+  </div>
 								<form action="#" th:action="@{/horario}" th:object="${horario}"
 									method="post">
 									<fieldset>
