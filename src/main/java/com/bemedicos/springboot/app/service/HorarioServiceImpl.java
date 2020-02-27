@@ -1,10 +1,15 @@
 package com.bemedicos.springboot.app.service;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,4 +76,16 @@ public class HorarioServiceImpl implements HorarioService {
 	public List<Object[]> findByMedicoId(Long id) {
 		return em.createNativeQuery("call findOne("+id+")").getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object> genCitas(String fecha,Integer med_id) {
+		
+		 return em.createNativeQuery("call genci('"+fecha+"',"+med_id+");").getResultList();
+		 
+	}
+
+	
+	
+	
 }
