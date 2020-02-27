@@ -1,7 +1,20 @@
 package com.bemedicos.springboot.app.controllers;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,7 +54,7 @@ public class HorarioController {
 	CalendarioService calendarioService;
 
 	@GetMapping(value = "/horario")
-	public String crear(Map<String, Object> model, HttpServletRequest request, Model m) {
+	public String crear(Map<String, Object> model, HttpServletRequest request, Model m) throws ParseException {
 		Medicos medicos = new Medicos();
 		Persona persona = new Persona();
 		UserController user = new UserController();
@@ -118,4 +131,164 @@ public class HorarioController {
 		}
 		return "redirect:/horario";
 	}
+	
+	@RequestMapping(value = "/horario_reserva", method = RequestMethod.POST)
+	public String fechas(@RequestParam(name = "start") String startparam,@RequestParam(name = "end") String endparam,
+			HttpServletRequest request) {
+		UserController user = new UserController();
+	List<LocalDate> totalDates = new ArrayList<>();
+	if(startparam.equals("hoy")) {
+		Date currentdate = new Date();
+		String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(currentdate);
+		LocalDate start = LocalDate.parse(modifiedDate);
+		horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		if(endparam.equals("5dias")) {
+			LocalDate end=start.plusDays(5);
+		while (start.isBefore(end)) {
+		    totalDates.add(start);
+		    start = start.plusDays(1);
+		    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		}
+		}
+		else if(endparam.equals("10dias")){
+			LocalDate end=start.plusDays(10);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			    //for(int i=0;i<horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService)).size();i++) 
+			    //{
+			    	//importante para bloquear boton System.out.println(horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService)).get(0));
+			    	
+			   // }
+			    
+			}
+			
+		}
+		else if(endparam.equals("15dias")){
+			LocalDate end=start.plusDays(15);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			}
+			
+		}
+		
+	
+	}
+	else if(startparam.equals("maniana")) {
+		Date currentdate = new Date();
+		String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(currentdate);
+		LocalDate start2 = LocalDate.parse(modifiedDate);
+		LocalDate start=start2.plusDays(1);
+		 horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		if(endparam.equals("5dias")) {
+			LocalDate end=start.plusDays(5);
+		while (start.isBefore(end)) {
+		    totalDates.add(start);
+		    start = start.plusDays(1);
+		    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		}
+		}
+		else if(endparam.equals("10dias")){
+			LocalDate end=start.plusDays(10);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			}
+			
+		}
+		else if(endparam.equals("15dias")){
+			LocalDate end=start.plusDays(15);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			}
+			
+		}
+		
+	
+		
+	}
+	else if(startparam.equals("2dias")) {
+		Date currentdate = new Date();
+		String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(currentdate);
+		LocalDate start2 = LocalDate.parse(modifiedDate);
+		LocalDate start=start2.plusDays(2);
+		 horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		if(endparam.equals("5dias")) {
+			LocalDate end=start.plusDays(5);
+		while (start.isBefore(end)) {
+		    totalDates.add(start);
+		    start = start.plusDays(1);
+		    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		}
+		}
+		else if(endparam.equals("10dias")){
+			LocalDate end=start.plusDays(10);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			}
+			
+		}
+		else if(endparam.equals("15dias")){
+			LocalDate end=start.plusDays(15);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			}
+			
+		}
+		
+	
+		
+	}
+	else if(startparam.equals("3dias")) {
+		Date currentdate = new Date();
+		String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(currentdate);
+		LocalDate start2 = LocalDate.parse(modifiedDate);
+		LocalDate start=start2.plusDays(3);
+		 horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		if(endparam.equals("5dias")) {
+			LocalDate end=start.plusDays(5);
+		while (start.isBefore(end)) {
+		    totalDates.add(start);
+		    start = start.plusDays(1);
+		    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+		}
+		}
+		else if(endparam.equals("10dias")){
+			LocalDate end=start.plusDays(10);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			}
+			
+		}
+		else if(endparam.equals("15dias")){
+			LocalDate end=start.plusDays(15);
+			while (start.isBefore(end)) {
+			    totalDates.add(start);
+			    start = start.plusDays(1);
+			    horarioService.genCitas(start.toString(),user.UsuarioDoctor(request, userService));
+			   
+			}
+			
+		}
+		
+	
+		
+	}
+	
+	
+	return "redirect:horario";
+	}
+	
 }
