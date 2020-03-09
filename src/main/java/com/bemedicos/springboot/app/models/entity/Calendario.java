@@ -35,13 +35,11 @@ public class Calendario {
 	@Column(name="descripcion")
 	private String description;
 	
-	@JsonIgnore
-	@Column(name="id_medico")
-	private String id_medico;
+	@Column(name="idmed")
+	private String idmed;
 	
-	@JsonIgnore
 	@Column(name="id_paciente")
-	private String id_paciente;
+	private String idpaciente;
 
 	public Long getId() {
 		return id;
@@ -91,23 +89,19 @@ public class Calendario {
 		this.description = description;
 	}
 
-	public String getId_medico() {
-		return id_medico;
+	public String getIdmedico() {
+		return idmed;
 	}
 
-	public void setId_medico(String id_medico) {
-		this.id_medico = id_medico;
+	public void setIdmedico(String idmed) {
+		this.idmed = idmed;
 	}
 
-	public String getId_paciente() {
-		return id_paciente;
+	public String getIdpaciente() {
+		return idpaciente;
 	}
 
-	public void setId_paciente(String id_paciente) {
-		this.id_paciente = id_paciente;
+	public void setId_paciente(String idpaciente) {
+		this.idpaciente = idpaciente;
 	}
-	
-	
-
-	
 }

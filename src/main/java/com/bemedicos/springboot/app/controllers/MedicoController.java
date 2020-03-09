@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bemedicos.springboot.app.models.entity.Direccion;
 import com.bemedicos.springboot.app.models.entity.Medicos;
 import com.bemedicos.springboot.app.models.entity.Persona;
+import com.bemedicos.springboot.app.service.DireccionService;
 import com.bemedicos.springboot.app.service.MedicoService;
 import com.bemedicos.springboot.app.service.PersonaService;
 import com.bemedicos.springboot.app.service.UploadFileService;
@@ -37,6 +39,8 @@ public class MedicoController {
 	PersonaService personaService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	DireccionService direccionService;
 	@Autowired
 	UploadFileService uFileService;
 
@@ -60,19 +64,27 @@ public class MedicoController {
 	public String crear(Map<String, Object> model, HttpServletRequest request) {
 		Medicos medicos = new Medicos();
 		Persona persona = new Persona();
+		Direccion direccion = new Direccion();
 		UserController user = new UserController();
 
 		medicos = medicoService.findOne(user.UsuarioDoctor(request, userService).longValue());
 		persona = personaService.findOne(medicos.getPersona().getPersona_id());
+		
+		if(persona.getDireccion() != null)
+		{
+			direccion = direccionService.findOne(persona.getDireccion().getDireccion_id());
+		}
+		
 
 		model.put("persona", persona);
 		model.put("medicos", medicos);
+		model.put("direccion", direccion);
 
 		return "perfil";
 	}
 
 	@RequestMapping(value = "/perfil", method = RequestMethod.POST)
-	public String guardar(Medicos medicos, Model model, HttpServletRequest request, Persona persona, @RequestParam("file") MultipartFile foto) {
+	public String guardar(Medicos medicos, Direccion direccion, Model model, HttpServletRequest request, Persona persona, @RequestParam("file") MultipartFile foto) {
 		UserController user = new UserController();
 
 		if(!foto.isEmpty()) {
@@ -89,9 +101,12 @@ public class MedicoController {
 				e.printStackTrace();
 			}
 		}
+		direccionService.save(direccion);
 		medicos.setPersona(persona);
 		persona.setMedicos(medicos);
+		persona.setDireccion(direccion);
 		personaService.save(persona);
+		
 		return "redirect:perfil";
 	}
 
