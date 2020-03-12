@@ -150,7 +150,7 @@ public class UserController {
         
         
         message.setTo(user.getEmail());
-        message.setSubject("Bienvenido a Bemédia: " + user.getFirstName() + " " + user.getLastName());
+        message.setSubject("Bienvenido a Bemédica: " + user.getFirstName() + " " + user.getLastName());
         message.setText("Hola, Gracias por registrarte, da clic al enlace para confirmar tu email: " 
         + "http://localhost:8090/confirmar-correo?token=" + randomUUIDString );
  
