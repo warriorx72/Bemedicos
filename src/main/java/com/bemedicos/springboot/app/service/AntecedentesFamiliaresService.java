@@ -13,4 +13,8 @@ public interface AntecedentesFamiliaresService {
 	public void delete(Long id);
 	
 	public AntecedentesFamiliares findOne(Long id);
+	
+	public String findByFamiliares(Long id);
+
+	void saveEntity(AntecedentesFamiliares antecedentesfamiliares);
 }

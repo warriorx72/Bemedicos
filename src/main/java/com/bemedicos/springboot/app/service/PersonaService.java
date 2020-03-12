@@ -12,6 +12,10 @@ public interface PersonaService {
 	public void delete(Long id);
 	
 	public Persona findOne(Long id);
+	
+	public String findByPaciente (Long id);
+	
+	public String findByDireccion (Long id);
 
 
 }

@@ -6,14 +6,14 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <title>M&eacute;dico</title>
-<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+<link rel="icon" type="image/png" href="/dist/img/apple-icon-60x60.png">
 <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
 <!-- IonIcons -->
 <link rel="stylesheet"
 	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<link rel="stylesheet" href="/dist/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
@@ -93,7 +93,8 @@ to get the desired effect
 													<label>Nombre</label> <input required
 														th:field="*{persona.persona_nombre}" type="text"
 														class="form-control" placeholder="Gerardo"
-														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
+														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"> <input
+														th:field="*{persona.persona_id}" type="hidden">
 												</div>
 											</div>
 											<div class="col-sm-4">
@@ -218,6 +219,7 @@ to get the desired effect
 														th:field="*{direccion.direccion_estado}" type="text"
 														class="form-control" placeholder="Tlaxcala"
 														pattern="[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ\s.&deg;]+">
+														<input th:field="*{direccion.direccion_id}" type="hidden">
 												</div>
 											</div>
 										</div>
@@ -239,6 +241,7 @@ to get the desired effect
 													type="text" class="form-control"
 													placeholder="Nombre referencia"
 													pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+">
+
 											</div>
 											<div class="col-sm-3">
 												<label>Apellido paterno referencia</label> <input
@@ -257,6 +260,7 @@ to get the desired effect
 													th:field="*{paciente.paciente_referencia_tel}" type="tel"
 													class="form-control" placeholder="Teléfono referencia"
 													pattern="[0-9]{10}">
+													<input th:field="*{paciente.expediente}" type="hidden">
 											</div>
 										</div>
 
@@ -271,7 +275,8 @@ to get the desired effect
 								</div>
 							</div>
 						</div>
-						<input type="hidden" th:value="*{id_med_user}">
+						<input th:field="*{paciente.paciente_id}" type="text"> <input
+							type="text" th:value="*{id_med_user}">
 					</form>
 					<!-- /.row -->
 				</div>

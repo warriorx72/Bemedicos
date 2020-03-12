@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>M&eacute;dico</title>
-  <link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
-    
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- IonIcons -->
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<title>M&eacute;dico</title>
+<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- IonIcons -->
+<link rel="stylesheet"
+	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+	rel="stylesheet">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -28,208 +31,222 @@ to get the desired effect
 |---------------------------------------------------------|
 -->
 <style>
-    .estilochingon{
-        position: relative;
-        display: block;
-        min-height: 1.5rem;
-        padding-top: 0.4rem;
-        padding-left: 2.5rem;
-        }
+.estilochingon {
+	position: relative;
+	display: block;
+	min-height: 1.5rem;
+	padding-top: 0.4rem;
+	padding-left: 2.5rem;
+}
 </style>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-	<div th:include="navegacion.html" th:remove="tag">
-      </div>
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
+	<div class="wrapper">
+		<div th:include="navegacion.html" th:remove="tag"></div>
+		<!-- Navbar -->
+		<nav
+			class="main-header navbar navbar-expand navbar-white navbar-light">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+					href="#"><i class="fas fa-bars"></i></a></li>
+			</ul>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a th:href="@{/logout}" class="btn">
-          <i class="fas fa-sign-out-alt"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-  
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Historial Cl&iacute;nico</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Historial cl&iacute;nico</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a th:href="@{/logout}" class="btn"> <i
+						class="fas fa-sign-out-alt"></i>
+				</a></li>
+			</ul>
+		</nav>
+		<!-- /.navbar -->
 
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <form>
-                <div class="card card-info">
-                  <div class="card-header">
-                    <h3 class="card-title">Historial cl&iacute;nico</h3>
-                      <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                          <input type="text" name="table_search" id="buscar" class="form-control float-right" placeholder="Buscar">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Historial Cl&iacute;nico</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Inicio</a></li>
+								<li class="breadcrumb-item active">Historial cl&iacute;nico</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
 
-                          <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0" style="height: 300px;" >
-                    <table class="table table-head-fixed form-group" id="tabla">
-                      <thead>
-                        <tr>
-                          <th style="width: 25%">No. expediente</th>
-                          <th style="width: 60%">Paciente</th>
-                          <th style="width: 15%">Notas</th>
-			  <th style="width: 15%">Solicitar Estudio</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr th:each="evolucion: ${evolucionvista}">
-                          <td style="width: 25%" th:text="${evolucion[2]}"></td>
-                          <td style="width: 45%" th:text="${evolucion[1]}"></td>
-                          <td style="width: 15%">
-                            <a th:href="${'notas/'+evolucion[0]}" class="btn bg-gradient-success" style="color:#fff;"><i class="fas fa-notes-medical"></i></a>
-                          </td>
-                          <td style="width: 15%">
-                            <a th:href="${'solicitud_estudios/' + evolucion[0]}" class="btn bg-gradient-success" style="color:#fff;"><i class="fas fa-notes-medical"></i></a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                </form>
-            </div>
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-      <div class="modal fade" id="modal-default">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Nombre del usuario</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>¿Desea cerrar la sesi&oacute;n?</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="button" class="btn btn-info">Si</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-      <!-- /.modal -->
-      <div class="modal fade" id="modal-default2">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Datos del paciente</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>¿Desea terminar?</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-              <button type="button" class="btn btn-info">Si</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+			<!-- Main content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<form>
+								<div class="card card-info">
+									<div class="card-header">
+										<h3 class="card-title">Historial cl&iacute;nico</h3>
+										<div class="card-tools">
+											<div class="input-group input-group-sm" style="width: 150px;">
+												<input type="text" name="table_search" id="buscar"
+													class="form-control float-right" placeholder="Buscar">
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+												<div class="input-group-append">
+													<button type="submit" class="btn btn-default">
+														<i class="fas fa-search"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /.card-header -->
+									<div class="card-body table-responsive p-0"
+										style="height: 300px;">
+										<table class="table table-head-fixed form-group" id="tabla">
+											<thead>
+												<tr>
+													<th style="width: 25%">No. expediente</th>
+													<th style="width: 60%">Paciente</th>
+													<th style="width: 60%">Datos personales</th>
+													<th style="width: 15%">Notas</th>
+													<th style="width: 15%">Solicitar Estudio</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="evolucion: ${evolucionvista}">
+													<td style="width: 25%" th:text="${evolucion[2]}"></td>
+													<td style="width: 45%" th:text="${evolucion[1]}"></td>
+													<td style="width: 15%"><a
+														th:href="${'alta_paciente/'+evolucion[0]}"
+														class="btn bg-gradient-success" style="color: #fff;"><i
+															class="fas fa-book-medical"></i></a></td>
+													<td style="width: 15%"><a
+														th:href="${'notas/'+evolucion[0]}"
+														class="btn bg-gradient-success" style="color: #fff;"><i
+															class="fas fa-notes-medical"></i></a></td>
+													<td style="width: 15%"><a
+														th:href="${'solicitud_estudios/' + evolucion[0]}"
+														class="btn bg-gradient-success" style="color: #fff;"><i
+															class="fas fa-file-medical-alt"></i></a></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+				<div class="modal fade" id="modal-default">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Nombre del usuario</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>¿Desea cerrar la sesi&oacute;n?</p>
+							</div>
+							<div class="modal-footer justify-content-between">
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">No</button>
+								<button type="button" class="btn btn-info">Si</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+				<!-- /.modal -->
+				<div class="modal fade" id="modal-default2">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Datos del paciente</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>¿Desea terminar?</p>
+							</div>
+							<div class="modal-footer justify-content-between">
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">No</button>
+								<button type="button" class="btn btn-info">Si</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+			</div>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-  </footer>
-</div>
-<!-- ./wrapper -->
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
 
-<!-- REQUIRED SCRIPTS -->
+		<!-- Main Footer -->
+		<footer class="main-footer"> </footer>
+	</div>
+	<!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+	<!-- REQUIRED SCRIPTS -->
 
-<!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
-<script>
-	var busqueda = document.getElementById('buscar');
-    var table = document.getElementById("tabla").tBodies[0];
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE -->
+	<script src="dist/js/adminlte.js"></script>
 
-    buscaTabla = function(){
-      texto = busqueda.value.toLowerCase();
-      var r=0;
-      while(row = table.rows[r++])
-      {
-        if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
-          row.style.display = null;
-        else
-          row.style.display = 'none';
-      }
-    }
+	<!-- OPTIONAL SCRIPTS -->
+	<script src="plugins/chart.js/Chart.min.js"></script>
+	<script src="dist/js/demo.js"></script>
+	<script src="dist/js/pages/dashboard3.js"></script>
+	<script>
+		var busqueda = document.getElementById('buscar');
+		var table = document.getElementById("tabla").tBodies[0];
 
-    busqueda.addEventListener('keyup', buscaTabla);
-</script>
-<script type="text/javascript">
-        	function changeClassById (){
-        		document.getElementById("nav2").className="nav-link active";
-        		document.getElementById("menu2").className="nav-item has-treeview menu-open";
-        	}
-        	window.onload=changeClassById();
-        </script>
+		buscaTabla = function() {
+			texto = busqueda.value.toLowerCase();
+			var r = 0;
+			while (row = table.rows[r++]) {
+				if (row.innerText.toLowerCase().indexOf(texto) !== -1)
+					row.style.display = null;
+				else
+					row.style.display = 'none';
+			}
+		}
+
+		busqueda.addEventListener('keyup', buscaTabla);
+	</script>
+	<script type="text/javascript">
+		function changeClassById() {
+			document.getElementById("nav2").className = "nav-link active";
+			document.getElementById("menu2").className = "nav-item has-treeview menu-open";
+		}
+		window.onload = changeClassById();
+	</script>
 </body>
 </html>

@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bemedicos.springboot.app.models.entity.AntecedentesFamiliares;
 import com.bemedicos.springboot.app.models.entity.AntecedentesPersonales;
@@ -68,6 +71,32 @@ public class PacienteController {
 	@Autowired
 	EvolucionService evolucionService;
 
+	public Long id2;
+
+	@RequestMapping(value = "/alta_paciente/{id}", method = RequestMethod.GET)
+	public String crearDatos(HttpServletRequest request, Model model, Map<String, Object> m,
+			@PathVariable(value = "id") Long id) {
+
+		UserController us = new UserController();
+		Paciente pacientes = new Paciente();
+		Persona personas = new Persona();
+		Direccion direccions = new Direccion();
+
+		us.UsuarioDoctor(request, userService);
+		model.addAttribute("id_med_user", us.UsuarioDoctor(request, userService));
+
+		pacientes = pacienteService.findOne(id);
+		personas = personaService.findOne(Long.parseLong(personaService.findByPaciente(id).toString()));
+		direccions = direccionService.findOne(Long.parseLong(personaService.findByDireccion(id).toString()));
+
+		m.put("paciente", pacientes);
+		m.put("persona", personas);
+		m.put("direccion", direccions);
+
+		id2 = id;
+		return "/alta_paciente";
+	}
+
 	@RequestMapping(value = "/alta_paciente", method = RequestMethod.GET)
 	public String crear(HttpServletRequest request, Model model, Map<String, Object> m) {
 		Paciente paciente = new Paciente();
@@ -84,30 +113,63 @@ public class PacienteController {
 
 	@RequestMapping(value = "/guardar_paciente", method = RequestMethod.POST)
 	public String guardarPaciente(HttpServletRequest request, Model model, Map<String, Object> m, Direccion direccion,
-			Persona persona, Paciente paciente) {
+			Persona persona, Paciente paciente) 
+	{
 		AntecedentesFamiliares antecedentesfamiliares = new AntecedentesFamiliares();
 		MedicoPaciente medpa = new MedicoPaciente();
 		UserController us = new UserController();
+		
+		if (paciente.getPaciente_id()==null ) {
+			direccion.setPersona(persona);
+			persona.setDireccion(direccion);
+			persona.setPaciente(paciente);
+			paciente.setPersona(persona);
 
-		direccion.setPersona(persona);
-		persona.setDireccion(direccion);
-		persona.setPaciente(paciente);
-		paciente.setPersona(persona);
-		direccionService.save(direccion);
+			direccionService.save(direccion);
 
-		antecedentesfamiliares.setPaciente_id(paciente.getPaciente_id());
-		medpa.setPaciente_id(paciente.getPaciente_id());
-		medpa.setMedico_id(us.UsuarioDoctor(request, userService).longValue());
-		medpaService.save(medpa);
+			antecedentesfamiliares.setPaciente_id(paciente.getPaciente_id());
+			medpa.setPaciente_id(paciente.getPaciente_id());
+			medpa.setMedico_id(us.UsuarioDoctor(request, userService).longValue());
+			medpaService.save(medpa);
 
-		paciente.setExpediente("pac-" + medpa.getMedico_id() + "-" + (10000 + paciente.getPaciente_id()));
-		pacienteService.save(paciente);
+			paciente.setExpediente("pac-" + medpa.getMedico_id() + "-" + (10000 + paciente.getPaciente_id()));
+			pacienteService.save(paciente);
+			System.out.println("dssssssssssssssssssssssssssssss"+antecedentesfamiliares.getAntecedentesfam_id());
+			m.put("paciente", paciente);
+			m.put("persona", persona);
+			m.put("direccion", direccion);
+			m.put("antecedentesfamiliares", antecedentesfamiliares);
+		}
 
-		m.put("paciente", paciente);
-		m.put("persona", persona);
-		m.put("direccion", direccion);
-		m.put("antecedentesfamiliares", antecedentesfamiliares);
+		else {
+			
+			Paciente pacientes = pacienteService.findOne(paciente.getPaciente_id());
+			Persona personas = personaService.findOne(Long.parseLong(personaService.findByPaciente(id2).toString()));
+			Direccion direccions = direccionService
+					.findOne(Long.parseLong(personaService.findByDireccion(id2).toString()));
 
+			direccions = direccion;
+			direccionService.save(direccions);			
+			personas = persona;
+			personas.setPersona_id(personas.getPersona_id());
+			personas.setDireccion(direccions);
+			personaService.save(personas);
+
+			pacientes = paciente;
+			pacientes.setPersona(personas);
+			
+			pacienteService.save(pacientes);
+			// direccionService.save(direccions);
+			antecedentesfamiliares = antecedentesfamiliaresservice.findOne(Long.parseLong(antecedentesfamiliaresservice.findByFamiliares(id2)));
+
+			// pacienteService.save(pacientes);
+
+			m.put("paciente", paciente);
+			m.put("persona", persona);
+			m.put("direccion", direccion);
+			m.put("antecedentesfamiliares", antecedentesfamiliares);
+		}
+		
 		if (request.getParameter("action1").equals("0")) {
 			return "antecedentes_familiares";
 		}
@@ -117,6 +179,8 @@ public class PacienteController {
 	@RequestMapping(value = "/antecedentes_familiares", method = RequestMethod.GET)
 	public String listarantecedentesfamiliares(HttpServletRequest request, Model model, Map<String, Object> m) {
 		AntecedentesFamiliares antecedentesfamiliares = new AntecedentesFamiliares();
+		
+
 		m.put("antecedentesfamiliares", antecedentesfamiliares);
 		return "antecedentes_familiares";
 	}
@@ -126,7 +190,8 @@ public class PacienteController {
 			Model model, SessionStatus status, Map<String, Object> m) {
 		AntecedentesPersonales personales = new AntecedentesPersonales();
 		Evolucion evolucion = new Evolucion();
-
+		System.out.println(paciente.getPaciente_id());
+		
 		antecedentesfamiliaresservice.save(antecedentesfamiliares);
 		personales.setPaciente_id(antecedentesfamiliares.getPaciente_id());
 
@@ -134,7 +199,8 @@ public class PacienteController {
 		m.put("antecedentesfamiliares", antecedentesfamiliares);
 		m.put("personales", personales);
 		m.put("evolucion", evolucion);
-
+		
+		
 		if (request.getParameter("action1").equals("0")) {
 			return "antecedentes_personales";
 		}
