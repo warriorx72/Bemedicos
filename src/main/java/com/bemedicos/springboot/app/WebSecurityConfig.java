@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     	
         .authorizeRequests()
         .antMatchers(resources).permitAll()  
-        .antMatchers("/","/login","/signup").permitAll()
+        .antMatchers("/","/login","/signup", "/confirmar-correo","/Reenviar_Correo").permitAll()
             .anyRequest().authenticated()
             .and()
         .formLogin()
