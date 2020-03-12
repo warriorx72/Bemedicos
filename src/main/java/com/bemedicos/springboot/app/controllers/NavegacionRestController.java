@@ -25,7 +25,7 @@ public class NavegacionRestController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping(value = "fotos")
+	@GetMapping(value = "/fotos")
 	public List<MedicoPersonaDTO> getMedicos(HttpServletRequest request) {
 		Medicos medicos = new Medicos();
 		Persona persona = new Persona();
