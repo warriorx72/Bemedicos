@@ -85,78 +85,11 @@ to get the desiored effect
 .loading {
 	animation: blinkingText ease 2.5s infinite;
 }
-
-@
-keyframes blinkingText { 0%{
-	color: #000;
-}
-
-50%{
-color
-
-
-
-
-
-
-:
-
-
-
- 
-
-
-
-#transparent
-
-
-
-
-
-
-;
-}
-99%{
-color
-
-
-
-
-
-
-:transparent
-
-
-
-
-
-
-;
-}
-100%{
-color
-
-
-
-
-
-
-:
-
-
-
-
-
-
-#000
-
-
-
-
-
-
-;
-}
+@keyframes blinkingText{
+    0%{     color: #000;    }     
+    50%{   color: #transparent; }
+    99%{    color:transparent;  }
+    100%{ color:#000; }
 }
 .custom-file-label {
 	cursor: pointer;
@@ -248,9 +181,8 @@ color
 										<div class="row">
 											<div class="col-sm-4">
 												<div id='img_contain'>
-													<img class="img-circle img-format" id="prevImg" width="250px" height="250px"
-														th:onerror="this.src=[[@{'/uploads/' + user.png}]];"
-														th:src="@{'/uploads/' + ${medicos.medico_foto}}"/>
+													<img class="img-circle img-fluid img-format" id="prevImg"
+														th:src="@{'/uploads/' + ${medicos.medico_foto}}" />
 												</div>
 												<div class="form group col-sm-12">
 													<input type="file" name="file" id="file"
@@ -259,203 +191,36 @@ color
 												</div>
 											</div>
 											<div class="col-sm-8">
-											<div class="row">
-												<div class="form-group col-sm-6">
-													<label>Nombre: </label> <input type="text" readOnly
+												<div class="form-group">
+													<label>Nombre</label> <input type="text" readOnly
 														class="form-control" th:field="*{persona.persona_nombre}" />
 												</div>
+												<div class="row">
+
 													<div class="form-group col-sm-6">
 														<label>Apellido Paterno</label> <input type="text"
 															readOnly class="form-control"
 															th:field="*{persona.persona_ap}" />
 													</div>
-											</div>
-												<div class="row">
 													<div class="form-group col-sm-6">
 														<label>Apellido Materno</label> <input type="text"
 															readOnly class="form-control"
 															th:field="*{persona.persona_am}" />
 													</div>
-												<div class="form-group col-sm-6">
-													<label>Estado: </label> 
-														<div class="form-group">
-							                           		<select class="form-control" th:field="*{direccion.direccion_estado}">
-							                           			<option value="Estado">Estado</option>
-							  									<option value="Aguascalientes">Aguascalientes</option>
-							  									<option value="Baja California">Baja California</option>
-							  									<option value="Baja California Sur">Baja California Sur</option>
-							  									<option value="Campeche">Campeche</option>
-							  									<option value="Chiapas">Chiapas</option>
-							  									<option value="Chihuahua">Chihuahua</option>
-							  									<option value="Mexico City">Ciudad de México</option>
-							  									<option value="Coahuila">Coahuila de Zaragoza</option>
-							  									<option value="Colima">Colima</option>
-							  									<option value="Durango">Durango</option>
-							  									<option value="México">Estado de México</option>
-							  									<option value="Guanajuato">Guanajuato</option>
-							  									<option value="Guerrero">Guerrero</option>
-							  									<option value="Hidalgo">Estado de Hidalgo</option>
-							  									<option value="Jalisco">Jalisco</option>
-							  									<option value="Michoacán">Michoacán de Ocampo</option>
-							  									<option value="Morelos">Morelos</option>
-							  									<option value="Nayarit">Nayarit</option>
-							  									<option value="Nuevo León">Nuevo León</option>
-							  									<option value="Oaxaca">Oaxaca</option>
-							  									<option value="Puebla">Puebla</option>
-							  									<option value="Querétaro">Querétaro</option>
-							  									<option value="Quintana Roo">Quintana Roo</option>
-							  									<option value="San Luis Potosí">San Luis Potosí</option>
-							  									<option value="Sinaloa">Sinaloa</option>
-							  									<option value="Sonora">Sonora</option>
-							  									<option value="Tabasco">Tabasco</option>
-							  									<option value="Tamaulipas">Tamaulipas</option>
-							  									<option value="Tlaxcala">Tlaxcala</option>
-							  									<option value="Veracruz">Veracruz</option>
-							  									<option value="Yucatán">Yucatán</option>
-							  									<option value="Zacatecas">Zacatecas</option>
-														</select>
-							                        </div>
-												</div>
 												</div>
 
 												<div class="row">
 													<div class="col-sm-6">
 														<div class="form-group">
-															<label>Especialidad</label> 
-																	<div class="form-group">
-												                           <!--<input type="text" placeholder="Especialidad..." class="form-control" id="Especialidad">-->
-												                           <select class="form-control" th:field="*{medicos.medico_especialidad}">
-												                           	<option value="None" selected>Seleccione su especialidad</option>
-												   							<option value="ALGOLOGÍA">ALGOLOGÍA</option>
-												   							<option value="ANATOMÍA PATOLÓGICA">ANATOMÍA PATOLÓGICA</option>
-												   							<option value="ANESTESIOLOGÍA">ANESTESIOLOGÍA</option>
-												   							<option value="ANESTESIOLOGÍA PARA LOS SERVICIOS RURALES DE LA SALUD">ANESTESIOLOGÍA PARA LOS SERVICIOS RURALES DE LA SALUD</option>
-												   							<option value="ANESTESIOLOGÍA PEDIÁTRICA">ANESTESIOLOGÍA PEDIÁTRICA</option>
-												   							<option value="ANGIOLOGÍA Y CIRUGÍA VASCULAR">ANGIOLOGÍA Y CIRUGÍA VASCULAR</option>
-												   							<option value="ANGIOLOGÍA, CIRUGÍA VASCULAR Y ENDOVASCULAR">ANGIOLOGÍA, CIRUGÍA VASCULAR Y ENDOVASCULAR</option>
-												   							<option value="ASMA">ASMA</option>
-												   							<option value="BIOLOGIA DE LA REPRODUCCION HUMANA">BIOLOGIA DE LA REPRODUCCION HUMANA</option>
-												   							<option value="BRONCOSCOPÍA INTERVENCIONISTA">BRONCOSCOPÍA INTERVENCIONISTA</option>
-												   							<option value="BRONCOSCOPÍA INTERVENCIONISTA PEDIÁTRICA">BRONCOSCOPÍA INTERVENCIONISTA PEDIÁTRICA</option>
-												   							<option value="CARDIOLOGÍA CLÍNICA">CARDIOLOGÍA CLÍNICA</option>
-												   							<option value="CARDIOLOGÍA INTERVENCIONISTA">CARDIOLOGÍA INTERVENCIONISTA</option>
-												   							<option value="CARDIOLOGÍA INTERVENCIONISTA EN CARDIOPATÍAS CONGÉNITAS">CARDIOLOGÍA INTERVENCIONISTA EN CARDIOPATÍAS CONGÉNITAS</option>
-												   							<option value="CARDIOLOGÍA PEDIÁTRICA">CARDIOLOGÍA PEDIÁTRICA</option>
-												   							<option value="CIRUGÍA BARIÁTRICA">CIRUGÍA BARIÁTRICA</option>
-												   							<option value="CIRUGÍA CARDIACA EN ADULTOS">CIRUGÍA CARDIACA EN ADULTOS</option>
-												   							<option value="CIRUGÍA CARDIACA EN PEDIATRÍA">CIRUGÍA CARDIACA EN PEDIATRÍA</option>
-												   							<option value="CIRUGÍA CARDIOTORÁCICA">CIRUGÍA CARDIOTORÁCICA</option>
-												   							<option value="CIRUGÍA DE TÓRAX PEDIÁTRICA NO CARDIACA">CIRUGÍA DE TÓRAX PEDIÁTRICA NO CARDIACA</option>
-												   							<option value="CIRUGÍA DE TRASPLANTES">CIRUGÍA DE TRASPLANTES</option>
-																			<option value="CIRUGÍA DEL APARATO DIGESTIVO">CIRUGÍA DEL APARATO DIGESTIVO</option>
-												   							<option value="CIRUGÍA GENERAL">CIRUGÍA GENERAL</option>
-												   							<option value="CIRUGÍA NEUROLÓGICA">CIRUGÍA NEUROLÓGICA</option>
-												   							<option value="CIRUGÍA ONCOLÓGICA">CIRUGÍA ONCOLÓGICA</option>
-												   							<option value="CIRUGÍA ONCOLÓGICA PEDIÁTRICA">CIRUGÍA ONCOLÓGICA PEDIÁTRICA</option>
-												   							<option value="CIRUGÍA ORAL MAXILOFACIAL">CIRUGÍA ORAL MAXILOFACIAL</option>
-												   							<option value="CIRUGÍA PARA LOS SERVICIOS RURALES DE LA SALUD">CIRUGÍA PARA LOS SERVICIOS RURALES DE LA SALUD</option>
-												   							<option value="CIRUGÍA PEDIÁTRICA">CIRUGÍA PEDIÁTRICA</option>
-												   							<option value="CIRUGÍA PLÁSTICA, ESTÉTICA Y RECONSTRUCTIVA">CIRUGÍA PLÁSTICA, ESTÉTICA Y RECONSTRUCTIVA</option>
-												   							<option value="CIRUGÍA TORÁCICA NO CARDIACA">CIRUGÍA TORÁCICA NO CARDIACA</option>
-												   							<option value="CITOGENÉTICA">CITOGENÉTICA</option>
-												   							<option value="COLOPROCTOLOGÍA">COLOPROCTOLOGÍA</option>
-												   							<option value="COMUNICACIÓN AUDIOLOGÍA, OTONEUROLOGÍA Y FONIATRÍA">COMUNICACIÓN AUDIOLOGÍA, OTONEUROLOGÍA Y FONIATRÍA</option>
-																		   <option value="CUIDADOS PALIATIVOS">CUIDADOS PALIATIVOS</option>
-																		   <option value="DERMATOLOGÍA">DERMATOLOGÍA</option>
-																		   <option value="DERMATOLOGÍA PEDIÁTRICA">DERMATOLOGÍA PEDIÁTRICA</option>
-																		   <option value="ECOCARDIOGRAFÍA ADULTOS">ECOCARDIOGRAFÍA ADULTOS</option>
-																		   <option value="ECOCARDIOGRAFÍA PEDIÁTRICA">ECOCARDIOGRAFÍA PEDIÁTRICA</option>
-																		   <option value="ELECTROFISIOLOGÍA">ELECTROFISIOLOGÍA</option>
-																		   <option value="ENDOCRINOLOGÍA">ENDOCRINOLOGÍA</option>
-																		   <option value="ENDOCRINOLOGÍA PEDIÁTRICA">ENDOCRINOLOGÍA PEDIÁTRICA</option>
-																		   <option value="ENDOSCOPÍA DEL APARATO DIGESTIVO">ENDOSCOPÍA DEL APARATO DIGESTIVO</option>
-																		   <option value="ENDOSCOPÍA TORÁCICA">ENDOSCOPÍA TORÁCICA</option>
-																		   <option value="EPIDEMIOLOGÍA">EPIDEMIOLOGÍA</option>
-																		   <option value="FISIOLOGÍA RESPIRATORIA">FISIOLOGÍA RESPIRATORIA</option>
-																		   <option value="FISIOLOGÍA RESPIRATORIA PEDIÁTRICA">FISIOLOGÍA RESPIRATORIA PEDIÁTRICA</option>
-																		   <option value="GASTROENTEROLOGÍA">GASTROENTEROLOGÍA</option>
-																		   <option value="GASTROENTEROLOGÍA PEDIÁTRICA">GASTROENTEROLOGÍA PEDIÁTRICA</option>
-																		   <option value="GENÉTICA MÉDICA">GENÉTICA MÉDICA</option>
-																		   <option value="GENÉTICA MOLECULAR">GENÉTICA MOLECULAR</option>
-																		   <option value="GERIATRÍA">GERIATRÍA</option>
-																		   <option value="GINECOLOGÍA ONCOLÓGICA">GINECOLOGÍA ONCOLÓGICA</option>
-																		   <option value="GINECOLOGÍA Y OBSTETRICIA">GINECOLOGÍA Y OBSTETRICIA</option>
-																		   <option value="HEMATOLOGÍA">HEMATOLOGÍA</option>
-																		   <option value="HEMATOLOGÍA PEDIÁTRICA">HEMATOLOGÍA PEDIÁTRICA</option>
-																		   <option value="IMAGEN DE LA MAMA">IMAGEN DE LA MAMA</option>
-																		   <option value="IMAGEN DEL SISTEMA MUSCULOESQUELÉTICO">IMAGEN DEL SISTEMA MUSCULOESQUELÉTICO</option>
-																		   <option value="INFECTOLOGÍA ADULTOS">INFECTOLOGÍA ADULTOS</option>
-																		   <option value="INFECTOLOGÍA PEDIÁTRICA">INFECTOLOGÍA PEDIÁTRICA</option>
-																		   <option value="INMUNOLOGÍA CLÍNICA Y ALERGIA">INMUNOLOGÍA CLÍNICA Y ALERGIA</option>
-																		   <option value="MEDICINA AEROESPACIAL">MEDICINA AEROESPACIAL</option>
-																		   <option value="MEDICINA CRÍTICA">MEDICINA CRÍTICA</option>
-																		   <option value="MEDICINA CRÍTICA EN OBSTETRICIA">MEDICINA CRÍTICA EN OBSTETRICIA</option>
-																		   <option value="MEDICINA DE REHABILITACIÓN">MEDICINA DE REHABILITACIÓN</option>
-																		   <option value="MEDICINA DE URGENCIAS">MEDICINA DE URGENCIAS</option>
-																		   <option value="MEDICINA DEL DEPORTE">MEDICINA DEL DEPORTE</option>
-																		   <option value="MEDICINA DEL ENFERMO PEDIÁTRICO EN ESTADO CRÍTICO">MEDICINA DEL ENFERMO PEDIÁTRICO EN ESTADO CRÍTICO</option>
-																		   <option value="MEDICINA DEL NIÑO Y DEL ADULTO PARA LOS SERVICIOS RURALES DE SALUD">MEDICINA DEL NIÑO Y DEL ADULTO PARA LOS SERVICIOS RURALES DE SALUD</option>
-																		   <option value="MEDICINA DEL SUEÑO">MEDICINA DEL SUEÑO</option>
-																		   <option value="MEDICINA DEL TRABAJO">MEDICINA DEL TRABAJO</option>
-																		   <option value="MEDICINA DEL TRABAJO Y AMBIENTAL">MEDICINA DEL TRABAJO Y AMBIENTAL</option>
-																		   <option value="MEDICINA FAMILIAR">MEDICINA FAMILIAR</option>
-																		   <option value="MEDICINA INTEGRADA">MEDICINA INTEGRADA</option>
-																		   <option value="MEDICINA INTERNA">MEDICINA INTERNA</option>
-																		   <option value="MEDICINA LEGAL Y FORENSE">MEDICINA LEGAL Y FORENSE</option>
-																		   <option value="MEDICINA MATERNO FETAL">MEDICINA MATERNO FETAL</option>
-																		   <option value="MEDICINA NUCLEAR">MEDICINA NUCLEAR</option>
-																		   <option value="MEDICINA NUCLEAR CARDIOLÓGICA">MEDICINA NUCLEAR CARDIOLÓGICA</option>
-																		   <option value="MEDICINA NUCLEAR ONCOLÓGICA, MOLECULAR Y TERAPÉUTICA">MEDICINA NUCLEAR ONCOLÓGICA, MOLECULAR Y TERAPÉUTICA</option>
-																		   <option value="MEDICINA PREVENTIVA">MEDICINA PREVENTIVA</option>
-																		   <option value="NEFROLOGÍA">NEFROLOGÍA</option>
-																		   <option value="NEFROLOGÍA PEDIÁTRICA">NEFROLOGÍA PEDIÁTRICA</option>
-																		   <option value="NEONATOLOGÍA">NEONATOLOGÍA</option>
-																		   <option value="NEUMOLOGÍA">NEUMOLOGÍA</option>
-																		   <option value="NEUMOLOGÍA PEDIÁTRICA">NEUMOLOGÍA PEDIÁTRICA</option>
-																		   <option value="NEURO-OTOLOGÍA">NEURO-OTOLOGÍA</option>
-																		   <option value="NEUROANESTESIOLOGÍA">NEUROANESTESIOLOGÍA</option>
-																		   <option value="NEUROCIRUGÍA PEDIÁTRICA">NEUROCIRUGÍA PEDIÁTRICA</option>
-																		   <option value="NEUROFISIOLOGÍA CLÍNICA">NEUROFISIOLOGÍA CLÍNICA</option>
-																		   <option value="NEUROLOGÍA ADULTOS">NEUROLOGÍA ADULTOS</option>
-																		   <option value="NEUROLOGÍA PEDIÁTRICA">NEUROLOGÍA PEDIÁTRICA</option>
-																		   <option value="NEUROPATOLOGÍA">NEUROPATOLOGÍA</option>
-																		   <option value="NEURORRADIOLOGÍA">NEURORRADIOLOGÍA</option>
-																		   <option value="OFTALMOLOGÍA">OFTALMOLOGÍA</option>
-																		   <option value="ONCOLOGÍA MÉDICA">ONCOLOGÍA MÉDICA</option>
-																		   <option value="ONCOLOGÍA PEDIÁTRICA">ONCOLOGÍA PEDIÁTRICA</option>
-																		   <option value="ORTOPEDIA Y TRAUMATOLOGÍA">ORTOPEDIA Y TRAUMATOLOGÍA</option>
-																		   <option value="OTORRINOLARINGOLOGÍA PEDIÁTRICA">OTORRINOLARINGOLOGÍA PEDIÁTRICA</option>
-																		   <option value="OTORRINOLARINGOLOGÍA Y CIRUGÍA DE CABEZA Y CUELLO">OTORRINOLARINGOLOGÍA Y CIRUGÍA DE CABEZA Y CUELLO</option>
-																		   <option value="PATOLOGÍA CLÍNICA">PATOLOGÍA CLÍNICA</option>
-																		   <option value="PATOLOGÍA PEDIÁTRICA">PATOLOGÍA PEDIÁTRICA</option>
-																		   <option value="PEDIATRÍA">PEDIATRÍA</option>
-																		   <option value="PSIQUIATRÍA">PSIQUIATRÍA</option>
-																		   <option value="PSIQUIATRÍA INFANTIL Y DE LA ADOLESCENCIA">PSIQUIATRÍA INFANTIL Y DE LA ADOLESCENCIA</option>
-																		   <option value="RADIO ONCOLOGÍA">RADIO ONCOLOGÍA</option>
-																		   <option value="RADIOLOGÍA E IMAGEN">RADIOLOGÍA E IMAGEN</option>
-																		   <option value="RADIOLOGÍA PEDIÁTRICA">RADIOLOGÍA PEDIÁTRICA</option>
-																		   <option value="RADIOLOGÍA VASCULAR E INTERVENCIONISTA">RADIOLOGÍA VASCULAR E INTERVENCIONISTA</option>
-																		   <option value="REHABILITACIÓN CARDÍACA">REHABILITACIÓN CARDÍACA</option>
-																		   <option value="REHABILITACIÓN CARDIACA Y PREVENCIÓN SECUNDARIA">REHABILITACIÓN CARDIACA Y PREVENCIÓN SECUNDARIA</option>
-																		   <option value="REHABILITACIÓN PULMONAR">REHABILITACIÓN PULMONAR</option>
-																		   <option value="REHABILITACIÓN PULMONAR PEDIÁTRICA">REHABILITACIÓN PULMONAR PEDIÁTRICA</option>
-																		   <option value="REUMATOLOGÍA">REUMATOLOGÍA</option>
-																		   <option value="REUMATOLOGÍA PEDIÁTRICA">REUMATOLOGÍA PEDIÁTRICA</option>
-																		   <option value="SALUD PÚBLICA">SALUD PÚBLICA</option>
-																		   <option value="TERAPIA ENDOVASCULAR NEUROLÓGICA">TERAPIA ENDOVASCULAR NEUROLÓGICA</option>
-																		   <option value="TERAPIA ENDOVASCULAR NEUROLÓGICA">TERAPIA ENDOVASCULAR NEUROLÓGICA</option>
-																		   <option value="TRANSPLANTE RENAL">TRANSPLANTE RENAL</option>
-																		   <option value="URGENCIAS PEDIÁTRICAS">URGENCIAS PEDIÁTRICAS</option>
-																		   <option value="UROLOGÍA">UROLOGÍA</option>
-																		   <option value="UROLOGÍA GINECOLÓGICA">UROLOGÍA GINECOLÓGICA</option>
-												                           </select>
-												                        </div>
+															<label>Especialidad</label> <input type="text"
+																th:field="*{medicos.medico_especialidad}"
+																class="form-control" placeholder="Escriba especialidad" />
 														</div>
 													</div>
 													<div class="col-sm-6">
 														<div class="form-group">
 															<label>C&eacute;dula profesional</label> <input
-																th:field="*{medicos.medico_cedula}" type="text"
+																th:field="*{medicos.medico_cedula}" type="number"
 																class="form-control" placeholder="Escriba cedula" />
 														</div>
 													</div>
@@ -487,15 +252,14 @@ color
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label>Primera consulta</label> <input type="number"
-														required th:field="*{medicos.primer_consulta}"
-														class="form-control"
+														th:field="*{medicos.primer_consulta}" class="form-control"
 														placeholder="Escriba precio de primer consulta" />
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label>Consulta control</label> <input type="number"
-														required th:field="*{medicos.control_consulta}"
+														th:field="*{medicos.control_consulta}"
 														class="form-control"
 														placeholder="Escriba precio de consulta de control" />
 												</div>
@@ -503,14 +267,13 @@ color
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label> Consulta a domicilio</label> <input type="number"
-														required th:field="*{medicos.domicilio_consulta}"
+														th:field="*{medicos.domicilio_consulta}"
 														class="form-control"
 														placeholder="Escriba precio de consulta a domicilio" />
 												</div>
 											</div>
 										</div>
-										<input type="hidden" th:field="*{medicos.medico_id}" /> <input
-											type="hidden" th:field="*{persona.persona_id}" />
+										<input type="hidden" th:field="*{medicos.medico_id}" />
 										<div class="card-footer">
 											<button type="submit"
 												class="btn bg-gradient-info float-right">Guardar</button>
@@ -633,6 +396,14 @@ color
 			$(".alert").text(text).addClass("loading");
 		}
 	</script>
+
+	<script type="text/javascript">
+		function changeClassById() {
+			document.getElementById("nav5").className = "nav-link active";
+			document.getElementById("menu5").className = "nav-item has-treeview menu-open";
+		}
+		window.onload = changeClassById();
+	</script>
 	<script>
 		function readImage(input) {
 			if (input.files && input.files[0]) {
@@ -648,13 +419,6 @@ color
 			// Código a ejecutar cuando se detecta un cambio de archivO
 			readImage(this);
 		});
-	</script>
-	<script type="text/javascript">
-		function changeClassById() {
-			document.getElementById("nav1").className = "nav-link active";
-			document.getElementById("menu1").className = "nav-item has-treeview menu-open";
-		}
-		window.onload = changeClassById();
 	</script>
 </body>
 
