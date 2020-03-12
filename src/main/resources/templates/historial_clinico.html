@@ -115,6 +115,10 @@ to get the desired effect
 													<th style="width: 25%">No. expediente</th>
 													<th style="width: 60%">Paciente</th>
 													<th style="width: 60%">Datos personales</th>
+													<th style="width: 60%">Antecedentes Familiares</th>
+													<th style="width: 60%">Antecedentes Personales</th>
+													<th style="width: 60%">Casa Habitación</th>
+													<th style="width: 60%">Embarazos</th>
 													<th style="width: 15%">Notas</th>
 													<th style="width: 15%">Solicitar Estudio</th>
 												</tr>
@@ -125,6 +129,22 @@ to get the desired effect
 													<td style="width: 45%" th:text="${evolucion[1]}"></td>
 													<td style="width: 15%"><a
 														th:href="${'alta_paciente/'+evolucion[0]}"
+														class="btn bg-gradient-success" style="color: #fff;"><i
+															class="fas fa-book-medical"></i></a></td>
+															<td style="width: 15%"><a
+														th:href="${'antecedentes_familiares/'+evolucion[0]}"
+														class="btn bg-gradient-success" style="color: #fff;"><i
+															class="fas fa-book-medical"></i></a></td>
+															<td style="width: 15%"><a
+														th:href="${'antecedentes_personales/'+evolucion[0]}"
+														class="btn bg-gradient-success" style="color: #fff;"><i
+															class="fas fa-book-medical"></i></a></td>
+															<td style="width: 15%"><a
+														th:href="${'casa_habitacion/'+evolucion[0]}"
+														class="btn bg-gradient-success" style="color: #fff;"><i
+															class="fas fa-book-medical"></i></a></td>
+															<td style="width: 15%"><a
+														th:href="${'embarazos/'+evolucion[0]}"
 														class="btn bg-gradient-success" style="color: #fff;"><i
 															class="fas fa-book-medical"></i></a></td>
 													<td style="width: 15%"><a
