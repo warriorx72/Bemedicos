@@ -75,7 +75,6 @@ public class MedicoController {
 			direccion = direccionService.findOne(persona.getDireccion().getDireccion_id());
 		}
 		
-
 		model.put("persona", persona);
 		model.put("medicos", medicos);
 		model.put("direccion", direccion);
@@ -101,10 +100,18 @@ public class MedicoController {
 				e.printStackTrace();
 			}
 		}
-		direccionService.save(direccion);
+		
+		Direccion oldDir = direccionService.findOne(direccion.getDireccion_id());
+		oldDir.setDireccion_calle(direccion.getDireccion_calle());
+		oldDir.setDireccion_colonia(direccion.getDireccion_colonia());
+		oldDir.setDireccion_estado(direccion.getDireccion_estado());
+		oldDir.setDireccion_municipio(direccion.getDireccion_municipio());
+		oldDir.setDireccion_num_inter(direccion.getDireccion_num_inter());
+		oldDir.setDireccion_numero_ext(direccion.getDireccion_numero_ext());
+		oldDir.setDireccion_postal(direccion.getDireccion_postal());
 		medicos.setPersona(persona);
 		persona.setMedicos(medicos);
-		persona.setDireccion(direccion);
+		persona.setDireccion(oldDir);
 		personaService.save(persona);
 		
 		return "redirect:perfil";
