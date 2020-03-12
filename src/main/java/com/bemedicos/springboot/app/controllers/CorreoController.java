@@ -44,26 +44,19 @@ public class CorreoController
 	@RequestMapping(value="/confirmar-correo", method= {RequestMethod.GET, RequestMethod.POST})
 	public String ConfirmarCorreo(@RequestParam("token")String ConfirmationToken) throws Exception 
 	{
+		System.out.println("entre al confirmar");
 		//Crear y llenar el objeto CodigoConfirmacion con el parametro recibido
 		CodigoConfirmacion ct = CodigoConfirmacionDao.findByCodigo(ConfirmationToken);
+		System.out.println("elcodigo: " + ct.getCodigo());
 		
-		if(ct != null)
-		{
-			//Buscar al usuario en base a su ID y actualizar su estatus
-			User u = userService.getUserById(Long.valueOf(ct.getusermed()));
-			u.setUser_med_status(1);
-			userService.updateUser(u);
-			
-			//Se borra el codigo en la tabla de CodigoConfirmacion 
-			CodigoConfirmacionDao.delete(ct);
-			return "Login";
-		}
-		else
-		{
-			//No coincide el codigo
-			return "redirect:/login?error";
-		}
-
+		//Buscar al usuario en base a su ID y actualizar su estatus
+		User u = userService.getUserById(Long.valueOf(ct.getusermed()));
+		u.setUser_med_status(1);
+		userService.updateUser(u);
+		
+		//Se borra el codigo en la tabla de CodigoConfirmacion 
+		CodigoConfirmacionDao.delete(ct);
+		return "Login";
 	}
 	
 	@RequestMapping(value="/Reenviar_Correo", method= {RequestMethod.GET})
@@ -71,6 +64,7 @@ public class CorreoController
 	{
 		//Primero se obtiene al usuario en base a su correo
 		Optional<User> u = userRepository.findByEmail(usuario.getEmail());
+		System.out.println("Entre al reenviar");
 		
 		//Se pregunta si existe o no
 		if(u.toString() == "Optional.empty")
@@ -109,7 +103,7 @@ public class CorreoController
 	        
 	        //Se envia el correo con la url de confirmacions
 	        message.setTo(user.getEmail());
-	        message.setSubject("Bienvenido a Bemédia: " + user.getFirstName() + " " + user.getLastName());
+	        message.setSubject("Bienvenido a Bemédica: " + user.getFirstName() + " " + user.getLastName());
 	        message.setText("Hola, Se ha enviado un nuevo correo, da clic al enlace para confirmar tu email: " 
 	        + "http://localhost:8090/confirmar-correo?token=" + randomUUIDString );
 	 
