@@ -41,4 +41,9 @@ public Embarazos findOne(Long id) {
 // TODO Auto-generated method stub
 return repository.findById(id).orElse(null);
 }
+
+@Override
+public Embarazos findbyPacienteId(Long id) {
+	return repository.findByPacienteId(id).orElse(null);
+}
 }

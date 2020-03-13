@@ -6,15 +6,15 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <title>M&eacute;dico</title>
-<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+<link rel="icon" type="image/png" href="/dist/img/apple-icon-60x60.png">
 
 <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
 <!-- IonIcons -->
 <link rel="stylesheet"
 	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<link rel="stylesheet" href="/dist/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
@@ -114,56 +114,60 @@ to get the desired effect
 													<td style="width: 15%; padding-top: 0.4rem;">
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
-																id="customCheckbox1" value="option1"
+																id="customCheckbox1" value="option1" th:checked="*{embarazos.numero_embarazos} == null ? false:true"
 																onchange="habilitar(this.checked,'txtEmb1');"> <label
 																for="customCheckbox1" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 55%"><input
 														th:field="*{embarazos.numero_embarazos}" type="number" placeholder="Anote cu&aacute;ntos" 
-														id="txtEmb1" class="form-control" disabled></td>
+														id="txtEmb1" class="form-control" th:disabled="*{embarazos.numero_embarazos} != null ? false: true"
+															onchange="habilitar2('txtEmb1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 30%">¿Haz tenido abortos?</td>
 													<td style="width: 15%; padding-top: 0.4rem;">
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
-																id="customCheckbox2" value="option1"
+																id="customCheckbox2" value="option1" th:checked="*{embarazos.numero_abortos} == null ? false:true"
 																onchange="habilitar(this.checked,'txtEmb2');"> <label
 																for="customCheckbox2" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 55%"><input
 														th:field="*{embarazos.numero_abortos}" type="number" placeholder="Anote cu&aacute;ntos"
-														class="form-control" id="txtEmb2" disabled></td>
+														class="form-control" id="txtEmb2" th:disabled="*{embarazos.numero_abortos} != null ? false: true"
+															onchange="habilitar2('txtEmb2', 'customCheckbox2');"></td>
 												</tr>
 												<tr>
 													<td style="width: 30%">¿Haz tenido partos naturales?</td>
 													<td style="width: 15%; padding-top: 0.4rem;">
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
-																id="customCheckbox3" value="option1"
+																id="customCheckbox3" value="option1" th:checked="*{embarazos.partos_naturales} == null ? false:true"
 																onchange="habilitar(this.checked,'txtEmb3');"> <label
 																for="customCheckbox3" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 55%"><input
 														th:field="*{embarazos.partos_naturales}" type="number" placeholder="Anote cu&aacute;ntos"
-														class="form-control" id="txtEmb3" disabled></td>
+														class="form-control" id="txtEmb3" th:disabled="*{embarazos.partos_naturales} != null ? false: true"
+															onchange="habilitar2('txtEmb3', 'customCheckbox3');"></td>
 												</tr>
 												<tr>
 													<td style="width: 30%">¿Haz tenido ces&aacute;reas?</td>
 													<td style="width: 15%; padding-top: 0.4rem;">
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
-																id="customCheckbox4" value="option1"
+																id="customCheckbox4" value="option1" th:checked="*{embarazos.cesareas} != null ? true: false"
 																onchange="habilitar(this.checked,'txtEmb4');"> <label
 																for="customCheckbox4" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 55%"><input
 														th:field="*{embarazos.cesareas}" type="number" placeholder="Anote cu&aacute;ntas"
-														class="form-control" id="txtEmb4" disabled></td>
+														class="form-control" id="txtEmb4" th:disabled="*{embarazos.cesareas} != null ? false: true"
+															onchange="habilitar2('txtEmb4', 'customCheckbox4');"></td>
 												</tr>
 												<tr>
 													<td style="width: 30%">¿Haz usado m&eacute;todos
@@ -171,14 +175,15 @@ to get the desired effect
 													<td style="width: 15%; padding-top: 0.4rem;">
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
-																id="customCheckbox5" value="option1"
+																id="customCheckbox5" value="option1" th:checked="*{embarazos.metodo_anticonceptivos} != null ? true: false"
 																onchange="habilitar(this.checked,'txtEmb5');"> <label
 																for="customCheckbox5" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 55%"><input
 														th:field="*{embarazos.metodo_anticonceptivos}" type="text" placeholder="Anote cu&aacute;les" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.]+"
-														class="form-control" id="txtEmb5" disabled></td>
+														class="form-control" id="txtEmb5" th:disabled="*{embarazos.metodo_anticonceptivos} != null ? false: true"
+															onchange="habilitar2('txtEmb5', 'customCheckbox5');"></td>
 												</tr>
 											</tbody>
 										</table>
@@ -188,6 +193,7 @@ to get the desired effect
 										<button type="submit" class="btn bg-gradient-danger float-right" style="color: #fff;">Terminar</button>									</div>
 								</div>
 								<input th:field="*{embarazos.paciente_id}" type="hidden">
+								<input th:field="*{embarazos.embarazos_id}" type="hidden">
 							</form>
 						</div>
 					</div>
@@ -237,16 +243,16 @@ to get the desired effect
 	<!-- REQUIRED SCRIPTS -->
 
 	<!-- jQuery -->
-	<script src="plugins/jquery/jquery.min.js"></script>
+	<script src="/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE -->
-	<script src="dist/js/adminlte.js"></script>
+	<script src="/dist/js/adminlte.js"></script>
 
 	<!-- OPTIONAL SCRIPTS -->
-	<script src="plugins/chart.js/Chart.min.js"></script>
-	<script src="dist/js/demo.js"></script>
-	<script src="dist/js/pages/dashboard3.js"></script>
+	<script src="/plugins/chart.js/Chart.min.js"></script>
+	<script src="/dist/js/demo.js"></script>
+	<script src="/dist/js/pages/dashboard3.js"></script>
 	<script>
 function habilitar(value,value2)
 {
@@ -262,6 +268,24 @@ document.getElementById(value2).disabled=true;
 document.getElementById(value2).required=false;
 
 }
+}
+
+function habilitar2(input, check) {
+	var value = document.getElementById(input);
+	console.log(value.value);
+
+	if (value.value == '') {
+		// habilitamos
+		document.getElementById(input).value = "";
+		document.getElementById(input).disabled = true;
+		document.getElementById(check).checked = false;				
+	} else {
+		// deshabilitamos
+		document.getElementById(input).disabled = false;
+		document.getElementById(input).required = true;
+		document.getElementById(check).checked = true;
+
+	}
 }
 </script>
 

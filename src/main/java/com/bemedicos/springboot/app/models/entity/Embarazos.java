@@ -33,8 +33,8 @@ private String numero_embarazos;
 @Column
 private String partos_naturales;
 
-@Column
-private Long paciente_id;
+@Column(name="paciente_id") 
+private Long pacienteId;
 
 
 public Long getEmbarazos_id() {
@@ -86,11 +86,11 @@ this.partos_naturales = partos_naturales;
 }
 
 public Long getPaciente_id() {
-return paciente_id;
+return pacienteId;
 }
 
 public void setPaciente_id(Long paciente_id) {
-this.paciente_id = paciente_id;
+this.pacienteId = paciente_id;
 }
 
 public static long getSerialversionuid() {
