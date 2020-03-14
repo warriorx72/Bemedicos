@@ -113,47 +113,38 @@ to get the desired effect
 											<thead>
 												<tr>
 													<th style="width: 25%">No. expediente</th>
-													<th style="width: 60%">Paciente</th>
-													<th style="width: 60%">Datos personales</th>
-													<th style="width: 60%">Antecedentes Familiares</th>
-													<th style="width: 60%">Antecedentes Personales</th>
-													<th style="width: 60%">Casa Habitación</th>
-													<th style="width: 60%">Embarazos</th>
-													<th style="width: 15%">Notas</th>
-													<th style="width: 15%">Solicitar Estudio</th>
+													<th style="width: 45%">Paciente</th>
+													<th style="width: 60%">Botones</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr th:each="evolucion: ${evolucionvista}">
 													<td style="width: 25%" th:text="${evolucion[2]}"></td>
 													<td style="width: 45%" th:text="${evolucion[1]}"></td>
-													<td style="width: 15%"><a
+													<td style="width: 60%"><a
 														th:href="${'alta_paciente/'+evolucion[0]}"
-														class="btn bg-gradient-success" style="color: #fff;"><i
-															class="fas fa-book-medical"></i></a></td>
-															<td style="width: 15%"><a
+														class="btn btn-outline-primary btn-sm"
+														title="Datos personales"><i class="fas fa-user"></i></a> <a
 														th:href="${'antecedentes_familiares/'+evolucion[0]}"
-														class="btn bg-gradient-success" style="color: #fff;"><i
-															class="fas fa-book-medical"></i></a></td>
-															<td style="width: 15%"><a
+														title="Antecedentes Familiares"
+														class="btn btn-outline-primary btn-sm"><i
+															class="fas fa-users"></i></a> <a
 														th:href="${'antecedentes_personales/'+evolucion[0]}"
-														class="btn bg-gradient-success" style="color: #fff;"><i
-															class="fas fa-book-medical"></i></a></td>
-															<td style="width: 15%"><a
+														title="Antecedentes Personales"
+														class="btn btn-outline-primary btn-sm"><i
+															class="fas fa-address-card"></i></a> <a
 														th:href="${'casa_habitacion/'+evolucion[0]}"
-														class="btn bg-gradient-success" style="color: #fff;"><i
-															class="fas fa-book-medical"></i></a></td>
-															<td style="width: 15%"><a
-														th:href="${'embarazos/'+evolucion[0]}"
-														class="btn bg-gradient-success" style="color: #fff;"><i
-															class="fas fa-book-medical"></i></a></td>
-													<td style="width: 15%"><a
-														th:href="${'notas/'+evolucion[0]}"
-														class="btn bg-gradient-success" style="color: #fff;"><i
-															class="fas fa-notes-medical"></i></a></td>
-													<td style="width: 15%"><a
+														title="Casa Habitación"
+														class="btn btn-outline-primary btn-sm"><i
+															class="fas fa-home"></i></a> <a
+														th:href="${'embarazos/'+evolucion[0]}" title="Embarazos"
+														class="btn btn-outline-primary btn-sm"><i
+															class="fas fa-baby"></i></a> <a
+														th:href="${'notas/'+evolucion[0]}" title="Notas Evolución"
+														class="btn btn-outline-primary btn-sm"><i
+															class="fas fa-notes-medical"></i></a> <a
 														th:href="${'solicitud_estudios/' + evolucion[0]}"
-														class="btn bg-gradient-success" style="color: #fff;"><i
+														title="Estudios" class="btn btn-outline-primary btn-sm"><i
 															class="fas fa-file-medical-alt"></i></a></td>
 												</tr>
 											</tbody>
@@ -268,5 +259,6 @@ to get the desired effect
 		}
 		window.onload = changeClassById();
 	</script>
+
 </body>
 </html>

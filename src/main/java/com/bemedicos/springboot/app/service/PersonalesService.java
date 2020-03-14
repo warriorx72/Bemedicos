@@ -13,4 +13,10 @@ public void save(AntecedentesPersonales personales);
 public void delete(Long id);
 
 public AntecedentesPersonales findOne(Long id);
+
+public String findByPaciente(Long id);
+
+public void saveEntity(AntecedentesPersonales personales);
+
+public String findByPacientes(Long id);
 }
