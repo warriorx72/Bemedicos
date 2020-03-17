@@ -6,15 +6,15 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <title>M&eacute;dico</title>
-<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+<link rel="icon" type="image/png" href="/dist/img/apple-icon-60x60.png">
 
 <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
 <!-- IonIcons -->
 <link rel="stylesheet"
 	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<link rel="stylesheet" href="/dist/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
@@ -95,6 +95,7 @@ to get the desired effect
 						<div class="col-md-12">
 							<form th:action="@{/guardar_casahabitacion}"
 								th:object="${casahabitacion}" method="post">
+								<input type="hidden" th:field="*{casahabitacion_id}">
 								<div class="card card-info">
 									<div class="card-header">
 										<h3 class="card-title">Casa habitaci&oacute;n</h3>
@@ -452,7 +453,7 @@ to get the desired effect
 											name="action1" id="action1" value="0">Siguiente</button>
 									</div>
 								</div>
-								<input th:field="*{paciente_id}" type="hidden">
+								<input th:field="*{paciente_id}" type="text">
 							</form>
 						</div>
 					</div>
@@ -502,16 +503,16 @@ to get the desired effect
 	<!-- REQUIRED SCRIPTS -->
 
 	<!-- jQuery -->
-	<script src="plugins/jquery/jquery.min.js"></script>
+	<script src="/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE -->
-	<script src="dist/js/adminlte.js"></script>
+	<script src="/dist/js/adminlte.js"></script>
 
 	<!-- OPTIONAL SCRIPTS -->
-	<script src="plugins/chart.js/Chart.min.js"></script>
-	<script src="dist/js/demo.js"></script>
-	<script src="dist/js/pages/dashboard3.js"></script>
+	<script src="/plugins/chart.js/Chart.min.js"></script>
+	<script src="/dist/js/demo.js"></script>
+	<script src="/dist/js/pages/dashboard3.js"></script>
 	<script>
 		function habilitarcheck(value, value2, value3) {
 			if (value == true) {

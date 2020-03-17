@@ -38,5 +38,6 @@ public class PacienteServiceImpl implements PacienteService{
 	public Paciente findOne(Long id) {
 		// TODO Auto-generated method stub
 		return repository.findById(id).orElse(null);
-	}
+	}	
+	
 }

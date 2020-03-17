@@ -136,7 +136,7 @@ to get the desired effect
 														th:href="${'casa_habitacion/'+evolucion[0]}"
 														title="Casa Habitación"
 														class="btn btn-outline-primary btn-sm"><i
-															class="fas fa-home"></i></a> <a
+															class="fas fa-home"></i></a> <a th:if="*{evolucion[4]} != 'Masculino'"
 														th:href="${'embarazos/'+evolucion[0]}" title="Embarazos"
 														class="btn btn-outline-primary btn-sm"><i
 															class="fas fa-baby"></i></a> <a

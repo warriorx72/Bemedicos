@@ -13,5 +13,11 @@ public interface CasaHabitacionService {
 	public void delete(Long id);
 
 	public CasaHabitacion findOne(Long id);
+	
+	public void save2(CasaHabitacion casahabitacion);
+	
+	public String findByPacienteId(Long id);
+	
+	public String findBycasa(Long id);
 
 }

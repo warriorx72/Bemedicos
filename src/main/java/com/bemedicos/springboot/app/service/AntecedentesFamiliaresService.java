@@ -17,4 +17,6 @@ public interface AntecedentesFamiliaresService {
 	public String findByFamiliares(Long id);
 
 	void saveEntity(AntecedentesFamiliares antecedentesfamiliares);
+	
+	public String findByPaciente(Long id);
 }

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <title>M&eacute;dico</title>
-<link rel="icon" type="image/png" href="dist/img/apple-icon-60x60.png">
+<link rel="icon" type="image/png" href="/dist/img/apple-icon-60x60.png">
 
 <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
 <!-- IonIcons -->
 <link rel="stylesheet"
 	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<link rel="stylesheet" href="/dist/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
@@ -42,8 +41,7 @@ to get the desired effect
 </style>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
-	<div th:include="navegacion.html" th:remove="tag">
-      </div>
+		<div th:include="navegacion.html" th:remove="tag"></div>
 		<!-- Navbar -->
 		<nav
 			class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -55,9 +53,8 @@ to get the desired effect
 
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a th:href="@{/logout}" class="btn">
-					<i class="fas fa-sign-out-alt"></i>
+				<li class="nav-item"><a th:href="@{/logout}" class="btn"> <i
+						class="fas fa-sign-out-alt"></i>
 				</a></li>
 			</ul>
 		</nav>
@@ -93,7 +90,7 @@ to get the desired effect
 						<div class="col-md-12">
 							<form th:action="@{/guardar_ant_fam}"
 								th:object="${antecedentesfamiliares}" method="post">
-								
+
 								<div class="card card-info">
 									<div class="card-header">
 										<h3 class="card-title">Antecedentes Heredo-Familiares</h3>
@@ -116,14 +113,17 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox1" value="option1"
-																onchange="habilitar(this.checked,'txt1');"> <label
+																onchange="habilitar(this.checked,'txt1');"
+																th:checked="*{cancer}==null  ?false:true"> <label
 																for="customCheckbox1" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input th:field="*{cancer}"
-														type="text" class="form-control" id="txt1" disabled
+														type="text" class="form-control" id="txt1"
+														th:disabled="*{cancer}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Tubercolosis</td>
@@ -131,15 +131,19 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox2" value="option1"
-																onchange="habilitar(this.checked,'txt2');"> <label
-																for="customCheckbox2" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt2');"
+																th:checked="*{tubercolosis}==null or *{cancer}==''?false:true">
+															<label for="customCheckbox2" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{tubercolosis}" type="text"
-														class="form-control" id="txt2" disabled
+														class="form-control" id="txt2"
+														th:disabled="*{tubercolosis}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
+														
 												</tr>
 												<tr>
 													<td style="width: 25%">Diabetes</td>
@@ -147,14 +151,17 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox3" value="option1"
-																onchange="habilitar(this.checked,'txt3');"> <label
+																onchange="habilitar(this.checked,'txt3');"
+																th:checked="*{diabetes}==null?false:true"> <label
 																for="customCheckbox3" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input th:field="*{diabetes}"
-														type="text" class="form-control" id="txt3" disabled
+														type="text" class="form-control" id="txt3"
+														th:disabled="*{diabetes}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Artritis</td>
@@ -162,14 +169,17 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox4" value="option1"
-																onchange="habilitar(this.checked,'txt4');"> <label
+																onchange="habilitar(this.checked,'txt4');"
+																th:checked="*{artritis}==null?false:true"> <label
 																for="customCheckbox4" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input th:field="*{artritis}"
-														type="text" class="form-control" id="txt4" disabled
+														type="text" class="form-control" id="txt4"
+														th:disabled="*{artritis}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Problemas card&iacute;acos</td>
@@ -177,15 +187,18 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox5" value="option1"
-																onchange="habilitar(this.checked,'txt5');"> <label
-																for="customCheckbox5" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt5');"
+																th:checked="*{problemas_cardiacos}==null?false:true">
+															<label for="customCheckbox5" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{problemas_cardiacos}" type="text"
-														class="form-control" id="txt5" disabled
+														class="form-control" id="txt5"
+														th:disabled="*{problemas_cardiacos}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Tensi&oacute;n arterial alta</td>
@@ -193,15 +206,18 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox6" value="option1"
-																onchange="habilitar(this.checked,'txt6');"> <label
-																for="customCheckbox6" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt6');"
+																th:checked="*{tension_arterial_alta}==null?false:true">
+															<label for="customCheckbox6" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{tension_arterial_alta}" type="text"
-														class="form-control" id="txt6" disabled
+														class="form-control" id="txt6"
+														th:disabled="*{tension_arterial_alta}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Distrofia muscular</td>
@@ -209,15 +225,18 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox7" value="option1"
-																onchange="habilitar(this.checked,'txt7');"> <label
-																for="customCheckbox7" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt7');"
+																th:checked="*{distrofia_muscular}==null?false:true">
+															<label for="customCheckbox7" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{distrofia_muscular}" type="text"
-														class="form-control" id="txt7" disabled
+														class="form-control" id="txt7"
+														th:disabled="*{distrofia_muscular}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Parkinson, Alzheimer</td>
@@ -225,15 +244,18 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox8" value="option1"
-																onchange="habilitar(this.checked,'txt8');"> <label
-																for="customCheckbox8" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt8');"
+																th:checked="*{parkinson_alzheimer}==null?false:true">
+															<label for="customCheckbox8" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{parkinson_alzheimer}" type="text"
-														class="form-control" id="txt8" disabled
+														class="form-control" id="txt8"
+														th:disabled="*{parkinson_alzheimer}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Accidente cerebrovascular</td>
@@ -241,15 +263,18 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox9" value="option1"
-																onchange="habilitar(this.checked,'txt9');"> <label
-																for="customCheckbox9" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt9');"
+																th:checked="*{accidente_cerebrovascular}==null?false:true">
+															<label for="customCheckbox9" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{accidente_cerebrovascular}" type="text"
-														class="form-control" id="txt9" disabled
+														class="form-control" id="txt9"
+														th:disabled="*{accidente_cerebrovascular}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Depresi&oacute;n, bipolaridad,
@@ -258,15 +283,19 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox10" value="option1"
-																onchange="habilitar(this.checked,'txt10');"> <label
-																for="customCheckbox10" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt10');"
+																th:checked="*{depresion_bipolaridad_demencia}==null?false:true">
+															<label for="customCheckbox10"
+																class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{depresion_bipolaridad_demencia}" type="text"
-														class="form-control" id="txt10" disabled
+														class="form-control" id="txt10"
+														th:disabled="*{depresion_bipolaridad_demencia}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Neumonía, asma, EPOC, rinitis</td>
@@ -274,15 +303,19 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox11" value="option1"
-																onchange="habilitar(this.checked,'txt11');"> <label
-																for="customCheckbox11" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt11');"
+																th:checked="*{neumonia_asma_epoc_rinitis}==null?false:true">
+															<label for="customCheckbox11"
+																class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{neumonia_asma_epoc_rinitis}" type="text"
-														class="form-control" id="txt11" disabled
+														class="form-control" id="txt11"
+														th:disabled="*{neumonia_asma_epoc_rinitis}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Hepatitis, cirrosis, Sx de reye
@@ -291,15 +324,19 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox12" value="option1"
-																onchange="habilitar(this.checked,'txt12');"> <label
-																for="customCheckbox12" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt12');"
+																th:checked="*{hepatitis_cirrosis_sx_de_reye}==null?false:true">
+															<label for="customCheckbox12"
+																class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{hepatitis_cirrosis_sx_de_reye}" type="text"
-														class="form-control" id="txt12" disabled
+														class="form-control" id="txt12"
+														th:disabled="*{hepatitis_cirrosis_sx_de_reye}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Alergias</td>
@@ -307,14 +344,17 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox13" value="option1"
-																onchange="habilitar(this.checked,'txt13');"> <label
+																onchange="habilitar(this.checked,'txt13');"
+																th:checked="*{alergias}==null?false:true"> <label
 																for="customCheckbox13" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input th:field="*{alergias}"
-														type="text" class="form-control" id="txt13" disabled
+														type="text" class="form-control" id="txt13"
+														th:disabled="*{alergias}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Anemia, leucemia, linfoma,
@@ -323,15 +363,19 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox14" value="option1"
-																onchange="habilitar(this.checked,'txt14');"> <label
-																for="customCheckbox14" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt14');"
+																th:checked="*{anemia_leucemia_linfoma_mieloma}==null?false:true">
+															<label for="customCheckbox14"
+																class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{anemia_leucemia_linfoma_mieloma}" type="text"
-														class="form-control" id="txt14" disabled
+														class="form-control" id="txt14"
+														th:disabled="*{anemia_leucemia_linfoma_mieloma}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Problemas de tiroides</td>
@@ -339,15 +383,19 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox15" value="option1"
-																onchange="habilitar(this.checked,'txt15');"> <label
-																for="customCheckbox15" class="custom-control-label"></label>
+																onchange="habilitar(this.checked,'txt15');"
+																th:checked="*{problemas_de_tiroides}==null?false:true">
+															<label for="customCheckbox15"
+																class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input
 														th:field="*{problemas_de_tiroides}" type="text"
-														class="form-control" id="txt15" disabled
+														class="form-control" id="txt15"
+														th:disabled="*{problemas_de_tiroides}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 												<tr>
 													<td style="width: 25%">Otros(Especificar)</td>
@@ -355,14 +403,17 @@ to get the desired effect
 														<div class="estilochingon custom-checkbox">
 															<input class="custom-control-input" type="checkbox"
 																id="customCheckbox16" value="option1"
-																onchange="habilitar(this.checked,'txt16');"> <label
+																onchange="habilitar(this.checked,'txt16');"
+																th:checked="*{otros}==null?false:true"> <label
 																for="customCheckbox16" class="custom-control-label"></label>
 														</div>
 													</td>
 													<td style="width: 60%"><input th:field="*{otros}"
-														type="text" class="form-control" id="txt16" disabled
+														type="text" class="form-control" id="txt16"
+														th:disabled="*{otros}!=null?false:true"
 														pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s.,]+"
-														placeholder="Escriba parentesco"></td>
+														placeholder="Escriba parentesco"
+														onchange="habilitar2('txt1', 'customCheckbox1');"></td>
 												</tr>
 											</tbody>
 										</table>
@@ -375,7 +426,8 @@ to get the desired effect
 											name="action1" id="action1" value="0">Siguiente</button>
 									</div>
 								</div>
-								<input th:field="*{paciente_id}" type="hidden">
+								<input th:field="*{paciente_id}" type="hidden"> <input
+									th:field="*{antecedentesfam_id}" type="hidden">
 							</form>
 						</div>
 					</div>
@@ -425,42 +477,58 @@ to get the desired effect
 	<!-- REQUIRED SCRIPTS -->
 
 	<!-- jQuery -->
-	<script src="plugins/jquery/jquery.min.js"></script>
+	<script src="/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE -->
-	<script src="dist/js/adminlte.js"></script>
+	<script src="/dist/js/adminlte.js"></script>
 
 	<!-- OPTIONAL SCRIPTS -->
-	<script src="plugins/chart.js/Chart.min.js"></script>
-	<script src="dist/js/demo.js"></script>
-	<script src="dist/js/pages/dashboard3.js"></script>
+	<script src="/plugins/chart.js/Chart.min.js"></script>
+	<script src="/dist/js/demo.js"></script>
+	<script src="/dist/js/pages/dashboard3.js"></script>
 	<script>
-    function habilitar(value,value2)
-		{
-			if(value==true)
-			{
+		function habilitar(value, value2) {
+			if (value == true) {
 				// habilitamos
-				document.getElementById(value2).disabled=false;
-				document.getElementById(value2).required=true;
-				
-			}else if(value==false){
+				document.getElementById(value2).disabled = false;
+				document.getElementById(value2).required = true;
+
+			} else if (value == false) {
 				// deshabilitamos
-				 document.getElementById(value2).value = "";
-				 document.getElementById(value2).disabled=true;
-				 document.getElementById(value2).required=false;
-				
+				document.getElementById(value2).value = "";
+				document.getElementById(value2).disabled = true;
+				document.getElementById(value2).required = false;
+
 			}
 		}
-</script>
 
-<script type="text/javascript">
-        	function changeClassById (){
-        		document.getElementById("nav2").className="nav-link active";
-        		document.getElementById("menu2").className="nav-item has-treeview menu-open";
-        	}
-        	window.onload=changeClassById();
-        </script>
+		function habilitar2(input, check) {
+			var value = document.getElementById(input);
+			console.log(value.value);
+
+			if (value.value == '') {
+				// habilitamos
+				document.getElementById(input).value = "";
+				document.getElementById(input).disabled = true;
+				document.getElementById(check).checked = false;				
+			} else {
+				// deshabilitamos
+				document.getElementById(input).disabled = false;
+				document.getElementById(input).required = true;
+				document.getElementById(check).checked = true;
+
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		function changeClassById() {
+			document.getElementById("nav2").className = "nav-link active";
+			document.getElementById("menu2").className = "nav-item has-treeview menu-open";
+		}
+		window.onload = changeClassById();
+	</script>
 
 </body>
 </html>

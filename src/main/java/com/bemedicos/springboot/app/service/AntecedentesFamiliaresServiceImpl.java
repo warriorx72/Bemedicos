@@ -67,4 +67,11 @@ public class AntecedentesFamiliaresServiceImpl implements AntecedentesFamiliares
 		}
 	}
 
+	@Override
+	public String findByPaciente(Long id) {
+		// TODO Auto-generated method stub
+		return em.createNativeQuery("SELECT IF((SELECT COUNT(*) FROM app_antecedentes_familiares pac\r\n" + 
+				"				WHERE pac.paciente_id="+id+" )>0, 1 , 0)").getSingleResult().toString();
+	}
+
 }
