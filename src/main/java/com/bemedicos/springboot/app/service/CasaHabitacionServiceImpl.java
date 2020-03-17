@@ -68,7 +68,7 @@ public class CasaHabitacionServiceImpl implements CasaHabitacionService {
 	@Override
 	public String findBycasa(Long id) {
 	
-		return em.createNativeQuery("SELECT antecedentesfam_id FROM app_antecedentes_familiares af WHERE paciente_id =" + id)
+		return em.createNativeQuery("SELECT casahabitacion_id FROM app_casa_habitacion af WHERE paciente_id =" + id)
 				.getSingleResult().toString();
 	}
 	

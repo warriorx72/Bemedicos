@@ -311,7 +311,7 @@ public class PacienteController {
 		CasaHabitacion casah = new CasaHabitacion();
 		Paciente pac = new Paciente();
 		pac = pacienteService.findOne(id3);
-		System.out.println(pac.getPaciente_id());
+		System.out.println(id3);
 		if (casaHabitacionService.findByPacienteId(id3).equals("0")) {
 			casah.setPaciente_id(pac.getPaciente_id());
 			casaHabitacionService.save(casah);
@@ -352,7 +352,7 @@ public class PacienteController {
 			// embarazos.setPaciente_id(casahabitacion.getPaciente_id());
 //			evolucion.setPaciente_id(paciente.getPaciente_id());
 			casahabitacions = casahabitacion;
-			embarazos = embarazosService.findOne(Long.parseLong(casaHabitacionService.findByPacienteId(paciente.getPaciente_id())));
+			embarazos = embarazosService.findbyPacienteId(paciente.getPaciente_id());
 			casaHabitacionService.save2(casahabitacions);
 			m.put("casahabitacion", casahabitacions);
 			m.put("embarazos", embarazos);
